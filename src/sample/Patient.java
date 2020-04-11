@@ -16,6 +16,7 @@ public class Patient extends Person implements Serializable {
     String address = getAddress();
     @Column(name = "name", nullable = false)
     String name = getName();
+
     @Column(name = "SSN", nullable = false)
     String ssn = getSSN();
     @Column(name = "phone", nullable = true)
@@ -25,16 +26,17 @@ public class Patient extends Person implements Serializable {
     private int patientID = getPatientID();
     @Column(name = "email", nullable = false)
     String email = getEmail();
+    @ManyToOne(cascade = CascadeType.ALL)
+    Admin admin;
 
-
-    public Patient(int patientID, String name, String ssn, String phone, String address, String email) {
+    public Patient(int patientID, String name, String ssn, String phone, String address, String email, Admin admin) {
         this.patientID = patientID;
         this.name = name;
         this.ssn = ssn;
         this.phone = phone;
         this.address = address;
         this.email = email;
-
+        this.admin = admin;
     }
 
     public static long getSerialVersionUID() {
@@ -49,6 +51,13 @@ public class Patient extends Person implements Serializable {
         this.ssn = ssn;
     }
 
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
 
     public int getPatientID() {
         return patientID;

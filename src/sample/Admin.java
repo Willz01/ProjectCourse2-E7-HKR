@@ -13,9 +13,10 @@ public class Admin extends Person implements Serializable {
 
 
     @OneToMany(cascade = CascadeType.ALL)
-    Staff staff;
+    List<Staff> staffList = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL)
-    Analyser analyser;
+    List<Analyser> analyserList = new ArrayList<>();
+
     @Id
     @Column(name = "adminID", unique = true)
     private int adminID = getAdminID();
@@ -36,7 +37,7 @@ public class Admin extends Person implements Serializable {
     @Column(name = "lastDayInContract", nullable = true)
     private String lastDayInContract = getLastDayInContract();
 
-    public Admin(int adminID, String name, String ssn, String phone, String address, String email, String password, String startingDate, String lastDayInContract, Staff staff, Analyser analyser) {
+    public Admin(int adminID, String name, String ssn, String phone, String address, String email, String password, String startingDate, String lastDayInContract, List<Staff> staff, List<Analyser> analyser) {
         this.adminID = adminID;
         this.name = name;
         this.ssn = ssn;
@@ -46,8 +47,7 @@ public class Admin extends Person implements Serializable {
         Password = password;
         this.startingDate = startingDate;
         this.lastDayInContract = lastDayInContract;
-        this.staff = staff;
-        this.analyser = analyser;
+
     }
 
     public static long getSerialVersionUID() {
@@ -70,16 +70,21 @@ public class Admin extends Person implements Serializable {
         this.adminID = adminID;
     }
 
-    public Staff getStaff() {
-        return staff;
+
+    public List<Staff> getStaffList() {
+        return staffList;
     }
 
-    public void setStaff(Staff staff) {
-        this.staff = staff;
+    public void setStaffList(List<Staff> staffList) {
+        this.staffList = staffList;
     }
 
-    public Analyser getAnalyser() {
-        return analyser;
+    public List<Analyser> getAnalyserList() {
+        return analyserList;
+    }
+
+    public void setAnalyserList(List<Analyser> analyserList) {
+        this.analyserList = analyserList;
     }
 
     @Override
@@ -130,9 +135,6 @@ public class Admin extends Person implements Serializable {
         this.email = email;
     }
 
-    public void setAnalyser(Analyser analyser) {
-        this.analyser = analyser;
-    }
 
     public String getStartingDate() {
         return startingDate;
