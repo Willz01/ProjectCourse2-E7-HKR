@@ -13,25 +13,23 @@ public class Staff extends Person implements Serializable {
     @Id
     @Column(name = "staffID", unique = true)
     private String staffID;
-
-
-    @Column(name = "salary", nullable = true)
-    private long salary = getSalary();
-    @Column(name = "location", nullable = true)
-    private Location location;
+    @Column(name = "name", nullable = false)
+    String name = getName();
+    @Column(name = "SSN", nullable = false)
+    String ssn = getSSN();
     @Column(name = "adminID", nullable = true)
     private String adminId = getAdminId();
-    @Column(name = "name", nullable = true)
-    String name = getName();
-    @Column(name = "SSN", nullable = true)
-    String ssn = getSSN();
+    @Column(name = "email", nullable = false)
+    String email = getEmail();
+    @Column(name = "salary", nullable = false)
+    private long salary = getSalary();
     @Column(name = "phone", nullable = true)
     String phone = getPhone();
     @Column(name = "address", nullable = true)
     String address = getAddress();
-    @Column(name = "email", nullable = true)
-    String email = getEmail();
-    @Column(name = "password", nullable = true)
+    @Column(name = "location", nullable = false)
+    private Location location;
+    @Column(name = "password", nullable = false)
     private String password = getPassword();
 
 

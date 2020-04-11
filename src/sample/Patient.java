@@ -13,7 +13,7 @@ public class Patient extends Person implements Serializable {
     @Id
     @Column(name = "patientID", unique = true)
     private String patientID = getPatientID();
-    @Column(name = "name", nullable = true)
+    @Column(name = "name", nullable = false)
     String name = getName();
     @Column(name = "SSN", nullable = false)
     String ssn = getSSN();
@@ -21,7 +21,7 @@ public class Patient extends Person implements Serializable {
     String phone = getPhone();
     @Column(name = "address", nullable = true)
     String address = getAddress();
-    @Column(name = "email", nullable = true)
+    @Column(name = "email", nullable = false)
     String email = getEmail();
 
     @OneToMany(cascade = CascadeType.ALL)

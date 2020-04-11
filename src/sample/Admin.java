@@ -25,7 +25,7 @@ public class Admin extends Person implements Serializable {
     String phone = getPhone();
     @Column(name = "address", nullable = true)
     String address = getAddress();
-    @Column(name = "email", nullable = true)
+    @Column(name = "email", nullable = false)
     String email = getEmail();
     @Column(name = "startDate", nullable = true)
     private String startDate = getStartDate();

@@ -9,16 +9,16 @@ import java.io.Serializable;
 public class Result implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Column(name = "patientSSN", nullable = true)
+    @Column(name = "patientSSN", nullable = false)
     private String ssn = getSsn();
 
 
     @Id
     @Column(name = "testID", unique = true)
     private String id;
-    @Column(name = "date", nullable = true)
+    @Column(name = "date", nullable = false)
     private String date = getDate();
-    @Column(name = "status", nullable = true)
+    @Column(name = "status", nullable = false)
     private Status status = getStatus();
 
     public Result(String id, String date, Status status, String patientssn) {
