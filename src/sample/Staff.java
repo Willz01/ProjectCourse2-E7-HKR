@@ -2,60 +2,70 @@ package sample;
 
 import org.hibernate.Session;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Staff extends Person implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-    @Id
-    @Column(name = "staffID", unique = true)
-    private String staffID;
+    @Column(name = "address", nullable = false)
+    String address = getAddress();
     @Column(name = "name", nullable = false)
     String name = getName();
     @Column(name = "SSN", nullable = false)
     String ssn = getSSN();
-    @Column(name = "adminID", nullable = true)
-    private String adminId = getAdminId();
     @Column(name = "email", nullable = false)
     String email = getEmail();
-    @Column(name = "salary", nullable = false)
-    private long salary = getSalary();
+    @ManyToOne(cascade = CascadeType.ALL)
+    Admin admin;
     @Column(name = "phone", nullable = true)
     String phone = getPhone();
-    @Column(name = "address", nullable = true)
-    String address = getAddress();
-    @Column(name = "location", nullable = false)
-    private Location location;
+    @Id
+    @Column(name = "staffID", unique = true)
+    private int staffID;
+    @Column(name = "salary", nullable = false)
+    private double salary = getSalary();
     @Column(name = "password", nullable = false)
     private String password = getPassword();
+    @Column(name = "location", nullable = true)
+    private Location location;
 
 
-    public Staff(String name, String ssn, String phone, String address, String email, String staffID,
-                 String password, long salary, Location location, String adminId) {
+    public Staff(int staffID, String name, String ssn, String email, double salary, String phone, String address, Location location, String password, Admin admin) {
         this.staffID = staffID;
         this.name = name;
         this.ssn = ssn;
+        this.email = email;
+        this.salary = salary;
         this.phone = phone;
         this.address = address;
-        this.email = email;
-        this.password = password;
-        this.salary = salary;
         this.location = location;
-        this.adminId = adminId;
+        this.password = password;
+        this.admin = admin;
 
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
-    public String getStaffID() {
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
+
+    public int getStaffID() {
         return staffID;
     }
 
-    public void setStaffID(String staffID) {
+    public void setStaffID(int staffID) {
         this.staffID = staffID;
     }
 
@@ -67,11 +77,11 @@ public class Staff extends Person implements Serializable {
         this.password = password;
     }
 
-    public long getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(long salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
@@ -83,13 +93,6 @@ public class Staff extends Person implements Serializable {
         this.location = location;
     }
 
-    public String getAdminId() {
-        return adminId;
-    }
-
-    public void setAdminId(String adminId) {
-        this.adminId = adminId;
-    }
 
     @Override
     public String getName() {
@@ -152,7 +155,6 @@ public class Staff extends Person implements Serializable {
                 ", staffID=" + staffID +
                 ", salary=" + salary +
                 ", location=" + location +
-                ", admin=" + adminId +
                 ", name='" + name + '\'' +
                 ", ssn='" + ssn + '\'' +
                 ", phone='" + phone + '\'' +

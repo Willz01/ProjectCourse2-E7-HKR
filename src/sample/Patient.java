@@ -12,25 +12,22 @@ public class Patient extends Person implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-    @Id
-    @Column(name = "patientID", unique = true)
-    private String patientID = getPatientID();
+    @Column(name = "address", nullable = false)
+    String address = getAddress();
     @Column(name = "name", nullable = false)
     String name = getName();
     @Column(name = "SSN", nullable = false)
     String ssn = getSSN();
     @Column(name = "phone", nullable = true)
     String phone = getPhone();
-    @Column(name = "address", nullable = true)
-    String address = getAddress();
+    @Id
+    @Column(name = "patientID", unique = true)
+    private int patientID = getPatientID();
     @Column(name = "email", nullable = false)
     String email = getEmail();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    List<Result> results = new ArrayList<>();
 
-
-    public Patient(String patientID, String name, String ssn, String phone, String address, String email) {
+    public Patient(int patientID, String name, String ssn, String phone, String address, String email) {
         this.patientID = patientID;
         this.name = name;
         this.ssn = ssn;
@@ -40,11 +37,24 @@ public class Patient extends Person implements Serializable {
 
     }
 
-    public String getPatientID() {
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getSsn() {
+        return ssn;
+    }
+
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
+    }
+
+
+    public int getPatientID() {
         return patientID;
     }
 
-    public void setPatientID(String patientID) {
+    public void setPatientID(int patientID) {
         this.patientID = patientID;
     }
 

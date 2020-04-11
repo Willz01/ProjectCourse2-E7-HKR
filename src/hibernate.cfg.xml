@@ -34,7 +34,7 @@
         <mapping resource="hibernate.cfg.xml"/>
 
 
-<!--        <mapping class="Person"/>-->
+        <mapping class="sample.Analyser"/>
         <mapping class="sample.Staff"/>
         <mapping class="sample.Admin"/>
         <mapping class="sample.Patient"/>

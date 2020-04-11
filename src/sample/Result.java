@@ -2,17 +2,13 @@ package sample;
 
 import org.hibernate.Session;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Result implements Serializable {
     private static final long serialVersionUID = 1L;
-
-    @Column(name = "patientSSN", nullable = false)
-    private String ssn = getSsn();
 
 
     @Id
@@ -22,20 +18,27 @@ public class Result implements Serializable {
     private String date = getDate();
     @Column(name = "status", nullable = false)
     private Status status = getStatus();
+    @ManyToOne(cascade = CascadeType.ALL)
+    Patient patient;
+    @Column(name = "patientSSN", nullable = false)
+    private String ssn = getSsn();
 
-    public Result(String id, String date, Status status, String patientssn) {
+    public Result(String id, String date, Status status, String patientSsn, Patient patient) {
         this.id = id;
         this.date = date;
         this.status = status;
-        this.ssn = patientssn;
+        this.ssn = patientSsn;
+        this.patient = patient;
     }
 
-    public String getId() {
-        return id;
+
+    enum Status {
+        Positive, Negative, Pending;
+
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     @Override
@@ -46,6 +49,14 @@ public class Result implements Serializable {
                 ", date='" + date + '\'' +
                 ", status=" + status +
                 '}';
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getDate() {
@@ -72,10 +83,12 @@ public class Result implements Serializable {
         this.ssn = ssn;
     }
 
+    public Patient getPatient() {
+        return patient;
+    }
 
-    enum Status {
-        Positive, Negative, Pending;
-
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     public static void addResult(Result result) {

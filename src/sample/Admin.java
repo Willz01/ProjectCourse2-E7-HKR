@@ -12,44 +12,50 @@ public class Admin extends Person implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    List<Staff> staff = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL)
+    Staff staff;
+    @OneToMany(cascade = CascadeType.ALL)
+    Analyser analyser;
     @Id
     @Column(name = "adminID", unique = true)
-    private String adminID = getAdminID();
+    private int adminID = getAdminID();
+    @Column(name = "name", nullable = true)
+    private String name = getName();
+    @Column(name = "SSN", nullable = true)
+    private String ssn = getSsn();
+    @Column(name = "phone", nullable = true)
+    private String phone = getPhone();
+    @Column(name = "address", nullable = true)
+    private String address = getAddress();
+    @Column(name = "email", nullable = false)
+    private String email = getEmail();
     @Column(name = "password", nullable = false)
     private String Password = getPassword();
-    @Column(name = "name", nullable = true)
-    String name = getName();
-    @Column(name = "SSN", nullable = true)
-    String ssn = getSsn();
-    @Column(name = "phone", nullable = true)
-    String phone = getPhone();
-    @Column(name = "address", nullable = true)
-    String address = getAddress();
-    @Column(name = "email", nullable = false)
-    String email = getEmail();
-    @Column(name = "startDate", nullable = true)
-    private String startDate = getStartDate();
+    @Column(name = "startingDate", nullable = false)
+    private String startingDate = getStartingDate();
+    @Column(name = "lastDayInContract", nullable = true)
+    private String lastDayInContract = getLastDayInContract();
 
-    public Admin(String name, String ssn, String phone, String address, String email, String adminID, String password, String startDate) {
+    public Admin(int adminID, String name, String ssn, String phone, String address, String email, String password, String startingDate, String lastDayInContract, Staff staff, Analyser analyser) {
+        this.adminID = adminID;
         this.name = name;
         this.ssn = ssn;
         this.phone = phone;
         this.address = address;
         this.email = email;
-        this.adminID = adminID;
-        password = password;
-        this.startDate = startDate;
+        Password = password;
+        this.startingDate = startingDate;
+        this.lastDayInContract = lastDayInContract;
+        this.staff = staff;
+        this.analyser = analyser;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
-    public String getAdminID() {
+    public int getAdminID() {
         return adminID;
-    }
-
-    public void setAdminID(String adminID) {
-        this.adminID = adminID;
     }
 
     public String getPassword() {
@@ -60,12 +66,20 @@ public class Admin extends Person implements Serializable {
         Password = password;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public void setAdminID(int adminID) {
+        this.adminID = adminID;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
+
+    public Analyser getAnalyser() {
+        return analyser;
     }
 
     @Override
@@ -116,19 +130,26 @@ public class Admin extends Person implements Serializable {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "Admin{" +
-                "name='" + name + '\'' +
-                ", ssn='" + ssn + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", email='" + email + '\'' +
-                ", adminID=" + adminID +
-                ", Password='" + Password + '\'' +
-                ", startDate='" + startDate + '\'' +
-                '}';
+    public void setAnalyser(Analyser analyser) {
+        this.analyser = analyser;
     }
+
+    public String getStartingDate() {
+        return startingDate;
+    }
+
+    public void setStartingDate(String startingDate) {
+        this.startingDate = startingDate;
+    }
+
+    public String getLastDayInContract() {
+        return lastDayInContract;
+    }
+
+    public void setLastDayInContract(String lastDayInContract) {
+        this.lastDayInContract = lastDayInContract;
+    }
+
 
     public static void addAdminToDataBase(Admin admin) {
 
