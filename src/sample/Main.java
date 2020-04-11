@@ -27,9 +27,9 @@ public class Main extends Application {
         Result fr = new Result("1", "2020-01-01", Result.Status.Pending, fp.getPatientID());
 
 
-        Function.addResult(fr);
-        Function.addPatientToDataBase(tp);
-        Function.addStaffToDataBase(fs);
+        Result.addResult(fr);
+        Patient.addPatientToDataBase(tp);
+        Staff.addStaffToDataBase(fs);
 
 
     }

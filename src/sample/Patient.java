@@ -1,5 +1,7 @@
 package sample;
 
+import org.hibernate.Session;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -100,4 +102,20 @@ public class Patient extends Person implements Serializable {
                 ", email='" + email + '\'' +
                 '}';
     }
+
+
+    public static void addPatientToDataBase(Patient patient) {
+
+
+        // Save the customer object
+
+        try (Session session = SQL.getSession()) {
+            session.beginTransaction();
+            session.save(patient);
+
+            session.flush();
+        }
+    }
+
+
 }

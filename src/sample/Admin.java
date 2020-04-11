@@ -1,5 +1,7 @@
 package sample;
 
+import org.hibernate.Session;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -127,4 +129,20 @@ public class Admin extends Person implements Serializable {
                 ", startDate='" + startDate + '\'' +
                 '}';
     }
+
+    public static void addAdminToDataBase(Admin admin) {
+
+
+        try (Session session = SQL.getSession()) {
+            session.beginTransaction();
+
+            session.save(admin);
+
+            session.flush();
+        }
+
+
+    }
+
+
 }

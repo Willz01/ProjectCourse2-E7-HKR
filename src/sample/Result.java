@@ -1,5 +1,7 @@
 package sample;
 
+import org.hibernate.Session;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -75,4 +77,16 @@ public class Result implements Serializable {
         Positive, Negative, Pending;
 
     }
+
+    public static void addResult(Result result) {
+
+        try (Session session = SQL.getSession()) {
+            session.beginTransaction();
+            session.save(result);
+
+            session.flush();
+        }
+    }
+
+
 }

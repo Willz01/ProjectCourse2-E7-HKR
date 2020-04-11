@@ -1,5 +1,7 @@
 package sample;
 
+import org.hibernate.Session;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -158,4 +160,17 @@ public class Staff extends Person implements Serializable {
                 ", email='" + email + '\'' +
                 '}';
     }
+
+
+    public static void addStaffToDataBase(Staff staff) {
+
+        try (Session session = SQL.getSession()) {
+            session.beginTransaction();
+            session.save(staff);
+
+            session.flush();
+        }
+    }
+
+
 }
