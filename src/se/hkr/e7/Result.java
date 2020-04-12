@@ -1,10 +1,9 @@
-package sample;
+package se.hkr.e7;
 
 import org.hibernate.Session;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 public class Result implements Serializable {

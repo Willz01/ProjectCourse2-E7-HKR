@@ -1,4 +1,4 @@
-package sample;
+package se.hkr.e7;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
