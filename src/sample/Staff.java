@@ -16,7 +16,7 @@ public class Staff extends Person implements Serializable {
     String address = getAddress();
     @Column(name = "name", nullable = false)
     String name = getName();
-    @Column(name = "SSN", nullable = false)
+    @Column(name = "SSN", nullable = false, unique = true)
     String ssn = getSSN();
     @Column(name = "email", nullable = false)
     String email = getEmail();

@@ -12,17 +12,14 @@ public class Admin extends Person implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-    @OneToMany(cascade = CascadeType.ALL)
-    List<Staff> staffList = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.ALL)
-    List<Analyser> analyserList = new ArrayList<>();
+
 
     @Id
     @Column(name = "adminID", unique = true)
     private int adminID = getAdminID();
     @Column(name = "name", nullable = true)
     private String name = getName();
-    @Column(name = "SSN", nullable = true)
+    @Column(name = "SSN", nullable = false)
     private String ssn = getSsn();
     @Column(name = "phone", nullable = true)
     private String phone = getPhone();
@@ -37,7 +34,7 @@ public class Admin extends Person implements Serializable {
     @Column(name = "lastDayInContract", nullable = true)
     private String lastDayInContract = getLastDayInContract();
 
-    public Admin(int adminID, String name, String ssn, String phone, String address, String email, String password, String startingDate, String lastDayInContract, List<Staff> staff, List<Analyser> analyser) {
+    public Admin(int adminID, String name, String ssn, String phone, String address, String email, String password, String startingDate, String lastDayInContract) {
         this.adminID = adminID;
         this.name = name;
         this.ssn = ssn;
@@ -71,21 +68,6 @@ public class Admin extends Person implements Serializable {
     }
 
 
-    public List<Staff> getStaffList() {
-        return staffList;
-    }
-
-    public void setStaffList(List<Staff> staffList) {
-        this.staffList = staffList;
-    }
-
-    public List<Analyser> getAnalyserList() {
-        return analyserList;
-    }
-
-    public void setAnalyserList(List<Analyser> analyserList) {
-        this.analyserList = analyserList;
-    }
 
     @Override
     public String getName() {

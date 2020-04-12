@@ -18,7 +18,7 @@ public class Result implements Serializable {
     private String date = getDate();
     @Column(name = "status", nullable = false)
     private Status status = getStatus();
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     Patient patient;
     @Column(name = "patientSSN", nullable = false)
     private String ssn = getSsn();
