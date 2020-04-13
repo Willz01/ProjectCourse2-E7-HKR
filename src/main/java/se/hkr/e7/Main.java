@@ -20,6 +20,11 @@ public class Main extends Application {
         Scene scene = new Scene(new StackPane(l), 640, 480);
         stage.setScene(scene);
         stage.show();
+
+
+
+
+
     }
 
 }
