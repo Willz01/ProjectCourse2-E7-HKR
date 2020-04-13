@@ -35,9 +35,11 @@
 
 
 <!--        <mapping class="Person"/>-->
-        <mapping class="sample.Staff"/>
-        <mapping class="sample.Admin"/>
-        <mapping class="sample.Patient"/>
-        <mapping class="sample.Result"/>
+
+
+        <mapping class="se.hkr.e7.Staff"/>
+        <mapping class="se.hkr.e7.Admin"/>
+        <mapping class="se.hkr.e7.Patient"/>
+        <mapping class="se.hkr.e7.Result"/>
     </session-factory>
 </hibernate-configuration>

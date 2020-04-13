@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 public class Main extends Application {
 
@@ -22,6 +24,8 @@ public class Main extends Application {
         stage.show();
 
 
+
+        SQL.getSession();
 
 
 
