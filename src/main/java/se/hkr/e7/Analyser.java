@@ -52,7 +52,7 @@ public class Analyser extends Person implements Serializable {
         return serialVersionUID;
     }
 
-    public static void addAnalyserToDataBase(se.hkr.e7.Analyser analyser) {
+    public static void addAnalyserToDataBase(Analyser analyser) {
 
         try (Session session = SQL.getSession()) {
             session.beginTransaction();

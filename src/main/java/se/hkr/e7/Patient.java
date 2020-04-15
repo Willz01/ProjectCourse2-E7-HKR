@@ -115,7 +115,7 @@ public class Patient extends Person implements Serializable {
     }
 
 
-    public static void addPatientToDataBase(se.hkr.e7.Patient patient) {
+    public static void addPatientToDataBase(Patient patient) {
 
 
         // Save the customer object

@@ -135,7 +135,7 @@ public class Admin extends Person implements Serializable {
     }
 
 
-    public static void addAdminToDataBase(se.hkr.e7.Admin admin) {
+    public static void addAdminToDataBase(Admin admin) {
 
 
         try (Session session = SQL.getSession()) {

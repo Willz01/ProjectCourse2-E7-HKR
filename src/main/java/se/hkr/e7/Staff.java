@@ -162,7 +162,7 @@ public class Staff extends Person implements Serializable {
     }
 
 
-    public static void addStaffToDataBase(se.hkr.e7.Staff staff) {
+    public static void addStaffToDataBase(Staff staff) {
 
         try (Session session = SQL.getSession()) {
             session.beginTransaction();

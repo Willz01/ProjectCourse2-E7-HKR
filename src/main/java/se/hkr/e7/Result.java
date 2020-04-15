@@ -90,7 +90,7 @@ public class Result implements Serializable {
         this.patient = patient;
     }
 
-    public static void addResult(se.hkr.e7.Result result) {
+    public static void addResult(Result result) {
 
         try (Session session = SQL.getSession()) {
             session.beginTransaction();
