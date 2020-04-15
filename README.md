@@ -1,6 +1,6 @@
 # Covid-19 Test Service
 
-The Covid-19 Test Service is a a JavaFX application for tracking and analysing patient test results for diseases such as Covid-19.
+The Covid-19 Test Service is a a JavaFX application for tracking and analysing patient test results of diseases such as Covid-19.
 
 ## Getting Started
 These instructions will get a copy of the project up and running on your local machine for
@@ -8,8 +8,8 @@ development and testing purposes. The project consists of a JavaFX application a
 a MySQL database.
 
 ### Prerequisites
-We recommend to run the project using IntelliJ IDEA. You can donwload it from the [Offical Website](https://www.jetbrains.com/idea/).
-After installing, open the root of the GitHub repository.
+We recommend to run the project using IntelliJ IDEA. You can donwload it from the [offical website](https://www.jetbrains.com/idea/).
+After installing IntelliJ, open the root of the GitHub repository.
 The dependency manager Maven will automatically download any missing dependencies.
 
 ### Running the Application
