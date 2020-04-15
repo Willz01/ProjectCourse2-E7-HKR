@@ -1,4 +1,13 @@
-<?import javafx.scene.layout.GridPane?>
-<GridPane fx:controller="se.hkr.e7.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <Button fx:id="StaffLogin" layoutX="81.0" layoutY="170.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="173.0"
+           text="Staff login"/>
+   <Button fx:id="PatientLogin" layoutX="324.0" layoutY="170.0" mnemonicParsing="false" prefHeight="43.0"
+           prefWidth="173.0" text="See your result "/>
+</AnchorPane>
