@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 
@@ -50,6 +49,15 @@ public class Main extends Application {
             Admin.addAdminToDataBase(firstAdmin);
 
 
+
+            Patient.addPatientToDataBase(firstPatient);
+            Patient.addPatientToDataBase(secondPatient);
+
+            Result.addResult(firstResult);
+            Result.addResult(secondResult);
+
+
+
             Analyser.addAnalyserToDataBase(firstAnalyser);
             Analyser.addAnalyserToDataBase(secondAnalyser);
 
@@ -58,28 +66,7 @@ public class Main extends Application {
             Staff.addStaffToDataBase(secondStaff);
 
 
-            Patient.addPatientToDataBase(firstPatient);
-            Patient.addPatientToDataBase(secondPatient);
 
-            Result.addResult(firstResult);
-            Result.addResult(secondResult);
-
-            Admin.addAdminToDataBase(firstAdmin);
-
-
-            Analyser.addAnalyserToDataBase(firstAnalyser);
-            Analyser.addAnalyserToDataBase(secondAnalyser);
-
-
-            Staff.addStaffToDataBase(firstStaff);
-            Staff.addStaffToDataBase(secondStaff);
-
-
-            Patient.addPatientToDataBase(firstPatient);
-            Patient.addPatientToDataBase(secondPatient);
-
-            Result.addResult(firstResult);
-            Result.addResult(secondResult);
         }
 
 }
