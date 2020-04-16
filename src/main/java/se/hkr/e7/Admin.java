@@ -174,7 +174,7 @@ public class Admin extends Person implements Serializable {
         try (Session session = SQL.getSession()) {
             session.beginTransaction();
 
-            Admin admin = (Admin) session.get(Admin.class, id);
+            Admin admin = session.get(Admin.class, id);
             System.out.println(admin.getAddress());
 
             session.getTransaction().commit();

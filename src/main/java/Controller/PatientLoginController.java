@@ -7,6 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.hibernate.query.Query;
+import se.hkr.e7.Patient;
+import se.hkr.e7.SQL;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,6 +38,7 @@ public class PatientLoginController {
     }
 
     public void patientLogin(ActionEvent actionEvent) throws IOException {
+
 
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();

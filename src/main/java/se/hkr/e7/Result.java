@@ -18,24 +18,36 @@ public class Result implements Serializable {
     private String date = getDate();
     @Column(name = "status", nullable = false)
     private Status status = getStatus();
+    @Id
     @ManyToOne(cascade = CascadeType.ALL)
     Patient patient;
-    @Column(name = "patientSSN", nullable = false)
-    private String ssn = getSsn();
 
-    public Result(int id, String date, Status status, String patientSsn, Patient patient) {
+
+    public Result(int id, String date, Status status, Patient patient) {
         this.id = id;
         this.date = date;
         this.status = status;
-        this.ssn = patientSsn;
+
         this.patient = patient;
     }
 
+    public static void getResultFromDataBase(int testID) {
 
-    enum Status {
-        Positive, Negative, Pending;
+
+        try (Session session = SQL.getSession()) {
+            session.beginTransaction();
+
+            Result result = session.get(Result.class, testID);
+            System.out.println(result.getStatus());
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+
+        }
+
 
     }
+
     public Result() {
 
 
@@ -52,7 +64,6 @@ public class Result implements Serializable {
                 ", date='" + date + '\'' +
                 ", status=" + status +
                 ", patient=" + patient +
-                ", ssn='" + ssn + '\'' +
                 '}';
     }
 
@@ -80,13 +91,7 @@ public class Result implements Serializable {
         this.status = status;
     }
 
-    public String getSsn() {
-        return ssn;
-    }
 
-    public void setSsn(String ssn) {
-        this.ssn = ssn;
-    }
 
     public Patient getPatient() {
         return patient;
@@ -106,20 +111,9 @@ public class Result implements Serializable {
             session.flush();
         }
     }
-    public static void getResultFromDataBase(int testID) {
 
-
-        try (Session session = SQL.getSession()) {
-            session.beginTransaction();
-
-            Result result = (Result) session.get(Result.class, testID);
-            System.out.println(result.getStatus());
-            session.getTransaction().commit();
-        } catch (HibernateException e) {
-            e.printStackTrace();
-
-        }
-
+    enum Status {
+        Positive, Negative, Pending
 
     }
 

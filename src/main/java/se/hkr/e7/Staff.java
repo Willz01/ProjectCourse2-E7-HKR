@@ -182,7 +182,7 @@ public class Staff extends Person implements Serializable {
         try (Session session = SQL.getSession()) {
             session.beginTransaction();
 
-            Staff staff = (Staff) session.get(Staff.class, testID);
+            Staff staff = session.get(Staff.class, testID);
             System.out.println(staff.getAddress());
             session.getTransaction().commit();
         } catch (HibernateException e) {

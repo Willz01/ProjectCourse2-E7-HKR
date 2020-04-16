@@ -90,6 +90,7 @@ public class Patient extends Person implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
     public Patient() {
 
 
@@ -126,7 +127,7 @@ public class Patient extends Person implements Serializable {
         try (Session session = SQL.getSession()) {
             session.beginTransaction();
 
-            Patient patient = (Patient) session.get(Patient.class, ssn);
+            Patient patient = session.get(Patient.class, ssn);
             System.out.println(patient.getAddress());
 
             session.getTransaction().commit();

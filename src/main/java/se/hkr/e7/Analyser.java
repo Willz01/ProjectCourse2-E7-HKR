@@ -184,7 +184,7 @@ public class Analyser extends Person implements Serializable {
         try (Session session = SQL.getSession()) {
             session.beginTransaction();
 
-            Analyser analyser = (Analyser) session.get(Analyser.class, analyserId);
+            Analyser analyser = session.get(Analyser.class, analyserId);
             System.out.println(analyser.getAddress());
 
             session.getTransaction().commit();

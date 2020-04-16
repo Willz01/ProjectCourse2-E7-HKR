@@ -24,6 +24,7 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
+
 //        get the object from the database
 
 //        Admin.getAdminFromDataBase(12);
