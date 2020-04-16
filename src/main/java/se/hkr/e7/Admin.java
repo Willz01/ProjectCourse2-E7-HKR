@@ -1,5 +1,6 @@
 package se.hkr.e7;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 import javax.persistence.Column;
@@ -46,6 +47,10 @@ public class Admin extends Person implements Serializable {
         this.lastDayInContract = lastDayInContract;
 
     }
+    public Admin() {
+
+
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -67,7 +72,20 @@ public class Admin extends Person implements Serializable {
         this.adminID = adminID;
     }
 
-
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "adminID=" + adminID +
+                ", name='" + name + '\'' +
+                ", ssn='" + ssn + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", Password='" + Password + '\'' +
+                ", startingDate='" + startingDate + '\'' +
+                ", lastDayInContract='" + lastDayInContract + '\'' +
+                '}';
+    }
 
     @Override
     public String getName() {
@@ -149,5 +167,24 @@ public class Admin extends Person implements Serializable {
 
     }
 
+
+    public static void getAdminFromDataBase(int id) {
+
+
+        try (Session session = SQL.getSession()) {
+            session.beginTransaction();
+
+            Admin admin = (Admin) session.get(Admin.class, id);
+            System.out.println(admin.getAddress());
+
+            session.getTransaction().commit();
+        }
+        catch (HibernateException e) {
+            e.printStackTrace();
+
+        }
+
+
+    }
 
 }
