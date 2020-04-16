@@ -5,24 +5,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 
-public class PatientLoginController {
+public class PatientDashboard {
 
 
-    public TextField ssnText;
+    public Text resultText;
 
 
     public void Back(ActionEvent actionEvent) throws IOException {
-
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("login.fxml");
+        URL resource = getClass().getClassLoader().getResource("patientLogin.fxml");
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -33,19 +32,4 @@ public class PatientLoginController {
     public void Cancel(ActionEvent actionEvent) {
         System.exit(0);
     }
-
-    public void patientLogin(ActionEvent actionEvent) throws IOException {
-
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("patientDashboard.fxml");
-        Parent root = FXMLLoader.load(resource);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-
-    }
 }
-
