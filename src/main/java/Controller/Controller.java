@@ -33,7 +33,7 @@ public class Controller {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("pacientLogin.fxml");
+        URL resource = getClass().getClassLoader().getResource("patientLogin.fxml");
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         stage.setScene(scene);
