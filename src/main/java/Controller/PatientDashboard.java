@@ -2,16 +2,23 @@ package Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import se.hkr.e7.Result;
+import se.hkr.e7.SQL;
+import se.hkr.e7.Singleton;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ResourceBundle;
 
-public class PatientDashboard {
+public class PatientDashboard implements Initializable {
 
 
     public Text resultText;
@@ -27,9 +34,35 @@ public class PatientDashboard {
         stage.setScene(scene);
         stage.show();
 
+
     }
 
     public void Cancel(ActionEvent actionEvent) {
         System.exit(0);
     }
-}
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        resultText.setText(Singleton.getInstance().getSsn());
+
+
+
+//
+//            try (Session session = SQL.getSession()) {
+//                session.beginTransaction();
+//
+//                Result result = session.get(Result.class, ssn);
+//                resultText.setText(result.getStatus() + "     " + result.getDate());
+//                session.getTransaction().commit();
+//            } catch (HibernateException e) {
+//                e.printStackTrace();
+//
+//            }
+//
+        }
+
+
+    }
+

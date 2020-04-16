@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import org.hibernate.query.Query;
 import se.hkr.e7.Patient;
 import se.hkr.e7.SQL;
+import se.hkr.e7.Singleton;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,6 +32,8 @@ public class PatientLoginController {
         stage.setScene(scene);
         stage.show();
 
+
+
     }
 
     public void Cancel(ActionEvent actionEvent) {
@@ -39,7 +42,7 @@ public class PatientLoginController {
 
     public void patientLogin(ActionEvent actionEvent) throws IOException {
 
-
+        Singleton.getInstance().setSsn(ssnText.getText());
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
