@@ -43,12 +43,12 @@ public class SQL {
         Analyser firstAnalyser = new Analyser(3, "Nilson", "198005087778", "Kristan Street", 200.16, "056356556", "Homes", "98745794", "2020-05-23", "2020-20-12", firstAdmin);
         Analyser secondAnalyser = new Analyser(4, "Nilson", "198076687778", "Kristan Street", 200.16, "056356556", "Homes", "98745794", "2020-05-23", "2020-20-12", firstAdmin);
 
-        Patient firstPatient = new Patient(5, "Mohammed", "65454565", "563454", "onehomet 32", "myt@yahoo.com");
-        Patient secondPatient = new Patient(6, "Jone", "884888994", "07332233", "oneStreet 32", "mymail@yahoo.com");
+        Patient firstPatient = new Patient( "Mohammed", "196154054565", "062563454", "onehomet 32", "myt@yahoo.com");
+        Patient secondPatient = new Patient( "Jone", "19880108994", "07332233", "oneStreet 32", "mymail@yahoo.com");
 
 
-        Result firstResult = new Result("89TAMGAJ", "2020-01-01", Result.Status.Pending, "199902030943-342", firstPatient);
-        Result secondResult = new Result("432234", "2020-01-01", Result.Status.Positive, "199902030943-342", firstPatient);
+        Result firstResult = new Result(1212121, "2020-01-01", Result.Status.Pending, "199902030943-342", firstPatient);
+        Result secondResult = new Result(1241212, "2020-01-01", Result.Status.Positive, "199902030943-342", firstPatient);
 
 
         Admin.addAdminToDataBase(firstAdmin);

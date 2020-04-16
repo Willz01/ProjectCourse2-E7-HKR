@@ -24,9 +24,12 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
-//        SQL.Reset();
-//        Admin.getAdminFromDataBase(12);
+//        get the object from the database
 
+//        Admin.getAdminFromDataBase(12);
+//        Analyser.getAnalyserFromDataBase(4);
+//        Staff.getStaffFromDataBase(1);
+//        Result.getResultFromDataBase(1212121);
 
     }
 

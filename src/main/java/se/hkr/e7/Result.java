@@ -1,5 +1,6 @@
 package se.hkr.e7;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ public class Result implements Serializable {
 
     @Id
     @Column(name = "testID", unique = true)
-    private String id;
+    private int id;
     @Column(name = "date", nullable = false)
     private String date = getDate();
     @Column(name = "status", nullable = false)
@@ -22,7 +23,7 @@ public class Result implements Serializable {
     @Column(name = "patientSSN", nullable = false)
     private String ssn = getSsn();
 
-    public Result(String id, String date, Status status, String patientSsn, Patient patient) {
+    public Result(int id, String date, Status status, String patientSsn, Patient patient) {
         this.id = id;
         this.date = date;
         this.status = status;
@@ -35,6 +36,10 @@ public class Result implements Serializable {
         Positive, Negative, Pending;
 
     }
+    public Result() {
+
+
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -43,18 +48,19 @@ public class Result implements Serializable {
     @Override
     public String toString() {
         return "Result{" +
-                "ssn='" + ssn + '\'' +
-                ", id='" + id + '\'' +
+                "id=" + id +
                 ", date='" + date + '\'' +
                 ", status=" + status +
+                ", patient=" + patient +
+                ", ssn='" + ssn + '\'' +
                 '}';
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -90,6 +96,7 @@ public class Result implements Serializable {
         this.patient = patient;
     }
 
+
     public static void addResult(Result result) {
 
         try (Session session = SQL.getSession()) {
@@ -99,6 +106,21 @@ public class Result implements Serializable {
             session.flush();
         }
     }
+    public static void getResultFromDataBase(int testID) {
 
+
+        try (Session session = SQL.getSession()) {
+            session.beginTransaction();
+
+            Result result = (Result) session.get(Result.class, testID);
+            System.out.println(result.getStatus());
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+
+        }
+
+
+    }
 
 }
