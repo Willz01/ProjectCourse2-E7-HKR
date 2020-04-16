@@ -5,22 +5,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 
-public class StaffLoginController {
-    public TextField emailText;
-    public TextField passwordText;
+public class PatientLoginController {
 
 
-    public void StaffLogin(ActionEvent actionEvent) {
 
 
-    }
+
 
     public void Back(ActionEvent actionEvent) throws IOException {
 
@@ -38,4 +33,18 @@ public class StaffLoginController {
     public void Cancel(ActionEvent actionEvent) {
         System.exit(0);
     }
+
+    public void patientLogin(ActionEvent actionEvent) {
+
+
+
+
+
+
+
+
+
+
+    }
 }
+
