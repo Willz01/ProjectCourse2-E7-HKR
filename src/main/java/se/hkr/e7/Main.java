@@ -18,13 +18,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        URL resource = getClass().getClassLoader().getResource("sample.fxml");
+        URL resource = getClass().getClassLoader().getResource("login.fxml");
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
 
-         SQL.Reset();
+
 
         }
 
