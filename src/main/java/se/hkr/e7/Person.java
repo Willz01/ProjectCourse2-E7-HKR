@@ -2,9 +2,9 @@ package se.hkr.e7;
 
 import org.hibernate.Session;
 
-public class Person {
+import java.io.Serializable;
 
-
+public class Person implements Serializable {
     private String name;
     private String SSN;
     private String phone;
@@ -57,16 +57,5 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "SSN='" + SSN + '\'' +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", email='" + email + '\'' +
-                '}';
     }
 }
