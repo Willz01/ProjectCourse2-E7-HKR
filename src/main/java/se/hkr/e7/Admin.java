@@ -1,19 +1,14 @@
 package se.hkr.e7;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.io.Serializable;
 
 @Entity
-public class Admin extends Person implements Serializable {
+public class Admin extends Person {
     private static final long serialVersionUID = 1L;
-
-
-
 
     @Id
     @Column(name = "adminID", unique = true)
@@ -47,17 +42,27 @@ public class Admin extends Person implements Serializable {
         this.lastDayInContract = lastDayInContract;
 
     }
+
     public Admin() {
-
-
     }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
+    public static void addAdminToDataBase(Admin admin) {
+        Session session = SQL.getSession();
+        session.beginTransaction();
+        session.save(admin);
+        session.flush();
+    }
+
     public int getAdminID() {
         return adminID;
+    }
+
+    public void setAdminID(int adminID) {
+        this.adminID = adminID;
     }
 
     public String getPassword() {
@@ -66,10 +71,6 @@ public class Admin extends Person implements Serializable {
 
     public void setPassword(String password) {
         Password = password;
-    }
-
-    public void setAdminID(int adminID) {
-        this.adminID = adminID;
     }
 
     @Override
@@ -135,7 +136,6 @@ public class Admin extends Person implements Serializable {
         this.email = email;
     }
 
-
     public String getStartingDate() {
         return startingDate;
     }
@@ -151,40 +151,4 @@ public class Admin extends Person implements Serializable {
     public void setLastDayInContract(String lastDayInContract) {
         this.lastDayInContract = lastDayInContract;
     }
-
-
-    public static void addAdminToDataBase(Admin admin) {
-
-
-        try (Session session = SQL.getSession()) {
-            session.beginTransaction();
-
-            session.save(admin);
-
-            session.flush();
-        }
-
-
-    }
-
-
-    public static void getAdminFromDataBase(int id) {
-
-
-        try (Session session = SQL.getSession()) {
-            session.beginTransaction();
-
-            Admin admin = session.get(Admin.class, id);
-            System.out.println(admin.getAddress());
-
-            session.getTransaction().commit();
-        }
-        catch (HibernateException e) {
-            e.printStackTrace();
-
-        }
-
-
-    }
-
 }
