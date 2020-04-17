@@ -1,5 +1,7 @@
 package se.hkr.e7;
 
+import org.hibernate.Session;
+
 public class Person {
 
 
@@ -9,6 +11,13 @@ public class Person {
     private String address;
     private String email;
 
+    static <T extends Person> T get(int id, final Class<T> tClass) {
+        Session session = SQL.getSession();
+        session.beginTransaction();
+        T person = session.get(tClass, id);
+        session.getTransaction().commit();
+        return person;
+    }
 
     public String getSSN() {
         return SSN;
@@ -49,7 +58,6 @@ public class Person {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
     @Override
     public String toString() {
