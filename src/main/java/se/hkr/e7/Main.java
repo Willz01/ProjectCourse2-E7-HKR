@@ -30,7 +30,6 @@ public class Main extends Application {
 //        Admin.getAdminFromDataBase(12);
 //        Analyser.getAnalyserFromDataBase(4);
 //        Staff.getStaffFromDataBase(1);
-//        Result.getResultFromDataBase(1212121);
 
     }
 

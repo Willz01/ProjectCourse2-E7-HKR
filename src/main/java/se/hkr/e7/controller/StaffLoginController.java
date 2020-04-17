@@ -1,4 +1,4 @@
-package Controller;
+package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
