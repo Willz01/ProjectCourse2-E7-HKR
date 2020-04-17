@@ -1,5 +1,6 @@
 package se.hkr.e7;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 import javax.persistence.Column;
@@ -16,20 +17,17 @@ public class Patient extends Person implements Serializable {
     String address = getAddress();
     @Column(name = "name", nullable = false)
     String name = getName();
-
+    @Id
     @Column(name = "SSN", nullable = false, unique = true)
     String ssn = getSSN();
     @Column(name = "phone", nullable = true)
     String phone = getPhone();
-    @Id
-    @Column(name = "patientID", unique = true)
-    private int patientID = getPatientID();
+
     @Column(name = "email", nullable = false)
     String email = getEmail();
 
 
-    public Patient(int patientID, String name, String ssn, String phone, String address, String email) {
-        this.patientID = patientID;
+    public Patient(String name, String ssn, String phone, String address, String email) {
         this.name = name;
         this.ssn = ssn;
         this.phone = phone;
@@ -37,6 +35,7 @@ public class Patient extends Person implements Serializable {
         this.email = email;
 
     }
+
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -48,15 +47,6 @@ public class Patient extends Person implements Serializable {
 
     public void setSsn(String ssn) {
         this.ssn = ssn;
-    }
-
-
-    public int getPatientID() {
-        return patientID;
-    }
-
-    public void setPatientID(int patientID) {
-        this.patientID = patientID;
     }
 
 
@@ -101,11 +91,14 @@ public class Patient extends Person implements Serializable {
         this.email = email;
     }
 
+    public Patient() {
+
+
+    }
 
     @Override
     public String toString() {
         return "Patient{" +
-                "patientID='" + patientID + '\'' +
                 ", name='" + name + '\'' +
                 ", ssn='" + ssn + '\'' +
                 ", phone='" + phone + '\'' +
@@ -115,7 +108,7 @@ public class Patient extends Person implements Serializable {
     }
 
 
-    public static void addPatientToDataBase(se.hkr.e7.Patient patient) {
+    public static void addPatientToDataBase(Patient patient) {
 
 
         // Save the customer object
@@ -128,5 +121,21 @@ public class Patient extends Person implements Serializable {
         }
     }
 
+    public static void getPatientFromDataBase(String ssn) {
 
+
+        try (Session session = SQL.getSession()) {
+            session.beginTransaction();
+
+            Patient patient = session.get(Patient.class, ssn);
+            System.out.println(patient.getAddress());
+
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+
+        }
+
+
+    }
 }

@@ -1,9 +1,12 @@
 package se.hkr.e7;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Result implements Serializable {
@@ -12,27 +15,29 @@ public class Result implements Serializable {
 
     @Id
     @Column(name = "testID", unique = true)
-    private String id;
+    private int id;
     @Column(name = "date", nullable = false)
     private String date = getDate();
     @Column(name = "status", nullable = false)
     private Status status = getStatus();
+    @Id
     @ManyToOne(cascade = CascadeType.ALL)
     Patient patient;
-    @Column(name = "patientSSN", nullable = false)
-    private String ssn = getSsn();
 
-    public Result(String id, String date, Status status, String patientSsn, Patient patient) {
+
+    public Result(int id, String date, Status status, Patient patient) {
         this.id = id;
         this.date = date;
         this.status = status;
-        this.ssn = patientSsn;
+
         this.patient = patient;
     }
 
 
-    enum Status {
-        Positive, Negative, Pending;
+    
+
+    public Result() {
+
 
     }
 
@@ -43,18 +48,18 @@ public class Result implements Serializable {
     @Override
     public String toString() {
         return "Result{" +
-                "ssn='" + ssn + '\'' +
-                ", id='" + id + '\'' +
+                "id=" + id +
                 ", date='" + date + '\'' +
                 ", status=" + status +
+                ", patient=" + patient +
                 '}';
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -74,13 +79,6 @@ public class Result implements Serializable {
         this.status = status;
     }
 
-    public String getSsn() {
-        return ssn;
-    }
-
-    public void setSsn(String ssn) {
-        this.ssn = ssn;
-    }
 
     public Patient getPatient() {
         return patient;
@@ -90,7 +88,8 @@ public class Result implements Serializable {
         this.patient = patient;
     }
 
-    public static void addResult(se.hkr.e7.Result result) {
+
+    public static void addResult(Result result) {
 
         try (Session session = SQL.getSession()) {
             session.beginTransaction();
@@ -100,5 +99,9 @@ public class Result implements Serializable {
         }
     }
 
+    enum Status {
+        Positive, Negative, Pending
+
+    }
 
 }

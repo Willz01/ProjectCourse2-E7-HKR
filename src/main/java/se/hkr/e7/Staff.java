@@ -1,5 +1,6 @@
 package se.hkr.e7;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 import javax.persistence.*;
@@ -44,6 +45,10 @@ public class Staff extends Person implements Serializable {
         this.location = location;
         this.password = password;
         this.admin = admin;
+
+    }
+    public Staff() {
+
 
     }
 
@@ -103,6 +108,22 @@ public class Staff extends Person implements Serializable {
     }
 
     @Override
+    public String toString() {
+        return "Staff{" +
+                "address='" + address + '\'' +
+                ", name='" + name + '\'' +
+                ", ssn='" + ssn + '\'' +
+                ", email='" + email + '\'' +
+                ", admin=" + admin +
+                ", phone='" + phone + '\'' +
+                ", staffID=" + staffID +
+                ", salary=" + salary +
+                ", password='" + password + '\'' +
+                ", location=" + location +
+                '}';
+    }
+
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -146,23 +167,7 @@ public class Staff extends Person implements Serializable {
     }
 
 
-    @Override
-    public String toString() {
-        return "Staff{" +
-                "Password='" + password + '\'' +
-                ", staffID=" + staffID +
-                ", salary=" + salary +
-                ", location=" + location +
-                ", name='" + name + '\'' +
-                ", ssn='" + ssn + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
-
-
-    public static void addStaffToDataBase(se.hkr.e7.Staff staff) {
+    public static void addStaffToDataBase(Staff staff) {
 
         try (Session session = SQL.getSession()) {
             session.beginTransaction();
@@ -171,6 +176,18 @@ public class Staff extends Person implements Serializable {
             session.flush();
         }
     }
+    public static void getStaffFromDataBase(int testID) {
 
 
-}
+        try (Session session = SQL.getSession()) {
+            session.beginTransaction();
+
+            Staff staff = session.get(Staff.class, testID);
+            System.out.println(staff.getAddress());
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+
+        }
+
+    }}

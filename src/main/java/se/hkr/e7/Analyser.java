@@ -1,5 +1,6 @@
 package se.hkr.e7;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 import javax.persistence.*;
@@ -46,13 +47,32 @@ public class Analyser extends Person implements Serializable {
         this.lastDayInContract = lastDayInContract;
         this.admin = admin;
     }
+    public Analyser() {
 
+
+    }
+    @Override
+    public String toString() {
+        return "Analyser{" +
+                "analyserId=" + analyserId +
+                ", name='" + name + '\'' +
+                ", ssn='" + ssn + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", admin=" + admin +
+                ", salary=" + salary +
+                ", password='" + password + '\'' +
+                ", startingDate='" + startingDate + '\'' +
+                ", lastDayInContract='" + lastDayInContract + '\'' +
+                '}';
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
-    public static void addAnalyserToDataBase(se.hkr.e7.Analyser analyser) {
+    public static void addAnalyserToDataBase(Analyser analyser) {
 
         try (Session session = SQL.getSession()) {
             session.beginTransaction();
@@ -158,5 +178,21 @@ public class Analyser extends Person implements Serializable {
         this.admin = admin;
     }
 
+    public static void getAnalyserFromDataBase(int analyserId) {
 
+
+        try (Session session = SQL.getSession()) {
+            session.beginTransaction();
+
+            Analyser analyser = session.get(Analyser.class, analyserId);
+            System.out.println(analyser.getAddress());
+
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+
+        }
+
+
+    }
 }
