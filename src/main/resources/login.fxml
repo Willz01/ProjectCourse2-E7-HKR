@@ -7,7 +7,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity"
             prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="Controller.Controller">
+            fx:controller="se.hkr.e7.controller.WelcomeController">
    <!--TODO add the logo in the end of the project-->
 
    <!--   <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="32.0" layoutY="14.0">-->

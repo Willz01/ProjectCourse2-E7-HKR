@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/11.0.1" fx:controller="Controller.PatientDashboard">
+            xmlns="http://javafx.com/javafx/11.0.1" fx:controller="se.hkr.e7.controller.PatientDashboard">
 
     <children>
         <Button fx:id="Back" layoutX="442.0" layoutY="361.0" mnemonicParsing="false" onAction="#Back" prefHeight="25.0"
