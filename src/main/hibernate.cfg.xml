@@ -23,6 +23,7 @@
 
         <!-- Disable the second-level cache  -->
         <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+        <!-- here as well -->
 
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
@@ -32,12 +33,13 @@
 
         <!-- Mapping files -->
         <mapping resource="hibernate.cfg.xml"/>
+        <!-- something is wrong here -->
 
 
 <!--        <mapping class="Person"/>-->
-        <mapping class="sample.Staff"/>
-        <mapping class="sample.Admin"/>
-        <mapping class="sample.Patient"/>
-        <mapping class="sample.Result"/>
+        <mapping class="se.hkr.e7.Staff"/>
+        <mapping class="se.hkr.e7.Admin"/>
+        <mapping class="se.hkr.e7.Patient"/>
+        <mapping class="se.hkr.e7.Result"/>
     </session-factory>
 </hibernate-configuration>
