@@ -17,7 +17,15 @@ public class StaffLoginController {
     public TextField passwordText;
 
 
-    public void StaffLogin(ActionEvent actionEvent) {
+    public void StaffLogin(ActionEvent actionEvent) throws IOException {
+        Node node = (Node) actionEvent.getSource();
+        Scene currScene = node.getScene();
+        Stage stage = (Stage) currScene.getWindow();
+        URL resource = getClass().getClassLoader().getResource("AdminDashboard.fxml");
+        Parent root = FXMLLoader.load(resource);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
 
     }

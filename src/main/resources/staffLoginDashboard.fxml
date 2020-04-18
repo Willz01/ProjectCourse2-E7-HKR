@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.StaffLoginDashboardController">
+    <Button fx:id="Back" layoutX="442.0" layoutY="361.0" mnemonicParsing="false" onAction="#Back" prefHeight="25.0" prefWidth="52.0" text="Back" />
+    <Button fx:id="Cancel" layoutX="519.0" layoutY="361.0" mnemonicParsing="false" onAction="#Cancel" text="Cancel" />
+   <Button fx:id="viewPatient" layoutX="47.0" layoutY="36.0" mnemonicParsing="false" onAction="#viewPatient" prefHeight="38.0" prefWidth="131.0" text="View patient" />
+   <Button fx:id="createCase" layoutX="47.0" layoutY="166.0" mnemonicParsing="false" onAction="#createCase" prefHeight="38.0" prefWidth="131.0" text="Create case" />
+   <Button fx:id="viewResults" layoutX="343.0" layoutY="166.0" mnemonicParsing="false" onAction="#viewResults" prefHeight="38.0" prefWidth="131.0" text="View results" />
+   <Button fx:id="ListOfCases" layoutX="343.0" layoutY="36.0" mnemonicParsing="false" onAction="#ListOfCases" prefHeight="38.0" prefWidth="131.0" text="List of cases" />
+
+</AnchorPane>
