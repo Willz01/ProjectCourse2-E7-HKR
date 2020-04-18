@@ -41,7 +41,7 @@ public class Main extends Application {
 
 
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
+     /*   EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
@@ -53,14 +53,14 @@ public class Main extends Application {
         entityManager.persist(Singleton);
         entityManager.persist(SQL);
         entityManager.persist(Staff);
-       
+
 
 
 
         entityManager.getTransaction().commit();
         entityManagerFactory.close();
 
-
+*/
 
     }
 
