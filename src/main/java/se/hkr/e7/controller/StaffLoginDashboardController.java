@@ -15,6 +15,10 @@ import java.net.URL;
 public class StaffLoginDashboardController {
     public Button Back;
     public Button Cancel;
+    public Button viewPatient;
+    public Button createCase;
+    public Button viewResults;
+    public Button ListOfCases;
 
     public void Back(ActionEvent actionEvent) throws IOException {
         Node node = (Node) actionEvent.getSource();
@@ -31,5 +35,17 @@ public class StaffLoginDashboardController {
 
     public void Cancel(ActionEvent actionEvent) {
         System.exit(0);
+    }
+
+    public void viewPatient(ActionEvent actionEvent) {
+    }
+
+    public void createCase(ActionEvent actionEvent) {
+    }
+
+    public void viewResults(ActionEvent actionEvent) {
+    }
+
+    public void ListOfCases(ActionEvent actionEvent) {
     }
 }
