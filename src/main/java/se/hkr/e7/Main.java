@@ -24,6 +24,13 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
+
+
+
+
+
+
+
         SQL.Reset();
         Admin admin = Admin.load("199701010000", Admin.class);
         Analyser analyser = Analyser.load("198005087778", Analyser.class);

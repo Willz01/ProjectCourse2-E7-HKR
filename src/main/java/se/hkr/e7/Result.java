@@ -61,7 +61,7 @@ public class Result implements Serializable {
 
         try (Session session = SQL.getSession()) {
             session.beginTransaction();
-            session.save(result);
+            session.saveOrUpdate(result);
 
             session.flush();
         }
