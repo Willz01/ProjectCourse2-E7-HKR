@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -38,6 +41,34 @@ public class Main extends Application {
             }
         }
 
+//        get the object from the database
+
+//        Admin.getAdminFromDataBase(12);
+//        Analyser.getAnalyserFromDataBase(4);
+//        Staff.getStaffFromDataBase(1);
+
+
+
+     /*   EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
+
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(Admin);
+        entityManager.persist(Patient);
+        entityManager.persist(Analyser);
+        entityManager.persist(Person);
+        entityManager.persist(Result);
+        entityManager.persist(Singleton);
+        entityManager.persist(SQL);
+        entityManager.persist(Staff);
+
+
+
+
+        entityManager.getTransaction().commit();
+        entityManagerFactory.close();
+
+*/
 //        Result.getResultFromDataBase(1212121);
 
     }

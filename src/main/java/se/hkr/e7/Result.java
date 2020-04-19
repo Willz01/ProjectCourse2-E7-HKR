@@ -2,9 +2,11 @@ package se.hkr.e7;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Result implements Serializable {
@@ -31,24 +33,8 @@ public class Result implements Serializable {
         this.patient = patient;
     }
 
-    public static void getResultFromDataBase(int testID) {
 
-
-        try (Session session = SQL.getSession()) {
-            session.beginTransaction();
-
-            Result result = session.get(Result.class, testID);
-            System.out.println(result.getStatus());
-            session.getTransaction().commit();
-        } catch (HibernateException e) {
-            e.printStackTrace();
-
-        }
-
-
-    }
-
-
+    
 
     public Result() {
 
@@ -92,7 +78,6 @@ public class Result implements Serializable {
     public void setStatus(Status status) {
         this.status = status;
     }
-
 
 
     public Patient getPatient() {

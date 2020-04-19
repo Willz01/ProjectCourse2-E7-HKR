@@ -1,4 +1,4 @@
-package Controller;
+package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PatientDashboard implements Initializable {
+public class PatientDashboardController implements Initializable {
 
 
     public Text resultText;
@@ -45,24 +45,22 @@ public class PatientDashboard implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        resultText.setText(Singleton.getInstance().getSsn());
 
-
-
+//        this not working need some work..
 //
-//            try (Session session = SQL.getSession()) {
-//                session.beginTransaction();
+//        try (Session session = SQL.getSession()) {
+//            session.beginTransaction();
 //
-//                Result result = session.get(Result.class, ssn);
-//                resultText.setText(result.getStatus() + "     " + result.getDate());
-//                session.getTransaction().commit();
-//            } catch (HibernateException e) {
-//                e.printStackTrace();
+//            Result result = session.get(Result.class, ssn);
+//            resultText.setText(result.getStatus() + "     " + result.getDate());
+//            session.getTransaction().commit();
+//        } catch (HibernateException e) {
+//            e.printStackTrace();
 //
-//            }
-//
-        }
-
+//        }
 
     }
+
+
+}
 
