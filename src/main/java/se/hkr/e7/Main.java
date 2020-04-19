@@ -24,22 +24,18 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
-        Admin admin = new Admin("2020-01-03", "", "199412081694", "password",
-                "John Doe", "info@example.com", "0914741", "Address");
-        admin.save();
-
-//        SQL.Reset();
-//        Admin admin = Admin.load("199701010000", Admin.class);
-//        Analyser analyser = Analyser.load("198005087778", Analyser.class);
-//        Staff staff = Staff.load("1993249503", Staff.class);
-//        Patient patient = Patient.load("196154054565", Patient.class);
-//        for (Person person : List.of(admin, analyser, staff, patient)) {
-//            if (person != null) {
-//                System.out.println(person.toString());
-//            } else {
-//                System.out.println("No " + person.getClass());
-//            }
-//        }
+        SQL.Reset();
+        Admin admin = Admin.load("199701010000", Admin.class);
+        Analyser analyser = Analyser.load("198005087778", Analyser.class);
+        Staff staff = Staff.load("1993249503", Staff.class);
+        Patient patient = Patient.load("196154054565", Patient.class);
+        for (Person person : List.of(admin, analyser, staff, patient)) {
+            if (person != null) {
+                System.out.println(person.toString());
+            } else {
+                System.out.println("No " + person.getClass());
+            }
+        }
     }
 }
 

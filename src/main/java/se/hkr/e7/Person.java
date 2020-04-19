@@ -42,8 +42,8 @@ public abstract class Person implements Serializable {
     void save() {
         Session session = SQL.getSession();
         session.beginTransaction();
-        session.save(this);
-        session.flush();
+        session.saveOrUpdate(this);
+        session.getTransaction().commit();
     }
 
     public String getSsn() {
