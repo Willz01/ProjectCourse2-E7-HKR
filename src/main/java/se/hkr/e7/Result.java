@@ -20,39 +20,17 @@ public class Result implements Serializable {
     private String date = getDate();
     @Column(name = "status", nullable = false)
     private Status status = getStatus();
-    @Id
-    @ManyToOne(cascade = CascadeType.ALL)
-    Patient patient;
-
 
     public Result(int id, String date, Status status, Patient patient) {
         this.id = id;
         this.date = date;
         this.status = status;
-
-        this.patient = patient;
     }
 
-
-    
-
-    public Result() {
-
-
-    }
+    public Result() {}
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
-    }
-
-    @Override
-    public String toString() {
-        return "Result{" +
-                "id=" + id +
-                ", date='" + date + '\'' +
-                ", status=" + status +
-                ", patient=" + patient +
-                '}';
     }
 
     public int getId() {
@@ -78,16 +56,6 @@ public class Result implements Serializable {
     public void setStatus(Status status) {
         this.status = status;
     }
-
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
 
     public static void addResult(Result result) {
 
