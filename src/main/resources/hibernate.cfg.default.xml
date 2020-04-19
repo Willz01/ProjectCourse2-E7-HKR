@@ -5,11 +5,11 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://den1.mysql2.gear.host:3306/covid911</property>
+        <property name="connection.url">jdbc:mysql://localhost:8889/covid?serverTimezone=UTC</property>
 
-        <property name="hibernate.dialect">org.hibernate.dialect.MariaDB10Dialect</property>
-        <property name="connection.username">covid911</property>
-        <property name="connection.password">Gx6CjoZ4F--4</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <property name="connection.username">covid</property>
+        <property name="connection.password">OOMPRDjiBVxhVPkg</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <mapping class="se.hkr.e7.Staff"/>

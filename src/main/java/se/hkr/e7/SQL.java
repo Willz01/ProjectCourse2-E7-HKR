@@ -33,43 +33,31 @@ public class SQL {
     public static void Reset() {
         //this method reset the remote database to the default if the hibernate.cfg file set to create  not to update .
 
-        Admin firstAdmin = new Admin(111, "Wills", "199701010000", "073656656", "Home", "m@yahoo.com", "123456", "2020-01-01", null);
+        new Admin("2020-01-01", null, "199701010000", "123456",
+                "Wills", "m@yahoo.com", "073656656", "Home").save();
 
 
-        Staff firstStaff = new Staff(2, "Marcos", "1993249503", "Home@hao.com", 200.16, "073656656", "Street lamp 432", Staff.Location.Kalmar, "13412", firstAdmin);
-        Staff secondStaff = new Staff(3, "Nilson", "198005087778", "Kristan Street", 200.16, "056356556", "Homes", Staff.Location.Skane, "63465345", firstAdmin);
+        new Staff("Marcos", "1993249503", "Home@hao.com", 200.16, "073656656",
+                "Street lamp 432", Staff.Location.Kalmar, "13412").save();
+        new Staff("Nilson", "198005087778", "Kristan Street", 200.16, "056356556",
+                "Homes", Staff.Location.Skane, "63465345").save();
 
 
-        Analyser firstAnalyser = new Analyser(45, "Nilson", "198005087778", "Kristan Street", 200.16, "056356556", "Homes", "98745794", "2020-05-23", "2020-20-12", firstAdmin);
-        Analyser secondAnalyser = new Analyser(44, "Nilson", "198076687778", "Kristan Street", 200.16, "056356556", "Homes", "98745794", "2020-05-23", "2020-20-12", firstAdmin);
+        new Analyser("Nilson", "198005087778", "Kristan Street", 200.16, "056356556",
+                "Homes", "98745794", "2020-05-23", "2020-20-12").save();
+        new Analyser("Nilson", "198076687778", "Kristan Street", 200.16, "056356556",
+                "Homes", "98745794", "2020-05-23", "2020-20-12").save();
 
-        Patient firstPatient = new Patient("Mohammed", "196154054565", "062563454", "onehomet 32", "myt@yahoo.com");
-        Patient secondPatient = new Patient("Jone", "19880108994", "07332233", "oneStreet 32", "mymail@yahoo.com");
-
+        Patient firstPatient = new Patient("196154054565", "password1", "Mohammed", "myt@yahoo.com", "062563454", "onehomet 32");
+        Patient secondPatient = new Patient("19880108994", "password1", "Jone", "mymail@yahoo.com", "07332233", "oneStreet 32");
+        firstPatient.save();
+        secondPatient.save();
 
         Result firstResult = new Result(44454, "2020-01-01", Result.Status.Pending, firstPatient);
         Result secondResult = new Result(45435, "2020-01-01", Result.Status.Positive, firstPatient);
 
-
-        Admin.addAdminToDataBase(firstAdmin);
-
-
-        Patient.addPatientToDataBase(firstPatient);
-        Patient.addPatientToDataBase(secondPatient);
-
         Result.addResult(firstResult);
         Result.addResult(secondResult);
-
-
-        Analyser.addAnalyserToDataBase(firstAnalyser);
-        Analyser.addAnalyserToDataBase(secondAnalyser);
-
-
-        Staff.addStaffToDataBase(firstStaff);
-        Staff.addStaffToDataBase(secondStaff);
-
-
-
     }
 
 }

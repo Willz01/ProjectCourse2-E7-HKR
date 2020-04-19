@@ -1,21 +1,65 @@
 package se.hkr.e7;
 
-public class Person {
+import org.hibernate.Session;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
 
+@MappedSuperclass
+public abstract class Person implements Serializable {
+    @Id
+    @Column(unique = true)
+    private String ssn;
+    @Column(nullable = false)
+    private String password;
     private String name;
-    private String SSN;
+    private String email;
     private String phone;
     private String address;
-    private String email;
 
-
-    public String getSSN() {
-        return SSN;
+    public Person() {
     }
 
-    public void setSSN(String SSN) {
-        this.SSN = SSN;
+    public Person(String ssn, String password, String name, String email, String phone, String address) {
+        this.ssn = ssn;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+    }
+
+    static <T extends Person> T load(String ssn, final Class<T> tClass) {
+        Session session = SQL.getSession();
+        session.beginTransaction();
+        T person = session.get(tClass, ssn);
+        session.getTransaction().commit();
+        return person;
+    }
+
+    void save() {
+        Session session = SQL.getSession();
+        session.beginTransaction();
+        session.saveOrUpdate(this);
+        session.getTransaction().commit();
+    }
+
+    public String getSsn() {
+        return ssn;
+    }
+
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
@@ -24,6 +68,14 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPhone() {
@@ -42,23 +94,15 @@ public class Person {
         this.address = address;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-
     @Override
     public String toString() {
         return "Person{" +
-                "SSN='" + SSN + '\'' +
+                "ssn='" + ssn + '\'' +
+                ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
-                ", email='" + email + '\'' +
                 '}';
     }
 }
