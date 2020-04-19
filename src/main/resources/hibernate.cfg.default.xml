@@ -7,7 +7,7 @@
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:8889/covid?serverTimezone=UTC</property>
 
-        <property name="hibernate.dialect">org.hibernate.dialect.MariaDB10Dialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="connection.username">covid</property>
         <property name="connection.password">OOMPRDjiBVxhVPkg</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
