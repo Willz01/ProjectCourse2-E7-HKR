@@ -25,25 +25,27 @@ public class Main extends Application {
         stage.show();
 
         Database.Reset();
-        User admin = User.load("199701010000", User.class);
-        User analyser = User.load("198005087778", User.class);
-        User staff = User.load("1993249503", User.class);
-        User patient = User.load("196154054565", User.class);
+        Employee admin = Employee.load("199701010000", Employee.class);
+        Employee analyser = Employee.load("198005087778", Employee.class);
+        Employee staff = Employee.load("1993249503", Employee.class);
+        Patient patient = Patient.load("196154054565", Patient.class);
         for (User user : List.of(admin, analyser, staff, patient)) {
             if (user != null) {
                 System.out.println(user.toString());
             } else {
-                System.out.println("No " + user.getClass());
+                System.out.println("Not found");
             }
         }
 
         System.out.println(admin.getPassword());
-        User adminCopy = User.load("199701010000", User.class);
+        Employee adminCopy = Employee.load("199701010000", Employee.class);
         adminCopy.setEmail("test@example.com");
         adminCopy.save();
         System.out.println(adminCopy.getPassword());
         System.out.println("Password does not match: " + adminCopy.checkPassword("no match"));
         System.out.println("Password does match: " + adminCopy.checkPassword("123456"));
+
+        System.out.println(Employee.load("198002249876", Employee.class).toString());
     }
 }
 

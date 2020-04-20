@@ -7,19 +7,26 @@ import java.io.Serializable;
 public class Result implements Serializable {
 
     private Long id;
-    private User patient;
+    private Employee examiner;
+    private Patient patient;
     private String date;
     private Status status;
+    private String note;
 
-    public Result(User patient, String date, Status status) {
+    public Result() {
+    }
+
+    public Result(Patient patient, Employee examiner, String date, Status status) {
+        this.examiner = examiner;
         this.patient = patient;
         this.date = date;
         this.status = status;
-        patient.addResult(this);
-        patient.save();
-    }
 
-    public Result() {
+        this.patient.addTestResult(this);
+        this.patient.save();
+
+        this.examiner.addPatientResult(this);
+        this.examiner.save();
     }
 
     @Id
@@ -28,17 +35,26 @@ public class Result implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
+    private void setId(Long id) {
         this.id = id;
     }
 
-    @ManyToOne
-    public User getPatient() {
+    @ManyToOne(optional = false)
+    public Patient getPatient() {
         return patient;
     }
 
-    public void setPatient(User patient) {
+    private void setPatient(Patient patient) {
         this.patient = patient;
+    }
+
+    @ManyToOne(optional = false)
+    public Employee getExaminer() {
+        return examiner;
+    }
+
+    private void setExaminer(Employee examiner) {
+        this.examiner = examiner;
     }
 
     @Column(nullable = false)
@@ -46,7 +62,7 @@ public class Result implements Serializable {
         return date;
     }
 
-    public void setDate(String date) {
+    private void setDate(String date) {
         this.date = date;
     }
 
@@ -57,6 +73,14 @@ public class Result implements Serializable {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     @Override
