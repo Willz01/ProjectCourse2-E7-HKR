@@ -42,11 +42,8 @@ public class SQL {
         new User("198005087778", "", "Nilson", "info@example.com", "056356556",
                 "Kristan Street", new EmployeeInformation(200.16, Location.Dalarnas)).save();
 
-
-        new Analyser("Nilson", "198005087778", "Kristan Street", 200.16, "056356556",
-                "Homes", "98745794", "2020-05-23", "2020-20-12").save();
-        new Analyser("Nilson", "198076687778", "Kristan Street", 200.16, "056356556",
-                "Homes", "98745794", "2020-05-23", "2020-20-12").save();
+        new User("198005087778", "98745794", "Nilson", "nilson@example.com",
+                "056356556", "Homes", new EmployeeInformation(200.16, Location.Skane)).save();
 
         User firstPatient = new User("196154054565", "password1", "Mohammed", "myt@yahoo.com", "062563454", "onehomet 32", null);
         User secondPatient = new User("19880108994", "password1", "Jone", "mymail@yahoo.com", "07332233", "oneStreet 32", null);

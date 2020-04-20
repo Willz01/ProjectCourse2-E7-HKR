@@ -19,7 +19,6 @@ public class Singleton {
     private Result result;
     private String ssn;
     private Admin admin;
-    private Analyser analyser;
 
     public static void setInstance(Singleton instance) {
         Singleton.instance = instance;
@@ -47,14 +46,6 @@ public class Singleton {
 
     public void setAdmin(Admin admin) {
         this.admin = admin;
-    }
-
-    public Analyser getAnalyser() {
-        return analyser;
-    }
-
-    public void setAnalyser(Analyser analyser) {
-        this.analyser = analyser;
     }
 }
 

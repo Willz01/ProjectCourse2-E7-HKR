@@ -14,6 +14,5 @@
 
         <mapping class="se.hkr.e7.Admin"/>
         <mapping class="se.hkr.e7.Result"/>
-        <mapping class="se.hkr.e7.Analyser"/>
     </session-factory>
 </hibernate-configuration>

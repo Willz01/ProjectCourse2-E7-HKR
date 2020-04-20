@@ -26,7 +26,7 @@ public class Main extends Application {
 
         SQL.Reset();
         Admin admin = Admin.load("199701010000", Admin.class);
-        Analyser analyser = Analyser.load("198005087778", Analyser.class);
+        User analyser = User.load("198005087778", User.class);
         User staff = User.load("1993249503", User.class);
         User patient = User.load("196154054565", User.class);
         for (User user : List.of(admin, analyser, staff, patient)) {
