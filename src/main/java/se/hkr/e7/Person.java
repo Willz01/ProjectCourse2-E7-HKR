@@ -2,11 +2,10 @@ package se.hkr.e7;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Person extends Database {
     private String ssn;
     private String password;
