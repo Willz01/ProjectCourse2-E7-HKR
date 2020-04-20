@@ -18,7 +18,6 @@ public class Singleton {
 
     private Result result;
     private String ssn;
-    private Admin admin;
 
     public static void setInstance(Singleton instance) {
         Singleton.instance = instance;
@@ -38,14 +37,6 @@ public class Singleton {
 
     public void setSsn(String ssn) {
         this.ssn = ssn;
-    }
-
-    public Admin getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
     }
 }
 

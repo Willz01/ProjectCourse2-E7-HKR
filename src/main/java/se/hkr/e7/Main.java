@@ -25,7 +25,7 @@ public class Main extends Application {
         stage.show();
 
         SQL.Reset();
-        Admin admin = Admin.load("199701010000", Admin.class);
+        User admin = User.load("199701010000", User.class);
         User analyser = User.load("198005087778", User.class);
         User staff = User.load("1993249503", User.class);
         User patient = User.load("196154054565", User.class);

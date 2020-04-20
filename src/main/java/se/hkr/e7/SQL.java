@@ -30,12 +30,12 @@ public class SQL {
     }
 
 
+    /**
+     * Insert some default data into the system.
+     */
     public static void Reset() {
-        //this method reset the remote database to the default if the hibernate.cfg file set to create  not to update .
-
-        new Admin("2020-01-01", null, "199701010000", "123456",
-                "Wills", "m@yahoo.com", "073656656", "Home").save();
-
+        new User("199701010000", "123456", "Wills", "wills@example.com",
+                "073656656", "Home", new EmployeeInformation(123.45, Location.Stockholms)).save();
 
         new User("1993249503", "13412","Marcos", "Home@hao.com", "073656656",
                 "Street lamp 432", new EmployeeInformation(200.16, Location.Kalmar)).save();

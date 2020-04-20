@@ -12,7 +12,6 @@
         <property name="connection.password">OOMPRDjiBVxhVPkg</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <mapping class="se.hkr.e7.Admin"/>
         <mapping class="se.hkr.e7.Result"/>
     </session-factory>
 </hibernate-configuration>
