@@ -2,23 +2,17 @@ package se.hkr.e7;
 
 import org.hibernate.Session;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.io.Serializable;
 
-@MappedSuperclass
+@Entity
 public class User implements Serializable {
-    @Id
-    @Column(unique = true)
     private String ssn;
-    @Column(nullable = false)
     private String password;
     private String name;
     private String email;
     private String phone;
     private String address;
-    @Column(nullable = false)
     private Role role;
     private EmployeeInformation employeeInformation;
 
@@ -33,6 +27,7 @@ public class User implements Serializable {
         this.email = email;
         this.phone = phone;
         this.address = address;
+        this.role = role;
         this.employeeInformation = employeeInformation;
     }
 
@@ -51,6 +46,8 @@ public class User implements Serializable {
         session.getTransaction().commit();
     }
 
+    @Id
+    @Column(unique = true)
     public String getSsn() {
         return ssn;
     }
@@ -59,6 +56,7 @@ public class User implements Serializable {
         this.ssn = ssn;
     }
 
+    @Column(nullable = false)
     public String getPassword() {
         return password;
     }
@@ -99,15 +97,35 @@ public class User implements Serializable {
         this.address = address;
     }
 
+    @Column(nullable = false)
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    public EmployeeInformation getEmployeeInformation() {
+        return employeeInformation;
+    }
+
+    public void setEmployeeInformation(EmployeeInformation employeeInformation) {
+        this.employeeInformation = employeeInformation;
+    }
+
     @Override
     public String toString() {
-        return "Person{" +
+        return "User{" +
                 "ssn='" + ssn + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
+                ", role=" + role +
+                ", employeeInformation=" + employeeInformation +
                 '}';
     }
 }

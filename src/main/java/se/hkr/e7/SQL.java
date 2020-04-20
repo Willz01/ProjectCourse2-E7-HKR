@@ -58,7 +58,6 @@ public class SQL {
         Result.addResult(firstResult);
         Result.addResult(secondResult);
     }
-
 }
 
 
