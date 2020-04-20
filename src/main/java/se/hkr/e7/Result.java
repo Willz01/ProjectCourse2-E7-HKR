@@ -1,54 +1,72 @@
 package se.hkr.e7;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 public class Result implements Serializable {
-    private static final long serialVersionUID = 1L;
 
+    private Long id;
+    private Employee examiner;
+    private Patient patient;
+    private String date;
+    private Status status;
+    private String note;
 
-    @Id
-    @Column(name = "testID", unique = true)
-    private int id;
-    @Column(name = "date", nullable = false)
-    private String date = getDate();
-    @Column(name = "status", nullable = false)
-    private Status status = getStatus();
+    public Result() {
+    }
 
-    public Result(int id, String date, Status status, Patient patient) {
-        this.id = id;
+    public Result(Patient patient, Employee examiner, String date, Status status) {
+        this.examiner = examiner;
+        this.patient = patient;
         this.date = date;
         this.status = status;
+
+        this.patient.addTestResult(this);
+        this.patient.save();
+
+        this.examiner.addPatientResult(this);
+        this.examiner.save();
     }
 
-    public Result() {}
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public int getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    private void setId(Long id) {
         this.id = id;
     }
 
+    @ManyToOne(optional = false)
+    public Patient getPatient() {
+        return patient;
+    }
+
+    private void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    @ManyToOne(optional = false)
+    public Employee getExaminer() {
+        return examiner;
+    }
+
+    private void setExaminer(Employee examiner) {
+        this.examiner = examiner;
+    }
+
+    @Column(nullable = false)
     public String getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    private void setDate(String date) {
         this.date = date;
     }
 
+    @Column(nullable = false)
     public Status getStatus() {
         return status;
     }
@@ -57,19 +75,24 @@ public class Result implements Serializable {
         this.status = status;
     }
 
-    public static void addResult(Result result) {
+    public String getNote() {
+        return note;
+    }
 
-        try (Session session = SQL.getSession()) {
-            session.beginTransaction();
-            session.save(result);
+    public void setNote(String note) {
+        this.note = note;
+    }
 
-            session.flush();
-        }
+    @Override
+    public String toString() {
+        return "Result{" +
+                "id=" + id +
+                ", date='" + date + '\'' +
+                ", status=" + status +
+                '}';
     }
 
     enum Status {
-        Positive, Negative, Pending
-
+        POSITIVE, NEGATIVE, PENDING
     }
-
 }

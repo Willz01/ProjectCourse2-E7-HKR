@@ -1,18 +1,13 @@
 package se.hkr.e7;
 
-import org.hibernate.Session;
+import org.mindrot.jbcrypt.BCrypt;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import java.io.Serializable;
+import javax.persistence.*;
 
-@MappedSuperclass
-public abstract class Person implements Serializable {
-    @Id
-    @Column(unique = true)
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Person extends Database {
     private String ssn;
-    @Column(nullable = false)
     private String password;
     private String name;
     private String email;
@@ -24,41 +19,37 @@ public abstract class Person implements Serializable {
 
     public Person(String ssn, String password, String name, String email, String phone, String address) {
         this.ssn = ssn;
-        this.password = password;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.address = address;
+        updatePassword(password);
     }
 
-    static <T extends Person> T load(String ssn, final Class<T> tClass) {
-        Session session = SQL.getSession();
-        session.beginTransaction();
-        T person = session.get(tClass, ssn);
-        session.getTransaction().commit();
-        return person;
+    public void updatePassword(String password) {
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
-    void save() {
-        Session session = SQL.getSession();
-        session.beginTransaction();
-        session.saveOrUpdate(this);
-        session.getTransaction().commit();
+    public boolean checkPassword(String password) {
+        return BCrypt.checkpw(password, this.password);
     }
 
+    @Id
+    @Column(unique = true)
     public String getSsn() {
         return ssn;
     }
 
-    public void setSsn(String ssn) {
+    private void setSsn(String ssn) {
         this.ssn = ssn;
     }
 
+    @Column(nullable = false)
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    private void setPassword(String password) {
         this.password = password;
     }
 

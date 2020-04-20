@@ -8,11 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import se.hkr.e7.Result;
-import se.hkr.e7.SQL;
-import se.hkr.e7.Singleton;
 
 import java.io.IOException;
 import java.net.URL;
@@ -48,7 +43,7 @@ public class PatientDashboardController implements Initializable {
 
 //        this not working need some work..
 //
-//        try (Session session = SQL.getSession()) {
+//        try (Session session = Database.getSession()) {
 //            session.beginTransaction();
 //
 //            Result result = session.get(Result.class, ssn);
