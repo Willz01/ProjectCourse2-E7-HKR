@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-public class Admin extends Person {
+public class Admin extends User {
 
     @Column(nullable = false)
     private String startingDate;
@@ -16,8 +16,7 @@ public class Admin extends Person {
         this.lastDayInContract = lastDayInContract;
     }
 
-    public Admin() {
-    }
+    public Admin() {}
 
     public String getStartingDate() {
         return startingDate;

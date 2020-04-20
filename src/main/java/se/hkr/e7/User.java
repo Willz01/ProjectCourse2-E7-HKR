@@ -8,7 +8,7 @@ import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 @MappedSuperclass
-public abstract class Person implements Serializable {
+public abstract class User implements Serializable {
     @Id
     @Column(unique = true)
     private String ssn;
@@ -19,10 +19,10 @@ public abstract class Person implements Serializable {
     private String phone;
     private String address;
 
-    public Person() {
+    public User() {
     }
 
-    public Person(String ssn, String password, String name, String email, String phone, String address) {
+    public User(String ssn, String password, String name, String email, String phone, String address) {
         this.ssn = ssn;
         this.password = password;
         this.name = name;
@@ -31,7 +31,7 @@ public abstract class Person implements Serializable {
         this.address = address;
     }
 
-    static <T extends Person> T load(String ssn, final Class<T> tClass) {
+    static <T extends User> T load(String ssn, final Class<T> tClass) {
         Session session = SQL.getSession();
         session.beginTransaction();
         T person = session.get(tClass, ssn);

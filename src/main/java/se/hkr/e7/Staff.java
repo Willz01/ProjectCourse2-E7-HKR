@@ -1,13 +1,10 @@
 package se.hkr.e7;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-public class Staff extends Person {
+public class Staff extends User {
 
     @Column(nullable = false)
     private double salary;

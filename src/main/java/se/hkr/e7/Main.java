@@ -29,11 +29,11 @@ public class Main extends Application {
         Analyser analyser = Analyser.load("198005087778", Analyser.class);
         Staff staff = Staff.load("1993249503", Staff.class);
         Patient patient = Patient.load("196154054565", Patient.class);
-        for (Person person : List.of(admin, analyser, staff, patient)) {
-            if (person != null) {
-                System.out.println(person.toString());
+        for (User user : List.of(admin, analyser, staff, patient)) {
+            if (user != null) {
+                System.out.println(user.toString());
             } else {
-                System.out.println("No " + person.getClass());
+                System.out.println("No " + user.getClass());
             }
         }
     }

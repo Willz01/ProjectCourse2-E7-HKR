@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-public class Analyser extends Person {
+public class Analyser extends User {
 
     @Column(nullable = false)
     private double salary = getSalary();
