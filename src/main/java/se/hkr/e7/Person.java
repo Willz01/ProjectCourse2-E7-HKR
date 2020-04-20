@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class User extends Database {
+public abstract class Person extends Database {
     private String ssn;
     private String password;
     private String name;
@@ -15,10 +15,10 @@ public abstract class User extends Database {
     private String phone;
     private String address;
 
-    public User() {
+    public Person() {
     }
 
-    public User(String ssn, String password, String name, String email, String phone, String address) {
+    public Person(String ssn, String password, String name, String email, String phone, String address) {
         this.ssn = ssn;
         this.name = name;
         this.email = email;
@@ -88,7 +88,7 @@ public abstract class User extends Database {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Person{" +
                 "ssn='" + ssn + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +

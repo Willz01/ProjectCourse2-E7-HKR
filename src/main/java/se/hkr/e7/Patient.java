@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Patient extends User {
+public class Patient extends Person {
 
     private List<Result> testResults;
 
