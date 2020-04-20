@@ -36,6 +36,14 @@ public class Main extends Application {
                 System.out.println("No " + user.getClass());
             }
         }
+
+        System.out.println(admin.getPassword());
+        User adminCopy = User.load("199701010000", User.class);
+        adminCopy.setEmail("test@example.com");
+        adminCopy.save();
+        System.out.println(adminCopy.getPassword());
+        System.out.println("Password does not match: " + adminCopy.checkPassword("no match"));
+        System.out.println("Password does match: " + adminCopy.checkPassword("123456"));
     }
 }
 

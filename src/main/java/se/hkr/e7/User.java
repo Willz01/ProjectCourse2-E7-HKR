@@ -1,5 +1,6 @@
 package se.hkr.e7;
 
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -29,7 +30,6 @@ public class User extends Database implements Serializable {
                 Role role, EmployeeInformation employeeInformation) {
         super();
         this.ssn = ssn;
-        this.password = password;
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -37,11 +37,20 @@ public class User extends Database implements Serializable {
         this.role = role;
         this.employeeInformation = employeeInformation;
         this.results = new ArrayList<>();
+        updatePassword(password);
     }
 
     public void addResult(Result result) {
         results.add(result);
         result.setPatient(this);
+    }
+
+    public void updatePassword(String password) {
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
+    }
+
+    public boolean checkPassword(String password) {
+        return BCrypt.checkpw(password, this.password);
     }
 
     @Id
@@ -50,7 +59,7 @@ public class User extends Database implements Serializable {
         return ssn;
     }
 
-    public void setSsn(String ssn) {
+    private void setSsn(String ssn) {
         this.ssn = ssn;
     }
 
@@ -59,7 +68,7 @@ public class User extends Database implements Serializable {
         return password;
     }
 
-    public void setPassword(String password) {
+    private void setPassword(String password) {
         this.password = password;
     }
 
