@@ -18,17 +18,19 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String address;
+    private EmployeeInformation employeeInformation;
 
     public User() {
     }
 
-    public User(String ssn, String password, String name, String email, String phone, String address) {
+    public User(String ssn, String password, String name, String email, String phone, String address, EmployeeInformation employeeInformation) {
         this.ssn = ssn;
         this.password = password;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.address = address;
+        this.employeeInformation = employeeInformation;
     }
 
     static <T extends User> T load(String ssn, final Class<T> tClass) {

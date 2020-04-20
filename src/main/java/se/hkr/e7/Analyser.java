@@ -13,7 +13,7 @@ public class Analyser extends User {
     private String lastDayInContract = getLastDayInContract();
 
     public Analyser(String name, String ssn, String email, double salary, String phone, String address, String password, String startingDate, String lastDayInContract) {
-        super(ssn, password, name, email, phone, address);
+        super(ssn, password, name, email, phone, address, null);
         this.salary = salary;
         this.startingDate = startingDate;
         this.lastDayInContract = lastDayInContract;

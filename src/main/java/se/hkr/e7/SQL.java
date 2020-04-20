@@ -37,10 +37,10 @@ public class SQL {
                 "Wills", "m@yahoo.com", "073656656", "Home").save();
 
 
-        new Staff("Marcos", "1993249503", "Home@hao.com", 200.16, "073656656",
-                "Street lamp 432", Staff.Location.Kalmar, "13412").save();
-        new Staff("Nilson", "198005087778", "Kristan Street", 200.16, "056356556",
-                "Homes", Staff.Location.Skane, "63465345").save();
+        new User("1993249503", "13412","Marcos", "Home@hao.com", "073656656",
+                "Street lamp 432", new EmployeeInformation(200.16, Location.Kalmar)).save();
+        new User("198005087778", "", "Nilson", "info@example.com", "056356556",
+                "Kristan Street", new EmployeeInformation(200.16, Location.Dalarnas)).save();
 
 
         new Analyser("Nilson", "198005087778", "Kristan Street", 200.16, "056356556",
@@ -48,8 +48,8 @@ public class SQL {
         new Analyser("Nilson", "198076687778", "Kristan Street", 200.16, "056356556",
                 "Homes", "98745794", "2020-05-23", "2020-20-12").save();
 
-        User firstPatient = new User("196154054565", "password1", "Mohammed", "myt@yahoo.com", "062563454", "onehomet 32");
-        User secondPatient = new User("19880108994", "password1", "Jone", "mymail@yahoo.com", "07332233", "oneStreet 32");
+        User firstPatient = new User("196154054565", "password1", "Mohammed", "myt@yahoo.com", "062563454", "onehomet 32", null);
+        User secondPatient = new User("19880108994", "password1", "Jone", "mymail@yahoo.com", "07332233", "oneStreet 32", null);
         firstPatient.save();
         secondPatient.save();
 

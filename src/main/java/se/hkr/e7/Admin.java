@@ -11,7 +11,7 @@ public class Admin extends User {
     private String lastDayInContract;
 
     public Admin(String startingDate, String lastDayInContract, String ssn, String password, String name, String email, String phone, String address) {
-        super(ssn, password, name, email, phone, address);
+        super(ssn, password, name, email, phone, address, null);
         this.startingDate = startingDate;
         this.lastDayInContract = lastDayInContract;
     }
