@@ -7,9 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.hibernate.query.Query;
-import se.hkr.e7.Patient;
-import se.hkr.e7.SQL;
 import se.hkr.e7.Singleton;
 
 import java.io.IOException;

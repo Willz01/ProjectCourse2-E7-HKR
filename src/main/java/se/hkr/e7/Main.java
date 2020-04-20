@@ -28,7 +28,7 @@ public class Main extends Application {
         Admin admin = Admin.load("199701010000", Admin.class);
         Analyser analyser = Analyser.load("198005087778", Analyser.class);
         Staff staff = Staff.load("1993249503", Staff.class);
-        Patient patient = Patient.load("196154054565", Patient.class);
+        User patient = User.load("196154054565", User.class);
         for (User user : List.of(admin, analyser, staff, patient)) {
             if (user != null) {
                 System.out.println(user.toString());

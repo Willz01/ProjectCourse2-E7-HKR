@@ -8,7 +8,7 @@ import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 @MappedSuperclass
-public abstract class User implements Serializable {
+public class User implements Serializable {
     @Id
     @Column(unique = true)
     private String ssn;

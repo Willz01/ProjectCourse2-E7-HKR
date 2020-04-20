@@ -20,7 +20,6 @@ public class Singleton {
     private String ssn;
     private Admin admin;
     private Analyser analyser;
-    private Patient patient;
     private Staff staff;
 
     public static void setInstance(Singleton instance) {
@@ -57,14 +56,6 @@ public class Singleton {
 
     public void setAnalyser(Analyser analyser) {
         this.analyser = analyser;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
     }
 
     public Staff getStaff() {

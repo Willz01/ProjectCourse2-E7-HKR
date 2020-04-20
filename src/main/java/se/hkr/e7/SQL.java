@@ -48,8 +48,8 @@ public class SQL {
         new Analyser("Nilson", "198076687778", "Kristan Street", 200.16, "056356556",
                 "Homes", "98745794", "2020-05-23", "2020-20-12").save();
 
-        Patient firstPatient = new Patient("196154054565", "password1", "Mohammed", "myt@yahoo.com", "062563454", "onehomet 32");
-        Patient secondPatient = new Patient("19880108994", "password1", "Jone", "mymail@yahoo.com", "07332233", "oneStreet 32");
+        User firstPatient = new User("196154054565", "password1", "Mohammed", "myt@yahoo.com", "062563454", "onehomet 32");
+        User secondPatient = new User("19880108994", "password1", "Jone", "mymail@yahoo.com", "07332233", "oneStreet 32");
         firstPatient.save();
         secondPatient.save();
 

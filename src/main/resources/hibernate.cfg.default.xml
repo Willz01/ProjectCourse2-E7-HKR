@@ -14,7 +14,6 @@
 
         <mapping class="se.hkr.e7.Staff"/>
         <mapping class="se.hkr.e7.Admin"/>
-        <mapping class="se.hkr.e7.Patient"/>
         <mapping class="se.hkr.e7.Result"/>
         <mapping class="se.hkr.e7.Analyser"/>
     </session-factory>

@@ -21,7 +21,7 @@ public class Result implements Serializable {
     @Column(name = "status", nullable = false)
     private Status status = getStatus();
 
-    public Result(int id, String date, Status status, Patient patient) {
+    public Result(int id, String date, Status status, User patient) {
         this.id = id;
         this.date = date;
         this.status = status;
