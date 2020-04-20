@@ -11,7 +11,7 @@ enum Role {
 }
 
 @Entity
-public class User extends SQL implements Serializable {
+public class User extends Database implements Serializable {
     private String ssn;
     private String password;
     private String name;

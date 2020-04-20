@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class SQL {
+public class Database {
 
     private static final SessionFactory sessionFactory;
 
@@ -16,11 +16,11 @@ public class SQL {
 
     private Session session;
 
-    public SQL() {
+    public Database() {
         this.session = sessionFactory.openSession();
     }
 
-    static <T extends SQL> T load(String key, final Class<T> tClass) {
+    static <T extends Database> T load(String key, final Class<T> tClass) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         T t = session.get(tClass, key);

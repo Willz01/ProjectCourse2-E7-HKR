@@ -24,7 +24,7 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
-        SQL.Reset();
+        Database.Reset();
         User admin = User.load("199701010000", User.class);
         User analyser = User.load("198005087778", User.class);
         User staff = User.load("1993249503", User.class);
