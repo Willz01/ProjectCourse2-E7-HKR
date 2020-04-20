@@ -4,6 +4,12 @@ import org.hibernate.Session;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+enum Role {
+    ADMIN, ANALYSER, DOCTOR, PATIENT
+}
 
 @Entity
 public class User implements Serializable {
@@ -15,6 +21,7 @@ public class User implements Serializable {
     private String address;
     private Role role;
     private EmployeeInformation employeeInformation;
+    private List<Result> results;
 
     public User() {
     }
@@ -29,6 +36,7 @@ public class User implements Serializable {
         this.address = address;
         this.role = role;
         this.employeeInformation = employeeInformation;
+        this.results = new ArrayList<>();
     }
 
     static <T extends User> T load(String ssn, final Class<T> tClass) {
@@ -44,6 +52,12 @@ public class User implements Serializable {
         session.beginTransaction();
         session.saveOrUpdate(this);
         session.getTransaction().commit();
+        session.close();
+    }
+
+    public void addResult(Result result) {
+        results.add(result);
+        result.setPatient(this);
     }
 
     @Id
@@ -115,6 +129,15 @@ public class User implements Serializable {
         this.employeeInformation = employeeInformation;
     }
 
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    public List<Result> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Result> results) {
+        this.results = results;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -126,10 +149,7 @@ public class User implements Serializable {
                 ", address='" + address + '\'' +
                 ", role=" + role +
                 ", employeeInformation=" + employeeInformation +
+                ", results=" + results +
                 '}';
     }
-}
-
-enum Role {
-    ADMIN, ANALYSER, DOCTOR, PATIENT
 }

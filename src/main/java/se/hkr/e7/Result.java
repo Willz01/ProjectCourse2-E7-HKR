@@ -1,46 +1,47 @@
 package se.hkr.e7;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 public class Result implements Serializable {
-    private static final long serialVersionUID = 1L;
 
+    private Long id;
+    private User patient;
+    private String date;
+    private Status status;
 
-    @Id
-    @Column(name = "testID", unique = true)
-    private int id;
-    @Column(name = "date", nullable = false)
-    private String date = getDate();
-    @Column(name = "status", nullable = false)
-    private Status status = getStatus();
-
-    public Result(int id, String date, Status status, User patient) {
-        this.id = id;
+    public Result(User patient, String date, Status status) {
+        this.patient = patient;
         this.date = date;
         this.status = status;
+        patient.addResult(this);
+        patient.save();
     }
 
-    public Result() {}
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public Result() {
     }
 
-    public int getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
+    @ManyToOne
+    public User getPatient() {
+        return patient;
+    }
+
+    public void setPatient(User patient) {
+        this.patient = patient;
+    }
+
+    @Column(nullable = false)
     public String getDate() {
         return date;
     }
@@ -49,6 +50,7 @@ public class Result implements Serializable {
         this.date = date;
     }
 
+    @Column(nullable = false)
     public Status getStatus() {
         return status;
     }
@@ -57,19 +59,16 @@ public class Result implements Serializable {
         this.status = status;
     }
 
-    public static void addResult(Result result) {
-
-        try (Session session = SQL.getSession()) {
-            session.beginTransaction();
-            session.save(result);
-
-            session.flush();
-        }
+    @Override
+    public String toString() {
+        return "Result{" +
+                "id=" + id +
+                ", date='" + date + '\'' +
+                ", status=" + status +
+                '}';
     }
 
     enum Status {
-        Positive, Negative, Pending
-
+        POSITIVE, NEGATIVE, PENDING
     }
-
 }
