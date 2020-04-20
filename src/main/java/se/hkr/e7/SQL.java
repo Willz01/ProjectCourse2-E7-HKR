@@ -35,18 +35,20 @@ public class SQL {
      */
     public static void Reset() {
         new User("199701010000", "123456", "Wills", "wills@example.com",
-                "073656656", "Home", new EmployeeInformation(123.45, Location.Stockholms)).save();
+                "073656656", "Home", Role.ADMIN, new EmployeeInformation(123.45, Location.Stockholms)).save();
 
         new User("1993249503", "13412","Marcos", "Home@hao.com", "073656656",
-                "Street lamp 432", new EmployeeInformation(200.16, Location.Kalmar)).save();
+                "Street lamp 432", Role.ANALYSER, new EmployeeInformation(200.16, Location.Kalmar)).save();
         new User("198005087778", "", "Nilson", "info@example.com", "056356556",
-                "Kristan Street", new EmployeeInformation(200.16, Location.Dalarnas)).save();
+                "Kristan Street", Role.ANALYSER, new EmployeeInformation(200.16, Location.Dalarnas)).save();
 
         new User("198005087778", "98745794", "Nilson", "nilson@example.com",
-                "056356556", "Homes", new EmployeeInformation(200.16, Location.Skane)).save();
+                "056356556", "Homes", Role.DOCTOR, new EmployeeInformation(200.16, Location.Skane)).save();
 
-        User firstPatient = new User("196154054565", "password1", "Mohammed", "myt@yahoo.com", "062563454", "onehomet 32", null);
-        User secondPatient = new User("19880108994", "password1", "Jone", "mymail@yahoo.com", "07332233", "oneStreet 32", null);
+        User firstPatient = new User("196154054565", "password1", "Mohammed", "myt@yahoo.com",
+                "062563454", "onehomet 32", Role.PATIENT, null);
+        User secondPatient = new User("19880108994", "password1", "Jone", "mymail@yahoo.com",
+                "07332233", "oneStreet 32", Role.PATIENT, null);
         firstPatient.save();
         secondPatient.save();
 
