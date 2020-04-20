@@ -1,6 +1,5 @@
 package se.hkr.e7;
 
-import org.hibernate.Session;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,7 +11,7 @@ enum Role {
 }
 
 @Entity
-public class User implements Serializable {
+public class User extends SQL implements Serializable {
     private String ssn;
     private String password;
     private String name;
@@ -28,6 +27,7 @@ public class User implements Serializable {
 
     public User(String ssn, String password, String name, String email, String phone, String address,
                 Role role, EmployeeInformation employeeInformation) {
+        super();
         this.ssn = ssn;
         this.password = password;
         this.name = name;
@@ -37,22 +37,6 @@ public class User implements Serializable {
         this.role = role;
         this.employeeInformation = employeeInformation;
         this.results = new ArrayList<>();
-    }
-
-    static <T extends User> T load(String ssn, final Class<T> tClass) {
-        Session session = SQL.getSession();
-        session.beginTransaction();
-        T person = session.get(tClass, ssn);
-        session.getTransaction().commit();
-        return person;
-    }
-
-    void save() {
-        Session session = SQL.getSession();
-        session.beginTransaction();
-        session.saveOrUpdate(this);
-        session.getTransaction().commit();
-        session.close();
     }
 
     public void addResult(Result result) {

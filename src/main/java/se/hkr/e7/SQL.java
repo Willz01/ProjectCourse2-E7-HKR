@@ -1,24 +1,33 @@
 package se.hkr.e7;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class SQL {
 
-    private static final SessionFactory ourSessionFactory;
+    private static final SessionFactory sessionFactory;
 
     static {
         Configuration configuration = new Configuration();
         configuration.configure();
-        ourSessionFactory = configuration.buildSessionFactory();
+        sessionFactory = configuration.buildSessionFactory();
     }
 
-    public static Session getSession() throws HibernateException {
-        return ourSessionFactory.openSession();
+    private Session session;
+
+    public SQL() {
+        this.session = sessionFactory.openSession();
     }
 
+    static <T extends SQL> T load(String key, final Class<T> tClass) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        T t = session.get(tClass, key);
+        session.getTransaction().commit();
+        t.setSession(session);
+        return t;
+    }
 
     /**
      * Insert some default data into the system.
@@ -43,6 +52,16 @@ public class SQL {
 
         new Result(secondPatient, "2020-01-01", Result.Status.PENDING);
         new Result(secondPatient, "2020-01-01", Result.Status.POSITIVE);
+    }
+
+    void setSession(Session session) {
+        this.session = session;
+    }
+
+    void save() {
+        session.beginTransaction();
+        session.saveOrUpdate(this);
+        session.getTransaction().commit();
     }
 }
 
