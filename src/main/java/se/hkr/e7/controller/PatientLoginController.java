@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.NotNull;
 import se.hkr.e7.Singleton;
 
 import java.io.IOException;
@@ -18,12 +19,13 @@ public class PatientLoginController {
     public TextField ssnText;
 
 
-    public void Back(ActionEvent actionEvent) throws IOException {
+    public void Back(@NotNull ActionEvent actionEvent) throws IOException {
 
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
         URL resource = getClass().getClassLoader().getResource("login.fxml");
+        assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -36,7 +38,7 @@ public class PatientLoginController {
         System.exit(0);
     }
 
-    public void patientLogin(ActionEvent actionEvent) throws IOException {
+    public void patientLogin(@NotNull ActionEvent actionEvent) throws IOException {
 
 
         //this will set the primary key of tha patient to singleton .
