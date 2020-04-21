@@ -19,6 +19,6 @@
            prefHeight="43.0" prefWidth="173.0" text="Staff login"/>
    <Button fx:id="PatientLogin" layoutX="324.0" layoutY="247.0" mnemonicParsing="false" onAction="#PatientLogin"
            prefHeight="43.0" prefWidth="173.0" text="See your result "/>
-   <Button fx:id="Exit" layoutX="504.0" layoutY="361.0" mnemonicParsing="false" onAction="#Exit" prefHeight="25.0"
-           prefWidth="70.0" text="Exit"/>
+   <Button fx:id="Exit" layoutX="519.0" layoutY="361.0" mnemonicParsing="false" onAction="#Exit" text="Exit" />
+
 </AnchorPane>
