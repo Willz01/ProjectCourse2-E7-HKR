@@ -23,10 +23,12 @@ public class StaffLoginController {
 
     public void StaffLogin(ActionEvent actionEvent) throws IOException {
 
-        if (passwordText.getText().equals("") && ssnText.getText().equals("")) {
-            error1.setText("field con not be empty ");
+        passwordCheck.setText(null);error1.setText(null);
 
-        } else
+        if (passwordText.getText().equals("") || ssnText.getText().equals("")) {
+            error1.setText("fields can not be empty ");
+
+        } else {
             try {
                 Employee employee = Employee.load(ssnText.getText(), Employee.class);
 
@@ -41,6 +43,9 @@ public class StaffLoginController {
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
                     stage.show();
+                }
+                if (employee.getSsn() != null && !employee.checkPassword(passwordText.getText())) {
+                    passwordCheck.setText("wrong password ");
                 }
 
 
@@ -71,6 +76,7 @@ public class StaffLoginController {
                 error1.setText("could not login , please check your password and ssn ");
 
             }
+        }
     }
 
 
