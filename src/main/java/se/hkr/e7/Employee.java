@@ -7,13 +7,6 @@ import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
-enum Location {
-    BLEKINGE, DALARNA, GOTLAND, GÄVLEBORG, HALLAND, JÄMTLAND,
-    JÖNKÖPING, KALMAR, KRONOBERG, NORRBOTTEN, SKÅNE, STOCKHOLM, SÖDERMANLAND,
-    UPPSALA, VÄRMLAND, VÄSTERBOTTEN, VÄSTERNORRLAND, VÄSTMANLAND, VÄSTRA_GÖTALAND,
-    ÖREBRO, ÖSTERGÖTLAND
-}
-
 @Entity
 public class Employee extends Person {
 
@@ -84,5 +77,9 @@ public class Employee extends Person {
                 ", salary=" + salary +
                 ", patientResults=" + patientResults +
                 "} " + super.toString();
+    }
+
+    public enum Role {
+        ADMIN, ANALYSER, DOCTOR
     }
 }

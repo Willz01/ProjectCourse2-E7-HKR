@@ -8,9 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import se.hkr.e7.Employee;
 import se.hkr.e7.Patient;
-import se.hkr.e7.Role;
 import se.hkr.e7.Singleton;
 
 import java.io.IOException;

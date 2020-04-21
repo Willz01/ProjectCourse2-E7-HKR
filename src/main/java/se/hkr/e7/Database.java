@@ -34,16 +34,16 @@ public abstract class Database implements Serializable {
      */
     public static void Reset() {
         new Employee("199701010000", "123456", "Wills", "wills@example.com",
-                "073656656", "Home", Location.STOCKHOLM, Role.ADMIN, 123.12).save();
+                "073656656", "Home", Location.STOCKHOLM, Employee.Role.ADMIN, 123.12).save();
 
         new Employee("1993249503", "13412", "Marcos", "marcos@example.com",
-                "073656656", "Street lamp 432", Location.KALMAR, Role.ANALYSER, 111.12).save();
+                "073656656", "Street lamp 432", Location.KALMAR, Employee.Role.ANALYSER, 111.12).save();
 
         new Employee("198005087778", "wegpijewg", "Nilson", "nilson@example.com",
-                "056356556", "Kristan Street", Location.DALARNA, Role.ANALYSER, 111.12).save();
+                "056356556", "Kristan Street", Location.DALARNA, Employee.Role.ANALYSER, 111.12).save();
 
         Employee employee = new Employee("198002249876", "98745794", "Petson",
-                "petson@example.com", "056356556", "Kristan Street", Location.SKÅNE, Role.DOCTOR,
+                "petson@example.com", "056356556", "Kristan Street", Location.SKÅNE, Employee.Role.DOCTOR,
                 98.1);
         employee.save();
 

@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import se.hkr.e7.Employee;
-import se.hkr.e7.Role;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,7 +32,7 @@ public class StaffLoginController {
                 Employee employee = Employee.load(ssnText.getText(), Employee.class);
 
 
-                if (employee.getRole() == Role.ADMIN && employee.checkPassword(passwordText.getText())) {
+                if (employee.getRole() == Employee.Role.ADMIN && employee.checkPassword(passwordText.getText())) {
 
                     Node node = (Node) actionEvent.getSource();
                     Scene currScene = node.getScene();
@@ -49,7 +48,7 @@ public class StaffLoginController {
                 }
 
 
-                if (employee.getRole() == Role.DOCTOR && employee.checkPassword(passwordText.getText())) {
+                if (employee.getRole() == Employee.Role.DOCTOR && employee.checkPassword(passwordText.getText())) {
 
                     Node node = (Node) actionEvent.getSource();
                     Scene currScene = node.getScene();
@@ -60,7 +59,7 @@ public class StaffLoginController {
                     stage.setScene(scene);
                     stage.show();
                 }
-                if (employee.getRole() == Role.ANALYSER && employee.checkPassword(passwordText.getText())) {
+                if (employee.getRole() == Employee.Role.ANALYSER && employee.checkPassword(passwordText.getText())) {
 
                     Node node = (Node) actionEvent.getSource();
                     Scene currScene = node.getScene();
