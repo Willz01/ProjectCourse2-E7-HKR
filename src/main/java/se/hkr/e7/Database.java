@@ -20,7 +20,7 @@ public abstract class Database implements Serializable {
         this.session = sessionFactory.openSession();
     }
 
-    static <T extends Database> T load(String key, final Class<T> tClass) {
+    public static <T extends Database> T load(String key, final Class<T> tClass) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         T t = session.get(tClass, key);

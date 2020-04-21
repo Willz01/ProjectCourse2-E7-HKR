@@ -24,10 +24,10 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
-        SQL.Reset();
-        Admin admin = Admin.load("199701010000", Admin.class);
-        Analyser analyser = Analyser.load("198005087778", Analyser.class);
-        Staff staff = Staff.load("1993249503", Staff.class);
+//        Database.Reset();
+        Employee admin = Employee.load("199701010000", Employee.class);
+        Employee analyser = Employee.load("198005087778", Employee.class);
+        Employee staff = Employee.load("1993249503", Employee.class);
         Patient patient = Patient.load("196154054565", Patient.class);
         for (Person person : List.of(admin, analyser, staff, patient)) {
             if (person != null) {

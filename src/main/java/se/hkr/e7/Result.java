@@ -85,11 +85,10 @@ public class Result implements Serializable {
 
     @Override
     public String toString() {
-        return "Result{" +
-                "id=" + id +
-                ", date='" + date + '\'' +
-                ", status=" + status +
-                '}';
+        return
+                '\n'+
+                ", date=  '" + date + '\n' +
+                ", status=  " + status +'\n'+'\n' +'\n' ;
     }
 
     enum Status {
