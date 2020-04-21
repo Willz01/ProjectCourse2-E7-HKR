@@ -21,8 +21,10 @@ public class Result implements Serializable {
         this.patient = patient;
         this.date = date;
         this.status = status;
+
         this.patient.addTestResult(this);
         this.patient.save();
+
         this.examiner.addPatientResult(this);
         this.examiner.save();
     }

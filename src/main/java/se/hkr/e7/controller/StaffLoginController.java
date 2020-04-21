@@ -8,11 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-<<<<<<< HEAD
 import se.hkr.e7.Employee;
-=======
-import org.jetbrains.annotations.NotNull;
->>>>>>> wills/new-structure
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,7 +19,6 @@ public class StaffLoginController {
     public Label passwordCheck;
     public Label error1;
 
-<<<<<<< HEAD
     public void StaffLogin(ActionEvent actionEvent) throws IOException {
 
         passwordCheck.setText(null);
@@ -83,26 +78,6 @@ public class StaffLoginController {
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
         URL resource = getClass().getClassLoader().getResource("Welcome.fxml");
-=======
-    public void StaffLogin(@NotNull ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("AdminDashboard.fxml");
-        assert resource != null;
-        Parent root = FXMLLoader.load(resource);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void Back(@NotNull ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("login.fxml");
-        assert resource != null;
->>>>>>> wills/new-structure
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         stage.setScene(scene);

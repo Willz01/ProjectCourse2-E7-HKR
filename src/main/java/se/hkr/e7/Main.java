@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,14 +16,8 @@ public class Main extends Application {
     }
 
     @Override
-<<<<<<< HEAD
     public void start(Stage stage) throws IOException {
         URL resource = getClass().getClassLoader().getResource("Welcome.fxml");
-=======
-    public void start(@NotNull Stage stage) throws IOException {
-        URL resource = getClass().getClassLoader().getResource("login.fxml");
-        assert resource != null;
->>>>>>> wills/new-structure
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         stage.setScene(scene);
