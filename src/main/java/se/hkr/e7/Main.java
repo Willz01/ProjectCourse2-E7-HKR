@@ -25,17 +25,17 @@ public class Main extends Application {
         stage.show();
 
 //        Database.Reset();
-        Employee admin = Employee.load("199701010000", Employee.class);
-        Employee analyser = Employee.load("198005087778", Employee.class);
-        Employee staff = Employee.load("1993249503", Employee.class);
-        Patient patient = Patient.load("196154054565", Patient.class);
-        for (Person person : List.of(admin, analyser, staff, patient)) {
-            if (person != null) {
-                System.out.println(person.toString());
-            } else {
-                System.out.println("No " + person.getClass());
-            }
-        }
+//        Employee admin = Employee.load("199701010000", Employee.class);
+//        Employee analyser = Employee.load("198005087778", Employee.class);
+//        Employee staff = Employee.load("1993249503", Employee.class);
+//        Patient patient = Patient.load("196154054565", Patient.class);
+//        for (Person person : List.of(admin, analyser, staff, patient)) {
+//            if (person != null) {
+//                System.out.println(person.toString());
+//            } else {
+//                System.out.println("No " + person.getClass());
+//            }
+//        }
     }
 }
 
