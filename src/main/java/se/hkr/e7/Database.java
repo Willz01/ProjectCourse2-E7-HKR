@@ -53,6 +53,7 @@ public abstract class Database implements Serializable {
                 "mohammed@example.com", "062563454", "onehomet 32");
         patient.save();
 
+
         new Result(patient, employee, "2020-01-01", Result.Status.PENDING);
         new Result(patient, employee, "2020-01-01", Result.Status.POSITIVE);
     }

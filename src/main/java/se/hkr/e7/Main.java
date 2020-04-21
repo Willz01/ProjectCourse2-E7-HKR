@@ -24,6 +24,17 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
+
+
+
+
+
+
+
+
+
+
+
 //        Database.Reset();
 //        Employee admin = Employee.load("199701010000", Employee.class);
 //        Employee analyser = Employee.load("198005087778", Employee.class);
