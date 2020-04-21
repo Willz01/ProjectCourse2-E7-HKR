@@ -7,10 +7,6 @@ import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
-enum Role {
-    ADMIN, ANALYSER, DOCTOR
-}
-
 enum Location {
     BLEKINGE, DALARNA, GOTLAND, GÄVLEBORG, HALLAND, JÄMTLAND,
     JÖNKÖPING, KALMAR, KRONOBERG, NORRBOTTEN, SKÅNE, STOCKHOLM, SÖDERMANLAND,
