@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 
 
-public class StaffLoginDashboardController {
+public class DoctorDashboardController {
     public Button Back;
     public Button Cancel;
     public Button viewPatient;
