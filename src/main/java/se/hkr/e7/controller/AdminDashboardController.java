@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
-
 public class AdminDashboardController {
     public Button Back;
     public Button Exit;
@@ -36,8 +35,6 @@ public class AdminDashboardController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
 
     public void Exit(ActionEvent actionEvent) {
@@ -65,10 +62,8 @@ public class AdminDashboardController {
     public void search(ActionEvent actionEvent) {
     }
 
-
     public void removeStaff(ActionEvent actionEvent) {
     }
-
 
     public void removeAdmin(ActionEvent actionEvent) {
     }

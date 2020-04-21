@@ -24,11 +24,9 @@ public class AnalyserDashboard {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
     }
 
     public void Exit(ActionEvent actionEvent) {
-
         System.exit(0);
     }
 }

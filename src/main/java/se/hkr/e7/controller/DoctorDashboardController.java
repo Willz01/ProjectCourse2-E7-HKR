@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
-
 public class DoctorDashboardController {
     public Button Back;
     public Button Exit;
@@ -29,8 +28,6 @@ public class DoctorDashboardController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
 
     public void Exit(ActionEvent actionEvent) {

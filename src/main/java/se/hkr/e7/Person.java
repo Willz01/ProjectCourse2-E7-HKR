@@ -41,12 +41,7 @@ public abstract class Person extends Database {
     }
 
     private void setSsn(String ssn) {
-
-//        if (ssn.matches("(20|19)+(01|02|03|04|05|06|07|08|09|10|11|12{2})+(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31{2})+[0-9]{4}"))
-            this.ssn = ssn;
-//        else {
-//            System.out.println("wrong regex format ");
-//        }
+        this.ssn = ssn;
     }
 
     @Column(nullable = false)
@@ -101,8 +96,4 @@ public abstract class Person extends Database {
                 ", address='" + address + '\'' +
                 '}';
     }
-
-
-
-
 }
