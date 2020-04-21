@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import se.hkr.e7.Patient;
+import se.hkr.e7.Result;
 import se.hkr.e7.Singleton;
 
 import java.io.IOException;
@@ -41,7 +42,17 @@ public class PatientDashboardController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             Patient patient = Patient.load(Singleton.getInstance().getSsn(), Patient.class);
-            resultText.setText(String.valueOf(patient.getTestResults()));
+            StringBuilder stringBuilder = new StringBuilder();
+            for (Result testResult : patient.getTestResults()) {
+                stringBuilder.append(testResult.getDate())
+                        .append(", Examiner: ")
+                        .append(testResult.getExaminer().getName())
+                        .append(", Status: ")
+                        .append(testResult.getStatus())
+                        .append(testResult.getNote() != null ? " ," + testResult.getNote() : "")
+                        .append(System.lineSeparator());
+            }
+            resultText.setText(stringBuilder.toString());
         } catch (Exception exception) {
             resultText.setText("could not find result please press back and try again ");
         }
