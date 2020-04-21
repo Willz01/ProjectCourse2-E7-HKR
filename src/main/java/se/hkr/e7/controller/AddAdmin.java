@@ -1,7 +1,6 @@
 package se.hkr.e7.controller;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,17 +11,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import jdk.javadoc.doclet.Taglet;
 
-import javax.tools.DocumentationTool;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AddAdmin {
     @FXML
-    public ChoiceBox choiceBox;
+    public ChoiceBox<ObservableList<String>> choiceBox;
     public TextField ssn;
     public TextField name;
     public TextField address;
@@ -43,7 +38,7 @@ public class AddAdmin {
     public void initialize() {
 
         choiceBox.setValue(location);
-        ;
+
     }
 
     public void Back(ActionEvent actionEvent) throws IOException {

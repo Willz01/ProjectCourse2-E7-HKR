@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import se.hkr.e7.Singleton;
 
 import java.io.IOException;
 import java.net.URL;
@@ -57,31 +58,38 @@ public class AdminDashboardController {
         System.out.println("run");
     }
 
-    public void addStaff(ActionEvent actionEvent) {        System.out.println("run");
+    public void addStaff(ActionEvent actionEvent) {
+        System.out.println("run");
 
     }
 
-    public void viewResults(ActionEvent actionEvent) {        System.out.println("run");
+    public void viewResults(ActionEvent actionEvent) {
+        System.out.println("run");
 
     }
 
-    public void viewPatient(ActionEvent actionEvent) {        System.out.println("run");
+    public void viewPatient(ActionEvent actionEvent) {
+        System.out.println("run");
 
     }
 
-    public void viewStaff(ActionEvent actionEvent) {        System.out.println("run");
+    public void viewStaff(ActionEvent actionEvent) {
+        System.out.println("run");
 
     }
 
-    public void search(ActionEvent actionEvent) {        System.out.println("run");
+    public void search(ActionEvent actionEvent) {
+        System.out.println("run");
 
     }
 
-    public void removeStaff(ActionEvent actionEvent) {        System.out.println("run");
+    public void removeStaff(ActionEvent actionEvent) {
+        System.out.println("run");
 
     }
 
-    public void removeAdmin(ActionEvent actionEvent) {        System.out.println("run");
+    public void removeAdmin(ActionEvent actionEvent) {
+        System.out.println("run");
 
     }
 }

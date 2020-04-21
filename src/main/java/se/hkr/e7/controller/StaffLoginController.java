@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import se.hkr.e7.Employee;
+import se.hkr.e7.Singleton;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,12 +24,13 @@ public class StaffLoginController {
 
         passwordCheck.setText(null);
         error1.setText(null);
-
         if (passwordText.getText().equals("") || ssnText.getText().equals("")) {
             error1.setText("fields can not be empty ");
         } else {
             try {
                 Employee employee = Employee.load(ssnText.getText(), Employee.class);
+                Singleton.getInstance().setEmployee(employee);
+
 
                 if (employee.getRole() == Employee.Role.ADMIN && employee.checkPassword(passwordText.getText())) {
                     Node node = (Node) actionEvent.getSource();
@@ -39,6 +41,7 @@ public class StaffLoginController {
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
                     stage.show();
+
                 }
 
                 if (employee.getSsn() != null && !employee.checkPassword(passwordText.getText())) {
