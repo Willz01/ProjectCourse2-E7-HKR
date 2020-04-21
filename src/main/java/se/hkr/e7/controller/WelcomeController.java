@@ -6,12 +6,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 
 public class WelcomeController {
-
-
 
     public void StaffLogin(ActionEvent actionEvent) throws IOException {
         Node node = (Node) actionEvent.getSource();
@@ -22,14 +21,9 @@ public class WelcomeController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
-
-
     }
 
     public void PatientLogin(ActionEvent actionEvent) throws IOException {
-
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
@@ -38,13 +32,9 @@ public class WelcomeController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
 
-
-
-    public void cancel(ActionEvent actionEvent) {
+    public void Exit(ActionEvent actionEvent) {
         System.exit(0);
     }
 }

@@ -6,25 +6,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 
-public class AdminDashboardController {
+public class DoctorDashboardController {
     public Button Back;
     public Button Exit;
-    public Button addAdmin;
-    public Button addPatient;
-    public Button addStaff;
-    public Button viewResults;
-    public Button search;
-    public Button viewStaff;
     public Button viewPatient;
-    public Button removeAdmin;
-    public Button removeStaff;
-    public TextField searchText;
+    public Button createCase;
+    public Button viewResults;
+    public Button ListOfCases;
 
     public void Back(ActionEvent actionEvent) throws IOException {
         Node node = (Node) actionEvent.getSource();
@@ -41,30 +34,15 @@ public class AdminDashboardController {
         System.exit(0);
     }
 
-    public void addAdmin(ActionEvent actionEvent) {
+    public void viewPatient(ActionEvent actionEvent) {
     }
 
-    public void addPatient(ActionEvent actionEvent) {
-    }
-
-    public void addStaff(ActionEvent actionEvent) {
+    public void createCase(ActionEvent actionEvent) {
     }
 
     public void viewResults(ActionEvent actionEvent) {
     }
 
-    public void viewPatient(ActionEvent actionEvent) {
-    }
-
-    public void viewStaff(ActionEvent actionEvent) {
-    }
-
-    public void search(ActionEvent actionEvent) {
-    }
-
-    public void removeStaff(ActionEvent actionEvent) {
-    }
-
-    public void removeAdmin(ActionEvent actionEvent) {
+    public void ListOfCases(ActionEvent actionEvent) {
     }
 }

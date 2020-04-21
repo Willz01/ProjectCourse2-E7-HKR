@@ -89,6 +89,7 @@ public class Result implements Serializable {
                 "id=" + id +
                 ", date='" + date + '\'' +
                 ", status=" + status +
+                ", note='" + note + '\'' +
                 '}';
     }
 

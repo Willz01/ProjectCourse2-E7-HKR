@@ -6,8 +6,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.text.Text;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import se.hkr.e7.Patient;
+import se.hkr.e7.Result;
+import se.hkr.e7.Singleton;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,9 +19,9 @@ import java.util.ResourceBundle;
 
 public class PatientDashboardController implements Initializable {
 
-
-    public Text resultText;
-
+    public TextArea resultText;
+    public Button Back;
+    public Button Exit;
 
     public void Back(ActionEvent actionEvent) throws IOException {
         Node node = (Node) actionEvent.getSource();
@@ -28,34 +32,30 @@ public class PatientDashboardController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
 
-    public void Cancel(ActionEvent actionEvent) {
+    public void Exit(ActionEvent actionEvent) {
         System.exit(0);
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
-//        this not working need some work..
-//
-//        try (Session session = Database.getSession()) {
-//            session.beginTransaction();
-//
-//            Result result = session.get(Result.class, ssn);
-//            resultText.setText(result.getStatus() + "     " + result.getDate());
-//            session.getTransaction().commit();
-//        } catch (HibernateException e) {
-//            e.printStackTrace();
-//
-//        }
-
+        try {
+            Patient patient = Patient.load(Singleton.getInstance().getSsn(), Patient.class);
+            StringBuilder stringBuilder = new StringBuilder();
+            for (Result testResult : patient.getTestResults()) {
+                stringBuilder.append(testResult.getDate())
+                        .append(", Examiner: ")
+                        .append(testResult.getExaminer().getName())
+                        .append(", Status: ")
+                        .append(testResult.getStatus())
+                        .append(testResult.getNote() != null ? " ," + testResult.getNote() : "")
+                        .append(System.lineSeparator());
+            }
+            resultText.setText(stringBuilder.toString());
+        } catch (Exception exception) {
+            resultText.setText("could not find result please press back and try again ");
+        }
     }
-
-
 }
 

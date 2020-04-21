@@ -11,14 +11,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
-
-public class StaffLoginDashboardController {
+public class AnalyserDashboard {
     public Button Back;
-    public Button Cancel;
-    public Button viewPatient;
-    public Button createCase;
-    public Button viewResults;
-    public Button ListOfCases;
+    public Button Exit;
 
     public void Back(ActionEvent actionEvent) throws IOException {
         Node node = (Node) actionEvent.getSource();
@@ -29,23 +24,9 @@ public class StaffLoginDashboardController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
 
-    public void Cancel(ActionEvent actionEvent) {
+    public void Exit(ActionEvent actionEvent) {
         System.exit(0);
-    }
-
-    public void viewPatient(ActionEvent actionEvent) {
-    }
-
-    public void createCase(ActionEvent actionEvent) {
-    }
-
-    public void viewResults(ActionEvent actionEvent) {
-    }
-
-    public void ListOfCases(ActionEvent actionEvent) {
     }
 }
