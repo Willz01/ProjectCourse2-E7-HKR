@@ -3,7 +3,6 @@ package se.hkr.e7;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.persistence.*;
-import java.util.regex.Pattern;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -102,6 +101,8 @@ public abstract class Person extends Database {
                 ", address='" + address + '\'' +
                 '}';
     }
+
+
 
 
 }
