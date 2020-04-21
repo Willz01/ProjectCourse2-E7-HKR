@@ -44,7 +44,7 @@ public class WelcomeController {
 
 
 
-    public void cancel(ActionEvent actionEvent) {
+    public void Exit(ActionEvent actionEvent) {
         System.exit(0);
     }
 }

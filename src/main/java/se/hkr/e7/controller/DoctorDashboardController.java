@@ -14,7 +14,7 @@ import java.net.URL;
 
 public class DoctorDashboardController {
     public Button Back;
-    public Button Cancel;
+    public Button Exit;
     public Button viewPatient;
     public Button createCase;
     public Button viewResults;
@@ -33,7 +33,7 @@ public class DoctorDashboardController {
 
     }
 
-    public void Cancel(ActionEvent actionEvent) {
+    public void Exit(ActionEvent actionEvent) {
         System.exit(0);
     }
 

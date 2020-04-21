@@ -15,7 +15,7 @@ import java.net.URL;
 
 public class AdminDashboardController {
     public Button Back;
-    public Button Cancel;
+    public Button Exit;
     public Button addAdmin;
     public Button addPatient;
     public Button addStaff;
@@ -40,7 +40,7 @@ public class AdminDashboardController {
 
     }
 
-    public void Cancel(ActionEvent actionEvent) {
+    public void Exit(ActionEvent actionEvent) {
         System.exit(0);
     }
 

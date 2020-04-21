@@ -13,7 +13,7 @@ import java.net.URL;
 
 public class AnalyserDashboard {
     public Button Back;
-    public Button Cancel;
+    public Button Exit;
 
     public void Back(ActionEvent actionEvent) throws IOException {
         Node node = (Node) actionEvent.getSource();
@@ -27,7 +27,7 @@ public class AnalyserDashboard {
 
     }
 
-    public void Cancel(ActionEvent actionEvent) {
+    public void Exit(ActionEvent actionEvent) {
 
         System.exit(0);
     }

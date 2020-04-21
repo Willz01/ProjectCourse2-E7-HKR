@@ -93,7 +93,7 @@ public class StaffLoginController {
 
     }
 
-    public void Cancel(ActionEvent actionEvent) {
+    public void Exit(ActionEvent actionEvent) {
         System.exit(0);
     }
 

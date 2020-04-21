@@ -39,7 +39,7 @@ public class PatientLoginController {
 
     }
 
-    public void Cancel(ActionEvent actionEvent) {
+    public void Exit(ActionEvent actionEvent) {
         System.exit(0);
     }
 

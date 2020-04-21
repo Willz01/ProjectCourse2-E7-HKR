@@ -8,7 +8,7 @@
 
     <children>
         <Button fx:id="Back" layoutX="442.0" layoutY="361.0" mnemonicParsing="false" onAction="#Back" prefHeight="25.0" prefWidth="52.0" text="Back" />
-        <Button fx:id="Cancel" layoutX="519.0" layoutY="361.0" mnemonicParsing="false" onAction="#Cancel" text="Cancel" />
+        <Button fx:id="Exit" layoutX="519.0" layoutY="361.0" mnemonicParsing="false" onAction="#Exit" text="Exit" />
       <TextArea fx:id="resultText" editable="false" layoutX="11.0" layoutY="14.0" prefHeight="336.0" prefWidth="579.0" />
     </children>
 </AnchorPane>

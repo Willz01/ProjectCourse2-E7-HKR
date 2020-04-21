@@ -25,7 +25,7 @@ public class PatientDashboardController implements Initializable {
 
     public TextArea resultText;
     public Button Back;
-    public Button Cancel;
+    public Button Exit;
 
 
     public void Back(ActionEvent actionEvent) throws IOException {
@@ -41,7 +41,7 @@ public class PatientDashboardController implements Initializable {
 
     }
 
-    public void Cancel(ActionEvent actionEvent) {
+    public void Exit(ActionEvent actionEvent) {
         System.exit(0);
     }
 

@@ -30,7 +30,7 @@ public class Patient extends Person {
             mappedBy = "patient",
             orphanRemoval = true
     )
-    public List<Result>  getTestResults() {
+    public List<Result> getTestResults() {
         return testResults;
     }
 
