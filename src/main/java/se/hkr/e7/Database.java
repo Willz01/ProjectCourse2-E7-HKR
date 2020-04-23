@@ -9,23 +9,20 @@ import java.io.Serializable;
 public abstract class Database implements Serializable {
 
     private static final SessionFactory sessionFactory;
+    private static Session session;
 
     static {
         sessionFactory = new Configuration().configure().buildSessionFactory();
+        session = sessionFactory.openSession();
     }
 
-    private Session session;
-
     public Database() {
-        this.session = sessionFactory.openSession();
     }
 
     public static <T extends Database> T load(String key, final Class<T> tClass) {
-        Session session = sessionFactory.openSession();
         session.beginTransaction();
         T t = session.get(tClass, key);
         session.getTransaction().commit();
-        t.setSession(session);
         return t;
     }
 
@@ -55,10 +52,6 @@ public abstract class Database implements Serializable {
 
         new Result(patient, employee, "2020-01-01", Result.Status.PENDING);
         new Result(patient, employee, "2020-01-01", Result.Status.POSITIVE);
-    }
-
-    void setSession(Session session) {
-        this.session = session;
     }
 
     void save() {
