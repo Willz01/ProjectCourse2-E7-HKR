@@ -8,10 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import se.hkr.e7.Database;
 import se.hkr.e7.Employee;
-
 import se.hkr.e7.Singleton;
-
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,7 +29,7 @@ public class StaffLoginController {
             error1.setText("fields can not be empty ");
         } else {
             try {
-                Employee employee = Employee.load(ssnText.getText(), Employee.class);
+                Employee employee = Database.load(ssnText.getText(), Employee.class);
                 Singleton.getInstance().setEmployee(employee);
 
 
