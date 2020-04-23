@@ -13,11 +13,10 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.URL;
 
-public class AddAdmin {
+public class AddAdminController {
     @FXML
     public ChoiceBox<ObservableList<String>> choiceBox;
     public TextField ssn;
