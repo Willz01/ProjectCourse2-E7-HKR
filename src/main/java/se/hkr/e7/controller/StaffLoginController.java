@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import se.hkr.e7.Database;
+import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Employee;
 import se.hkr.e7.Singleton;
 
@@ -29,7 +29,7 @@ public class StaffLoginController {
             error1.setText("fields can not be empty ");
         } else {
             try {
-                Employee employee = Database.load(Employee.class, ssnText.getText());
+                Employee employee = DatabaseHandler.load(Employee.class, ssnText.getText());
                 Singleton.getInstance().setEmployee(employee);
 
 

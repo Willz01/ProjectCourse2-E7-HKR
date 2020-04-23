@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import se.hkr.e7.Database;
+import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Patient;
 import se.hkr.e7.Result;
 import se.hkr.e7.Singleton;
@@ -42,7 +42,7 @@ public class PatientDashboardController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            Patient patient = Database.load(Patient.class, Singleton.getInstance().getSsn());
+            Patient patient = DatabaseHandler.load(Patient.class, Singleton.getInstance().getSsn());
             StringBuilder stringBuilder = new StringBuilder();
             for (Result testResult : patient.getTestResults()) {
                 stringBuilder.append(testResult.getDate())

@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 import java.io.Serializable;
 
-public class Database {
+public class DatabaseHandler {
 
     private static final SessionFactory sessionFactory;
     private static final Session session;
@@ -16,7 +16,7 @@ public class Database {
         session = sessionFactory.openSession();
     }
 
-    private Database() {
+    private DatabaseHandler() {
     }
 
     public static <T> T load(final Class<T> tClass, Serializable key) {

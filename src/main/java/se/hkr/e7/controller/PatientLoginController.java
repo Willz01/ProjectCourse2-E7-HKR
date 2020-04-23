@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import se.hkr.e7.Database;
+import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Patient;
 import se.hkr.e7.Singleton;
 
@@ -46,7 +46,7 @@ public class PatientLoginController {
             error1.setText("fields can not be empty ");
         } else {
             try {
-                Patient patient = Database.load(Patient.class, ssnText.getText());
+                Patient patient = DatabaseHandler.load(Patient.class, ssnText.getText());
 
                 if (patient.getSsn() != null && patient.checkPassword(passwordText.getText())) {
                     Singleton.getInstance().setSsn(ssnText.getText());
