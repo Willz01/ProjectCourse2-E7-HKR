@@ -18,7 +18,7 @@ import java.net.URL;
 
 public class AddAdminController {
     @FXML
-    public ChoiceBox<ObservableList<String>> choiceBox;
+    public ChoiceBox<String> choiceBox;
     public TextField ssn;
     public TextField name;
     public TextField address;
@@ -29,7 +29,7 @@ public class AddAdminController {
     public Button Add;
 
 
-    ObservableList<String> location = FXCollections
+    ObservableList<String> list = FXCollections
             .observableArrayList("BLEKINGE", "DALARNA", "GOTLAND", "GÄVLEBORG", "HALLAND", "JÄMTLAND",
                     "JÖNKÖPING", "KALMAR", "KRONOBERG", "NORRBOTTEN", "SKÅNE", "STOCKHOLM", "SÖDERMANLAND",
                     "UPPSALA", "VÄRMLAND", "VÄSTERBOTTEN", "VÄSTERNORRLAND", "VÄSTMANLAND", "VÄSTRA_GÖTALAND",
@@ -38,8 +38,7 @@ public class AddAdminController {
 
     @FXML
     public void initialize() {
-
-        choiceBox.setValue(location);
+        choiceBox.getItems().addAll(list);
 
     }
 
@@ -52,6 +51,11 @@ public class AddAdminController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void loadListLocation() {
+        choiceBox.getItems().addAll(list);
+
     }
 
     public void Exit(ActionEvent actionEvent) {
