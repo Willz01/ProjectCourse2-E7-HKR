@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import se.hkr.e7.Singleton;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,30 +43,54 @@ public class AdminDashboardController {
         System.exit(0);
     }
 
-    public void addAdmin(ActionEvent actionEvent) {
+    public void addAdmin(ActionEvent actionEvent) throws IOException {
+        System.out.println("run");
+        Node node = (Node) actionEvent.getSource();
+        Scene currScene = node.getScene();
+        Stage stage = (Stage) currScene.getWindow();
+        URL resource = getClass().getClassLoader().getResource("AddAdmin.fxml");
+        Parent root = FXMLLoader.load(resource);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void addPatient(ActionEvent actionEvent) {
+        System.out.println("run");
     }
 
     public void addStaff(ActionEvent actionEvent) {
+        System.out.println("run");
+
     }
 
     public void viewResults(ActionEvent actionEvent) {
+        System.out.println("run");
+
     }
 
     public void viewPatient(ActionEvent actionEvent) {
+        System.out.println("run");
+
     }
 
     public void viewStaff(ActionEvent actionEvent) {
+        System.out.println("run");
+
     }
 
     public void search(ActionEvent actionEvent) {
+        System.out.println("run");
+
     }
 
     public void removeStaff(ActionEvent actionEvent) {
+        System.out.println("run");
+
     }
 
     public void removeAdmin(ActionEvent actionEvent) {
+        System.out.println("run");
+
     }
 }
