@@ -45,9 +45,9 @@ public class PatientDashboardController implements Initializable {
             StringBuilder stringBuilder = new StringBuilder();
             for (Result testResult : patient.getTestResults()) {
                 stringBuilder.append(testResult.getDate())
-                        .append(", Examiner: ")
+                        .append(", The examiner: ")
                         .append(testResult.getExaminer().getName())
-                        .append(", Status: ")
+                        .append(", || Status: ")
                         .append(testResult.getStatus())
                         .append(testResult.getNote() != null ? " ," + testResult.getNote() : "")
                         .append(System.lineSeparator());
