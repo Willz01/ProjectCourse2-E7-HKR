@@ -23,10 +23,10 @@ public class Result implements Serializable {
         this.status = status;
 
         this.patient.addTestResult(this);
-        this.patient.save();
+        Database.save(this.patient);
 
         this.examiner.addPatientResult(this);
-        this.examiner.save();
+        Database.save(this.examiner);
     }
 
     @Id

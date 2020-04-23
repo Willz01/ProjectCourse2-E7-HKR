@@ -1,21 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.AdminDashboardController">
-    <Button fx:id="Back" layoutX="442.0" layoutY="361.0" mnemonicParsing="false" onAction="#Back" prefHeight="25.0" prefWidth="52.0" text="Back" />
-    <Button fx:id="Exit" layoutX="519.0" layoutY="361.0" mnemonicParsing="false" onAction="#Exit" text="Exit" />
-   <Button fx:id="addAdmin" layoutX="14.0" layoutY="29.0" mnemonicParsing="false" onAction="#addAdmin" prefWidth="141.0" text="Add admin" />
-   <Button fx:id="addPatient" layoutX="223.0" layoutY="29.0" mnemonicParsing="false" onAction="#addPatient" prefHeight="25.0" prefWidth="141.0" text="Add patient" />
-   <Button fx:id="addStaff" layoutX="416.0" layoutY="29.0" mnemonicParsing="false" onAction="#addStaff" prefHeight="25.0" prefWidth="141.0" text="Add staff" />
-   <Button fx:id="viewResults" layoutX="416.0" layoutY="87.0" mnemonicParsing="false" onAction="#viewResults" prefHeight="25.0" prefWidth="141.0" text="View results" />
-   <Button fx:id="search" layoutX="223.0" layoutY="286.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="141.0" text="Search" />
-   <Button fx:id="viewStaff" layoutX="14.0" layoutY="87.0" mnemonicParsing="false" onAction="#viewStaff" prefHeight="25.0" prefWidth="141.0" text="View staff" />
-   <Button fx:id="viewPatient" layoutX="223.0" layoutY="87.0" mnemonicParsing="false" onAction="#viewPatient" prefHeight="25.0" prefWidth="141.0" text="View all patient" />
-   <Button fx:id="removeAdmin" layoutX="14.0" layoutY="139.0" mnemonicParsing="false" onAction="#removeAdmin" prefHeight="17.0" prefWidth="141.0" text="Remove admin" />
-   <Button fx:id="removeStaff" layoutX="416.0" layoutY="139.0" mnemonicParsing="false" onAction="#removeStaff" prefHeight="25.0" prefWidth="141.0" text="Remove staff" />
-   <TextField fx:id="searchText" layoutX="132.0" layoutY="236.0" prefHeight="39.0" prefWidth="336.0" />
-   <Label layoutX="219.0" layoutY="207.0" prefHeight="19.0" prefWidth="163.0" text="Search for Staff/ Patient" textAlignment="CENTER" />
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/10.0.2-internal"
+            fx:controller="se.hkr.e7.controller.AdminDashboardController">
+    <Button fx:id="addAdmin" layoutX="14.0" layoutY="29.0" mnemonicParsing="false" onAction="#addAdmin"
+            prefWidth="141.0" text="Add admin"/>
+    <Button fx:id="addPatient" layoutX="223.0" layoutY="29.0" mnemonicParsing="false" onAction="#addPatient"
+            prefHeight="25.0" prefWidth="141.0" text="Add patient"/>
+    <Button fx:id="addStaff" layoutX="416.0" layoutY="29.0" mnemonicParsing="false" onAction="#addStaff"
+            prefHeight="25.0" prefWidth="141.0" text="Add staff"/>
+    <Button fx:id="viewResults" layoutX="416.0" layoutY="87.0" mnemonicParsing="false" onAction="#viewResults"
+            prefHeight="25.0" prefWidth="141.0" text="View results"/>
+    <Button fx:id="viewPatient" layoutX="223.0" layoutY="87.0" mnemonicParsing="false" onAction="#viewPatient"
+            prefHeight="25.0" prefWidth="141.0" text="View all patient"/>
+    <Button fx:id="viewStaff" layoutX="14.0" layoutY="87.0" mnemonicParsing="false" onAction="#viewStaff"
+            prefHeight="25.0" prefWidth="141.0" text="View staff"/>
+    <Button fx:id="removeAdmin" layoutX="14.0" layoutY="139.0" mnemonicParsing="false" onAction="#removeAdmin"
+            prefHeight="17.0" prefWidth="141.0" text="Remove admin"/>
+    <Button fx:id="removeStaff" layoutX="416.0" layoutY="139.0" mnemonicParsing="false" onAction="#removeStaff"
+            prefHeight="25.0" prefWidth="141.0" text="Remove staff"/>
+    <TextField fx:id="searchText" layoutX="132.0" layoutY="236.0" prefHeight="39.0" prefWidth="336.0"/>
+    <Button fx:id="search" layoutX="223.0" layoutY="286.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0"
+            prefWidth="141.0" text="Search"/>
+    <Label layoutX="219.0" layoutY="207.0" prefHeight="19.0" prefWidth="163.0" text="Search for Staff/ Patient"
+           textAlignment="CENTER"/>
+    <Button fx:id="Back" layoutX="442.0" layoutY="361.0" mnemonicParsing="false" onAction="#Back" prefHeight="25.0"
+            prefWidth="52.0" text="Back">
+        <graphic>
+            <Button fx:id="Exit" mnemonicParsing="false" onAction="#Exit" text="Exit"/>
+        </graphic>
+    </Button>
 
 </AnchorPane>

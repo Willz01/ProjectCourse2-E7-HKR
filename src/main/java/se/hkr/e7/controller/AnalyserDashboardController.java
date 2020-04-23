@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
-public class AnalyserDashboard {
+public class AnalyserDashboardController {
     public Button Back;
     public Button Exit;
 
