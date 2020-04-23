@@ -3,10 +3,11 @@ package se.hkr.e7;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Person extends Database {
+public abstract class Person implements Serializable {
     private String ssn;
     private String password;
     private String name;

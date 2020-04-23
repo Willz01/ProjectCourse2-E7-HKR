@@ -18,20 +18,12 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         URL resource = getClass().getClassLoader().getResource("Welcome.fxml");
-        assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        Database.Reset();
-
-
-        Employee a = new Employee();
-
-        a.print();
-          }
     }
-
+}
 
 
 
