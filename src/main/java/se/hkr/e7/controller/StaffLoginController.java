@@ -29,7 +29,7 @@ public class StaffLoginController {
             error1.setText("fields can not be empty ");
         } else {
             try {
-                Employee employee = Database.load(ssnText.getText(), Employee.class);
+                Employee employee = Database.load(Employee.class, ssnText.getText());
                 Singleton.getInstance().setEmployee(employee);
 
 

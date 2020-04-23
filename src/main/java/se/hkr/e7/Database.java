@@ -19,7 +19,7 @@ public class Database implements Serializable {
     private Database() {
     }
 
-    public static <T> T load(String key, final Class<T> tClass) {
+    public static <T> T load(final Class<T> tClass, Serializable key) {
         session.beginTransaction();
         T t = session.get(tClass, key);
         session.getTransaction().commit();

@@ -42,7 +42,7 @@ public class PatientDashboardController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            Patient patient = Database.load(Singleton.getInstance().getSsn(), Patient.class);
+            Patient patient = Database.load(Patient.class, Singleton.getInstance().getSsn());
             StringBuilder stringBuilder = new StringBuilder();
             for (Result testResult : patient.getTestResults()) {
                 stringBuilder.append(testResult.getDate())

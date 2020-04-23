@@ -46,7 +46,7 @@ public class PatientLoginController {
             error1.setText("fields can not be empty ");
         } else {
             try {
-                Patient patient = Database.load(ssnText.getText(), Patient.class);
+                Patient patient = Database.load(Patient.class, ssnText.getText());
 
                 if (patient.getSsn() != null && patient.checkPassword(passwordText.getText())) {
                     Singleton.getInstance().setSsn(ssnText.getText());
