@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 import java.io.Serializable;
 
-public class Database implements Serializable {
+public class Database {
 
     private static final SessionFactory sessionFactory;
     private static final Session session;
