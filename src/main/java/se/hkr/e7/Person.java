@@ -96,4 +96,8 @@ public abstract class Person extends Database {
                 ", address='" + address + '\'' +
                 '}';
     }
+
+    public void print(){
+        System.out.println("test");
+    }
 }

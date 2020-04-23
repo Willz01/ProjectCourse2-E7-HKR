@@ -24,8 +24,14 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
         Database.Reset();
+
+
+        Employee a = new Employee();
+
+        a.print();
+          }
     }
-}
+
 
 
 
