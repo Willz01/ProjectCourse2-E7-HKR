@@ -44,7 +44,6 @@ public class AdminDashboardController {
     }
 
     public void addAdmin(ActionEvent actionEvent) throws IOException {
-        System.out.println("run");
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
@@ -60,37 +59,30 @@ public class AdminDashboardController {
     }
 
     public void addStaff(ActionEvent actionEvent) {
-        System.out.println("run");
 
     }
 
     public void viewResults(ActionEvent actionEvent) {
-        System.out.println("run");
 
     }
 
     public void viewPatient(ActionEvent actionEvent) {
-        System.out.println("run");
 
     }
 
     public void viewStaff(ActionEvent actionEvent) {
-        System.out.println("run");
 
     }
 
     public void search(ActionEvent actionEvent) {
-        System.out.println("run");
 
     }
 
     public void removeStaff(ActionEvent actionEvent) {
-        System.out.println("run");
 
     }
 
     public void removeAdmin(ActionEvent actionEvent) {
-        System.out.println("run");
 
     }
 }
