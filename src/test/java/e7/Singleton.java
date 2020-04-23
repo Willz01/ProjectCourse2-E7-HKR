@@ -1,0 +1,57 @@
+package e7;
+
+public class Singleton {
+
+    private static Singleton instance = null;
+    private Employee employee;
+    private Patient patient;
+    private Result result;
+    private String ssn;
+
+    private Singleton() {
+    }
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+
+    public static void setInstance(Singleton instance) {
+        Singleton.instance = instance;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public Result getResult() {
+        return result;
+    }
+
+    public void setResult(Result result) {
+        this.result = result;
+    }
+
+    public String getSsn() {
+        return ssn;
+    }
+
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
+    }
+}
+
