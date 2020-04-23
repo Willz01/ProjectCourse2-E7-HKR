@@ -8,10 +8,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.URL;
 
@@ -25,6 +27,7 @@ public class AddAdmin {
     public TextField email;
     public TextField phone;
     public TextField salary;
+    public Button Add;
 
 
     ObservableList<String> location = FXCollections
@@ -54,5 +57,8 @@ public class AddAdmin {
 
     public void Exit(ActionEvent actionEvent) {
         System.exit(0);
+    }
+
+    public void Add(ActionEvent actionEvent) {
     }
 }
