@@ -109,10 +109,10 @@ public class AddAdminController {
         addressLabel.setText("");
         saveLabel.setText("");
 
-        if (ssn.getText().matches("^([0-9]{2})([01-12]{2})([0-31]{2})([a-zA-Z0-9][0-9]{3})$")) {
+        if (ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
             ssnLabel.setText("");
         }
-        if (!ssn.getText().matches("^([0-9]{2})([01-12]{2})([0-31]{2})([a-zA-Z0-9][0-9]{3})$")) {
+        if (!ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
             ssnLabel.setText("input in YYMMDDXXXX form");
         }
         if (name.getText().equals("")) {
