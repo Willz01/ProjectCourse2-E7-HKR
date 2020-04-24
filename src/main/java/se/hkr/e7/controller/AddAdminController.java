@@ -30,15 +30,18 @@ public class AddAdminController {
 
 
     ObservableList<String> list = FXCollections
-            .observableArrayList("BLEKINGE", "DALARNA", "GOTLAND", "GÄVLEBORG", "HALLAND", "JÄMTLAND",
-                    "JÖNKÖPING", "KALMAR", "KRONOBERG", "NORRBOTTEN", "SKÅNE", "STOCKHOLM", "SÖDERMANLAND",
-                    "UPPSALA", "VÄRMLAND", "VÄSTERBOTTEN", "VÄSTERNORRLAND", "VÄSTMANLAND", "VÄSTRA_GÖTALAND",
-                    "ÖREBRO", "ÖSTERGÖTLAND");
+            .observableArrayList("BLEKINGE", "DALARNA", "GOTLAND", "GAVLEBORG", "HALLAND", "JAMTLAND",
+                    "JONKOPING", "KALMAR", "KRONOBERG", "NORRBOTTEN", "SKANE", "STOCKHOLM", "SODERMANLAND",
+                    "UPPSALA", "VARMLAND", "VASTERBOTTEN", "VÄSTERNORRLAND", "VÄSTMANLAND", "VASTRA_GOTALAND",
+                    "OREBRO", "OSTERGÖTLAND");
 
 
     @FXML
     public void initialize() {
+        choiceBox.setValue("location");
+
         choiceBox.getItems().addAll(list);
+        System.out.println(list);
 
     }
 
@@ -53,10 +56,7 @@ public class AddAdminController {
         stage.show();
     }
 
-    public void loadListLocation() {
-        choiceBox.getItems().addAll(list);
 
-    }
 
     public void Exit(ActionEvent actionEvent) {
         System.exit(0);
