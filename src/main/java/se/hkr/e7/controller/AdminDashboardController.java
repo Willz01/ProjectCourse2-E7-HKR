@@ -1,17 +1,11 @@
 package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import java.io.IOException;
-import java.net.URL;
 
-public class AdminDashboardController {
+public class AdminDashboardController extends Controller {
     public Button Back;
     public Button Exit;
     public Button addAdmin;
@@ -26,14 +20,7 @@ public class AdminDashboardController {
     public TextField searchText;
 
     public void Back(ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("view/staffLogin.fxml");
-        Parent root = FXMLLoader.load(resource);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+       loadScene("view/staffLogin.fxml",actionEvent);
     }
 
     public void Exit() {
@@ -41,69 +28,27 @@ public class AdminDashboardController {
     }
 
     public void addAdmin(ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("view/AddAdmin.fxml");
-        Parent root = FXMLLoader.load(resource);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+       loadScene("view/AddAdmin.fxml",actionEvent);
     }
 
     public void addPatient(ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("view/AddPatient.fxml");
-        Parent root = FXMLLoader.load(resource);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();    }
+       loadScene("view/AddPatient.fxml",actionEvent);
+    }
 
     public void addStaff(ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("view/AddStaff.fxml");
-        Parent root = FXMLLoader.load(resource);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
+        loadScene("view/AddStaff.fxml",actionEvent);
     }
 
     public void viewResults(ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("view/ViewResults.fxml");
-        Parent root = FXMLLoader.load(resource);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        loadScene("view/ViewResults.fxml",actionEvent);
     }
 
     public void viewPatient(ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("view/ViewPatients.fxml");
-        Parent root = FXMLLoader.load(resource);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+      loadScene("view/ViewPatients.fxml",actionEvent);
     }
 
     public void viewStaff(ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("view/ViewStaff.fxml");
-        Parent root = FXMLLoader.load(resource);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+       loadScene("view/ViewStaff.fxml",actionEvent);
     }
 
     public void search(ActionEvent actionEvent)   {
@@ -111,24 +56,10 @@ public class AdminDashboardController {
     }
 
     public void removeStaff(ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("view/RemoveStaff.fxml");
-        Parent root = FXMLLoader.load(resource);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        loadScene("view/RemoveStaff.fxml",actionEvent);
     }
 
     public void removeAdmin(ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("view/RemoveAdmin.fxml");
-        Parent root = FXMLLoader.load(resource);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+      loadScene("view/RemoveAdmin.fxml",actionEvent);
     }
 }

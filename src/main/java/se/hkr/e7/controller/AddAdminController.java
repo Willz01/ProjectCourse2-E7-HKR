@@ -2,25 +2,19 @@ package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Location;
 
 import java.io.IOException;
-import java.net.URL;
 
 import static se.hkr.e7.model.Location.*;
 
-public class AddAdminController {
+public class AddAdminController extends Controller {
     @FXML
     public ChoiceBox<String> choiceBox;
     public TextField ssn;
@@ -53,14 +47,7 @@ public class AddAdminController {
     }
 
     public void Back(ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("view/AdminDashboard.fxml");
-        Parent root = FXMLLoader.load(resource);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+      loadScene("view/AdminDashboard.fxml",actionEvent);
     }
 
     boolean isDouble(String str) {

@@ -1,21 +1,14 @@
 package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Patient;
-import se.hkr.e7.model.Singleton;
 
 import java.io.IOException;
-import java.net.URL;
 
-public class PatientLoginController {
+public class PatientLoginController extends Controller {
 
     public TextField ssnText;
     public TextField passwordText;
@@ -23,15 +16,7 @@ public class PatientLoginController {
     public Label passwordCheck;
 
     public void Back(ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("view/Welcome.fxml");
-        assert resource != null;
-        Parent root = FXMLLoader.load(resource);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+       loadScene("view/Welcome.fxml",actionEvent);
     }
 
     public void Exit() {
@@ -50,15 +35,7 @@ public class PatientLoginController {
                 Patient patient = DatabaseHandler.load(Patient.class, ssnText.getText());
 
                 if (patient.getSsn() != null && patient.checkPassword(passwordText.getText())) {
-                    Singleton.getInstance().setSsn(ssnText.getText());
-                    Node node = (Node) actionEvent.getSource();
-                    Scene currScene = node.getScene();
-                    Stage stage = (Stage) currScene.getWindow();
-                    URL resource = getClass().getClassLoader().getResource("view/PatientDashboard.fxml");
-                    Parent root = FXMLLoader.load(resource);
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
+                    loadScene("view/PatientDashboard.fxml",actionEvent);
                 }
 
                 if (patient.getSsn() != null && !patient.checkPassword(passwordText.getText())) {
