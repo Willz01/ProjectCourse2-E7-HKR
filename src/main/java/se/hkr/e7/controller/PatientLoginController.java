@@ -8,9 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import se.hkr.e7.DatabaseHandler;
-import se.hkr.e7.Patient;
-import se.hkr.e7.Singleton;
+import se.hkr.e7.model.DatabaseHandler;
+import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Singleton;
 
 import java.io.IOException;
 import java.net.URL;

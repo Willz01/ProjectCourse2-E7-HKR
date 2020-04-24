@@ -8,13 +8,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import se.hkr.e7.Employee;
-import se.hkr.e7.Location;
+import se.hkr.e7.model.Employee;
+import se.hkr.e7.model.Location;
 
 import java.io.IOException;
 import java.net.URL;
 
-import static se.hkr.e7.DatabaseHandler.save;
+import static se.hkr.e7.model.DatabaseHandler.save;
 
 public class AddAdminController {
     @FXML

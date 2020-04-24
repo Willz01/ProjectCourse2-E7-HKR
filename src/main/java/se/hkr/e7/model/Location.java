@@ -1,4 +1,4 @@
-package se.hkr.e7;
+package se.hkr.e7.model;
 
 public enum Location {
     BLEKINGE, DALARNA, GOTLAND, GAVLEBORG, HALLAND, JAMTLAND,

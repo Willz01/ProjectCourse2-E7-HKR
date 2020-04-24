@@ -1,4 +1,4 @@
-package se.hkr.e7;
+package se.hkr.e7.model;
 
 import org.mindrot.jbcrypt.BCrypt;
 import javax.persistence.*;

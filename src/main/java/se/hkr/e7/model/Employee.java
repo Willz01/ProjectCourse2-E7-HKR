@@ -1,4 +1,4 @@
-package se.hkr.e7;
+package se.hkr.e7.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
