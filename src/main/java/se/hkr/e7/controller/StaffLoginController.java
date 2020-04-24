@@ -8,9 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import se.hkr.e7.Database;
-import se.hkr.e7.Employee;
-import se.hkr.e7.Singleton;
+import se.hkr.e7.model.DatabaseHandler;
+import se.hkr.e7.model.Employee;
+import se.hkr.e7.model.Singleton;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,7 +21,7 @@ public class StaffLoginController {
     public Label passwordCheck;
     public Label error1;
 
-    public void StaffLogin(ActionEvent actionEvent) throws IOException {
+    public void StaffLogin(ActionEvent actionEvent) {
 
         passwordCheck.setText(null);
         error1.setText(null);
@@ -29,7 +29,7 @@ public class StaffLoginController {
             error1.setText("fields can not be empty ");
         } else {
             try {
-                Employee employee = Database.load(Employee.class, ssnText.getText());
+                Employee employee = DatabaseHandler.load(Employee.class, ssnText.getText());
                 Singleton.getInstance().setEmployee(employee);
 
 
@@ -37,7 +37,8 @@ public class StaffLoginController {
                     Node node = (Node) actionEvent.getSource();
                     Scene currScene = node.getScene();
                     Stage stage = (Stage) currScene.getWindow();
-                    URL resource = getClass().getClassLoader().getResource("AdminDashboard.fxml");
+                    URL resource = getClass().getClassLoader().getResource("view/AdminDashboard.fxml");
+                    assert resource != null;
                     Parent root = FXMLLoader.load(resource);
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
@@ -53,7 +54,8 @@ public class StaffLoginController {
                     Node node = (Node) actionEvent.getSource();
                     Scene currScene = node.getScene();
                     Stage stage = (Stage) currScene.getWindow();
-                    URL resource = getClass().getClassLoader().getResource("DoctorDashboard.fxml");
+                    URL resource = getClass().getClassLoader().getResource("view/DoctorDashboard.fxml");
+                    assert resource != null;
                     Parent root = FXMLLoader.load(resource);
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
@@ -64,7 +66,8 @@ public class StaffLoginController {
                     Node node = (Node) actionEvent.getSource();
                     Scene currScene = node.getScene();
                     Stage stage = (Stage) currScene.getWindow();
-                    URL resource = getClass().getClassLoader().getResource("AnalyserDashboard.fxml");
+                    URL resource = getClass().getClassLoader().getResource("view/AnalyserDashboard.fxml");
+                    assert resource != null;
                     Parent root = FXMLLoader.load(resource);
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
@@ -81,14 +84,17 @@ public class StaffLoginController {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("Welcome.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/Welcome.fxml");
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void Exit(ActionEvent actionEvent) {
+    public void Exit() {
         System.exit(0);
     }
+
+
+
 }

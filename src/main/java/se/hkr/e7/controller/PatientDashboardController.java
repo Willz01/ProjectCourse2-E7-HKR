@@ -9,10 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import se.hkr.e7.Database;
-import se.hkr.e7.Patient;
-import se.hkr.e7.Result;
-import se.hkr.e7.Singleton;
+import se.hkr.e7.model.DatabaseHandler;
+import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Result;
+import se.hkr.e7.model.Singleton;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,21 +28,21 @@ public class PatientDashboardController implements Initializable {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("patientLogin.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/patientLogin.fxml");
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void Exit(ActionEvent actionEvent) {
+    public void Exit() {
         System.exit(0);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            Patient patient = Database.load(Patient.class, Singleton.getInstance().getSsn());
+            Patient patient = DatabaseHandler.load(Patient.class, Singleton.getInstance().getSsn());
             StringBuilder stringBuilder = new StringBuilder();
             for (Result testResult : patient.getTestResults()) {
                 stringBuilder.append(testResult.getDate())

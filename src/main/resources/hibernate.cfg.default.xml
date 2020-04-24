@@ -12,9 +12,9 @@
         <property name="connection.password">password</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <mapping class="se.hkr.e7.Person"/>
-        <mapping class="se.hkr.e7.Employee"/>
-        <mapping class="se.hkr.e7.Patient"/>
-        <mapping class="se.hkr.e7.Result"/>
+        <mapping class="se.hkr.e7.model.Person"/>
+        <mapping class="se.hkr.e7.model.Employee"/>
+        <mapping class="se.hkr.e7.model.Patient"/>
+        <mapping class="se.hkr.e7.model.Result"/>
     </session-factory>
 </hibernate-configuration>

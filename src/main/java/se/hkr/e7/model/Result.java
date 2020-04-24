@@ -1,4 +1,4 @@
-package se.hkr.e7;
+package se.hkr.e7.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,10 +23,10 @@ public class Result implements Serializable {
         this.status = status;
 
         this.patient.addTestResult(this);
-        Database.save(this.patient);
+        DatabaseHandler.save(this.patient);
 
         this.examiner.addPatientResult(this);
-        Database.save(this.examiner);
+        DatabaseHandler.save(this.examiner);
     }
 
     @Id

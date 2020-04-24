@@ -1,4 +1,4 @@
-package se.hkr.e7;
+package se.hkr.e7.model;
 
 public class Singleton {
 

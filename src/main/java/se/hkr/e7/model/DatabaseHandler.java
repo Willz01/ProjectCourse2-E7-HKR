@@ -1,4 +1,4 @@
-package se.hkr.e7;
+package se.hkr.e7.model;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 import java.io.Serializable;
 
-public class Database {
+public class DatabaseHandler {
 
     private static final SessionFactory sessionFactory;
     private static final Session session;
@@ -16,7 +16,7 @@ public class Database {
         session = sessionFactory.openSession();
     }
 
-    private Database() {
+    private DatabaseHandler() {
     }
 
     public static <T> T load(final Class<T> tClass, Serializable key) {
@@ -40,7 +40,7 @@ public class Database {
                 "056356556", "Kristan Street", Location.DALARNA, Employee.Role.ANALYSER, 111.12));
 
         Employee employee = new Employee("198002249876", "98745794", "Petson",
-                "petson@example.com", "056356556", "Kristan Street", Location.SKÅNE, Employee.Role.DOCTOR,
+                "petson@example.com", "056356556", "Kristan Street", Location.SKANE, Employee.Role.DOCTOR,
                 98.1);
         save(employee);
 

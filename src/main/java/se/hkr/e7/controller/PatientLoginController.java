@@ -8,9 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import se.hkr.e7.Database;
-import se.hkr.e7.Patient;
-import se.hkr.e7.Singleton;
+import se.hkr.e7.model.DatabaseHandler;
+import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Singleton;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,19 +26,20 @@ public class PatientLoginController {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("Welcome.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/Welcome.fxml");
+        assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void Exit(ActionEvent actionEvent) {
+    public void Exit() {
         System.exit(0);
     }
 
 
-    public void patientLogin(ActionEvent actionEvent) throws IOException {
+    public void patientLogin(ActionEvent actionEvent) {
         passwordCheck.setText(null);
         error1.setText(null);
 
@@ -46,15 +47,14 @@ public class PatientLoginController {
             error1.setText("fields can not be empty ");
         } else {
             try {
-                Patient patient = Database.load(Patient.class, ssnText.getText());
+                Patient patient = DatabaseHandler.load(Patient.class, ssnText.getText());
 
                 if (patient.getSsn() != null && patient.checkPassword(passwordText.getText())) {
                     Singleton.getInstance().setSsn(ssnText.getText());
                     Node node = (Node) actionEvent.getSource();
                     Scene currScene = node.getScene();
                     Stage stage = (Stage) currScene.getWindow();
-                    URL resource = getClass().getClassLoader().getResource("PatientDashboard.fxml");
-                    assert resource != null;
+                    URL resource = getClass().getClassLoader().getResource("view/PatientDashboard.fxml");
                     Parent root = FXMLLoader.load(resource);
                     Scene scene = new Scene(root);
                     stage.setScene(scene);

@@ -1,7 +1,6 @@
-package se.hkr.e7;
+package se.hkr.e7.model;
 
 import org.mindrot.jbcrypt.BCrypt;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -97,4 +96,6 @@ public abstract class Person implements Serializable {
                 ", address='" + address + '\'' +
                 '}';
     }
+
+
 }
