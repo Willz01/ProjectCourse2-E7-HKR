@@ -21,7 +21,7 @@ public class StaffLoginController {
     public Label passwordCheck;
     public Label error1;
 
-    public void StaffLogin(ActionEvent actionEvent) throws IOException {
+    public void StaffLogin(ActionEvent actionEvent) {
 
         passwordCheck.setText(null);
         error1.setText(null);
@@ -38,6 +38,7 @@ public class StaffLoginController {
                     Scene currScene = node.getScene();
                     Stage stage = (Stage) currScene.getWindow();
                     URL resource = getClass().getClassLoader().getResource("AdminDashboard.fxml");
+                    assert resource != null;
                     Parent root = FXMLLoader.load(resource);
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
@@ -54,6 +55,7 @@ public class StaffLoginController {
                     Scene currScene = node.getScene();
                     Stage stage = (Stage) currScene.getWindow();
                     URL resource = getClass().getClassLoader().getResource("DoctorDashboard.fxml");
+                    assert resource != null;
                     Parent root = FXMLLoader.load(resource);
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
@@ -65,6 +67,7 @@ public class StaffLoginController {
                     Scene currScene = node.getScene();
                     Stage stage = (Stage) currScene.getWindow();
                     URL resource = getClass().getClassLoader().getResource("AnalyserDashboard.fxml");
+                    assert resource != null;
                     Parent root = FXMLLoader.load(resource);
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
@@ -82,13 +85,14 @@ public class StaffLoginController {
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
         URL resource = getClass().getClassLoader().getResource("Welcome.fxml");
+        assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void Exit(ActionEvent actionEvent) {
+    public void Exit() {
         System.exit(0);
     }
 

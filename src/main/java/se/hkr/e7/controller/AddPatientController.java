@@ -11,15 +11,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
-public class AnalyserDashboardController {
+public class AddPatientController {
+
     public Button Back;
-    public Button Exit;
 
     public void Back(ActionEvent actionEvent) throws IOException {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("staffLogin.fxml");
+        URL resource = getClass().getClassLoader().getResource("AdminDashboard.fxml");
         assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
@@ -27,7 +27,9 @@ public class AnalyserDashboardController {
         stage.show();
     }
 
-    public void Exit() {
+
+
+    public void Exit(ActionEvent actionEvent) {
         System.exit(0);
     }
 }

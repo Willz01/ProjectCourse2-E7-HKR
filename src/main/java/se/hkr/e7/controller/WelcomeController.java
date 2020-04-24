@@ -17,6 +17,7 @@ public class WelcomeController {
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
         URL resource = getClass().getClassLoader().getResource("StaffLogin.fxml");
+        assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -28,13 +29,14 @@ public class WelcomeController {
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
         URL resource = getClass().getClassLoader().getResource("patientLogin.fxml");
+        assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void Exit(ActionEvent actionEvent) {
+    public void Exit() {
         System.exit(0);
     }
 }
