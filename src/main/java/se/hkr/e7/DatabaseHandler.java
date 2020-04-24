@@ -40,7 +40,7 @@ public class DatabaseHandler {
                 "056356556", "Kristan Street", Location.DALARNA, Employee.Role.ANALYSER, 111.12));
 
         Employee employee = new Employee("198002249876", "98745794", "Petson",
-                "petson@example.com", "056356556", "Kristan Street", Location.SKÅNE, Employee.Role.DOCTOR,
+                "petson@example.com", "056356556", "Kristan Street", Location.SKANE, Employee.Role.DOCTOR,
                 98.1);
         save(employee);
 

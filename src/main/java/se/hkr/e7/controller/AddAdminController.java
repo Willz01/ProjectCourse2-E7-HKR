@@ -8,17 +8,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import se.hkr.e7.Employee;
+import se.hkr.e7.Location;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
+
+import static se.hkr.e7.DatabaseHandler.save;
 
 public class AddAdminController {
     @FXML
-    public ChoiceBox<String> choiceBox;
+    public ChoiceBox<Location> choiceBox;
     public TextField ssn;
     public TextField name;
     public TextField address;
@@ -27,21 +30,27 @@ public class AddAdminController {
     public TextField phone;
     public TextField salary;
     public Button Add;
-
-
-    ObservableList<String> list = FXCollections
-            .observableArrayList("BLEKINGE", "DALARNA", "GOTLAND", "GAVLEBORG", "HALLAND", "JAMTLAND",
-                    "JONKOPING", "KALMAR", "KRONOBERG", "NORRBOTTEN", "SKANE", "STOCKHOLM", "SODERMANLAND",
-                    "UPPSALA", "VARMLAND", "VASTERBOTTEN", "VÄSTERNORRLAND", "VÄSTMANLAND", "VASTRA_GOTALAND",
-                    "OREBRO", "OSTERGÖTLAND");
+    public Label ssnLabel;
+    public Label nameLabel;
+    public Label passwordLabel;
+    public Label addressLabel;
+    public Label emailLabel;
+    public Label phoneLabel;
+    public Label SalaryLabel;
+    public Label locationLabel;
+    public Label saveLabel;
 
 
     @FXML
     public void initialize() {
-        choiceBox.setValue("location");
+        ssnLabel.setText("YYYYMMDDXXXX");
 
-        choiceBox.getItems().addAll(list);
-        System.out.println(list);
+        ObservableList<Location> languages //
+                = FXCollections.observableArrayList(Location.BLEKINGE, Location.DALARNA, Location.GOTLAND, Location.GAVLEBORG, Location.HALLAND, Location.JAMTLAND,
+                Location.JONKOPING, Location.KALMAR, Location.KRONOBERG, Location.NORRBOTTEN, Location.SKANE, Location.STOCKHOLM, Location.SODERMANLAND,
+                Location.UPPSALA, Location.VARMLAND, Location.VASTERBOTTEN, Location.VASTERNORRLAND, Location.VASTMANLAND, Location.VASTRAGOTALAND,
+                Location.OREBRO, Location.OSTERGOTLAND, Location.Non);
+
 
     }
 
@@ -57,12 +66,66 @@ public class AddAdminController {
         stage.show();
     }
 
-
+    boolean isDouble(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 
     public void Exit() {
         System.exit(0);
     }
 
-    public void Add(ActionEvent actionEvent) {
+    public void Add() {
+
+        nameLabel.setText("");
+        ssnLabel.setText("");
+        passwordLabel.setText("");
+        emailLabel.setText("");
+        SalaryLabel.setText("");
+        phoneLabel.setText("");
+        addressLabel.setText("");
+        saveLabel.setText("");
+
+        if (ssn.getText().matches("^(19|20)([0-9]{2})([01-12]{2})([0-31]{2})([a-zA-Z0-9][0-9]{3})$")) {
+            ssnLabel.setText("");
+        }
+        if (!ssn.getText().matches("^(19|20)([0-9]{2})([01-12]{2})([0-31]{2})([a-zA-Z0-9][0-9]{3})$")) {
+            ssnLabel.setText("enter YYYYMMDDXXXX");
+        }
+        if (name.getText().equals("")) {
+            nameLabel.setText("can't be empty");
+        }
+        if (address.getText().equals("")) {
+            addressLabel.setText(" can't be empty");
+        }
+        if (password.getText().equals("")) {
+            passwordLabel.setText(" can't be empty");
+        }
+        if (email.getText().equals("")) {
+            emailLabel.setText(" can't be empty");
+        }
+        if (phone.getText().equals("")) {
+            passwordLabel.setText(" can't be empty");
+            if (!isDouble(salary.getText())) {
+                salary.setText(" salary must be number");
+            }
+        }
+
+
+        try {
+
+            save(new Employee(ssn.getText(), password.getText(), name.getText(), email.getText(),
+                    phone.getText(), address.getText(), Location.STOCKHOLM, Employee.Role.ADMIN, Double.parseDouble(salary.getText())));
+       saveLabel.setText("saved");
+        } catch (Exception exception) {
+            saveLabel.setText("did't save ");
+
+        }
     }
 }
+
+
