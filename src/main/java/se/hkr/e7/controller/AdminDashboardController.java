@@ -113,7 +113,7 @@ public class AdminDashboardController {
         stage.show();
     }
 
-    public void search(ActionEvent actionEvent) throws IOException {
+    public void search(ActionEvent actionEvent)   {
         System.out.println("not implemented yet");
     }
 
