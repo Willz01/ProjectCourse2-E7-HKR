@@ -1,7 +1,5 @@
 package se.hkr.e7.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,13 +13,12 @@ import se.hkr.e7.Location;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
 
 import static se.hkr.e7.DatabaseHandler.save;
 
 public class AddAdminController {
     @FXML
-    public ChoiceBox<Location> choiceBox;
+    public ChoiceBox<String> choiceBox;
     public TextField ssn;
     public TextField name;
     public TextField address;
@@ -41,17 +38,39 @@ public class AddAdminController {
     public Label saveLabel;
 
 
+    Location BLEKINGE = Location.BLEKINGE;
+    Location DALARNA = Location.DALARNA;
+    Location GOTLAND = Location.GOTLAND;
+    Location GAVLEBORG = Location.GAVLEBORG;
+    Location HALLAND = Location.HALLAND;
+    Location JAMTLAND = Location.JAMTLAND;
+    Location JONKOPING = Location.JONKOPING;
+    Location KALMAR = Location.KALMAR;
+    Location KRONOBERG = Location.KRONOBERG;
+    Location NORRBOTTEN = Location.NORRBOTTEN;
+    Location SKANE = Location.SKANE;
+    Location STOCKHOLM = Location.STOCKHOLM;
+    Location SODERMANLAND = Location.SODERMANLAND;
+    Location UPPSALA = Location.UPPSALA;
+    Location VARMLAND = Location.VARMLAND;
+    Location VASTERBOTTEN = Location.VASTERBOTTEN;
+    Location VASTERNORRLAND = Location.VASTERNORRLAND;
+    Location VASTMANLAND = Location.VASTMANLAND;
+    Location VASTRAGOTALAND = Location.VASTRAGOTALAND;
+    Location OREBRO = Location.OREBRO;
+    Location OSTERGOTLAND = Location.OSTERGOTLAND;
+
     @FXML
     public void initialize() {
-        ssnLabel.setText("YYYYMMDDXXXX");
-
-        ObservableList<Location> languages //
-                = FXCollections.observableArrayList(Location.BLEKINGE, Location.DALARNA, Location.GOTLAND, Location.GAVLEBORG, Location.HALLAND, Location.JAMTLAND,
-                Location.JONKOPING, Location.KALMAR, Location.KRONOBERG, Location.NORRBOTTEN, Location.SKANE, Location.STOCKHOLM, Location.SODERMANLAND,
-                Location.UPPSALA, Location.VARMLAND, Location.VASTERBOTTEN, Location.VASTERNORRLAND, Location.VASTMANLAND, Location.VASTRAGOTALAND,
-                Location.OREBRO, Location.OSTERGOTLAND, Location.Non);
+        ssnLabel.setText("YYMMDDXXXX");
 
 
+        choiceBox.getItems().add("Location");
+        choiceBox.getItems().addAll(String.valueOf(BLEKINGE), String.valueOf(DALARNA), String.valueOf(GOTLAND), String.valueOf(GAVLEBORG), String.valueOf(HALLAND), String.valueOf(JAMTLAND),
+                String.valueOf(JONKOPING), String.valueOf(KALMAR), String.valueOf(KRONOBERG), String.valueOf(NORRBOTTEN), String.valueOf(SKANE), String.valueOf(STOCKHOLM), String.valueOf(SODERMANLAND),
+                String.valueOf(UPPSALA), String.valueOf(VARMLAND), String.valueOf(VASTERBOTTEN), String.valueOf(VASTERNORRLAND), String.valueOf(VASTMANLAND), String.valueOf(VASTRAGOTALAND),
+                String.valueOf(OREBRO), String.valueOf(OSTERGOTLAND));
+        choiceBox.setValue("Location");
     }
 
     public void Back(ActionEvent actionEvent) throws IOException {
@@ -90,11 +109,11 @@ public class AddAdminController {
         addressLabel.setText("");
         saveLabel.setText("");
 
-        if (ssn.getText().matches("^(19|20)([0-9]{2})([01-12]{2})([0-31]{2})([a-zA-Z0-9][0-9]{3})$")) {
+        if (ssn.getText().matches("^([0-9]{2})([01-12]{2})([0-31]{2})([a-zA-Z0-9][0-9]{3})$")) {
             ssnLabel.setText("");
         }
-        if (!ssn.getText().matches("^(19|20)([0-9]{2})([01-12]{2})([0-31]{2})([a-zA-Z0-9][0-9]{3})$")) {
-            ssnLabel.setText("enter YYYYMMDDXXXX");
+        if (!ssn.getText().matches("^([0-9]{2})([01-12]{2})([0-31]{2})([a-zA-Z0-9][0-9]{3})$")) {
+            ssnLabel.setText("enter YYMMDDXXXX");
         }
         if (name.getText().equals("")) {
             nameLabel.setText("can't be empty");
@@ -115,12 +134,11 @@ public class AddAdminController {
             }
         }
 
-
         try {
 
             save(new Employee(ssn.getText(), password.getText(), name.getText(), email.getText(),
-                    phone.getText(), address.getText(), Location.STOCKHOLM, Employee.Role.ADMIN, Double.parseDouble(salary.getText())));
-       saveLabel.setText("saved");
+                    phone.getText(), address.getText(), Location.valueOf(choiceBox.getValue()), Employee.Role.ADMIN, Double.parseDouble(salary.getText())));
+            saveLabel.setText("saved");
         } catch (Exception exception) {
             saveLabel.setText("did't save ");
 
