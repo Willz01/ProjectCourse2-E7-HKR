@@ -26,7 +26,7 @@ public class PatientLoginController {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("Welcome.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/Welcome.fxml");
         assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
@@ -54,7 +54,7 @@ public class PatientLoginController {
                     Node node = (Node) actionEvent.getSource();
                     Scene currScene = node.getScene();
                     Stage stage = (Stage) currScene.getWindow();
-                    URL resource = getClass().getClassLoader().getResource("PatientDashboard.fxml");
+                    URL resource = getClass().getClassLoader().getResource("view/PatientDashboard.fxml");
                     assert resource != null;
                     Parent root = FXMLLoader.load(resource);
                     Scene scene = new Scene(root);

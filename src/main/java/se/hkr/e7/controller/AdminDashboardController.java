@@ -29,7 +29,7 @@ public class AdminDashboardController {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("staffLogin.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/staffLogin.fxml");
         assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
@@ -45,7 +45,7 @@ public class AdminDashboardController {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("AddAdmin.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/AddAdmin.fxml");
         assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
@@ -57,7 +57,7 @@ public class AdminDashboardController {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("AddPatient.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/AddPatient.fxml");
         assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
@@ -68,7 +68,7 @@ public class AdminDashboardController {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("AddStaff.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/AddStaff.fxml");
         assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
@@ -81,7 +81,7 @@ public class AdminDashboardController {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("ViewResults.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/ViewResults.fxml");
         assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
@@ -93,7 +93,7 @@ public class AdminDashboardController {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("ViewPatients.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/ViewPatients.fxml");
         assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
@@ -105,7 +105,7 @@ public class AdminDashboardController {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("ViewStaff.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/ViewStaff.fxml");
         assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
@@ -121,7 +121,7 @@ public class AdminDashboardController {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("RemoveStaff.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/RemoveStaff.fxml");
         assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
@@ -133,7 +133,7 @@ public class AdminDashboardController {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("RemoveAdmin.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/RemoveAdmin.fxml");
         assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);

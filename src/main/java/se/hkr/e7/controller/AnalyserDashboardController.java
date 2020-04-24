@@ -19,7 +19,7 @@ public class AnalyserDashboardController {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("staffLogin.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/staffLogin.fxml");
         assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);

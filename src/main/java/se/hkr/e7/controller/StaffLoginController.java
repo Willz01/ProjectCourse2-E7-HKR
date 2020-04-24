@@ -37,7 +37,7 @@ public class StaffLoginController {
                     Node node = (Node) actionEvent.getSource();
                     Scene currScene = node.getScene();
                     Stage stage = (Stage) currScene.getWindow();
-                    URL resource = getClass().getClassLoader().getResource("AdminDashboard.fxml");
+                    URL resource = getClass().getClassLoader().getResource("view/AdminDashboard.fxml");
                     assert resource != null;
                     Parent root = FXMLLoader.load(resource);
                     Scene scene = new Scene(root);
@@ -54,7 +54,7 @@ public class StaffLoginController {
                     Node node = (Node) actionEvent.getSource();
                     Scene currScene = node.getScene();
                     Stage stage = (Stage) currScene.getWindow();
-                    URL resource = getClass().getClassLoader().getResource("DoctorDashboard.fxml");
+                    URL resource = getClass().getClassLoader().getResource("view/DoctorDashboard.fxml");
                     assert resource != null;
                     Parent root = FXMLLoader.load(resource);
                     Scene scene = new Scene(root);
@@ -66,7 +66,7 @@ public class StaffLoginController {
                     Node node = (Node) actionEvent.getSource();
                     Scene currScene = node.getScene();
                     Stage stage = (Stage) currScene.getWindow();
-                    URL resource = getClass().getClassLoader().getResource("AnalyserDashboard.fxml");
+                    URL resource = getClass().getClassLoader().getResource("view/AnalyserDashboard.fxml");
                     assert resource != null;
                     Parent root = FXMLLoader.load(resource);
                     Scene scene = new Scene(root);
@@ -84,7 +84,7 @@ public class StaffLoginController {
         Node node = (Node) actionEvent.getSource();
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("Welcome.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/Welcome.fxml");
         assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
