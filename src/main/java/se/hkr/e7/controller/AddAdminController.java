@@ -99,7 +99,7 @@ public class AddAdminController {
         }
         if (phone.getText().equals("")) {
             passwordLabel.setText(" can't be empty");
-            if ((salary.getText().matches("^[0-9]+\\.?[0-9]*$"))) {
+            if (!(salary.getText().matches("^[0-9]+\\.?[0-9]*$"))) {
                 salary.setText(" salary must be number");
             }
         }
