@@ -78,7 +78,6 @@ public class AddAdminController {
         Scene currScene = node.getScene();
         Stage stage = (Stage) currScene.getWindow();
         URL resource = getClass().getClassLoader().getResource("view/AdminDashboard.fxml");
-        assert resource != null;
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         stage.setScene(scene);
