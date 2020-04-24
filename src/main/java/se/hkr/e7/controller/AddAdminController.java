@@ -63,14 +63,7 @@ public class AddAdminController {
         stage.show();
     }
 
-    boolean isDouble(String str) {
-        try {
-            Double.parseDouble(str);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
+
 
     public void Exit() {
         System.exit(0);
@@ -106,7 +99,7 @@ public class AddAdminController {
         }
         if (phone.getText().equals("")) {
             passwordLabel.setText(" can't be empty");
-            if (!isDouble(salary.getText())) {
+            if ((salary.getText().matches("^[0-9]+\\.?[0-9]*$"))) {
                 salary.setText(" salary must be number");
             }
         }
