@@ -4,7 +4,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import javax.persistence.Entity;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import static se.hkr.e7.model.DatabaseHandler.loadAllData;
 
 public class DatabaseHandler {
 
@@ -59,4 +66,34 @@ public class DatabaseHandler {
         session.saveOrUpdate(o);
         session.getTransaction().commit();
     }
+
+    public static void Delete(Object o) {
+        session.beginTransaction();
+        session.delete(o);
+        session.getTransaction().commit();
+    }
+
+    /*this method will get all object in table <the command to run it is :
+
+    List<Employee> users = loadAllData(Employee.class, DatabaseHandler.getSession());
+    System.out.println(users);
+
+    */
+    public static <T> List<T> loadAllData(Class<T> type, Session session) {
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> criteria = builder.createQuery(type);
+        criteria.from(type);
+        List<T> data = session.createQuery(criteria).getResultList();
+        return data;
+    }
+
+
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public static Session getSession() {
+        return session;
+    }
 }
+
