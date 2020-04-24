@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 
 import static se.hkr.e7.model.DatabaseHandler.save;
+import static se.hkr.e7.model.Location.*;
 
 public class AddAdminController {
     @FXML
@@ -37,28 +38,6 @@ public class AddAdminController {
     public Label locationLabel;
     public Label saveLabel;
 
-
-    Location BLEKINGE = Location.BLEKINGE;
-    Location DALARNA = Location.DALARNA;
-    Location GOTLAND = Location.GOTLAND;
-    Location GAVLEBORG = Location.GAVLEBORG;
-    Location HALLAND = Location.HALLAND;
-    Location JAMTLAND = Location.JAMTLAND;
-    Location JONKOPING = Location.JONKOPING;
-    Location KALMAR = Location.KALMAR;
-    Location KRONOBERG = Location.KRONOBERG;
-    Location NORRBOTTEN = Location.NORRBOTTEN;
-    Location SKANE = Location.SKANE;
-    Location STOCKHOLM = Location.STOCKHOLM;
-    Location SODERMANLAND = Location.SODERMANLAND;
-    Location UPPSALA = Location.UPPSALA;
-    Location VARMLAND = Location.VARMLAND;
-    Location VASTERBOTTEN = Location.VASTERBOTTEN;
-    Location VASTERNORRLAND = Location.VASTERNORRLAND;
-    Location VASTMANLAND = Location.VASTMANLAND;
-    Location VASTRAGOTALAND = Location.VASTRAGOTALAND;
-    Location OREBRO = Location.OREBRO;
-    Location OSTERGOTLAND = Location.OSTERGOTLAND;
 
     @FXML
     public void initialize() {
@@ -98,7 +77,6 @@ public class AddAdminController {
     }
 
     public void Add() {
-
         nameLabel.setText("");
         ssnLabel.setText("");
         passwordLabel.setText("");
