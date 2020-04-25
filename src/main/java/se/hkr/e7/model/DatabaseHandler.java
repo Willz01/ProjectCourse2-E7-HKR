@@ -2,7 +2,11 @@ package se.hkr.e7.model;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.service.ServiceRegistry;
 
 import java.io.Serializable;
 
@@ -12,7 +16,18 @@ public class DatabaseHandler {
     private static final Session session;
 
     static {
-        sessionFactory = new Configuration().configure().buildSessionFactory();
+        ServiceRegistry standardRegistry = new StandardServiceRegistryBuilder()
+                .configure("./hibernate.cfg.xml")
+                .build();
+        Metadata metadata = new MetadataSources(standardRegistry)
+                .addAnnotatedClass(Employee.class)
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(Person.class)
+                .addAnnotatedClass(Result.class)
+                .getMetadataBuilder()
+                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
+                .build();
+        sessionFactory = metadata.buildSessionFactory();
         session = sessionFactory.openSession();
     }
 
