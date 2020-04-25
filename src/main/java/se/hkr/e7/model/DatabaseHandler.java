@@ -9,8 +9,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
 import java.util.List;
 
-import static se.hkr.e7.model.DatabaseHandler.loadAllData;
-
 public class DatabaseHandler {
 
     private static final SessionFactory sessionFactory;
