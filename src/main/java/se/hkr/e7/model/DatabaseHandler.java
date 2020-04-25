@@ -44,9 +44,9 @@ public class DatabaseHandler {
         return t;
     }
 
-    public static void save(Object o) {
+    public static void save(Object object) {
         session.beginTransaction();
-        session.saveOrUpdate(o);
+        session.saveOrUpdate(object);
         session.getTransaction().commit();
     }
 
