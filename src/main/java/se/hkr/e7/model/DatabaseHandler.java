@@ -4,14 +4,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import javax.persistence.Entity;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-
-import static se.hkr.e7.model.DatabaseHandler.loadAllData;
 
 public class DatabaseHandler {
 
@@ -36,7 +32,7 @@ public class DatabaseHandler {
     /**
      * Insert some default data into the system.
      */
-    public static void Reset() {
+    public static void reset() {
         save(new Employee("199701010000", "123456", "Wills", "wills@example.com",
                 "073656656", "Home", Location.STOCKHOLM, Employee.Role.ADMIN, 123.12));
 
@@ -67,33 +63,16 @@ public class DatabaseHandler {
         session.getTransaction().commit();
     }
 
-    public static void Delete(Object o) {
+    public static void delete(Object o) {
         session.beginTransaction();
         session.delete(o);
         session.getTransaction().commit();
     }
 
-    /*this method will get all object in table <the command to run it is :
-
-    List<Employee> users = loadAllData(Employee.class, DatabaseHandler.getSession());
-    System.out.println(users);
-
-    */
-    public static <T> List<T> loadAllData(Class<T> type, Session session) {
+    public static <T> List<T> loadAll(Class<T> tClass) {
         CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<T> criteria = builder.createQuery(type);
-        criteria.from(type);
-        List<T> data = session.createQuery(criteria).getResultList();
-        return data;
-    }
-
-
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    public static Session getSession() {
-        return session;
+        CriteriaQuery<T> criteria = builder.createQuery(tClass);
+        criteria.from(tClass);
+        return session.createQuery(criteria).getResultList();
     }
 }
-
