@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.AddAdminController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.AddAdminController">
    <TextField fx:id="ssn" layoutX="24.0" layoutY="69.0" prefHeight="25.0" prefWidth="175.0" promptText="SSN" />
    <TextField fx:id="name" layoutX="24.0" layoutY="110.0" prefHeight="25.0" prefWidth="175.0" promptText="Name" />
    <TextField fx:id="password" layoutX="24.0" layoutY="160.0" prefHeight="25.0" prefWidth="175.0" promptText="password" />
@@ -27,6 +25,10 @@
    <Label fx:id="SalaryLabel" layoutX="251.0" layoutY="202.0" prefHeight="17.0" prefWidth="175.0" />
    <Label fx:id="locationLabel" layoutX="142.0" layoutY="296.0" prefHeight="17.0" prefWidth="175.0" />
    <Label fx:id="saveLabel" layoutX="171.0" layoutY="365.0" prefHeight="17.0" prefWidth="175.0" />
+   <Label layoutX="171.0" layoutY="25.0" prefHeight="25.0" prefWidth="141.0" text="Add admin">
+      <font>
+         <Font size="18.0" />
+      </font></Label>
 
 
 </AnchorPane>
