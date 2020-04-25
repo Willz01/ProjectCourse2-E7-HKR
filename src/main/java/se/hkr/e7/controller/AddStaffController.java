@@ -32,7 +32,7 @@ public class AddStaffController extends Controller {
     public Label addressLabel;
     public Label emailLabel;
     public Label phoneLabel;
-    public Label SalaryLabel;
+    public Label salaryLabel;
     public Label locationLabel;
     public Label saveLabel;
 
@@ -61,7 +61,7 @@ public class AddStaffController extends Controller {
         ssnLabel.setText("");
         passwordLabel.setText("");
         emailLabel.setText("");
-        SalaryLabel.setText("");
+        salaryLabel.setText("");
         phoneLabel.setText("");
         addressLabel.setText("");
         saveLabel.setText("");
@@ -86,7 +86,7 @@ public class AddStaffController extends Controller {
         }
         if (phone.getText().equals("")) {
             phoneLabel.setText(" can't be empty");
-                SalaryLabel.setText(" salary must be number");
+                salaryLabel.setText(" salary must be number");
         }
 
         try {

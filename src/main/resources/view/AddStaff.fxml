@@ -22,7 +22,7 @@
     <Label fx:id="addressLabel" layoutX="24.0" layoutY="236.0" prefHeight="17.0" prefWidth="175.0" />
     <Label fx:id="emailLabel" layoutX="251.0" layoutY="94.0" prefHeight="17.0" prefWidth="175.0" />
     <Label fx:id="phoneLabel" layoutX="251.0" layoutY="135.0" prefHeight="17.0" prefWidth="175.0" />
-    <Label fx:id="SalaryLabel" layoutX="251.0" layoutY="185.0" prefHeight="17.0" prefWidth="175.0" />
+    <Label fx:id="salaryLabel" layoutX="251.0" layoutY="185.0" prefHeight="17.0" prefWidth="175.0" />
     <Label fx:id="locationLabel" layoutX="142.0" layoutY="296.0" prefHeight="17.0" prefWidth="175.0" />
     <Label fx:id="saveLabel" layoutX="171.0" layoutY="365.0" prefHeight="17.0" prefWidth="175.0" />
    <Label layoutX="182.0" layoutY="24.0" prefHeight="25.0" prefWidth="182.0" text="Add staff">
