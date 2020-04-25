@@ -75,14 +75,14 @@ public class DatabaseHandler {
 
     /*this method will get all object in table <the command to run it is :
 
-    List<Employee> users = loadAllData(Employee.class, DatabaseHandler.getSession());
-    System.out.println(users);
+        List<Employee> users = DatabaseHandler.loadAllData(Employee.class);
+        System.out.println(users);
 
     */
-    public static <T> List<T> loadAllData(Class<T> type, Session session) {
+    public static <T> List<T> loadAllData(Class<T> tClass) {
         CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<T> criteria = builder.createQuery(type);
-        criteria.from(type);
+        CriteriaQuery<T> criteria = builder.createQuery(tClass);
+        criteria.from(tClass);
         List<T> data = session.createQuery(criteria).getResultList();
         return data;
     }
