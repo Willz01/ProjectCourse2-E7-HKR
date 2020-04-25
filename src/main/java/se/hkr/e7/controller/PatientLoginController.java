@@ -1,6 +1,7 @@
 package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import se.hkr.e7.model.DatabaseHandler;
@@ -16,7 +17,7 @@ public class PatientLoginController extends Controller {
     public Label passwordCheck;
 
     public void Back(ActionEvent actionEvent) throws IOException {
-       loadScene("view/Welcome.fxml",actionEvent);
+        loadScene("view/Welcome.fxml", actionEvent);
     }
 
     public void Exit() {
@@ -29,20 +30,20 @@ public class PatientLoginController extends Controller {
         error1.setText(null);
 
         if (passwordText.getText().equals("") || ssnText.getText().equals("")) {
-            error1.setText("fields can not be empty ");
+            showError("Fields cant be empty", "Please enter a ssn and a password.");
         } else {
             try {
                 Patient patient = DatabaseHandler.load(Patient.class, ssnText.getText());
 
                 if (patient.getSsn() != null && patient.checkPassword(passwordText.getText())) {
-                    loadScene("view/PatientDashboard.fxml",actionEvent);
+                    loadScene("view/PatientDashboard.fxml", actionEvent);
                 }
 
                 if (patient.getSsn() != null && !patient.checkPassword(passwordText.getText())) {
-                    passwordCheck.setText("wrong password ");
+                    showError("Wrong password");
                 }
             } catch (Exception exception) {
-                error1.setText("could not login , please check your password and ssn ");
+                showError("could not login , please check your password and ssn");
             }
         }
     }

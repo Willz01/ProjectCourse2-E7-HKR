@@ -1,6 +1,7 @@
 package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import se.hkr.e7.model.DatabaseHandler;
@@ -20,7 +21,7 @@ public class StaffLoginController extends Controller {
         passwordCheck.setText(null);
         error1.setText(null);
         if (passwordText.getText().equals("") || ssnText.getText().equals("")) {
-            error1.setText("fields can not be empty ");
+            showError("fields can not be empty ");
         } else {
             try {
                 Employee employee = DatabaseHandler.load(Employee.class, ssnText.getText());
@@ -32,7 +33,7 @@ public class StaffLoginController extends Controller {
                 }
 
                 if (employee.getSsn() != null && !employee.checkPassword(passwordText.getText())) {
-                    passwordCheck.setText("wrong password ");
+                    showError("wrong password ");
                 }
 
                 if (employee.getRole() == Employee.Role.DOCTOR && employee.checkPassword(passwordText.getText())) {
@@ -43,11 +44,10 @@ public class StaffLoginController extends Controller {
                     loadScene("view/AnalyserDashboard.fxml",actionEvent);
                 }
             } catch (Exception exception) {
-                error1.setText("could not login , please check your password and ssn ");
+                showError("Could not login , please check your password and ssn");
             }
         }
     }
-
 
     public void Back(ActionEvent actionEvent) throws IOException {
        loadScene("view/Welcome.fxml",actionEvent);
@@ -56,7 +56,4 @@ public class StaffLoginController extends Controller {
     public void Exit() {
         System.exit(0);
     }
-
-
-
 }
