@@ -32,7 +32,7 @@ public class DatabaseHandler {
     /**
      * Insert some default data into the system.
      */
-    public static void Reset() {
+    public static void reset() {
         save(new Employee("199701010000", "123456", "Wills", "wills@example.com",
                 "073656656", "Home", Location.STOCKHOLM, Employee.Role.ADMIN, 123.12));
 
@@ -63,25 +63,23 @@ public class DatabaseHandler {
         session.getTransaction().commit();
     }
 
-    public static void Delete(Object o) {
+    public static void delete(Object o) {
         session.beginTransaction();
         session.delete(o);
         session.getTransaction().commit();
     }
 
-    /*this method will get all object in table <the command to run it is :
-
-        List<Employee> users = DatabaseHandler.loadAllData(Employee.class);
-        System.out.println(users);
-
-    */
+    /**
+     * This method will get all object in table <the command to run it is
+     * List<Employee> users = DatabaseHandler.loadAllData(Employee.class);
+     *
+     * @param tClass A Hibernate annotated class type
+     * @return A list containing objects of type T
+     */
     public static <T> List<T> loadAllData(Class<T> tClass) {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> criteria = builder.createQuery(tClass);
         criteria.from(tClass);
-        List<T> data = session.createQuery(criteria).getResultList();
-        return data;
+        return session.createQuery(criteria).getResultList();
     }
-
 }
-
