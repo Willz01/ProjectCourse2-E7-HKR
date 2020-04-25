@@ -92,7 +92,7 @@ public class AddAdminController extends Controller {
             emailLabel.setText(" can't be empty");
         }
         if (phone.getText().equals("")) {
-            passwordLabel.setText(" can't be empty");
+            phoneLabel.setText(" can't be empty");
             if (!isDouble(salary.getText())) {
                 SalaryLabel.setText(" salary must be number");
             }

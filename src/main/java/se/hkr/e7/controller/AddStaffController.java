@@ -85,8 +85,8 @@ public class AddStaffController extends Controller {
             emailLabel.setText(" can't be empty");
         }
         if (phone.getText().equals("")) {
-            passwordLabel.setText(" can't be empty");
-                salary.setText(" salary must be number");
+            phoneLabel.setText(" can't be empty");
+                SalaryLabel.setText(" salary must be number");
         }
 
         try {

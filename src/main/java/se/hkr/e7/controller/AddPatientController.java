@@ -41,9 +41,8 @@ public class AddPatientController extends Controller {
     }
 
     public void Back(ActionEvent actionEvent) throws IOException {
-        loadScene("view/AdminDashboard.fxml",actionEvent);
+        loadScene("view/AdminDashboard.fxml", actionEvent);
     }
-
 
 
     public void Exit(ActionEvent actionEvent) {
@@ -77,16 +76,19 @@ public class AddPatientController extends Controller {
         if (email.getText().equals("")) {
             emailLabel.setText(" can't be empty");
         }
+        if (phone.getText().equals("")) {
+            phoneLabel.setText(" can't be empty");
 
 
-        try {
+            try {
 
-            DatabaseHandler.save(new Patient(ssn.getText(), password.getText(), name.getText(), email.getText(),
-                    phone.getText(), address.getText()));
-            saveLabel.setText("saved");
-        } catch (Exception exception) {
-            saveLabel.setText("did't save ");
+                DatabaseHandler.save(new Patient(ssn.getText(), password.getText(), name.getText(), email.getText(),
+                        phone.getText(), address.getText()));
+                saveLabel.setText("saved");
+            } catch (Exception exception) {
+                saveLabel.setText("did't save ");
 
+            }
         }
     }
 }
