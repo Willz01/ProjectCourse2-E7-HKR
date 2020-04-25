@@ -2,22 +2,19 @@ package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Location;
 
 import java.io.IOException;
-import java.net.URL;
 
-import static se.hkr.e7.model.DatabaseHandler.save;
 import static se.hkr.e7.model.Location.*;
 
-public class AddAdminController {
+public class AddAdminController extends Controller {
     @FXML
     public ChoiceBox<String> choiceBox;
     public TextField ssn;
@@ -38,12 +35,9 @@ public class AddAdminController {
     public Label locationLabel;
     public Label saveLabel;
 
-
     @FXML
     public void initialize() {
         ssnLabel.setText("YYMMDDXXXX");
-
-
         choiceBox.getItems().add("Location");
         choiceBox.getItems().addAll(String.valueOf(BLEKINGE), String.valueOf(DALARNA), String.valueOf(GOTLAND), String.valueOf(GAVLEBORG), String.valueOf(HALLAND), String.valueOf(JAMTLAND),
                 String.valueOf(JONKOPING), String.valueOf(KALMAR), String.valueOf(KRONOBERG), String.valueOf(NORRBOTTEN), String.valueOf(SKANE), String.valueOf(STOCKHOLM), String.valueOf(SODERMANLAND),
@@ -53,14 +47,7 @@ public class AddAdminController {
     }
 
     public void Back(ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("view/AdminDashboard.fxml");
-        Parent root = FXMLLoader.load(resource);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+      loadScene("view/AdminDashboard.fxml",actionEvent);
     }
 
 
@@ -106,7 +93,7 @@ public class AddAdminController {
 
         try {
 
-            save(new Employee(ssn.getText(), password.getText(), name.getText(), email.getText(),
+            DatabaseHandler.save(new Employee(ssn.getText(), password.getText(), name.getText(), email.getText(),
                     phone.getText(), address.getText(), Location.valueOf(choiceBox.getValue()), Employee.Role.ADMIN, Double.parseDouble(salary.getText())));
             saveLabel.setText("saved");
         } catch (Exception exception) {

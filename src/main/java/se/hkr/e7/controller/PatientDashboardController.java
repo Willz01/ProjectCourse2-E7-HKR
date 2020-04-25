@@ -1,14 +1,9 @@
 package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.stage.Stage;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Result;
@@ -18,21 +13,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PatientDashboardController implements Initializable {
+public class PatientDashboardController extends Controller implements Initializable  {
 
     public TextArea resultText;
     public Button Back;
     public Button Exit;
 
     public void Back(ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource("view/patientLogin.fxml");
-        Parent root = FXMLLoader.load(resource);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+       loadScene("view/patientLogin.fxml",actionEvent);
     }
 
     public void Exit() {
