@@ -94,7 +94,7 @@ public class AddAdminController extends Controller {
         if (phone.getText().equals("")) {
             passwordLabel.setText(" can't be empty");
             if (!isDouble(salary.getText())) {
-                salary.setText(" salary must be number");
+                SalaryLabel.setText(" salary must be number");
             }
         }
 
