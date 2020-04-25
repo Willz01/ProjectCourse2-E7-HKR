@@ -4,11 +4,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import javax.persistence.Entity;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import static se.hkr.e7.model.DatabaseHandler.loadAllData;
@@ -87,13 +85,5 @@ public class DatabaseHandler {
         return data;
     }
 
-
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    public static Session getSession() {
-        return session;
-    }
 }
 
