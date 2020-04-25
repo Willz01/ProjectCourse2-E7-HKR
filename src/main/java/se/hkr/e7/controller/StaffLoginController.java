@@ -21,7 +21,7 @@ public class StaffLoginController extends Controller {
         passwordCheck.setText(null);
         error1.setText(null);
         if (passwordText.getText().equals("") || ssnText.getText().equals("")) {
-            showError(new Exception("fields can not be empty "));
+            showError("fields can not be empty ");
         } else {
             try {
                 Employee employee = DatabaseHandler.load(Employee.class, ssnText.getText());
@@ -33,7 +33,7 @@ public class StaffLoginController extends Controller {
                 }
 
                 if (employee.getSsn() != null && !employee.checkPassword(passwordText.getText())) {
-                    showError(new Exception("wrong password "));
+                    showError("wrong password ");
                 }
 
                 if (employee.getRole() == Employee.Role.DOCTOR && employee.checkPassword(passwordText.getText())) {
@@ -44,17 +44,10 @@ public class StaffLoginController extends Controller {
                     loadScene("view/AnalyserDashboard.fxml",actionEvent);
                 }
             } catch (Exception exception) {
-                showError(new Exception("could not login , please check your password and ssn "));
+                showError("Could not login , please check your password and ssn");
             }
         }
     }
-    private void showError(Exception e) {
-        Alert error = new Alert(Alert.AlertType.ERROR);
-        error.setTitle("input error please retry");
-        error.setContentText(e.getMessage());
-        error.showAndWait();
-    }
-
 
     public void Back(ActionEvent actionEvent) throws IOException {
        loadScene("view/Welcome.fxml",actionEvent);
@@ -63,7 +56,4 @@ public class StaffLoginController extends Controller {
     public void Exit() {
         System.exit(0);
     }
-
-
-
 }

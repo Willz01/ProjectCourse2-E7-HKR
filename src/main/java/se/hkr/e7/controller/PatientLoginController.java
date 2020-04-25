@@ -17,7 +17,7 @@ public class PatientLoginController extends Controller {
     public Label passwordCheck;
 
     public void Back(ActionEvent actionEvent) throws IOException {
-       loadScene("view/Welcome.fxml",actionEvent);
+        loadScene("view/Welcome.fxml", actionEvent);
     }
 
     public void Exit() {
@@ -30,31 +30,21 @@ public class PatientLoginController extends Controller {
         error1.setText(null);
 
         if (passwordText.getText().equals("") || ssnText.getText().equals("")) {
-            showError(new Exception("Fields cant be empty"));
+            showError("Fields cant be empty", "Please enter a ssn and a password.");
         } else {
             try {
                 Patient patient = DatabaseHandler.load(Patient.class, ssnText.getText());
 
                 if (patient.getSsn() != null && patient.checkPassword(passwordText.getText())) {
-                    loadScene("view/PatientDashboard.fxml",actionEvent);
+                    loadScene("view/PatientDashboard.fxml", actionEvent);
                 }
 
                 if (patient.getSsn() != null && !patient.checkPassword(passwordText.getText())) {
-                    showError(new Exception("Wrong password"));
+                    showError("Wrong password");
                 }
             } catch (Exception exception) {
-                showError(new Exception("could not login , please check your password and ssn"));
-                    }
-                    }
-                }
-
-
-
-
-    private void showError(Exception e) {
-        Alert error = new Alert(Alert.AlertType.ERROR);
-        error.setTitle("input error please retry");
-        error.setContentText(e.getMessage());
-        error.showAndWait();
+                showError("could not login , please check your password and ssn");
+            }
+        }
     }
 }

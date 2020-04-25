@@ -36,7 +36,6 @@ public class AddStaffController extends Controller {
     public Label locationLabel;
     public Label saveLabel;
 
-
     @FXML
     public void initialize() {
         ssnLabel.setText("YYMMDDXXXX");
