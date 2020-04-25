@@ -41,6 +41,12 @@ public class DatabaseHandler {
         return t;
     }
 
+    public static void save(Object o) {
+        session.beginTransaction();
+        session.saveOrUpdate(o);
+        session.getTransaction().commit();
+    }
+
     /**
      * Insert some default data into the system.
      */
@@ -67,11 +73,5 @@ public class DatabaseHandler {
 
         new Result(patient, employee, "2020-01-01", Result.Status.PENDING);
         new Result(patient, employee, "2020-01-01", Result.Status.POSITIVE);
-    }
-
-    public static void save(Object o) {
-        session.beginTransaction();
-        session.saveOrUpdate(o);
-        session.getTransaction().commit();
     }
 }
