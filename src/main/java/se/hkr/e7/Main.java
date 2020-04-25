@@ -20,7 +20,6 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         URL resource = getClass().getClassLoader().getResource("view/Welcome.fxml");
         Parent root = FXMLLoader.load(resource);
-        DatabaseHandler.Reset();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
