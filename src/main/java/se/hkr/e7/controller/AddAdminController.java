@@ -51,7 +51,7 @@ public class AddAdminController extends Controller {
 
 
         if (!ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
-            showError("ssn must be valid 10 digits in YYMMDDXXXX");
+            showError("ssn must be valid 10 digits as YYMMDDXXXX");
         }
 
         if (name.getText().equals("")) {
