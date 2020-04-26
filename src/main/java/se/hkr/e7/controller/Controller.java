@@ -46,6 +46,4 @@ public abstract class Controller {
         error.showAndWait();
     }
 
-    public void exit(ActionEvent event) {
-    }
 }

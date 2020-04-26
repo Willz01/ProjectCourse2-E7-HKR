@@ -46,8 +46,10 @@ public class AddStaffController extends Controller {
                 e.printStackTrace();
             }
         });
-        exitButton.setOnAction(this::exit);
-        addButton.setOnAction(this::addStaff);
+        exitButton.setOnAction(actionEvent ->
+        {
+            System.exit(0);
+        });        addButton.setOnAction(this::addStaff);
 
         ssnLabel.setText("YYMMDDXXXX");
         choiceBox.getItems().add("Location");

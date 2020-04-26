@@ -15,7 +15,16 @@ public class WelcomeController extends Controller {
 
     @FXML
     public void initialize() {
-        exitButton.setOnAction(this::exit);
+        exitButton.setOnAction(actionEvent ->
+        {
+            System.exit(0);
+        });        staffLoginButton.setOnAction(actionEvent -> {
+            try {
+                loadScene("view/staffLogin.fxml", actionEvent);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         patientLoginButton.setOnAction(actionEvent -> {
             try {
                 loadScene("view/patientLogin.fxml", actionEvent);
@@ -23,14 +32,5 @@ public class WelcomeController extends Controller {
                 e.printStackTrace();
             }
         });
-
-        staffLoginButton.setOnAction(actionEvent -> {
-            try {
-                loadScene("view/staffLogin.fxml", actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
-}
+    }
 }

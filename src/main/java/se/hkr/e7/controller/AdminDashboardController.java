@@ -22,7 +22,10 @@ public class AdminDashboardController extends Controller {
 
     @FXML
     public void initialize() {
-        exitButton.setOnAction(this::exit);
+        exitButton.setOnAction(actionEvent ->
+        {
+            System.exit(0);
+        });
         backButton.setOnAction(actionEvent -> {
             try {
                 loadScene("view/StaffLogin.fxml", actionEvent);

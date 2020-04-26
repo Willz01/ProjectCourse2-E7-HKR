@@ -15,8 +15,10 @@ public class DoctorDashboardController extends Controller {
 
     @FXML
     public void initialize() {
-        exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> {
+        exitButton.setOnAction(actionEvent ->
+        {
+            System.exit(0);
+        });        backButton.setOnAction(actionEvent -> {
             try {
                 loadScene("view/StaffLogin.fxml", actionEvent);
             } catch (IOException e) {

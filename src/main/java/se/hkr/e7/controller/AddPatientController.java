@@ -31,8 +31,10 @@ public class AddPatientController extends Controller {
 
     @FXML
     public void initialize() {
-        exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> {
+        exitButton.setOnAction(actionEvent ->
+        {
+            System.exit(0);
+        });        backButton.setOnAction(actionEvent -> {
             try {
                 loadScene("view/AdminDashboard.fxml", actionEvent);
             } catch (IOException e) {

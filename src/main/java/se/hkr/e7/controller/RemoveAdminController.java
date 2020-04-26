@@ -12,7 +12,10 @@ public class RemoveAdminController extends Controller {
 
     @FXML
     public void initialize() {
-        exitButton.setOnAction(this::exit);
+        exitButton.setOnAction(actionEvent ->
+        {
+            System.exit(0);
+        });
         backButton.setOnAction(actionEvent -> {
             try {
                 loadScene("view/AdminDashboard.fxml", actionEvent);
