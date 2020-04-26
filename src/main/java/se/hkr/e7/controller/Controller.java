@@ -6,6 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -33,6 +35,14 @@ public abstract class Controller {
         Alert error = new Alert(Alert.AlertType.ERROR);
         error.setTitle(title);
         error.setContentText(message);
+        error.showAndWait();
+    }
+
+    void confirm(String message) {
+        Alert error = new Alert(Alert.AlertType.CONFIRMATION);
+        error.setTitle("Finished successful  !");
+        error.setContentText(message);
+        error.getDialogPane().setGraphic(new ImageView("1.png"));
         error.showAndWait();
     }
 }
