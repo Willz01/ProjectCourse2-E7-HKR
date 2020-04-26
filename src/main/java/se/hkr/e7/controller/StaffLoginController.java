@@ -65,7 +65,7 @@ public class StaffLoginController extends Controller {
     }
 
     public void Back(ActionEvent actionEvent) throws IOException {
-       loadScene("view/Welcome.fxml",actionEvent);
+        loadScene("view/Welcome.fxml",actionEvent);
     }
 
     public void Exit() {
