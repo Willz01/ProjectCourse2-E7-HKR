@@ -44,9 +44,29 @@ public class DatabaseHandler {
         return t;
     }
 
+    /**
+     * This method will get all object in table <the command to run it is
+     * List<Employee> users = DatabaseHandler.loadAll(Employee.class);
+     *
+     * @param tClass A Hibernate annotated class type
+     * @return A list containing objects of type T
+     */
+    public static <T> List<T> loadAll(Class<T> tClass) {
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> criteria = builder.createQuery(tClass);
+        criteria.from(tClass);
+        return session.createQuery(criteria).getResultList();
+    }
+
     public static void save(Object object) {
         session.beginTransaction();
         session.saveOrUpdate(object);
+        session.getTransaction().commit();
+    }
+
+    public static void delete(Object object) {
+        session.beginTransaction();
+        session.delete(object);
         session.getTransaction().commit();
     }
 
