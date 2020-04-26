@@ -2,6 +2,7 @@ package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
 
+
 import java.io.IOException;
 
 public class WelcomeController extends Controller {
