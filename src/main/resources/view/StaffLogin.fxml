@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.StaffLoginController">
+    <TextField fx:id="ssnTextField" layoutX="92.0" layoutY="159.0" prefHeight="25.0" prefWidth="427.0"
+               promptText="Enter your SSN "/>
+    <TextField fx:id="passwordTextField" layoutX="92.0" layoutY="212.0" prefHeight="25.0" prefWidth="427.0"
+               promptText="Enter your password"/>
+    <Button fx:id="loginButton" layoutX="269.0" layoutY="272.0" mnemonicParsing="false"
+            prefHeight="25.0" prefWidth="62.0" text="login"/>
+    <Button fx:id="backButton" layoutX="442.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0"
+            prefWidth="52.0" text="Back"/>
+    <Button fx:id="exitButton" layoutX="519.0" layoutY="361.0" mnemonicParsing="false" text="Exit"/>
+    <Label fx:id="passwordCheckLabel" layoutX="92.0" layoutY="237.0" prefHeight="17.0" prefWidth="260.0"/>
+    <Label fx:id="errorLabel" layoutX="21.0" layoutY="365.0" prefHeight="17.0" prefWidth="402.0"/>
+    <Label layoutX="239.0" layoutY="66.0" prefHeight="45.0" prefWidth="166.0" text="Staff login">
+        <font>
+          <Font size="24.0"/>
+        </font>
+    </Label>
+</AnchorPane>
