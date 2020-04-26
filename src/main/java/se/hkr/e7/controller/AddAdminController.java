@@ -31,7 +31,7 @@ public class AddAdminController extends Controller {
     public Label addressLabel;
     public Label emailLabel;
     public Label phoneLabel;
-    public Label SalaryLabel;
+    public Label salaryLabel;
     public Label locationLabel;
     public Label saveLabel;
 
@@ -47,16 +47,7 @@ public class AddAdminController extends Controller {
     }
 
     public void Back(ActionEvent actionEvent) throws IOException {
-      loadScene("view/AdminDashboard.fxml",actionEvent);
-    }
-
-    boolean isDouble(String str) {
-        try {
-            Double.parseDouble(str);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
+        loadScene("view/AdminDashboard.fxml", actionEvent);
     }
 
     public void Exit() {
@@ -68,7 +59,7 @@ public class AddAdminController extends Controller {
         ssnLabel.setText("");
         passwordLabel.setText("");
         emailLabel.setText("");
-        SalaryLabel.setText("");
+        salaryLabel.setText("");
         phoneLabel.setText("");
         addressLabel.setText("");
         saveLabel.setText("");
@@ -76,36 +67,41 @@ public class AddAdminController extends Controller {
         if (ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
             ssnLabel.setText("");
         }
+
         if (!ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
             ssnLabel.setText("input in YYMMDDXXXX form");
         }
+
         if (name.getText().equals("")) {
             nameLabel.setText("can't be empty");
         }
+
         if (address.getText().equals("")) {
             addressLabel.setText(" can't be empty");
         }
+
         if (password.getText().equals("")) {
             passwordLabel.setText(" can't be empty");
         }
+
         if (email.getText().equals("")) {
             emailLabel.setText(" can't be empty");
         }
+
         if (phone.getText().equals("")) {
-            passwordLabel.setText(" can't be empty");
-            if (!isDouble(salary.getText())) {
-                salary.setText(" salary must be number");
+            phoneLabel.setText(" can't be empty");
+            if (!(salary.getText().matches("^[0-9]+\\.?[0-9]*$"))) {
+                salaryLabel.setText(" salary must be number");
             }
         }
 
         try {
-
             DatabaseHandler.save(new Employee(ssn.getText(), password.getText(), name.getText(), email.getText(),
-                    phone.getText(), address.getText(), Location.valueOf(choiceBox.getValue()), Employee.Role.ADMIN, Double.parseDouble(salary.getText())));
+                    phone.getText(), address.getText(), Location.valueOf(choiceBox.getValue()), Employee.Role.ADMIN,
+                    Double.parseDouble(salary.getText())));
             saveLabel.setText("saved");
         } catch (Exception exception) {
             saveLabel.setText("did't save ");
-
         }
     }
 }
