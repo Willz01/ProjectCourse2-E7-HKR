@@ -1,33 +1,24 @@
 package se.hkr.e7.controller;
 
-import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Patient;
 
-import java.io.IOException;
-
-
-
 public class AddPatientController extends Controller {
 
     public Button backButton;
     public Button exitButton;
-    public Button Back;
+    public Button addButton;
     public TextField ssn;
     public TextField name;
     public TextField password;
     public TextField address;
     public TextField email;
     public TextField phone;
-    public Button Add;
-    public Button Exit;
     public Label ssnLabel;
     public Label nameLabel;
     public Label passwordLabel;
@@ -36,24 +27,14 @@ public class AddPatientController extends Controller {
     public Label phoneLabel;
     public Label saveLabel;
 
-
     @FXML
     public void initialize() {
-        ssnLabel.setText("YYMMDDXXXX");
-
-    }
-
-    public void Back(ActionEvent actionEvent) throws IOException {
-        loadScene("view/AdminDashboard.fxml", actionEvent);
-    }
-
-    @FXML
-    public void initialize() {
-        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
         exitButton.setOnAction(this::exit);
+        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
+        addButton.setOnAction(this::addPatient);
     }
 
-    public void Add(ActionEvent actionEvent) {
+    private void addPatient(ActionEvent actionEvent) {
         nameLabel.setText("");
         ssnLabel.setText("");
         passwordLabel.setText("");

@@ -1,7 +1,5 @@
 package se.hkr.e7.controller;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,14 +10,13 @@ import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Location;
 
-import java.io.IOException;
-
 import static se.hkr.e7.model.Location.*;
 
 public class AddStaffController extends Controller {
 
     public Button backButton;
     public Button exitButton;
+    public Button addButton;
     public TextField ssn;
     public TextField name;
     public TextField password;
@@ -27,9 +24,7 @@ public class AddStaffController extends Controller {
     public TextField email;
     public TextField phone;
     public TextField salary;
-    public ChoiceBox choiceBox;
-    public Button Add;
-    public Button Back;
+    public ChoiceBox<String> choiceBox;
     public Label ssnLabel;
     public Label nameLabel;
     public Label passwordLabel;
@@ -42,6 +37,10 @@ public class AddStaffController extends Controller {
 
     @FXML
     public void initialize() {
+        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
+        exitButton.setOnAction(this::exit);
+        addButton.setOnAction(this::addStaff);
+
         ssnLabel.setText("YYMMDDXXXX");
         choiceBox.getItems().add("Location");
         choiceBox.getItems().addAll(String.valueOf(BLEKINGE), String.valueOf(DALARNA), String.valueOf(GOTLAND), String.valueOf(GAVLEBORG), String.valueOf(HALLAND), String.valueOf(JAMTLAND),
@@ -51,17 +50,7 @@ public class AddStaffController extends Controller {
         choiceBox.setValue("Location");
     }
 
-    public void Back(ActionEvent actionEvent) throws IOException {
-        loadScene("view/AdminDashboard.fxml", actionEvent);
-    }
-
-    @FXML
-    public void initialize() {
-        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
-        exitButton.setOnAction(this::exit);
-    }
-
-    public void Add(ActionEvent actionEvent) {
+    private void addStaff(ActionEvent actionEvent) {
         nameLabel.setText("");
         ssnLabel.setText("");
         passwordLabel.setText("");
@@ -91,7 +80,7 @@ public class AddStaffController extends Controller {
         }
         if (phone.getText().equals("")) {
             phoneLabel.setText(" can't be empty");
-                salaryLabel.setText(" salary must be number");
+            salaryLabel.setText(" salary must be number");
         }
 
         try {
@@ -104,6 +93,4 @@ public class AddStaffController extends Controller {
 
         }
     }
-
-
 }
