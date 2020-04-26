@@ -15,7 +15,7 @@ public class ViewStaffController extends Controller {
     public ChoiceBox<String> choiceBox;
 
     public void Back(ActionEvent actionEvent) throws IOException {
-       loadScene("view/AdminDashboard.fxml",actionEvent);
+        loadScene("view/AdminDashboard.fxml", actionEvent);
     }
 
     public void Exit() {
@@ -26,19 +26,19 @@ public class ViewStaffController extends Controller {
     @FXML
     public void initialize() {
         List<Employee> users = DatabaseHandler.loadAllData(Employee.class);
-
-        for (Employee employee : users) {
-            if (employee.getRole()== Employee.Role.ADMIN)
-                choiceBox.getItems().add("{  "+employee.getRole()+"  }"+"   "+employee.getName()+" ----  "+" Location: "+employee.getLocation()+"  ---- "+" SSN: "+employee.getSsn());
+        int count = 0;
+        for (Employee employee : users) {count++;
+            if (employee.getRole() == Employee.Role.ADMIN)
+                choiceBox.getItems().add(count+"- {  " + employee.getRole() + "  }" + "   " + employee.getName() + " ----  " + " Location: " + employee.getLocation() + "  ---- " + " SSN: " + employee.getSsn());
         }
-        for (Employee employee : users) {
-            if (employee.getRole()== Employee.Role.DOCTOR)
-                choiceBox.getItems().add("{  "+employee.getRole()+"  }"+"   "+employee.getName()+" ----  "+" Location: "+employee.getLocation()+"  ---- "+" SSN: "+employee.getSsn());
+        for (Employee employee : users) {count++;
+            if (employee.getRole() == Employee.Role.DOCTOR)
+                choiceBox.getItems().add(count+"- {  " + employee.getRole() + "  }" + "   " + employee.getName() + " ----  " + " Location: " + employee.getLocation() + "  ---- " + " SSN: " + employee.getSsn());
 
         }
-        for (Employee employee : users) {
-            if (employee.getRole()== Employee.Role.ANALYSER)
-                choiceBox.getItems().add("{  "+employee.getRole()+"  }"+"   "+employee.getName()+" ----  "+" Location: "+employee.getLocation()+"  ---- "+" SSN: "+employee.getSsn());
+        for (Employee employee : users) {count++;
+            if (employee.getRole() == Employee.Role.ANALYSER)
+                choiceBox.getItems().add(count+"- {  " + employee.getRole() + "  }" + "   " + employee.getName() + " ----  " + " Location: " + employee.getLocation() + "  ---- " + " SSN: " + employee.getSsn());
         }
         choiceBox.getItems().add("View Staff");
 
