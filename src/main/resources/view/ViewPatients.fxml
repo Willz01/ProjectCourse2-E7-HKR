@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.AnchorPane?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             xmlns="http://javafx.com/javafx"
             fx:controller="se.hkr.e7.controller.ViewPatientsController"
@@ -11,5 +12,6 @@
     <Button fx:id="backButton" layoutX="442.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0"
             prefWidth="52.0" text="Back"/>
     <Button fx:id="exitButton" layoutX="519.0" layoutY="361.0" mnemonicParsing="false" text="Exit"/>
-    <ChoiceBox fx:id="choiceBox" layoutX="12.0" layoutY="56.0" prefHeight="25.0" prefWidth="575.0" />
+    <ChoiceBox fx:id="choiceBox" layoutX="12.0" layoutY="56.0" prefHeight="25.0" prefWidth="575.0"/>
+
 </AnchorPane>

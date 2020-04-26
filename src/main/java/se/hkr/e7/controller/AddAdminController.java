@@ -21,14 +21,6 @@ public class AddAdminController extends Controller {
     public TextField phone;
     public TextField salary;
     public Label ssnLabel;
-    public Label nameLabel;
-    public Label passwordLabel;
-    public Label addressLabel;
-    public Label emailLabel;
-    public Label phoneLabel;
-    public Label salaryLabel;
-    public Label locationLabel;
-    public Label saveLabel;
     public Button addButton;
     public Button backButton;
     public Button exitButton;
@@ -73,19 +65,14 @@ public class AddAdminController extends Controller {
             showError("please select Location ");
         }
 
-        if (ssn.getText().
-
-                matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$") && email.getText().
-
-                matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$") && phone.getText().
-
-                matches("^[0-9\\-\\+]{9,15}$") && !choiceBox.getValue().
-                equals("Location")) {
+        if (ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")
+                && email.getText().matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$")
+                && phone.getText().matches("^[0-9\\-\\+]{9,15}$")
+                && choiceBox.getValue() == null) {
             DatabaseHandler.save(new Employee(ssn.getText(), password.getText(), name.getText(), email.getText(),
                     phone.getText(), address.getText(), choiceBox.getValue(), Employee.Role.ADMIN,
                     Double.parseDouble(salary.getText())));
             confirm("saved");
-
         }
     }
 }
