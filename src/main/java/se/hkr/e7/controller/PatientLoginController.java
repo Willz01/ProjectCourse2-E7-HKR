@@ -12,11 +12,11 @@ public class PatientLoginController extends Controller {
 
     public TextField ssnText;
     public PasswordField passwordField;
-    public Label error1;
-    public Label passwordCheck;
     public TextField passwordText;
     public CheckBox CheckBox;
     public Button loginButton;
+    public Button backButton;
+    public Button exitButton;
 
     public void Back(ActionEvent actionEvent) throws IOException {
         loadScene("view/Welcome.fxml", actionEvent);
@@ -38,28 +38,29 @@ public class PatientLoginController extends Controller {
         passwordField.visibleProperty().bind(CheckBox.selectedProperty().not());
         passwordText.textProperty().bindBidirectional(passwordField.textProperty());
 
-    }
 
-    public void patientLogin(ActionEvent actionEvent) {
-        passwordCheck.setText(null);
-        error1.setText(null);
-        if (passwordField.getText().equals("") || ssnText.getText().equals("")) {
-            showError("Fields cant be empty", "Please enter a ssn and a password.");
-        } else {
+        loginButton.setOnAction(actionEvent -> {
             try {
-                Patient patient = DatabaseHandler.load(Patient.class, ssnText.getText());
+                if (passwordField.getText().equals("") || ssnText.getText().equals("")) {
+                    showError("Fields cant be empty", "Please enter a ssn and a password.");
+                } else {
+                    try {
+                        Patient patient = DatabaseHandler.load(Patient.class, ssnText.getText());
 
-                if (patient.getSsn() != null && patient.checkPassword(passwordField.getText())) {
-                    loadScene("view/PatientDashboard.fxml", actionEvent);
+                        if (patient.getSsn() != null && patient.checkPassword(passwordField.getText())) {
+                            loadScene("view/PatientDashboard.fxml", actionEvent);
+                        }
+
+                        if (patient.getSsn() != null && !patient.checkPassword(passwordField.getText())) {
+                            showError("Wrong password");
+                        }
+                    } catch (Exception exception) {
+                        showError("could not login , please check your password and ssn");
+                    }
                 }
 
-                if (patient.getSsn() != null && !patient.checkPassword(passwordField.getText())) {
-                    showError("Wrong password");
-                }
             } catch (Exception exception) {
-                showError("could not login , please check your password and ssn");
             }
-        }
-
+        });
     }
 }
