@@ -44,9 +44,29 @@ public class DatabaseHandler {
         return t;
     }
 
+    /**
+     * This method will get all object in table <the command to run it is
+     * List<Employee> users = DatabaseHandler.loadAll(Employee.class);
+     *
+     * @param tClass A Hibernate annotated class type
+     * @return A list containing objects of type T
+     */
+    public static <T> List<T> loadAll(Class<T> tClass) {
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> criteria = builder.createQuery(tClass);
+        criteria.from(tClass);
+        return session.createQuery(criteria).getResultList();
+    }
+
     public static void save(Object object) {
         session.beginTransaction();
         session.saveOrUpdate(object);
+        session.getTransaction().commit();
+    }
+
+    public static void delete(Object object) {
+        session.beginTransaction();
+        session.delete(object);
         session.getTransaction().commit();
     }
 
@@ -76,31 +96,5 @@ public class DatabaseHandler {
 
         new Result(patient, employee, "2020-01-01", Result.Status.PENDING);
         new Result(patient, employee, "2020-01-01", Result.Status.POSITIVE);
-    }
-
-    public static void save(Object o) {
-        session.beginTransaction();
-        session.saveOrUpdate(o);
-        session.getTransaction().commit();
-    }
-
-    public static void delete(Object o) {
-        session.beginTransaction();
-        session.delete(o);
-        session.getTransaction().commit();
-    }
-
-    /**
-     * This method will get all object in table <the command to run it is
-     * List<Employee> users = DatabaseHandler.loadAllData(Employee.class);
-     *
-     * @param tClass A Hibernate annotated class type
-     * @return A list containing objects of type T
-     */
-    public static <T> List<T> loadAllData(Class<T> tClass) {
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<T> criteria = builder.createQuery(tClass);
-        criteria.from(tClass);
-        return session.createQuery(criteria).getResultList();
     }
 }
