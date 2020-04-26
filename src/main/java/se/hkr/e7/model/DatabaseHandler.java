@@ -57,15 +57,15 @@ public class DatabaseHandler {
         new Result(patient, employee, "2020-01-01", Result.Status.POSITIVE);
     }
 
-    public static void save(Object o) {
+    public static void save(Object object) {
         session.beginTransaction();
-        session.saveOrUpdate(o);
+        session.saveOrUpdate(object);
         session.getTransaction().commit();
     }
 
-    public static void delete(Object o) {
+    public static void delete(Object object) {
         session.beginTransaction();
-        session.delete(o);
+        session.delete(object);
         session.getTransaction().commit();
     }
 

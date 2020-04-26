@@ -77,12 +77,12 @@ public class AddAdminController extends Controller {
             if (choiceBox.getValue().equals("Location"))
                 showError("please select Location ");
 
-            try {
+            if (ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")){
                 DatabaseHandler.save(new Employee(ssn.getText(), password.getText(), name.getText(), email.getText(),
                         phone.getText(), address.getText(), Location.valueOf(choiceBox.getValue()), Employee.Role.ADMIN,
                         Double.parseDouble(salary.getText())));
                 confirm("saved");
-            } catch (Exception exception) {
+            } else  {
                 showError("did't save");
             }
         }
