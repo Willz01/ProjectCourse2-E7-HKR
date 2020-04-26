@@ -53,11 +53,11 @@ public abstract class Controller {
         error.showAndWait();
     }
 
-    void confirm(String message) {
-        Alert error = new Alert(Alert.AlertType.CONFIRMATION);
-        error.setTitle("Finished successful  !");
-        error.setContentText(message);
-        error.getDialogPane().setGraphic(new ImageView("1.png"));
-        error.showAndWait();
+    void showConfirmation(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.getDialogPane().setGraphic(new ImageView("1.png"));
+        alert.showAndWait();
     }
 }
