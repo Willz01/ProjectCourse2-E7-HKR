@@ -24,7 +24,7 @@ public class ViewAllPatientController extends Controller {
 
     @FXML
     public void initialize() {
-        List<Patient> patients = DatabaseHandler.loadAllData(Patient.class);
+        List<Patient> patients = DatabaseHandler.loadAll(Patient.class);
             int counter = 0;
             for (Patient patient : patients) {counter++;
 

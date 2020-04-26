@@ -3,6 +3,8 @@ package se.hkr.e7.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+import java.io.IOException;
+
 public class RemoveAdminController extends Controller {
 
     public Button exitButton;
@@ -11,6 +13,12 @@ public class RemoveAdminController extends Controller {
     @FXML
     public void initialize() {
         exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
+        backButton.setOnAction(actionEvent -> {
+            try {
+                loadScene("view/AdminDashboard.fxml", actionEvent);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

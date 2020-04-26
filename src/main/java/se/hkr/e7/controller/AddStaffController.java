@@ -10,6 +10,8 @@ import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Location;
 
+import java.io.IOException;
+
 import static se.hkr.e7.model.Location.*;
 
 public class AddStaffController extends Controller {
@@ -37,7 +39,13 @@ public class AddStaffController extends Controller {
 
     @FXML
     public void initialize() {
-        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
+        backButton.setOnAction(actionEvent -> {
+            try {
+                loadScene("view/AdminDashboard.fxml", actionEvent);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         exitButton.setOnAction(this::exit);
         addButton.setOnAction(this::addStaff);
 

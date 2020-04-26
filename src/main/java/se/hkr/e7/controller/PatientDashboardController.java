@@ -8,6 +8,8 @@ import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Result;
 import se.hkr.e7.model.Singleton;
 
+import java.io.IOException;
+
 public class PatientDashboardController extends Controller {
 
     public Button exitButton;
@@ -17,7 +19,13 @@ public class PatientDashboardController extends Controller {
     @FXML
     public void initialize() {
         exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/PatientLogin.fxml", actionEvent));
+        backButton.setOnAction(actionEvent -> {
+            try {
+                loadScene("view/PatientLogin.fxml", actionEvent);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
         try {
             Patient patient = DatabaseHandler.load(Patient.class, Singleton.getInstance().getSsn());

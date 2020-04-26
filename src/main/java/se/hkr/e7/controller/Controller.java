@@ -45,4 +45,7 @@ public abstract class Controller {
         error.getDialogPane().setGraphic(new ImageView("1.png"));
         error.showAndWait();
     }
+
+    public void exit(ActionEvent event) {
+    }
 }

@@ -26,7 +26,7 @@ public class ViewResultsController extends Controller {
 
     @FXML
     public void initialize() {
-        List<Result> results = DatabaseHandler.loadAllData(Result.class);
+        List<Result> results = DatabaseHandler.loadAll(Result.class);
 
         for (Result result : results) {
             if (result.getStatus()== Result.Status.PENDING)

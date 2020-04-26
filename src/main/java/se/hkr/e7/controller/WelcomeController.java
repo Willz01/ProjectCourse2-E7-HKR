@@ -1,21 +1,36 @@
 package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
 
 import java.io.IOException;
 
 public class WelcomeController extends Controller {
 
-    public void StaffLogin(ActionEvent actionEvent) throws IOException {
-        loadScene("view/StaffLogin.fxml",actionEvent);
-    }
+    public Button staffLoginButton;
+    public Button patientLoginButton;
+    public Button exitButton;
 
-    public void PatientLogin(ActionEvent actionEvent) throws IOException {
-       loadScene("view/patientLogin.fxml",actionEvent);
-    }
+    @FXML
+    public void initialize() {
+        exitButton.setOnAction(this::exit);
+        patientLoginButton.setOnAction(actionEvent -> {
+            try {
+                loadScene("view/patientLogin.fxml", actionEvent);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
-    public void Exit() {
-        System.exit(0);
-    }
+        staffLoginButton.setOnAction(actionEvent -> {
+            try {
+                loadScene("view/staffLogin.fxml", actionEvent);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+}
 }

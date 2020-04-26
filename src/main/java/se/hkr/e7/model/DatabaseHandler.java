@@ -96,5 +96,9 @@ public class DatabaseHandler {
 
         new Result(patient, employee, "2020-01-01", Result.Status.PENDING);
         new Result(patient, employee, "2020-01-01", Result.Status.POSITIVE);
+
+
+
+
     }
 }

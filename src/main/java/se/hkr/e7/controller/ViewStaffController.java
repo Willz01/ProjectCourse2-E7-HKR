@@ -25,7 +25,7 @@ public class ViewStaffController extends Controller {
 
     @FXML
     public void initialize() {
-        List<Employee> users = DatabaseHandler.loadAllData(Employee.class);
+        List<Employee> users = DatabaseHandler.loadAll(Employee.class);
         int count = 0;
         for (Employee employee : users) {
             count++;

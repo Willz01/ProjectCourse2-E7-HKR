@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Patient;
 
+import java.io.IOException;
+
 public class AddPatientController extends Controller {
 
     public Button backButton;
@@ -30,7 +32,13 @@ public class AddPatientController extends Controller {
     @FXML
     public void initialize() {
         exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
+        backButton.setOnAction(actionEvent -> {
+            try {
+                loadScene("view/AdminDashboard.fxml", actionEvent);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         addButton.setOnAction(this::addPatient);
     }
 
