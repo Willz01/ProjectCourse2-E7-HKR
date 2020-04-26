@@ -3,6 +3,7 @@ package se.hkr.e7.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import se.hkr.e7.model.DatabaseHandler;
@@ -30,7 +31,7 @@ public class PatientLoginController extends Controller {
         errorLabel.setText(null);
 
         if (passwordTextField.getText().equals("") || ssnTextField.getText().equals("")) {
-            errorLabel.setText("fields can not be empty ");
+            showError("Fields cant be empty", "Please enter a ssn and a password.");
         } else {
             try {
                 Patient patient = DatabaseHandler.load(Patient.class, ssnTextField.getText());
@@ -40,10 +41,10 @@ public class PatientLoginController extends Controller {
                 }
 
                 if (patient.getSsn() != null && !patient.checkPassword(passwordTextField.getText())) {
-                    passwordCheckLabel.setText("wrong password ");
+                    showError("Wrong password");
                 }
             } catch (Exception exception) {
-                errorLabel.setText("could not login , please check your password and ssn ");
+                showError("could not login , please check your password and ssn");
             }
         }
     }

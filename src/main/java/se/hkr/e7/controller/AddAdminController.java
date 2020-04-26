@@ -26,7 +26,7 @@ public class AddAdminController extends Controller {
     public Label addressLabel;
     public Label emailLabel;
     public Label phoneLabel;
-    public Label SalaryLabel;
+    public Label salaryLabel;
     public Label locationLabel;
     public Label saveLabel;
     public Button addButton;
@@ -47,7 +47,7 @@ public class AddAdminController extends Controller {
         ssnLabel.setText("");
         passwordLabel.setText("");
         emailLabel.setText("");
-        SalaryLabel.setText("");
+        salaryLabel.setText("");
         phoneLabel.setText("");
         addressLabel.setText("");
         saveLabel.setText("");
@@ -77,9 +77,9 @@ public class AddAdminController extends Controller {
         }
 
         if (phone.getText().equals("")) {
-            passwordLabel.setText(" can't be empty");
+            phoneLabel.setText(" can't be empty");
             if (!(salary.getText().matches("^[0-9]+\\.?[0-9]*$"))) {
-                salary.setText(" salary must be number");
+                salaryLabel.setText(" salary must be number");
             }
         }
 

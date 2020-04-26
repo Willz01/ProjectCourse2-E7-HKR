@@ -3,6 +3,7 @@ package se.hkr.e7.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import se.hkr.e7.model.DatabaseHandler;
@@ -30,7 +31,7 @@ public class StaffLoginController extends Controller {
         passwordCheckLabel.setText(null);
         errorLabel.setText(null);
         if (passwordTextField.getText().equals("") || ssnTextField.getText().equals("")) {
-            errorLabel.setText("fields can not be empty ");
+            showError("fields can not be empty ");
         } else {
             try {
                 Employee employee = DatabaseHandler.load(Employee.class, ssnTextField.getText());
@@ -42,7 +43,7 @@ public class StaffLoginController extends Controller {
                 }
 
                 if (employee.getSsn() != null && !employee.checkPassword(passwordTextField.getText())) {
-                    passwordCheckLabel.setText("wrong password ");
+                    showError("wrong password ");
                 }
 
                 if (employee.getRole() == Employee.Role.DOCTOR && employee.checkPassword(passwordTextField.getText())) {
@@ -53,7 +54,7 @@ public class StaffLoginController extends Controller {
                     loadScene("view/AnalyserDashboard.fxml", actionEvent);
                 }
             } catch (Exception exception) {
-                errorLabel.setText("could not login , please check your password and ssn ");
+                showError("Could not login , please check your password and ssn");
             }
         }
     }

@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -40,5 +41,16 @@ public abstract class Controller {
 
     public void exit(ActionEvent actionEvent) {
         System.exit(0);
+    }
+
+    void showError(String message) {
+        showError("Input error - please retry.", message);
+    }
+
+    void showError(String title, String message) {
+        Alert error = new Alert(Alert.AlertType.ERROR);
+        error.setTitle(title);
+        error.setContentText(message);
+        error.showAndWait();
     }
 }
