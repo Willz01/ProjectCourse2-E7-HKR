@@ -27,23 +27,25 @@ public class ViewStaffController extends Controller {
     public void initialize() {
         List<Employee> users = DatabaseHandler.loadAllData(Employee.class);
         int count = 0;
-        for (Employee employee : users) {count++;
+        for (Employee employee : users) {
+            count++;
             if (employee.getRole() == Employee.Role.ADMIN)
-                choiceBox.getItems().add(count+"- {  " + employee.getRole() + "  }" + "   " + employee.getName() + " ----  " + " Location: " + employee.getLocation() + "  ---- " + " SSN: " + employee.getSsn());
+                choiceBox.getItems().add(count + "- {  " + employee.getRole() + "  }" + "   " + employee.getName() + " ----  " + " Location: " + employee.getLocation() + "  ---- " + " SSN: " + employee.getSsn());
         }
-        for (Employee employee : users) {count++;
+        for (Employee employee : users) {
+            count++;
             if (employee.getRole() == Employee.Role.DOCTOR)
-                choiceBox.getItems().add(count+"- {  " + employee.getRole() + "  }" + "   " + employee.getName() + " ----  " + " Location: " + employee.getLocation() + "  ---- " + " SSN: " + employee.getSsn());
+                choiceBox.getItems().add(count + "- {  " + employee.getRole() + "  }" + "   " + employee.getName() + " ----  " + " Location: " + employee.getLocation() + "  ---- " + " SSN: " + employee.getSsn());
 
         }
-        for (Employee employee : users) {count++;
+        for (Employee employee : users) {
+            count++;
             if (employee.getRole() == Employee.Role.ANALYSER)
-                choiceBox.getItems().add(count+"- {  " + employee.getRole() + "  }" + "   " + employee.getName() + " ----  " + " Location: " + employee.getLocation() + "  ---- " + " SSN: " + employee.getSsn());
+                choiceBox.getItems().add(count + "- {  " + employee.getRole() + "  }" + "   " + employee.getName() + " ----  " + " Location: " + employee.getLocation() + "  ---- " + " SSN: " + employee.getSsn());
         }
         choiceBox.getItems().add("View Staff");
 
         choiceBox.setValue("View Staff");
-
     }
 
 }
