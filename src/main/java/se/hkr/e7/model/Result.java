@@ -93,7 +93,7 @@ public class Result implements Serializable {
                 '}';
     }
 
-    enum Status {
+    public enum Status {
         POSITIVE, NEGATIVE, PENDING
     }
 }
