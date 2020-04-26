@@ -16,6 +16,7 @@ public class PatientLoginController extends Controller {
     public Label passwordCheck;
     public TextField passwordText;
     public CheckBox CheckBox;
+    public Button loginButton;
 
     public void Back(ActionEvent actionEvent) throws IOException {
         loadScene("view/Welcome.fxml", actionEvent);
