@@ -2,7 +2,11 @@ package se.hkr.e7.model;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.service.ServiceRegistry;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -15,7 +19,18 @@ public class DatabaseHandler {
     private static final Session session;
 
     static {
-        sessionFactory = new Configuration().configure().buildSessionFactory();
+        ServiceRegistry standardRegistry = new StandardServiceRegistryBuilder()
+                .configure("./hibernate.cfg.xml")
+                .build();
+        Metadata metadata = new MetadataSources(standardRegistry)
+                .addAnnotatedClass(Employee.class)
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(Person.class)
+                .addAnnotatedClass(Result.class)
+                .getMetadataBuilder()
+                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
+                .build();
+        sessionFactory = metadata.buildSessionFactory();
         session = sessionFactory.openSession();
     }
 
@@ -27,6 +42,32 @@ public class DatabaseHandler {
         T t = session.get(tClass, key);
         session.getTransaction().commit();
         return t;
+    }
+
+    /**
+     * This method will get all object in table <the command to run it is
+     * List<Employee> users = DatabaseHandler.loadAll(Employee.class);
+     *
+     * @param tClass A Hibernate annotated class type
+     * @return A list containing objects of type T
+     */
+    public static <T> List<T> loadAll(Class<T> tClass) {
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> criteria = builder.createQuery(tClass);
+        criteria.from(tClass);
+        return session.createQuery(criteria).getResultList();
+    }
+
+    public static void save(Object object) {
+        session.beginTransaction();
+        session.saveOrUpdate(object);
+        session.getTransaction().commit();
+    }
+
+    public static void delete(Object object) {
+        session.beginTransaction();
+        session.delete(object);
+        session.getTransaction().commit();
     }
 
     /**
@@ -55,31 +96,5 @@ public class DatabaseHandler {
 
         new Result(patient, employee, "2020-01-01", Result.Status.PENDING);
         new Result(patient, employee, "2020-01-01", Result.Status.POSITIVE);
-    }
-
-    public static void save(Object o) {
-        session.beginTransaction();
-        session.saveOrUpdate(o);
-        session.getTransaction().commit();
-    }
-
-    public static void delete(Object o) {
-        session.beginTransaction();
-        session.delete(o);
-        session.getTransaction().commit();
-    }
-
-    /**
-     * This method will get all object in table <the command to run it is
-     * List<Employee> users = DatabaseHandler.loadAllData(Employee.class);
-     *
-     * @param tClass A Hibernate annotated class type
-     * @return A list containing objects of type T
-     */
-    public static <T> List<T> loadAllData(Class<T> tClass) {
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<T> criteria = builder.createQuery(tClass);
-        criteria.from(tClass);
-        return session.createQuery(criteria).getResultList();
     }
 }
