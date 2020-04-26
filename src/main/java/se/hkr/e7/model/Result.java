@@ -39,7 +39,10 @@ public class Result implements Serializable {
         this.id = id;
     }
 
-    @ManyToOne(optional = false)
+    @ManyToOne(
+            cascade = CascadeType.ALL,
+            optional = false
+    )
     public Patient getPatient() {
         return patient;
     }
@@ -48,7 +51,10 @@ public class Result implements Serializable {
         this.patient = patient;
     }
 
-    @ManyToOne(optional = false)
+    @ManyToOne(
+            cascade = CascadeType.ALL,
+            optional = false
+    )
     public Employee getExaminer() {
         return examiner;
     }

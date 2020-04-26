@@ -1,5 +1,7 @@
 package se.hkr.e7.controller;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -13,20 +15,16 @@ import java.util.List;
 
 public class ViewResultsController extends Controller {
 
+    public Button exitButton;
+    public Button backButton;
     public ChoiceBox choiceBox;
-
-    public void Back(ActionEvent actionEvent) throws IOException {
-       loadScene("view/AdminDashboard.fxml",actionEvent);
-    }
-
-
-    public void Exit() {
-        System.exit(0);
-    }
 
     @FXML
     public void initialize() {
-        List<Result> results = DatabaseHandler.loadAllData(Result.class);
+        exitButton.setOnAction(this::exit);
+        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
+
+        List<Result> results = DatabaseHandler.loadAll(Result.class);
 
         for (Result result : results) {
             if (result.getStatus()== Result.Status.PENDING)

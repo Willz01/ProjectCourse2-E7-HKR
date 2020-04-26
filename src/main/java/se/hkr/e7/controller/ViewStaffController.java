@@ -1,5 +1,8 @@
 package se.hkr.e7.controller;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -12,14 +15,15 @@ import java.util.List;
 
 public class ViewStaffController extends Controller {
 
+    public Button exitButton;
+    public Button backButton;
+    public TextArea showStaffTextArea;
     public ChoiceBox<String> choiceBox;
 
-    public void Back(ActionEvent actionEvent) throws IOException {
-        loadScene("view/AdminDashboard.fxml", actionEvent);
-    }
-
-    public void Exit() {
-        System.exit(0);
+    @FXML
+    public void initialize() {
+        exitButton.setOnAction(this::exit);
+        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
     }
 
 

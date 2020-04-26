@@ -10,13 +10,9 @@ import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Location;
 
-import java.io.IOException;
-
-import static se.hkr.e7.model.Location.*;
-
 public class AddAdminController extends Controller {
     @FXML
-    public ChoiceBox<String> choiceBox;
+    public ChoiceBox<Location> choiceBox;
     public TextField ssn;
     public TextField name;
     public TextField address;
@@ -24,29 +20,29 @@ public class AddAdminController extends Controller {
     public TextField email;
     public TextField phone;
     public TextField salary;
-    public Button Add;
     public Label ssnLabel;
+    public Label nameLabel;
+    public Label passwordLabel;
+    public Label addressLabel;
+    public Label emailLabel;
+    public Label phoneLabel;
+    public Label salaryLabel;
+    public Label locationLabel;
+    public Label saveLabel;
+    public Button addButton;
+    public Button backButton;
+    public Button exitButton;
 
     @FXML
     public void initialize() {
-        ssnLabel.setText("YYMMDDXXXX");
-        choiceBox.getItems().add("Location");
-        choiceBox.getItems().addAll(String.valueOf(BLEKINGE), String.valueOf(DALARNA), String.valueOf(GOTLAND), String.valueOf(GAVLEBORG), String.valueOf(HALLAND), String.valueOf(JAMTLAND),
-                String.valueOf(JONKOPING), String.valueOf(KALMAR), String.valueOf(KRONOBERG), String.valueOf(NORRBOTTEN), String.valueOf(SKANE), String.valueOf(STOCKHOLM), String.valueOf(SODERMANLAND),
-                String.valueOf(UPPSALA), String.valueOf(VARMLAND), String.valueOf(VASTERBOTTEN), String.valueOf(VASTERNORRLAND), String.valueOf(VASTMANLAND), String.valueOf(VASTRAGOTALAND),
-                String.valueOf(OREBRO), String.valueOf(OSTERGOTLAND));
-        choiceBox.setValue("Location");
+        choiceBox.getItems().setAll(Location.values());
+
+        addButton.setOnAction(this::addAdmin);
+        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
+        exitButton.setOnAction(this::exit);
     }
 
-    public void Back(ActionEvent actionEvent) throws IOException {
-        loadScene("view/AdminDashboard.fxml", actionEvent);
-    }
-
-    public void Exit() {
-        System.exit(0);
-    }
-
-    public void Add() {
+    private void addAdmin(ActionEvent actionEvent) {
 
         if (!ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
             showError("ssn must be valid 10 digits as YYMMDDXXXX");
@@ -73,9 +69,9 @@ public class AddAdminController extends Controller {
             showError(" salary must be number");
         }
 
-        if (choiceBox.getValue().
-                equals("Location"))
+        if (choiceBox.getValue() == null) {
             showError("please select Location ");
+        }
 
         if (ssn.getText().
 
@@ -86,13 +82,10 @@ public class AddAdminController extends Controller {
                 matches("^[0-9\\-\\+]{9,15}$") && !choiceBox.getValue().
                 equals("Location")) {
             DatabaseHandler.save(new Employee(ssn.getText(), password.getText(), name.getText(), email.getText(),
-                    phone.getText(), address.getText(), Location.valueOf(choiceBox.getValue()), Employee.Role.ADMIN,
+                    phone.getText(), address.getText(), choiceBox.getValue(), Employee.Role.ADMIN,
                     Double.parseDouble(salary.getText())));
             confirm("saved");
 
         }
     }
 }
-
-
-

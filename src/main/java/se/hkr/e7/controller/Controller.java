@@ -6,8 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,17 +15,32 @@ import java.net.URL;
 
 public abstract class Controller {
 
-    public void loadScene(String url, ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Scene currScene = node.getScene();
-        Stage stage = (Stage) currScene.getWindow();
-        URL resource = getClass().getClassLoader().getResource(String.valueOf(url));
-        Parent root = FXMLLoader.load(resource);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void loadScene(String name, ActionEvent actionEvent) {
+        try {
+            Node node = (Node) actionEvent.getSource();
+            Scene currScene = node.getScene();
+            Stage stage = (Stage) currScene.getWindow();
+            URL resource = getClass().getClassLoader().getResource(name);
+            Parent root = FXMLLoader.load(resource);
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException | NullPointerException e) {
+            e.printStackTrace();
+            if (!name.equals("view/Welcome.fxml")) {
+                System.out.println("not");
+                loadScene("view/Welcome.fxml", actionEvent);
+            } else {
+                new Alert(Alert.AlertType.ERROR, "There was an error loading the default scene.", ButtonType.CLOSE)
+                        .showAndWait();
+                System.exit(1);
+            }
+        }
     }
 
+    public void exit(ActionEvent actionEvent) {
+        System.exit(0);
+    }
 
     void showError(String message) {
         showError("Input error - please retry.", message);
