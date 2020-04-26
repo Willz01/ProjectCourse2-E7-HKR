@@ -24,6 +24,7 @@ public abstract class Controller {
         stage.show();
     }
 
+
     void showError(String message) {
         showError("Input error - please retry.", message);
     }
