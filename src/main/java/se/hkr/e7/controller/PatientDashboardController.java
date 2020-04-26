@@ -17,7 +17,7 @@ public class PatientDashboardController extends Controller {
     @FXML
     public void initialize() {
         exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/patientLogin.fxml", actionEvent));
+        backButton.setOnAction(actionEvent -> loadScene("view/PatientLogin.fxml", actionEvent));
 
         try {
             Patient patient = DatabaseHandler.load(Patient.class, Singleton.getInstance().getSsn());

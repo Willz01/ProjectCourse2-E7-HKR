@@ -1,10 +1,7 @@
 package se.hkr.e7.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-
-import java.io.IOException;
 
 public class ViewPatientsController extends Controller {
 

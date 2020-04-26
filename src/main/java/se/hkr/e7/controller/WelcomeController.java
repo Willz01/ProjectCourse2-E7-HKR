@@ -13,6 +13,6 @@ public class WelcomeController extends Controller {
     public void initialize() {
         exitButton.setOnAction(this::exit);
         staffLoginButton.setOnAction(actionEvent -> loadScene("view/StaffLogin.fxml", actionEvent));
-        patientLoginButton.setOnAction(actionEvent -> loadScene("view/patientLogin.fxml", actionEvent));
+        patientLoginButton.setOnAction(actionEvent -> loadScene("view/PatientLogin.fxml", actionEvent));
     }
 }
