@@ -1,16 +1,16 @@
 package se.hkr.e7.controller;
 
-import javafx.event.ActionEvent;
-
-import java.io.IOException;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
 public class AddStaffController extends Controller {
 
-    public void Back(ActionEvent actionEvent) throws IOException {
-        loadScene("view/AdminDashboard.fxml", actionEvent);
-    }
+    public Button backButton;
+    public Button exitButton;
 
-    public void Exit() {
-        System.exit(0);
+    @FXML
+    public void initialize() {
+        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
+        exitButton.setOnAction(this::exit);
     }
 }

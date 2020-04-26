@@ -1,5 +1,6 @@
 package se.hkr.e7.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -36,12 +37,12 @@ public class AddAdminController extends Controller {
     public void initialize() {
         choiceBox.getItems().setAll(Location.values());
 
-        addButton.setOnAction(actionEvent -> addAdmin());
+        addButton.setOnAction(this::addAdmin);
         backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
-        exitButton.setOnAction(status -> System.exit(0));
+        exitButton.setOnAction(this::exit);
     }
 
-    private void addAdmin() {
+    private void addAdmin(ActionEvent actionEvent) {
         nameLabel.setText("");
         ssnLabel.setText("");
         passwordLabel.setText("");
