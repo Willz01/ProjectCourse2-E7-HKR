@@ -43,26 +43,23 @@ public class AddPatientController extends Controller {
         addressLabel.setText("");
         saveLabel.setText("");
 
-        if (ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
-            ssnLabel.setText("");
-        }
         if (!ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
-            ssnLabel.setText("input in YYMMDDXXXX form");
+            showError("input in YYMMDDXXXX form");
         }
         if (name.getText().equals("")) {
-            nameLabel.setText("can't be empty");
+            showError("name can't be empty");
         }
         if (address.getText().equals("")) {
-            addressLabel.setText(" can't be empty");
+            showError("address can't be empty");
         }
         if (password.getText().equals("")) {
-            passwordLabel.setText(" can't be empty");
+            showError("password can't be empty");
         }
-        if (email.getText().equals("")) {
-            emailLabel.setText(" can't be empty");
+        if (!email.getText().matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$")) {
+            showError("Enter valid email");
         }
-        if (phone.getText().equals("")) {
-            phoneLabel.setText(" can't be empty");
+        if (!phone.getText().matches("^[0-9\\-\\+]{9,15}$")) {
+            showError("Enter valid phone number");
 
 
             try {

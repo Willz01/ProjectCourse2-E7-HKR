@@ -43,11 +43,11 @@ public class AddPatientDoctorController extends Controller {
         if (password.getText().equals("")) {
             showError("password can't be empty");
         }
-        if (email.getText().equals("")) {
-            showError("email can't be empty");
+        if (!email.getText().matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$")) {
+            showError("Enter valid email");
         }
-        if (phone.getText().equals("")) {
-            showError("phone can't be empty");
+        if (!phone.getText().matches("^[0-9\\-\\+]{9,15}$")) {
+            showError("Enter valid phone number");
 
 
             try {
@@ -55,9 +55,9 @@ public class AddPatientDoctorController extends Controller {
                 DatabaseHandler.save(new Patient(ssn.getText(), password.getText(), name.getText(), email.getText(),
                         phone.getText(), address.getText()));
 
-                showDone("saved","now the patient is in the System");
+                showDone("saved", "now the patient is in the System");
             } catch (Exception exception) {
-                showError("did't save","please check if the patient is already in the System");
+                showError("did't save", "please check if the patient is already in the System");
 
             }
         }
