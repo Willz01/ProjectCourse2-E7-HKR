@@ -22,10 +22,8 @@ public class AddResultController extends Controller {
         exitButton.setOnAction(this::exit);
         backButton.setOnAction(actionEvent -> loadScene("view/DoctorDashboard.fxml", actionEvent));
 
-        if (Negative.isSelected()) POSITIVE.setSelected(false);
-        if (POSITIVE.isSelected()) Negative.setSelected(false);
-
-
+        while (Negative.isSelected()) POSITIVE.setSelected(true);
+        while (POSITIVE.isSelected()) Negative.setSelected(true);
 
 
     }
@@ -36,34 +34,38 @@ public class AddResultController extends Controller {
         String date = String.valueOf(bdate);
         if (bdate != null && bdate.isAfter(today)) {
 
-                showError("you can not chose date after today ");
+            showError("you can not chose date after today ");
             System.out.println(date);
 
-            }
+        }else
+        if (Negative.isSelected()&&POSITIVE.isSelected()||!Negative.isSelected()&&!POSITIVE.isSelected()){
+            showError("please put valid test result");
+        }else
 
-                if (!snn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
-                    showError("ssn must be valid 10 digits as YYMMDDXXXX");
-                } else {
+        if (!snn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
+            showError("ssn must be valid 10 digits as YYMMDDXXXX");
+        } else {
 
-                    try {
+            try {
 
-                            Patient patient = DatabaseHandler.load(Patient.class, snn.getText());
-                        Singleton.getInstance().getEmployee();
-                        if (Negative.isSelected()) {
-                            Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.NEGATIVE);
-                            showConfirmation("Saved","thank you ");
-                        }
-                        if (POSITIVE.isSelected()) {
-                            Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.POSITIVE);
-                            showConfirmation("Saved","thank you ");
-                        }
-
-                    } catch (Exception e) {
-                        showError("can not find the patient");
-                    }
+                Patient patient = DatabaseHandler.load(Patient.class, snn.getText());
+                Singleton.getInstance().getEmployee();
+                if (Negative.isSelected()) {
+                    Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.NEGATIVE);
+                    showConfirmation("Saved", "thank you ");
 
                 }
+                if (POSITIVE.isSelected()) {
+                    Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.POSITIVE);
+                    showConfirmation("Saved", "thank you ");
+                }
 
-
+            } catch (Exception e) {
+                showError("can not find the patient");
             }
+
         }
+
+
+    }
+}
