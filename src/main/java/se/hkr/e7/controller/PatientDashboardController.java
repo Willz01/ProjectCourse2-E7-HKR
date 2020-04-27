@@ -19,10 +19,13 @@ public class PatientDashboardController extends Controller {
         exitButton.setOnAction(this::exit);
         backButton.setOnAction(actionEvent -> loadScene("view/PatientLogin.fxml", actionEvent));
 
-        try {
-            Patient patient = DatabaseHandler.load(Patient.class, Singleton.getInstance().getSsn());
+//        try {
+
+            Singleton.getInstance().getPatient();
+
             StringBuilder stringBuilder = new StringBuilder();
-            for (Result testResult : patient.getTestResults()) {
+            for (Result testResult :  Singleton.getInstance().getPatient().getTestResults()) {
+                System.out.println(testResult);
                 stringBuilder.append(testResult.getDate())
                         .append(", The examiner: ")
                         .append(testResult.getExaminer().getName())
@@ -32,8 +35,9 @@ public class PatientDashboardController extends Controller {
                         .append(System.lineSeparator());
             }
             resultTextArea.setText(stringBuilder.toString());
-        } catch (Exception exception) {
-            resultTextArea.setText("Could not find result please press back and try again.");
-        }
+//        } catch (Exception exception) {
+//            exception.printStackTrace();
+//            resultTextArea.setText("Could not find result please press back and try again.");
+//        }
     }
 }

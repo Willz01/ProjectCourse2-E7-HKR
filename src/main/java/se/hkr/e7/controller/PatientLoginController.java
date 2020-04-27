@@ -51,10 +51,11 @@ public class PatientLoginController extends Controller {
                 Patient patient = DatabaseHandler.load(Patient.class, ssnTextField.getText());
 
                 if (patient.checkPassword(passwordTextField.getText())) {
-                    loadScene("view/PatientDashboard.fxml", actionEvent);
                     Singleton.getInstance().setPatient(patient);
+                    loadScene("view/PatientDashboard.fxml", actionEvent);
 
-                }if (!patient.checkPassword(passwordTextField.getText())) {
+                }
+                if (!patient.checkPassword(passwordTextField.getText())) {
                     showError("wrong password ");
                 }
 

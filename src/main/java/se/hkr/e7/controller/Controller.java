@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import se.hkr.e7.model.Singleton;
 
 import java.io.IOException;
 import java.net.URL;
@@ -39,6 +40,7 @@ public abstract class Controller {
     }
 
     public void exit(ActionEvent actionEvent) {
+        Singleton.getInstance().setSsn(null);
         System.exit(0);
     }
 
