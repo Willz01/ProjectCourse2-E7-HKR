@@ -54,10 +54,9 @@ public abstract class Controller {
     }
 
     void showConfirmation(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, message, ButtonType.OK);
         alert.setTitle(title);
-        alert.setContentText(message);
-        alert.getDialogPane().setGraphic(new ImageView("1.png"));
+        alert.getDialogPane().setGraphic(new ImageView("alert_confirmation.png"));
         alert.showAndWait();
     }
 }
