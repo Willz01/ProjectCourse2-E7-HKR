@@ -24,12 +24,10 @@ public class StaffLoginController extends Controller {
         exitButton.setOnAction(this::exit);
         backButton.setOnAction(actionEvent -> loadScene("view/Welcome.fxml", actionEvent));
         loginButton.setOnAction(this::login);
-
         passwordTextField.setManaged(false);
         passwordTextField.setVisible(true);
         passwordTextField.managedProperty().bind(checkBox.selectedProperty());
         passwordTextField.visibleProperty().bind(checkBox.selectedProperty());
-
         passwordField.managedProperty().bind(checkBox.selectedProperty().not());
         passwordField.visibleProperty().bind(checkBox.selectedProperty().not());
         passwordTextField.textProperty().bindBidirectional(passwordField.textProperty());
