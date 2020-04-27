@@ -9,7 +9,7 @@ import se.hkr.e7.model.Result;
 import java.util.List;
 
 
-public class ViewResultsController extends Controller {
+public class ViewResultsDoctorController extends Controller {
 
     public Button exitButton;
     public Button backButton;
@@ -18,7 +18,7 @@ public class ViewResultsController extends Controller {
     @FXML
     public void initialize() {
         exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
+        backButton.setOnAction(actionEvent -> loadScene("view/DoctorDashboard.fxml", actionEvent));
 
         List<Result> results = DatabaseHandler.loadAll(Result.class);
 

@@ -88,9 +88,9 @@ public class DatabaseHandler {
                 98.1);
         save(employee);
 
-        save(new Patient("19880108994", "password1", "Jone", "mymail@yahoo.com",
+        save(new Patient("8801089940", "password1", "Jone", "mymail@yahoo.com",
                 "07332233", "oneStreet 32"));
-        Patient patient = new Patient("196154054565", "password1", "Mohammed",
+        Patient patient = new Patient("6101054565", "password1", "Mohammed",
                 "mohammed@example.com", "062563454", "onehomet 32");
         save(patient);
 

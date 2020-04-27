@@ -10,13 +10,9 @@ import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Location;
 
-import java.io.IOException;
-
-import static se.hkr.e7.model.Location.*;
-
 public class AddAdminController extends Controller {
     @FXML
-    public ChoiceBox<String> choiceBox;
+    public ChoiceBox<Location> choiceBox;
     public TextField ssn;
     public TextField name;
     public TextField address;
@@ -24,69 +20,59 @@ public class AddAdminController extends Controller {
     public TextField email;
     public TextField phone;
     public TextField salary;
-    public Button Add;
     public Label ssnLabel;
+    public Button addButton;
+    public Button backButton;
+    public Button exitButton;
 
     @FXML
     public void initialize() {
-        ssnLabel.setText("YYMMDDXXXX");
-        choiceBox.getItems().add("Location");
-        choiceBox.getItems().addAll(String.valueOf(BLEKINGE), String.valueOf(DALARNA), String.valueOf(GOTLAND), String.valueOf(GAVLEBORG), String.valueOf(HALLAND), String.valueOf(JAMTLAND),
-                String.valueOf(JONKOPING), String.valueOf(KALMAR), String.valueOf(KRONOBERG), String.valueOf(NORRBOTTEN), String.valueOf(SKANE), String.valueOf(STOCKHOLM), String.valueOf(SODERMANLAND),
-                String.valueOf(UPPSALA), String.valueOf(VARMLAND), String.valueOf(VASTERBOTTEN), String.valueOf(VASTERNORRLAND), String.valueOf(VASTMANLAND), String.valueOf(VASTRAGOTALAND),
-                String.valueOf(OREBRO), String.valueOf(OSTERGOTLAND));
-        choiceBox.setValue("Location");
+        choiceBox.getItems().setAll(Location.values());
+
+        addButton.setOnAction(this::addAdmin);
+        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
+        exitButton.setOnAction(this::exit);
     }
 
-    public void Back(ActionEvent actionEvent) throws IOException {
-        loadScene("view/AdminDashboard.fxml", actionEvent);
-    }
+    private void addAdmin(ActionEvent actionEvent) {
 
-    public void Exit() {
-        System.exit(0);
-    }
+        if (!ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
+            showError("ssn must be valid 10 digits as YYMMDDXXXX");
+        }
+        if (!email.getText().matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$")) {
+            showError("please enter valid email Address");
+        }
+        if (name.getText().equals("")) {
+            showError("name can't be empty");
+        }
 
-    public void Add() {
+        if (address.getText().equals("")) {
+            showError("address can't be empty");
+        }
 
-         if (!ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
-                showError("ssn must be valid 10 digits as YYMMDDXXXX");
-            }
+        if (password.getText().equals("")) {
+            showError("password can't be empty");
+        }
 
-            if (name.getText().equals("")) {
-                showError("name can't be empty");
-            }
+        if (!phone.getText().matches("^[0-9\\-\\+]{9,15}$"))
+            showError("please enter valid phone number");
 
-            if (address.getText().equals("")) {
-                showError("address can't be empty");
-            }
+        if (!(salary.getText().matches("^[0-9]+\\.?[0-9]*$"))) {
+            showError(" salary must be number");
+        }
 
-            if (password.getText().equals("")) {
-                showError("password can't be empty");
-            }
+        if (choiceBox.getValue() == null) {
+            showError("please select Location ");
+        }
 
-            if (email.getText().equals("")) {
-                showError("email can't be empty");
-            }
-
-            if (phone.getText().equals("")) {
-                showError("phone can't be empty");
-                if (!(salary.getText().matches("^[0-9]+\\.?[0-9]*$"))) {
-                    showError(" salary must be number");
-                }
-            }
-            if (choiceBox.getValue().equals("Location"))
-                showError("please select Location ");
-
-            try {
-                DatabaseHandler.save(new Employee(ssn.getText(), password.getText(), name.getText(), email.getText(),
-                        phone.getText(), address.getText(), Location.valueOf(choiceBox.getValue()), Employee.Role.ADMIN,
-                        Double.parseDouble(salary.getText())));
-                confirm("saved");
-            } catch (Exception exception) {
-                showError("did't save");
-            }
+        if (ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")
+                && email.getText().matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$")
+                && phone.getText().matches("^[0-9\\-\\+]{9,15}$")
+                && choiceBox.getValue() != null) {
+            DatabaseHandler.save(new Employee(ssn.getText(), password.getText(), name.getText(), email.getText(),
+                    phone.getText(), address.getText(), choiceBox.getValue(), Employee.Role.ADMIN,
+                    Double.parseDouble(salary.getText())));
+            showConfirmation("Finished successfully!", "The admin account was created.");
         }
     }
-
-
-
+}

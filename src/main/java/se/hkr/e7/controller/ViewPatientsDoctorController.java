@@ -8,7 +8,7 @@ import se.hkr.e7.model.Patient;
 
 import java.util.List;
 
-public class ViewPatientsController extends Controller {
+public class ViewPatientsDoctorController extends Controller {
 
     public Button exitButton;
     public Button backButton;
@@ -17,7 +17,7 @@ public class ViewPatientsController extends Controller {
     @FXML
     public void initialize() {
         exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
+        backButton.setOnAction(actionEvent -> loadScene("view/DoctorDashboard.fxml", actionEvent));
 
         List<Patient> patients = DatabaseHandler.loadAll(Patient.class);
         int counter = 0;
