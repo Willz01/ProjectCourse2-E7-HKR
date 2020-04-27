@@ -2,9 +2,7 @@ package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Singleton;
@@ -18,12 +16,23 @@ public class StaffLoginController extends Controller {
     public TextField passwordTextField;
     public Label passwordCheckLabel;
     public Label errorLabel;
+    public PasswordField passwordField;
+    public CheckBox checkBox;
 
     @FXML
     public void initialize() {
         exitButton.setOnAction(this::exit);
         backButton.setOnAction(actionEvent -> loadScene("view/Welcome.fxml", actionEvent));
         loginButton.setOnAction(this::login);
+
+        passwordTextField.setManaged(false);
+        passwordTextField.setVisible(true);
+        passwordTextField.managedProperty().bind(checkBox.selectedProperty());
+        passwordTextField.visibleProperty().bind(checkBox.selectedProperty());
+
+        passwordField.managedProperty().bind(checkBox.selectedProperty().not());
+        passwordField.visibleProperty().bind(checkBox.selectedProperty().not());
+        passwordTextField.textProperty().bindBidirectional(passwordField.textProperty());
     }
 
     private void login(ActionEvent actionEvent) {

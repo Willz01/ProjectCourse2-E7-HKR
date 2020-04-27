@@ -21,14 +21,6 @@ public class AddAdminController extends Controller {
     public TextField phone;
     public TextField salary;
     public Label ssnLabel;
-    public Label nameLabel;
-    public Label passwordLabel;
-    public Label addressLabel;
-    public Label emailLabel;
-    public Label phoneLabel;
-    public Label salaryLabel;
-    public Label locationLabel;
-    public Label saveLabel;
     public Button addButton;
     public Button backButton;
     public Button exitButton;
@@ -43,55 +35,44 @@ public class AddAdminController extends Controller {
     }
 
     private void addAdmin(ActionEvent actionEvent) {
-        nameLabel.setText("");
-        ssnLabel.setText("");
-        passwordLabel.setText("");
-        emailLabel.setText("");
-        salaryLabel.setText("");
-        phoneLabel.setText("");
-        addressLabel.setText("");
-        saveLabel.setText("");
-
-        if (ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
-            ssnLabel.setText("");
-        }
 
         if (!ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
-            ssnLabel.setText("input in YYMMDDXXXX form");
+            showError("ssn must be valid 10 digits as YYMMDDXXXX");
         }
-
+        if (!email.getText().matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$")) {
+            showError("please enter valid email Address");
+        }
         if (name.getText().equals("")) {
-            nameLabel.setText("can't be empty");
+            showError("name can't be empty");
         }
 
         if (address.getText().equals("")) {
-            addressLabel.setText(" can't be empty");
+            showError("address can't be empty");
         }
 
         if (password.getText().equals("")) {
-            passwordLabel.setText(" can't be empty");
+            showError("password can't be empty");
         }
 
-        if (email.getText().equals("")) {
-            emailLabel.setText(" can't be empty");
+        if (!phone.getText().matches("^[0-9\\-\\+]{9,15}$"))
+            showError("please enter valid phone number");
+
+        if (!(salary.getText().matches("^[0-9]+\\.?[0-9]*$"))) {
+            showError(" salary must be number");
         }
 
-        if (phone.getText().equals("")) {
-            phoneLabel.setText(" can't be empty");
-            if (!(salary.getText().matches("^[0-9]+\\.?[0-9]*$"))) {
-                salaryLabel.setText(" salary must be number");
-            }
+        if (choiceBox.getValue() == null) {
+            showError("please select Location ");
         }
 
-        try {
+        if (ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")
+                && email.getText().matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$")
+                && phone.getText().matches("^[0-9\\-\\+]{9,15}$")
+                && choiceBox.getValue() != null) {
             DatabaseHandler.save(new Employee(ssn.getText(), password.getText(), name.getText(), email.getText(),
                     phone.getText(), address.getText(), choiceBox.getValue(), Employee.Role.ADMIN,
                     Double.parseDouble(salary.getText())));
-            saveLabel.setText("saved");
-        } catch (Exception exception) {
-            saveLabel.setText("did't save ");
+            showConfirmation("Finished successfully!", "The admin account was created.");
         }
     }
 }
-
-

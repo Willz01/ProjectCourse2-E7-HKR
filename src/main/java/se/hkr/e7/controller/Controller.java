@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
@@ -50,5 +51,12 @@ public abstract class Controller {
         error.setTitle(title);
         error.setContentText(message);
         error.showAndWait();
+    }
+
+    void showConfirmation(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, message, ButtonType.OK);
+        alert.setTitle(title);
+        alert.getDialogPane().setGraphic(new ImageView("alert_confirmation.png"));
+        alert.showAndWait();
     }
 }
