@@ -51,9 +51,11 @@ public class AddResultController extends Controller {
                         Singleton.getInstance().getEmployee();
                         if (Negative.isSelected()) {
                             Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.NEGATIVE);
+                            showConfirmation("Saved","thank you ");
                         }
                         if (POSITIVE.isSelected()) {
                             Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.POSITIVE);
+                            showConfirmation("Saved","thank you ");
                         }
 
                     } catch (Exception e) {
