@@ -21,7 +21,8 @@ public class PatientDashboardController extends Controller {
         exitButton.setOnAction(actionEvent ->
         {
             System.exit(0);
-        });        backButton.setOnAction(actionEvent -> {
+        });
+        backButton.setOnAction(actionEvent -> {
             loadScene("view/PatientLogin.fxml", actionEvent);
         });
 
