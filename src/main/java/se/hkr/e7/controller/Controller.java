@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
@@ -13,8 +14,13 @@ import se.hkr.e7.model.Singleton;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
+
 
 public abstract class Controller {
+
+
+    public final static ActionEvent actionEvent = new ActionEvent();
 
     public void loadScene(String name, ActionEvent actionEvent) {
         try {
@@ -55,10 +61,29 @@ public abstract class Controller {
         error.showAndWait();
     }
 
-    void showConfirmation(String title, String message) {
+    void showDone(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, message, ButtonType.OK);
         alert.setTitle(title);
         alert.getDialogPane().setGraphic(new ImageView("alert_confirmation.png"));
         alert.showAndWait();
+    }
+
+    boolean showOptions(String info, String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(message);
+        alert.setContentText(info);
+        ButtonType buttonTypeOne = new ButtonType("Yes");
+        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeCancel);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == buttonTypeOne) {
+
+            return true;
+        } else if (result.get() == buttonTypeCancel) {
+            return false;
+        }
+        return false;
     }
 }

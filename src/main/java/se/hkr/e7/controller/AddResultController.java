@@ -2,10 +2,7 @@ package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Result;
@@ -27,8 +24,7 @@ public class AddResultController extends Controller {
         exitButton.setOnAction(this::exit);
         backButton.setOnAction(actionEvent -> loadScene("view/DoctorDashboard.fxml", actionEvent));
 
-        while (negativeCheckBox.isSelected()) positiveCheckBox.setSelected(true);
-        while (positiveCheckBox.isSelected()) negativeCheckBox.setSelected(true);
+
     }
 
     public void Save(ActionEvent event) {
@@ -47,25 +43,40 @@ public class AddResultController extends Controller {
         } else {
 
             try {
-
                 Patient patient = DatabaseHandler.load(Patient.class, ssnTextField.getText());
                 Singleton.getInstance().getEmployee();
+
+
                 if (negativeCheckBox.isSelected()) {
-                    Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.NEGATIVE);
-                    showConfirmation("Saved", "thank you ");
+                    new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.NEGATIVE);
+                    showDone("Saved", "thank you ");
 
                 }
                 if (positiveCheckBox.isSelected()) {
-                    Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.POSITIVE);
-                    showConfirmation("Saved", "thank you ");
+                    new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.POSITIVE);
+                    showDone("Saved", "thank you ");
                 }
 
             } catch (Exception e) {
-                showError("can not find the patient");
+
+                if (showOptions("Do you want to make Enter new Patient ?", "Can't find Patient")) {
+
+                    loadScene("view/AddPatientDoctor.fxml", event);
+                }
+
             }
 
         }
 
 
+    }
+
+    public void pressNegative(ActionEvent event) {
+        positiveCheckBox.setSelected(false);
+    }
+
+    public void pressPositive(ActionEvent event) {
+
+        negativeCheckBox.setSelected(false);
     }
 }

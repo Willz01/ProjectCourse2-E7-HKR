@@ -72,7 +72,7 @@ public class AddAdminController extends Controller {
             DatabaseHandler.save(new Employee(ssn.getText(), password.getText(), name.getText(), email.getText(),
                     phone.getText(), address.getText(), choiceBox.getValue(), Employee.Role.ADMIN,
                     Double.parseDouble(salary.getText())));
-            showConfirmation("Finished successfully!", "The admin account was created.");
+            showDone("Finished successfully!", "The admin account was created.");
         }
     }
 }
