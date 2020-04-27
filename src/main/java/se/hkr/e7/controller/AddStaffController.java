@@ -40,11 +40,7 @@ public class AddStaffController extends Controller {
     @FXML
     public void initialize() {
         backButton.setOnAction(actionEvent -> {
-            try {
-                loadScene("view/AdminDashboard.fxml", actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            loadScene("view/AdminDashboard.fxml", actionEvent);
         });
         exitButton.setOnAction(actionEvent ->
         {

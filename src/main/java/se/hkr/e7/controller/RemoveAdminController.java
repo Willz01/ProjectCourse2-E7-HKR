@@ -17,11 +17,7 @@ public class RemoveAdminController extends Controller {
             System.exit(0);
         });
         backButton.setOnAction(actionEvent -> {
-            try {
-                loadScene("view/AdminDashboard.fxml", actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            loadScene("view/AdminDashboard.fxml", actionEvent);
         });
     }
 }

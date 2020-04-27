@@ -27,67 +27,31 @@ public class AdminDashboardController extends Controller {
             System.exit(0);
         });
         backButton.setOnAction(actionEvent -> {
-            try {
-                loadScene("view/StaffLogin.fxml", actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            loadScene("view/StaffLogin.fxml", actionEvent);
         });
         addAdminButton.setOnAction(actionEvent -> {
-            try {
-                loadScene("view/AddAdmin.fxml", actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            loadScene("view/AddAdmin.fxml", actionEvent);
         });
         addPatientButton.setOnAction(actionEvent -> {
-            try {
-                loadScene("view/AddPatient.fxml", actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            loadScene("view/AddPatient.fxml", actionEvent);
         });
         addStaffButton.setOnAction(actionEvent -> {
-            try {
-                loadScene("view/AddStaff.fxml", actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            loadScene("view/AddStaff.fxml", actionEvent);
         });
         viewResultsButton.setOnAction(actionEvent -> {
-            try {
-                loadScene("view/ViewResults.fxml", actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            loadScene("view/ViewResults.fxml", actionEvent);
         });
         viewPatientButton.setOnAction(actionEvent -> {
-            try {
-                loadScene("view/ViewPatients.fxml", actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            loadScene("view/ViewPatients.fxml", actionEvent);
         });
         viewStaffButton.setOnAction(actionEvent -> {
-            try {
-                loadScene("view/ViewStaff.fxml", actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            loadScene("view/ViewStaff.fxml", actionEvent);
         });
         removeStaffButton.setOnAction(actionEvent -> {
-            try {
-                loadScene("view/RemoveStaff.fxml", actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            loadScene("view/RemoveStaff.fxml", actionEvent);
         });
         removeAdminButton.setOnAction(actionEvent -> {
-            try {
-                loadScene("view/RemoveAdmin.fxml", actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            loadScene("view/RemoveAdmin.fxml", actionEvent);
         });
         searchButton.setOnAction(actionEvent -> System.out.println("Not implemented yet"));
     }

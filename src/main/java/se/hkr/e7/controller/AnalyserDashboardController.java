@@ -15,11 +15,7 @@ public class AnalyserDashboardController extends Controller {
         {
             System.exit(0);
         });        backButton.setOnAction(actionEvent -> {
-            try {
-                loadScene("view/StaffLogin.fxml", actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            loadScene("view/StaffLogin.fxml", actionEvent);
         });
     }
 }

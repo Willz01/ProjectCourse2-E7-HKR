@@ -22,11 +22,7 @@ public class PatientDashboardController extends Controller {
         {
             System.exit(0);
         });        backButton.setOnAction(actionEvent -> {
-            try {
-                loadScene("view/PatientLogin.fxml", actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            loadScene("view/PatientLogin.fxml", actionEvent);
         });
 
         try {

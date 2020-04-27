@@ -19,13 +19,22 @@ public class PatientLoginController extends Controller {
     public Label errorLabel;
     public Label passwordCheckLabel;
     public PasswordField passwordField;
-    public CheckBox CheckBox;
+    public TextField passwordTextField;
+    public javafx.scene.control.CheckBox checkBox;
 
     @FXML
     public void initialize() {
         exitButton.setOnAction(this::exit);
         backButton.setOnAction(actionEvent -> loadScene("view/Welcome.fxml", actionEvent));
         loginButton.setOnAction(this::login);
+        passwordTextField.setManaged(false);
+        passwordTextField.setVisible(true);
+        passwordTextField.managedProperty().bind(checkBox.selectedProperty());
+        passwordTextField.visibleProperty().bind(checkBox.selectedProperty());
+
+        passwordField.managedProperty().bind(checkBox.selectedProperty().not());
+        passwordField.visibleProperty().bind(checkBox.selectedProperty().not());
+        passwordTextField.textProperty().bindBidirectional(passwordField.textProperty());
     }
 
     private void login(ActionEvent actionEvent) {
