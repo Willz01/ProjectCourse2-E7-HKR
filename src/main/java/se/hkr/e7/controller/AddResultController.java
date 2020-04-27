@@ -60,7 +60,7 @@ public class AddResultController extends Controller {
             } catch (Exception e) {
 
                 if (showOptions("Do you want to make Enter new Patient ?", "Can't find Patient")) {
-
+                    Singleton.getInstance().setSsn(ssnTextField.getText());
                     loadScene("view/AddPatientDoctor.fxml", event);
                 }
 

@@ -35,14 +35,6 @@ public class AddPatientController extends Controller {
     }
 
     private void addPatient(ActionEvent actionEvent) {
-        nameLabel.setText("");
-        ssnLabel.setText("");
-        passwordLabel.setText("");
-        emailLabel.setText("");
-        phoneLabel.setText("");
-        addressLabel.setText("");
-        saveLabel.setText("");
-
         if (!ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
             showError("input in YYMMDDXXXX form");
         }
@@ -61,14 +53,16 @@ public class AddPatientController extends Controller {
         if (!phone.getText().matches("^[0-9\\-\\+]{9,15}$")) {
             showError("Enter valid phone number");
 
-
+        }
+        if (ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$") && email.getText().matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$") && phone.getText().matches("^[0-9\\-\\+]{9,15}$")) {
             try {
 
                 DatabaseHandler.save(new Patient(ssn.getText(), password.getText(), name.getText(), email.getText(),
                         phone.getText(), address.getText()));
-                saveLabel.setText("saved");
+
+                showDone("saved", "now the patient is in the System");
             } catch (Exception exception) {
-                saveLabel.setText("did't save ");
+                showError("did't save", "please check if the patient is already in the System");
 
             }
         }
