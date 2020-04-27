@@ -16,8 +16,8 @@ public class DoctorDashboardController extends Controller {
         exitButton.setOnAction(this::exit);
         backButton.setOnAction(actionEvent -> loadScene("view/StaffLogin.fxml", actionEvent));
         viewPatientButton.setOnAction(actionEvent -> loadScene("view/ViewPatientsDoctor.fxml", actionEvent));
-        createCaseButton.setOnAction(actionEvent -> System.out.println("Not implemented"));
+        createCaseButton.setOnAction(actionEvent ->  loadScene("view/AddResult.fxml", actionEvent));
         viewResultsButton.setOnAction(actionEvent -> loadScene("view/ViewResultsDoctor.fxml", actionEvent));
-        listCasesButton.setOnAction(actionEvent -> System.out.println("Not implemented"));
+        listCasesButton.setOnAction(actionEvent -> System.out.println("view/AddResult.fxml"));
     }
 }
