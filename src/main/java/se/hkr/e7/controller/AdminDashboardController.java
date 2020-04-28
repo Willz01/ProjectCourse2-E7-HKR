@@ -21,7 +21,7 @@ public class AdminDashboardController extends Controller {
     @FXML
     public void initialize() {
         exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/StaffLogin.fxml", actionEvent));
+        backButton.setOnAction(actionEvent -> loadScene("view/Login.fxml", actionEvent));
         addAdminButton.setOnAction(actionEvent -> loadScene("view/AddAdmin.fxml", actionEvent));
         addPatientButton.setOnAction(actionEvent -> loadScene("view/AddPatient.fxml", actionEvent));
         addStaffButton.setOnAction(actionEvent -> loadScene("view/AddStaff.fxml", actionEvent));

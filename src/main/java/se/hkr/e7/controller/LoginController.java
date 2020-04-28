@@ -7,7 +7,7 @@ import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Singleton;
 
-public class StaffLoginController extends Controller {
+public class LoginController extends Controller {
 
     public Button exitButton;
     public Button backButton;
