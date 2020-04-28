@@ -7,6 +7,6 @@
 
     <!--TODO add the logo in the end of the project-->
     <Button fx:id="loginButton" alignment="CENTER" layoutX="214.0" layoutY="179.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="173.0" text="Login" />
-    <Button fx:id="exitButton" layoutX="519.0" layoutY="361.0" mnemonicParsing="false" text="Exit" />
+    <fx:include source="../template/exitButton.fxml" />
 
 </AnchorPane>

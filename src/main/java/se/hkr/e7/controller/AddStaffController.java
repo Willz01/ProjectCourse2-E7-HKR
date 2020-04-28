@@ -9,13 +9,12 @@ import javafx.scene.control.TextField;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Location;
+import se.hkr.e7.model.Singleton;
 
 import static se.hkr.e7.model.Location.*;
 
 public class AddStaffController extends Controller {
 
-    public Button backButton;
-    public Button exitButton;
     public Button addButton;
     public TextField ssn;
     public TextField name;
@@ -37,10 +36,8 @@ public class AddStaffController extends Controller {
 
     @FXML
     public void initialize() {
-        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
-        exitButton.setOnAction(this::exit);
+        Singleton.getInstance().addSceneHistory("view/AddStaff.fxml");
         addButton.setOnAction(this::addStaff);
-
         ssnLabel.setText("YYMMDDXXXX");
         choiceBox.getItems().add("Location");
         choiceBox.getItems().addAll(String.valueOf(BLEKINGE), String.valueOf(DALARNA), String.valueOf(GOTLAND), String.valueOf(GAVLEBORG), String.valueOf(HALLAND), String.valueOf(JAMTLAND),

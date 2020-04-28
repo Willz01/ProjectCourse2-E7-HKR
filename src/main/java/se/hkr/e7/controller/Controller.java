@@ -40,10 +40,6 @@ public abstract class Controller {
         }
     }
 
-    public void exit(ActionEvent actionEvent) {
-        System.exit(0);
-    }
-
     void showError(String message) {
         showError("Input error - please retry.", message);
     }
