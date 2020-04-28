@@ -2,10 +2,15 @@ package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Singleton;
+
+import java.util.stream.Stream;
 
 public class StaffLoginController extends Controller {
 
@@ -24,6 +29,7 @@ public class StaffLoginController extends Controller {
         exitButton.setOnAction(this::exit);
         backButton.setOnAction(actionEvent -> loadScene("view/Welcome.fxml", actionEvent));
         loginButton.setOnAction(this::login);
+        Stream.of(ssnTextField, passwordField, passwordTextField).forEach(e -> e.setOnKeyPressed(this::onEnter));
 
         passwordTextField.setManaged(false);
         passwordTextField.setVisible(true);
@@ -36,6 +42,10 @@ public class StaffLoginController extends Controller {
     }
 
     private void login(ActionEvent actionEvent) {
+        login((Node) actionEvent.getSource());
+    }
+
+    private void login(Node node) {
         passwordCheckLabel.setText(null);
         errorLabel.setText(null);
         if (passwordTextField.getText().equals("") || ssnTextField.getText().equals("")) {
@@ -47,7 +57,7 @@ public class StaffLoginController extends Controller {
 
 
                 if (employee.getRole() == Employee.Role.ADMIN && employee.checkPassword(passwordTextField.getText())) {
-                    loadScene("view/AdminDashboard.fxml", actionEvent);
+                    loadScene("view/AdminDashboard.fxml", node);
                 }
 
                 if (employee.getSsn() != null && !employee.checkPassword(passwordTextField.getText())) {
@@ -55,15 +65,21 @@ public class StaffLoginController extends Controller {
                 }
 
                 if (employee.getRole() == Employee.Role.DOCTOR && employee.checkPassword(passwordTextField.getText())) {
-                    loadScene("view/DoctorDashboard.fxml", actionEvent);
+                    loadScene("view/DoctorDashboard.fxml", node);
                 }
 
                 if (employee.getRole() == Employee.Role.ANALYSER && employee.checkPassword(passwordTextField.getText())) {
-                    loadScene("view/AnalyserDashboard.fxml", actionEvent);
+                    loadScene("view/AnalyserDashboard.fxml", node);
                 }
             } catch (Exception exception) {
                 showError("Could not login , please check your password and ssn");
             }
+        }
+    }
+
+    private void onEnter(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            login((Node) keyEvent.getSource());
         }
     }
 }
