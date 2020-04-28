@@ -14,14 +14,8 @@
     <Button fx:id="addButton" layoutX="364.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Add" />
     <Button fx:id="backButton" layoutX="442.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Back" />
     <Button fx:id="exitButton" layoutX="519.0" layoutY="361.0" mnemonicParsing="false" text="Exit" />
-    <Label fx:id="ssnLabel" layoutX="24.0" layoutY="94.0" prefHeight="17.0" prefWidth="175.0" text="YYMMDDXXXX"/>
-    <Label fx:id="nameLabel" layoutX="24.0" layoutY="135.0" prefHeight="17.0" prefWidth="175.0" />
-    <Label fx:id="passwordLabel" layoutX="24.0" layoutY="185.0" prefHeight="17.0" prefWidth="175.0" />
-    <Label fx:id="addressLabel" layoutX="24.0" layoutY="236.0" prefHeight="17.0" prefWidth="175.0" />
-    <Label fx:id="emailLabel" layoutX="251.0" layoutY="94.0" prefHeight="17.0" prefWidth="175.0" />
-    <Label fx:id="phoneLabel" layoutX="251.0" layoutY="135.0" prefHeight="17.0" prefWidth="175.0" />
-    <Label fx:id="saveLabel" layoutX="171.0" layoutY="365.0" prefHeight="17.0" prefWidth="175.0" />
-   <Label layoutX="185.0" layoutY="23.0" prefHeight="25.0" prefWidth="175.0" text="Add patient">
+    <Label fx:id="ssnLabel" layoutX="24.0" layoutY="94.0" prefHeight="17.0" prefWidth="175.0" text="YYMMDDXXXX" textFill="#cac3c3" />
+     <Label layoutX="185.0" layoutY="23.0" prefHeight="25.0" prefWidth="175.0" text="Add patient">
       <font>
          <Font size="18.0" />
       </font>

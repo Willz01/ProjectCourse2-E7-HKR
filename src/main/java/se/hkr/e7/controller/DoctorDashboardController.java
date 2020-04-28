@@ -7,17 +7,17 @@ public class DoctorDashboardController extends Controller {
     public Button exitButton;
     public Button backButton;
     public Button viewPatientButton;
-    public Button AddResultButton;
+    public Button addResultButton;
     public Button viewResultsButton;
-    public Button listCasesButton;
+    public Button addPatientButton;
 
     @FXML
     public void initialize() {
         exitButton.setOnAction(this::exit);
         backButton.setOnAction(actionEvent -> loadScene("view/StaffLogin.fxml", actionEvent));
         viewPatientButton.setOnAction(actionEvent -> loadScene("view/ViewPatientsDoctor.fxml", actionEvent));
-        AddResultButton.setOnAction(actionEvent  ->  loadScene("view/AddResult.fxml", actionEvent));
+        addResultButton.setOnAction(actionEvent  ->  loadScene("view/AddResult.fxml", actionEvent));
         viewResultsButton.setOnAction(actionEvent -> loadScene("view/ViewResultsDoctor.fxml", actionEvent));
-        listCasesButton.setOnAction(actionEvent -> System.out.println("view/AddResult.fxml"));
+        addPatientButton.setOnAction(actionEvent -> loadScene("view/AddPatientDoctor.fxml", actionEvent));
     }
 }
