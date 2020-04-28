@@ -16,9 +16,9 @@ public class PatientDashboardController extends Controller {
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/PatientDashboard.fxml");
         try {
-            Patient patient = DatabaseHandler.load(Patient.class, Singleton.getInstance().getSsn());
+            Patient currentUser = (Patient) Singleton.getInstance().getCurrentUser();
             StringBuilder stringBuilder = new StringBuilder();
-            for (Result testResult : patient.getTestResults()) {
+            for (Result testResult : currentUser.getTestResults()) {
                 stringBuilder.append(testResult.getDate())
                         .append(", The examiner: ")
                         .append(testResult.getExaminer().getName())
