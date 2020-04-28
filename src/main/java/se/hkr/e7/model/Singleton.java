@@ -32,10 +32,6 @@ public class Singleton {
         return sceneHistory.removeFirst();
     }
 
-    public static void setInstance(Singleton instance) {
-        Singleton.instance = instance;
-    }
-
     public Employee getEmployee() {
         return employee;
     }
