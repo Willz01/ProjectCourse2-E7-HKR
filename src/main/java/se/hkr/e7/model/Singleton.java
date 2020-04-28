@@ -3,6 +3,7 @@ package se.hkr.e7.model;
 public class Singleton {
 
     private static Singleton instance = null;
+    private Person currentUser;
     private Employee employee;
     private Patient patient;
     private Result result;
@@ -16,10 +17,6 @@ public class Singleton {
             instance = new Singleton();
         }
         return instance;
-    }
-
-    public static void setInstance(Singleton instance) {
-        Singleton.instance = instance;
     }
 
     public Employee getEmployee() {
@@ -52,6 +49,14 @@ public class Singleton {
 
     public void setSsn(String ssn) {
         this.ssn = ssn;
+    }
+
+    public Person getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(Person currentUser) {
+        this.currentUser = currentUser;
     }
 }
 
