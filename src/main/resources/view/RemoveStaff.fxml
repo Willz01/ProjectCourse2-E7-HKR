@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx" fx:controller="se.hkr.e7.controller.RemoveStaffController" prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.RemoveStaffController">
     <fx:include source="../template/buttons.fxml"/>
+    <Button fx:id="removeButton" layoutX="274.0" layoutY="234.0" mnemonicParsing="false" onAction="#Remove"
+            text="Remove"/>
+    <Label fx:id="saveLabel" layoutX="246.0" layoutY="357.0" prefHeight="32.0" prefWidth="104.0"/>
+    <TextField fx:id="ssnField" layoutX="184.0" layoutY="188.0" prefHeight="25.0" prefWidth="233.0" promptText="ssn"/>
 </AnchorPane>
