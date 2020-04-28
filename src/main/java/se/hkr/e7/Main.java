@@ -18,7 +18,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        URL resource = getClass().getClassLoader().getResource("view/Welcome.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/AdminDashboard.fxml");
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         stage.setScene(scene);

@@ -41,5 +41,6 @@ public class ViewResultsController extends Controller {
 
         choiceBox.getItems().add("View Results");
         choiceBox.setValue("View Results");
+
     }
 }
