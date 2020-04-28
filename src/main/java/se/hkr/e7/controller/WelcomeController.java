@@ -6,13 +6,11 @@ import javafx.scene.control.Button;
 public class WelcomeController extends Controller {
 
     public Button exitButton;
-    public Button staffLoginButton;
-    public Button patientLoginButton;
+    public Button loginButton;
 
     @FXML
     public void initialize() {
         exitButton.setOnAction(this::exit);
-        staffLoginButton.setOnAction(actionEvent -> loadScene("view/StaffLogin.fxml", actionEvent));
-        patientLoginButton.setOnAction(actionEvent -> loadScene("view/PatientLogin.fxml", actionEvent));
+        loginButton.setOnAction(actionEvent -> loadScene("view/Login.fxml", actionEvent));
     }
 }

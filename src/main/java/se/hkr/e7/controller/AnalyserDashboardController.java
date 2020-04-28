@@ -10,6 +10,6 @@ public class AnalyserDashboardController extends Controller {
     @FXML
     public void initialize() {
         exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/StaffLogin.fxml", actionEvent));
+        backButton.setOnAction(actionEvent -> loadScene("view/Login.fxml", actionEvent));
     }
 }
