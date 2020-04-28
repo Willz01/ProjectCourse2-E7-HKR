@@ -10,7 +10,7 @@ import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Location;
 
-public class AddAdminController extends Controller {
+public class AddAccountController extends Controller {
     @FXML
     public ChoiceBox<Location> choiceBox;
     public TextField ssn;
