@@ -3,12 +3,12 @@ package se.hkr.e7.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import se.hkr.e7.model.Singleton;
 
 public class AdminDashboardController extends Controller {
-    public Button exitButton;
-    public Button backButton;
-    public Button addEmployeeButton;
+    public Button addAdminButton;
     public Button addPatientButton;
+    public Button addStaffButton;
     public Button viewResultsButton;
     public Button viewPatientButton;
     public Button viewStaffButton;
@@ -19,10 +19,10 @@ public class AdminDashboardController extends Controller {
 
     @FXML
     public void initialize() {
-        exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/StaffLogin.fxml", actionEvent));
-        addEmployeeButton.setOnAction(actionEvent -> loadScene("view/AddEmployee.fxml", actionEvent));
+        Singleton.getInstance().addSceneHistory("view/AdminDashboard.fxml");
+        addAdminButton.setOnAction(actionEvent -> loadScene("view/AddAdmin.fxml", actionEvent));
         addPatientButton.setOnAction(actionEvent -> loadScene("view/AddPatient.fxml", actionEvent));
+        addStaffButton.setOnAction(actionEvent -> loadScene("view/AddStaff.fxml", actionEvent));
         viewResultsButton.setOnAction(actionEvent -> loadScene("view/ViewResults.fxml", actionEvent));
         viewPatientButton.setOnAction(actionEvent -> loadScene("view/ViewPatients.fxml", actionEvent));
         viewStaffButton.setOnAction(actionEvent -> loadScene("view/ViewStaff.fxml", actionEvent));
