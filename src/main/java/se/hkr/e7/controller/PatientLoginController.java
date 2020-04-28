@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Singleton;
 
 public class PatientLoginController extends Controller {
 
@@ -23,8 +24,7 @@ public class PatientLoginController extends Controller {
 
     @FXML
     public void initialize() {
-        exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/Welcome.fxml", actionEvent));
+        Singleton.getInstance().addSceneHistory("view/PatientLogin.fxml");
         loginButton.setOnAction(this::login);
     }
 
