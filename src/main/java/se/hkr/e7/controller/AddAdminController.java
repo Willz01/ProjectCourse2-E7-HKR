@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Location;
+import se.hkr.e7.model.Singleton;
 
 public class AddAdminController extends Controller {
     @FXML
@@ -22,16 +23,12 @@ public class AddAdminController extends Controller {
     public TextField salary;
     public Label ssnLabel;
     public Button addButton;
-    public Button backButton;
-    public Button exitButton;
 
     @FXML
     public void initialize() {
+        Singleton.getInstance().addSceneHistory("view/AddAdmin.fxml");
         choiceBox.getItems().setAll(Location.values());
-
         addButton.setOnAction(this::addAdmin);
-        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
-        exitButton.setOnAction(this::exit);
     }
 
     private void addAdmin(ActionEvent actionEvent) {

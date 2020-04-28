@@ -5,21 +5,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Result;
+import se.hkr.e7.model.Singleton;
 
 import java.util.List;
 
 
 public class ViewResultsDoctorController extends Controller {
 
-    public Button exitButton;
-    public Button backButton;
     public ChoiceBox<String> choiceBox;
 
     @FXML
     public void initialize() {
-        exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/DoctorDashboard.fxml", actionEvent));
-
+        Singleton.getInstance().addSceneHistory("view/ViewResultsDoctor.fxml");
         List<Result> results = DatabaseHandler.loadAll(Result.class);
 
         for (Result result : results) {

@@ -1,14 +1,18 @@
 package se.hkr.e7.model;
 
+import java.util.LinkedList;
+
 public class Singleton {
 
     private static Singleton instance = null;
     private Employee employee;
+    private LinkedList<String> sceneHistory;
     private Patient patient;
     private Result result;
     private String ssn;
 
     private Singleton() {
+        sceneHistory = new LinkedList<>();
     }
 
     public static Singleton getInstance() {
@@ -16,6 +20,15 @@ public class Singleton {
             instance = new Singleton();
         }
         return instance;
+    }
+
+    public void addSceneHistory(String path) {
+        sceneHistory.addFirst(path);
+    }
+
+    public String getPreviousScene() {
+        sceneHistory.removeFirst();
+        return sceneHistory.removeFirst();
     }
 
     public static void setInstance(Singleton instance) {
