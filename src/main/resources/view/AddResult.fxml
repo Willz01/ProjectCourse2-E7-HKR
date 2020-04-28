@@ -13,7 +13,8 @@
    <Button fx:id="Save" layoutX="375.0" layoutY="361.0" mnemonicParsing="false" onAction="#Save" prefHeight="25.0" prefWidth="52.0" text="Save" />
    <TextField fx:id="ssnTextField" layoutX="21.0" layoutY="111.0" prefHeight="25.0" prefWidth="265.0" promptText="Enter patient ssn" />
    <CheckBox fx:id="negativeCheckBox" layoutX="43.0" layoutY="182.0" mnemonicParsing="false" onAction="#pressNegative" prefHeight="17.0" prefWidth="87.0" text="Nigatave" />
-   <CheckBox fx:id="positiveCheckBox" layoutX="185.0" layoutY="182.0" mnemonicParsing="false" onAction="#pressPositive" prefHeight="17.0" prefWidth="87.0" text="Positive" />
+   <CheckBox fx:id="positiveCheckBox" layoutX="229.0" layoutY="182.0" mnemonicParsing="false" onAction="#pressPositive" prefHeight="17.0" prefWidth="87.0" text="Positive" />
    <DatePicker fx:id="datePicker" layoutX="355.0" layoutY="111.0" promptText="Date" />
+   <CheckBox fx:id="pending" layoutX="130.0" layoutY="182.0" mnemonicParsing="false" onAction="#pressPending" prefHeight="17.0" prefWidth="87.0" text="Pending" />
 
 </AnchorPane>

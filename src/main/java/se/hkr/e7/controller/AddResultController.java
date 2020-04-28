@@ -18,6 +18,7 @@ public class AddResultController extends Controller {
     public CheckBox negativeCheckBox;
     public CheckBox positiveCheckBox;
     public DatePicker datePicker;
+    public CheckBox pending;
 
     @FXML
     public void initialize() {
@@ -36,7 +37,7 @@ public class AddResultController extends Controller {
             showError("you can not chose date after today ");
             System.out.println(date);
 
-        } else if (negativeCheckBox.isSelected() && positiveCheckBox.isSelected() || !negativeCheckBox.isSelected() && !positiveCheckBox.isSelected()) {
+        } else if (!negativeCheckBox.isSelected() && !positiveCheckBox.isSelected() && !pending.isSelected()) {
             showError("please put valid test result");
         } else if (!ssnTextField.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
             showError("ssn must be valid 10 digits as YYMMDDXXXX");
@@ -56,6 +57,10 @@ public class AddResultController extends Controller {
                     new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.POSITIVE);
                     showDone("Saved", "thank you ");
                 }
+                if (pending.isSelected()) {
+                    new Result(patient, Singleton.getInstance().getEmployee(), date, Result.Status.PENDING);
+                    showDone("Saved", "thank you ");
+                }
 
             } catch (Exception e) {
 
@@ -73,10 +78,19 @@ public class AddResultController extends Controller {
 
     public void pressNegative(ActionEvent event) {
         positiveCheckBox.setSelected(false);
+        pending.setSelected(false);
+
     }
 
     public void pressPositive(ActionEvent event) {
+        pending.setSelected(false);
 
         negativeCheckBox.setSelected(false);
+    }
+
+    public void pressPending(ActionEvent event) {
+        positiveCheckBox.setSelected(false);
+        negativeCheckBox.setSelected(false);
+
     }
 }

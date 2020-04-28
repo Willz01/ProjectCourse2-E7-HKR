@@ -73,6 +73,7 @@ public class AddAdminController extends Controller {
                     phone.getText(), address.getText(), choiceBox.getValue(), Employee.Role.ADMIN,
                     Double.parseDouble(salary.getText())));
             showDone("Finished successfully!", "The admin account was created.");
+            loadScene("view/AdminDashboard.fxml", actionEvent);
         }
     }
 }

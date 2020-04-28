@@ -18,10 +18,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        URL resource = getClass().getClassLoader().getResource("view/DoctorDashboard.fxml");
+        URL resource = getClass().getClassLoader().getResource("view/AddAdmin.fxml");
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        DatabaseHandler.reset();
     }
 }
