@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 public class AdminDashboardController extends Controller {
     public Button exitButton;
     public Button backButton;
-    public Button addAccountButton;
+    public Button addEmployeeButton;
     public Button addPatientButton;
     public Button viewResultsButton;
     public Button viewPatientButton;
@@ -21,7 +21,7 @@ public class AdminDashboardController extends Controller {
     public void initialize() {
         exitButton.setOnAction(this::exit);
         backButton.setOnAction(actionEvent -> loadScene("view/StaffLogin.fxml", actionEvent));
-        addAccountButton.setOnAction(actionEvent -> loadScene("view/AddEmployee.fxml", actionEvent));
+        addEmployeeButton.setOnAction(actionEvent -> loadScene("view/AddEmployee.fxml", actionEvent));
         addPatientButton.setOnAction(actionEvent -> loadScene("view/AddPatient.fxml", actionEvent));
         viewResultsButton.setOnAction(actionEvent -> loadScene("view/ViewResults.fxml", actionEvent));
         viewPatientButton.setOnAction(actionEvent -> loadScene("view/ViewPatients.fxml", actionEvent));
