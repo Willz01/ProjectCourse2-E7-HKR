@@ -46,7 +46,6 @@ public abstract class Controller {
     }
 
     public void exit(ActionEvent actionEvent) {
-        Singleton.getInstance().setSsn(null);
         System.exit(0);
     }
 
