@@ -1,8 +1,12 @@
 package se.hkr.e7.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import se.hkr.e7.model.DatabaseHandler;
+import se.hkr.e7.model.Employee;
+import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Singleton;
 
 public class AdminDashboardController extends Controller {
@@ -28,6 +32,29 @@ public class AdminDashboardController extends Controller {
         viewStaffButton.setOnAction(actionEvent -> loadScene("view/ViewStaff.fxml", actionEvent));
         removeStaffButton.setOnAction(actionEvent -> loadScene("view/RemoveStaff.fxml", actionEvent));
         removeAdminButton.setOnAction(actionEvent -> loadScene("view/RemoveAdmin.fxml", actionEvent));
-        searchButton.setOnAction(actionEvent -> System.out.println("Not implemented yet"));
     }
-}
+
+    public void search(ActionEvent actionEvent) {
+            if (!searchText.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
+                showError("input in YYMMDDXXXX form");
+            }
+            if (searchText.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
+                try {
+                    Patient patient = DatabaseHandler.load(Patient.class, searchText.getText());
+                    Singleton.getInstance().setPatient(patient);
+                }catch (Exception e){
+                    showError("Not a Patient", "");
+                }try {
+                    Employee employee = DatabaseHandler.load(Employee.class, searchText.getText());
+                    Singleton.getInstance().setEmployee(employee);
+                }catch (Exception e){
+                    showError("Not Staff");
+                }finally {
+                    loadScene("view/Search.fxml",actionEvent);
+                }
+            }
+        }
+        }
+
+
+
