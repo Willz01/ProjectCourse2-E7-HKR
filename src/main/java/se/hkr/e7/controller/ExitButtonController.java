@@ -9,10 +9,6 @@ public class ExitButtonController extends Controller {
 
     @FXML
     public void initialize() {
-        exitButton.setOnAction(this::exit);
-    }
-
-    public void exit(ActionEvent actionEvent) {
-        System.exit(0);
+        exitButton.setOnAction(actionEvent -> System.exit(0));
     }
 }
