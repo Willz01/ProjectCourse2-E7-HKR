@@ -20,8 +20,6 @@ public class LoginController extends Controller {
     public TextField passwordTextField;
     public PasswordField passwordField;
     public CheckBox passwordCheckBox;
-    public Button backButton;
-    public Button exitButton;
 
     @FXML
     public void initialize() {
