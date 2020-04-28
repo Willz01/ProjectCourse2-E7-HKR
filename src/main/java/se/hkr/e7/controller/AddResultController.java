@@ -15,8 +15,6 @@ import java.time.LocalDate;
 
 public class AddResultController extends Controller {
 
-    public Button exitButton;
-    public Button backButton;
     public TextField ssnTextField;
     public CheckBox negativeCheckBox;
     public CheckBox positiveCheckBox;
@@ -24,9 +22,7 @@ public class AddResultController extends Controller {
 
     @FXML
     public void initialize() {
-        exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/DoctorDashboard.fxml", actionEvent));
-
+        Singleton.getInstance().addSceneHistory("view/AddResult.fxml");
         while (negativeCheckBox.isSelected()) positiveCheckBox.setSelected(true);
         while (positiveCheckBox.isSelected()) negativeCheckBox.setSelected(true);
     }

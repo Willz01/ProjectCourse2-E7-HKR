@@ -14,7 +14,7 @@ public class DoctorDashboardController extends Controller {
     @FXML
     public void initialize() {
         exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/StaffLogin.fxml", actionEvent));
+        backButton.setOnAction(actionEvent -> loadScene("view/Login.fxml", actionEvent));
         viewPatientButton.setOnAction(actionEvent -> loadScene("view/ViewPatientsDoctor.fxml", actionEvent));
         AddResultButton.setOnAction(actionEvent  ->  loadScene("view/AddResult.fxml", actionEvent));
         viewResultsButton.setOnAction(actionEvent -> loadScene("view/ViewResultsDoctor.fxml", actionEvent));

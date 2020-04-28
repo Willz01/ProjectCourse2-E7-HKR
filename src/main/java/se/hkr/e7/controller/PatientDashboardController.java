@@ -17,12 +17,12 @@ public class PatientDashboardController extends Controller {
     @FXML
     public void initialize() {
         exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/PatientLogin.fxml", actionEvent));
+        backButton.setOnAction(actionEvent -> loadScene("view/Login.fxml", actionEvent));
 
         try {
-            Patient patient = DatabaseHandler.load(Patient.class, Singleton.getInstance().getSsn());
+            Patient currentUser = (Patient) Singleton.getInstance().getCurrentUser();
             StringBuilder stringBuilder = new StringBuilder();
-            for (Result testResult : patient.getTestResults()) {
+            for (Result testResult : currentUser.getTestResults()) {
                 stringBuilder.append(testResult.getDate())
                         .append(", The examiner: ")
                         .append(testResult.getExaminer().getName())

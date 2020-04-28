@@ -6,8 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.image.ImageView;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,8 +16,11 @@ import java.net.URL;
 public abstract class Controller {
 
     public void loadScene(String name, ActionEvent actionEvent) {
+        loadScene(name, (Node) actionEvent.getSource());
+    }
+
+    public void loadScene(String name, Node node) {
         try {
-            Node node = (Node) actionEvent.getSource();
             Scene currScene = node.getScene();
             Stage stage = (Stage) currScene.getWindow();
             URL resource = getClass().getClassLoader().getResource(name);
@@ -28,18 +31,13 @@ public abstract class Controller {
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
             if (!name.equals("view/Welcome.fxml")) {
-                System.out.println("not");
-                loadScene("view/Welcome.fxml", actionEvent);
+                loadScene("view/Welcome.fxml", node);
             } else {
                 new Alert(Alert.AlertType.ERROR, "There was an error loading the default scene.", ButtonType.CLOSE)
                         .showAndWait();
                 System.exit(1);
             }
         }
-    }
-
-    public void exit(ActionEvent actionEvent) {
-        System.exit(0);
     }
 
     void showError(String message) {

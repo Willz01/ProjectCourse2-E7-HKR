@@ -7,11 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Singleton;
 
 public class AddPatientController extends Controller {
 
-    public Button backButton;
-    public Button exitButton;
     public Button addButton;
     public TextField ssn;
     public TextField name;
@@ -29,8 +28,7 @@ public class AddPatientController extends Controller {
 
     @FXML
     public void initialize() {
-        exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
+        Singleton.getInstance().addSceneHistory("view/AddPatient.fxml");
         addButton.setOnAction(this::addPatient);
     }
 
