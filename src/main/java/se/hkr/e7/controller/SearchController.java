@@ -4,13 +4,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import se.hkr.e7.model.*;
 public class SearchController extends Controller {
-    public Button backButton;
-    public Button exitButton;
     public TextArea text;
     @FXML
     public void initialize() {
-        exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
+        Singleton.getInstance().addSceneHistory("view/Search.fxml");
         StringBuilder stringBuilder = new StringBuilder();
         if (Singleton.getInstance().getPatient() != null) {
             Patient patient = Singleton.getInstance().getPatient();
