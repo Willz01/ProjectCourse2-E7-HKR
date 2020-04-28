@@ -26,30 +26,6 @@ public abstract class Person implements Serializable {
         updatePassword(password);
     }
 
-    public static boolean isValidSsn(String ssn) {
-        return ssn.matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$");
-    }
-
-    public static boolean isValidEmail(String email) {
-        return email.matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$");
-    }
-
-    public static boolean isValidPhone(String phoneNumber) {
-        return phoneNumber.matches("^[0-9\\-\\+]{9,15}$");
-    }
-
-    public static boolean isValidSalary(String salary) {
-        if (!salary.matches("^[0-9]+\\.?[0-9]*$")) {
-            return false;
-        }
-
-        return isValidSalary(Double.parseDouble(salary));
-    }
-
-    public static boolean isValidSalary(double salary) {
-        return salary >= 0;
-    }
-
     public void updatePassword(String password) {
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
