@@ -2,11 +2,16 @@ package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Singleton;
+
+import java.util.stream.Stream;
 
 public class LoginController extends Controller {
 
@@ -23,6 +28,7 @@ public class LoginController extends Controller {
         exitButton.setOnAction(this::exit);
         backButton.setOnAction(actionEvent -> loadScene("view/Welcome.fxml", actionEvent));
         loginButton.setOnAction(this::login);
+        Stream.of(ssnTextField, passwordField, passwordTextField).forEach(e -> e.setOnKeyPressed(this::onEnter));
 
         passwordTextField.setManaged(false);
         passwordTextField.setVisible(true);
@@ -34,6 +40,10 @@ public class LoginController extends Controller {
     }
 
     private void login(ActionEvent actionEvent) {
+        login((Node) actionEvent.getSource());
+    }
+
+    private void login(Node node) {
         Employee employee = DatabaseHandler.load(Employee.class, ssnTextField.getText());
         Patient patient = DatabaseHandler.load(Patient.class, ssnTextField.getText());
 
@@ -41,20 +51,26 @@ public class LoginController extends Controller {
             Singleton.getInstance().setEmployee(employee);
             switch (employee.getRole()) {
                 case ADMIN:
-                    loadScene("view/AdminDashboard.fxml", actionEvent);
+                    loadScene("view/AdminDashboard.fxml", node);
                     break;
                 case ANALYSER:
-                    loadScene("view/AnalyserDashboard.fxml", actionEvent);
+                    loadScene("view/AnalyserDashboard.fxml", node);
                     break;
                 case DOCTOR:
-                    loadScene("view/DoctorDashboard.fxml", actionEvent);
+                    loadScene("view/DoctorDashboard.fxml", node);
                     break;
             }
         } else if (patient != null && patient.checkPassword(passwordTextField.getText())) {
             Singleton.getInstance().setCurrentUser(patient);
-            loadScene("view/PatientDashboard.fxml", actionEvent);
+            loadScene("view/PatientDashboard.fxml", node);
         } else {
             showError("Login unsuccessful", "Please check your username and password.");
+        }
+    }
+
+    private void onEnter(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            login((Node) keyEvent.getSource());
         }
     }
 }
