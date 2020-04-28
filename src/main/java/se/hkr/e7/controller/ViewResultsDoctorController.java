@@ -3,6 +3,7 @@ package se.hkr.e7.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Result;
 
@@ -13,33 +14,84 @@ public class ViewResultsDoctorController extends Controller {
 
     public Button exitButton;
     public Button backButton;
-    public ChoiceBox<String> choiceBox;
+    public TextArea textarea;
 
     @FXML
     public void initialize() {
         exitButton.setOnAction(this::exit);
         backButton.setOnAction(actionEvent -> loadScene("view/DoctorDashboard.fxml", actionEvent));
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
 
-        List<Result> results = DatabaseHandler.loadAll(Result.class);
 
-        for (Result result : results) {
-            if (result.getStatus() == Result.Status.PENDING) {
-                choiceBox.getItems().add(result.getStatus() + " ----  " + "Patient SSN:  " + result.getPatient().getSsn() + " ---- " + " Date : " + result.getDate() + "  ---- " + " Doctor name: " + result.getExaminer().getName() + "  ---- " + " Doctor SSN: " + result.getExaminer().getSsn());
+            List<Result> results = DatabaseHandler.loadAll(Result.class);
+
+            int counter = 0;
+            for (Result result : results) {
+                if (result.getStatus() == Result.Status.PENDING) {
+                    counter++;
+
+                    stringBuilder.append(counter).append(" - ")
+                            .append("Status  : ")
+                            .append(result.getStatus())
+                            .append("     || Patient SSN : ")
+                            .append(result.getPatient().getSsn())
+                            .append("     || Result Date : ")
+                            .append(result.getDate())
+                            .append("     || Doctor Name : ")
+                            .append(result.getExaminer().getName())
+
+
+                            .append(result.getNote() != null ? "     || Note : " + result.getNote() : "")
+                            .append(System.lineSeparator());
+
+                }
             }
-        }
-        for (Result result : results) {
-            if (result.getStatus() == Result.Status.POSITIVE) {
-                choiceBox.getItems().add(result.getStatus() + " ----  " + "Patient SSN:  " + result.getPatient().getSsn() + " ---- " + " Date : " + result.getDate() + "  ---- " + " Doctor name: " + result.getExaminer().getName() + "  ---- " + " Doctor SSN: " + result.getExaminer().getSsn());
-            }
-        }
+            for (Result result : results) {
 
-        for (Result result : results) {
-            if (result.getStatus() == Result.Status.NEGATIVE) {
-                choiceBox.getItems().add(result.getStatus() + " ----  " + "Patient SSN:  " + result.getPatient().getSsn() + " ---- " + " Date : " + result.getDate() + "  ---- " + " Doctor name: " + result.getExaminer().getName() + "  ---- " + " Doctor SSN: " + result.getExaminer().getSsn());
-            }
-        }
+                if (result.getStatus() == Result.Status.POSITIVE) {
+                    counter++;
+                    stringBuilder.append(counter).append(" - ")
+                            .append("Status  : ")
+                            .append(result.getStatus())
+                            .append("     || Patient SSN : ")
+                            .append(result.getPatient().getSsn())
+                            .append("     || Result Date : ")
+                            .append(result.getDate())
+                            .append("     || Doctor Name : ")
+                            .append(result.getExaminer().getName())
 
-        choiceBox.getItems().add("View Results");
-        choiceBox.setValue("View Results");
+
+                            .append(result.getNote() != null ? "     || Note : " + result.getNote() : "")
+                            .append(System.lineSeparator());
+                }
+            }
+
+            for (Result result : results) {
+                if (result.getStatus() == Result.Status.NEGATIVE) {
+                    counter++;
+                    stringBuilder.append(counter).append(" - ")
+                            .append("Status  : ")
+                            .append(result.getStatus())
+                            .append("     || Patient SSN : ")
+                            .append(result.getPatient().getSsn())
+                            .append("     || Result Date : ")
+                            .append(result.getDate())
+                            .append("     || Doctor Name : ")
+                            .append(result.getExaminer().getName())
+
+
+                            .append(result.getNote() != null ? "     || Note : " + result.getNote() : "")
+                            .append(System.lineSeparator());
+                }
+            }
+
+            textarea.setText(String.valueOf(stringBuilder));
+
+        } catch (Exception exception) {
+            showError("Something went wrong");
+
+        }
     }
+
 }
