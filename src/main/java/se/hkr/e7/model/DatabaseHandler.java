@@ -83,14 +83,13 @@ public class DatabaseHandler {
         save(new Employee("198005087778", "wegpijewg", "Nilson", "nilson@example.com",
                 "056356556", "Kristan Street", Location.DALARNA, Employee.Role.ANALYSER, 111.12));
 
-        save(new Patient("8801089940", "password1", "Jone", "mymail@yahoo.com",
-                "07332233", "oneStreet 32"));
-
         Employee employee = new Employee("198002249876", "98745794", "Petson",
                 "petson@example.com", "056356556", "Kristan Street", Location.SKANE, Employee.Role.DOCTOR,
                 98.1);
         save(employee);
 
+        save(new Patient("8801089940", "password1", "Jone", "mymail@yahoo.com",
+                "07332233", "oneStreet 32"));
         Patient patient = new Patient("6101054565", "password1", "Mohammed",
                 "mohammed@example.com", "062563454", "onehomet 32");
         save(patient);
