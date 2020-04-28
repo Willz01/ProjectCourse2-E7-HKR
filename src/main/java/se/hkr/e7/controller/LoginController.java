@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
+import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Singleton;
 
 public class LoginController extends Controller {
@@ -14,10 +15,8 @@ public class LoginController extends Controller {
     public Button loginButton;
     public TextField ssnTextField;
     public TextField passwordTextField;
-    public Label passwordCheckLabel;
-    public Label errorLabel;
     public PasswordField passwordField;
-    public CheckBox checkBox;
+    public CheckBox passwordCheckBox;
 
     @FXML
     public void initialize() {
@@ -27,43 +26,35 @@ public class LoginController extends Controller {
 
         passwordTextField.setManaged(false);
         passwordTextField.setVisible(true);
-        passwordTextField.managedProperty().bind(checkBox.selectedProperty());
-        passwordTextField.visibleProperty().bind(checkBox.selectedProperty());
-
-        passwordField.managedProperty().bind(checkBox.selectedProperty().not());
-        passwordField.visibleProperty().bind(checkBox.selectedProperty().not());
+        passwordTextField.managedProperty().bind(passwordCheckBox.selectedProperty());
+        passwordTextField.visibleProperty().bind(passwordCheckBox.selectedProperty());
+        passwordField.managedProperty().bind(passwordCheckBox.selectedProperty().not());
+        passwordField.visibleProperty().bind(passwordCheckBox.selectedProperty().not());
         passwordTextField.textProperty().bindBidirectional(passwordField.textProperty());
     }
 
     private void login(ActionEvent actionEvent) {
-        passwordCheckLabel.setText(null);
-        errorLabel.setText(null);
-        if (passwordTextField.getText().equals("") || ssnTextField.getText().equals("")) {
-            showError("fields can not be empty ");
-        } else {
-            try {
-                Employee employee = DatabaseHandler.load(Employee.class, ssnTextField.getText());
-                Singleton.getInstance().setEmployee(employee);
+        Employee employee = DatabaseHandler.load(Employee.class, ssnTextField.getText());
+        Patient patient = DatabaseHandler.load(Patient.class, ssnTextField.getText());
 
-
-                if (employee.getRole() == Employee.Role.ADMIN && employee.checkPassword(passwordTextField.getText())) {
+        if (employee != null && employee.checkPassword(passwordTextField.getText())) {
+            Singleton.getInstance().setEmployee(employee);
+            switch (employee.getRole()) {
+                case ADMIN:
                     loadScene("view/AdminDashboard.fxml", actionEvent);
-                }
-
-                if (employee.getSsn() != null && !employee.checkPassword(passwordTextField.getText())) {
-                    showError("wrong password ");
-                }
-
-                if (employee.getRole() == Employee.Role.DOCTOR && employee.checkPassword(passwordTextField.getText())) {
-                    loadScene("view/DoctorDashboard.fxml", actionEvent);
-                }
-
-                if (employee.getRole() == Employee.Role.ANALYSER && employee.checkPassword(passwordTextField.getText())) {
+                    break;
+                case ANALYSER:
                     loadScene("view/AnalyserDashboard.fxml", actionEvent);
-                }
-            } catch (Exception exception) {
-                showError("Could not login , please check your password and ssn");
+                    break;
+                case DOCTOR:
+                    loadScene("view/DoctorDashboard.fxml", actionEvent);
+                    break;
             }
+        } else if (patient != null && patient.checkPassword(passwordTextField.getText())) {
+            Singleton.getInstance().setCurrentUser(patient);
+            loadScene("view/PatientDashboard.fxml", actionEvent);
+        } else {
+            showError("Login unsuccessful", "Please check your username and password.");
         }
     }
 }
