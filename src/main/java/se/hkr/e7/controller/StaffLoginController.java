@@ -9,8 +9,6 @@ import se.hkr.e7.model.Singleton;
 
 public class StaffLoginController extends Controller {
 
-    public Button exitButton;
-    public Button backButton;
     public Button loginButton;
     public TextField ssnTextField;
     public TextField passwordTextField;
@@ -21,8 +19,7 @@ public class StaffLoginController extends Controller {
 
     @FXML
     public void initialize() {
-        exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/Welcome.fxml", actionEvent));
+        Singleton.getInstance().addSceneHistory("view/StaffLogin.fxml");
         loginButton.setOnAction(this::login);
 
         passwordTextField.setManaged(false);

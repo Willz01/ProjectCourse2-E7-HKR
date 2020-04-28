@@ -5,20 +5,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Singleton;
 
 import java.util.List;
 
 public class ViewPatientsController extends Controller {
 
-    public Button exitButton;
-    public Button backButton;
     public ChoiceBox<String> choiceBox;
 
     @FXML
     public void initialize() {
-        exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
-
+        Singleton.getInstance().addSceneHistory("view/ViewPatients.fxml");
         List<Patient> patients = DatabaseHandler.loadAll(Patient.class);
         int counter = 0;
 

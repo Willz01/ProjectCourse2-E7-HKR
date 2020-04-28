@@ -13,8 +13,6 @@ import se.hkr.e7.model.Singleton;
 
 public class PatientLoginController extends Controller {
 
-    public Button exitButton;
-    public Button backButton;
     public Button loginButton;
     public TextField ssnTextField;
     public Label errorLabel;

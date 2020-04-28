@@ -2,15 +2,12 @@ package se.hkr.e7.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import se.hkr.e7.model.Singleton;
 
 public class RemoveAdminController extends Controller {
 
-    public Button exitButton;
-    public Button backButton;
-
     @FXML
     public void initialize() {
-        exitButton.setOnAction(this::exit);
-        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
+        Singleton.getInstance().addSceneHistory("view/RemoveAdmin.fxml");
     }
 }
