@@ -10,15 +10,19 @@ import se.hkr.e7.model.Singleton;
 
 public class PatientDashboardController extends Controller {
 
+    public Button exitButton;
+    public Button backButton;
     public TextArea resultTextArea;
 
     @FXML
     public void initialize() {
-        Singleton.getInstance().addSceneHistory("view/PatientDashboard.fxml");
+        exitButton.setOnAction(this::exit);
+        backButton.setOnAction(actionEvent -> loadScene("view/Login.fxml", actionEvent));
+
         try {
-            Patient patient = DatabaseHandler.load(Patient.class, Singleton.getInstance().getSsn());
+            Patient currentUser = (Patient) Singleton.getInstance().getCurrentUser();
             StringBuilder stringBuilder = new StringBuilder();
-            for (Result testResult : patient.getTestResults()) {
+            for (Result testResult : currentUser.getTestResults()) {
                 stringBuilder.append(testResult.getDate())
                         .append(", The examiner: ")
                         .append(testResult.getExaminer().getName())
