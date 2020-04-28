@@ -74,7 +74,7 @@ public class DatabaseHandler {
      * Insert some default data into the system.
      */
     public static void reset() {
-        save(new Employee("199701010000", "123456", "Wills", "wills@example.com",
+        save(new Employee("9701010000", "123456", "Wills", "wills@example.com",
                 "073656656", "Home", Location.STOCKHOLM, Employee.Role.ADMIN, 123.12));
 
         save(new Employee("1993249503", "13412", "Marcos", "marcos@example.com",
