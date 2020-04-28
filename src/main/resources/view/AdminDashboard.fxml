@@ -25,8 +25,5 @@
             prefWidth="141.0" text="Search"/>
     <Label layoutX="219.0" layoutY="207.0" prefHeight="19.0" prefWidth="163.0" text="Search for Staff/ Patient"
            textAlignment="CENTER"/>
-    <Button fx:id="backButton" layoutX="442.0" layoutY="359.0" mnemonicParsing="false" prefHeight="25.0"
-            prefWidth="52.0" text="Back"/>
-    <Button fx:id="exitButton" layoutX="520.0" layoutY="359.0" mnemonicParsing="false" text="Exit"/>
-
+    <fx:include source="../template/buttons.fxml"/>
 </AnchorPane>

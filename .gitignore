@@ -197,4 +197,5 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/java,linux,macos,maven,windows,intellij+all
 
-hibernate.cfg.xml
+/src/main/resources/hibernate.cfg.xml
+/src/main/resources/mail.properties
