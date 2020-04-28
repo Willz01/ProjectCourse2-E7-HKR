@@ -19,6 +19,7 @@ public class AddResultController extends Controller {
     public CheckBox negativeCheckBox;
     public CheckBox positiveCheckBox;
     public DatePicker datePicker;
+    public CheckBox pendingCheckBox;
 
     @FXML
     public void initialize() {
@@ -36,7 +37,7 @@ public class AddResultController extends Controller {
             showError("you can not chose date after today ");
             System.out.println(date);
 
-        } else if (negativeCheckBox.isSelected() && positiveCheckBox.isSelected() || !negativeCheckBox.isSelected() && !positiveCheckBox.isSelected()) {
+        } else if (!negativeCheckBox.isSelected() && !positiveCheckBox.isSelected()&& !pendingCheckBox.isSelected()) {
             showError("please put valid test result");
         } else if (!ssnTextField.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
             showError("ssn must be valid 10 digits as YYMMDDXXXX");
@@ -54,6 +55,11 @@ public class AddResultController extends Controller {
                 if (positiveCheckBox.isSelected()) {
                     Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.POSITIVE);
                     showConfirmation("Saved", "thank you ");
+                }
+                if (pendingCheckBox.isSelected()) {
+                    Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.PENDING);
+                    showConfirmation("Saved", "thank you ");
+
                 }
 
             } catch (Exception e) {
