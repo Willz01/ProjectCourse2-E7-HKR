@@ -22,7 +22,7 @@ public class AdminDashboardController extends Controller {
     public void initialize() {
         exitButton.setOnAction(this::exit);
         backButton.setOnAction(actionEvent -> loadScene("view/StaffLogin.fxml", actionEvent));
-        addAccountButton.setOnAction(actionEvent -> loadScene("view/AddAccount.fxml", actionEvent));
+        addAccountButton.setOnAction(actionEvent -> loadScene("view/AddEmployee.fxml", actionEvent));
         addPatientButton.setOnAction(actionEvent -> loadScene("view/AddPatient.fxml", actionEvent));
         addStaffButton.setOnAction(actionEvent -> loadScene("view/AddStaff.fxml", actionEvent));
         viewResultsButton.setOnAction(actionEvent -> loadScene("view/ViewResults.fxml", actionEvent));

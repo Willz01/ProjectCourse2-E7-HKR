@@ -10,7 +10,7 @@ import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Location;
 import se.hkr.e7.model.Person;
 
-public class AddAccountController extends Controller {
+public class AddEmployeeController extends Controller {
 
     public ChoiceBox<Location> locationChoiceBox;
     public ChoiceBox<Employee.Role> roleChoiceBox;
