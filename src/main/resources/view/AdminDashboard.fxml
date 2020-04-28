@@ -18,11 +18,10 @@
             prefWidth="141.0" text="View staff"/>
     <Button fx:id="removeAdminButton" layoutX="14.0" layoutY="139.0" mnemonicParsing="false" prefHeight="17.0"
             prefWidth="141.0" text="Remove admin"/>
+    <Button fx:id="searchButton" layoutX="223.0" layoutY="286.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="141.0" text="Search" />
+    <TextField fx:id="searchText" layoutX="132.0" layoutY="236.0" prefHeight="39.0" prefWidth="336.0" promptText="YYMMDDXXXX" />
     <Button fx:id="removeStaffButton" layoutX="416.0" layoutY="139.0" mnemonicParsing="false" prefHeight="25.0"
             prefWidth="141.0" text="Remove staff"/>
-    <TextField fx:id="searchText" layoutX="132.0" layoutY="236.0" prefHeight="39.0" prefWidth="336.0"/>
-    <Button fx:id="searchButton" layoutX="223.0" layoutY="286.0" mnemonicParsing="false" prefHeight="25.0"
-            prefWidth="141.0" text="Search"/>
     <Label layoutX="219.0" layoutY="207.0" prefHeight="19.0" prefWidth="163.0" text="Search for Staff/ Patient"
            textAlignment="CENTER"/>
     <fx:include source="../template/buttons.fxml"/>

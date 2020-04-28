@@ -57,4 +57,8 @@ public abstract class Controller {
         alert.getDialogPane().setGraphic(new ImageView("alert_confirmation.png"));
         alert.showAndWait();
     }
+
+    public void exit(ActionEvent actionEvent) {
+        System.exit(0);
+    }
 }
