@@ -1,8 +1,6 @@
 package se.hkr.e7.controller;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-
 public class DoctorDashboardController extends Controller {
     public Button exitButton;
     public Button backButton;
@@ -10,7 +8,6 @@ public class DoctorDashboardController extends Controller {
     public Button addResultButton;
     public Button viewResultsButton;
     public Button addPatientButton;
-
     @FXML
     public void initialize() {
         exitButton.setOnAction(this::exit);
