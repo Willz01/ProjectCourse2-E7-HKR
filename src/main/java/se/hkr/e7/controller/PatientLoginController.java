@@ -35,6 +35,7 @@ public class PatientLoginController extends Controller {
         } else {
             try {
                 Patient patient = DatabaseHandler.load(Patient.class, ssnTextField.getText());
+                Singleton.getInstance().setPatient(patient);
 
                 if (patient.getSsn() != null && patient.checkPassword(passwordField.getText())) {
                     loadScene("view/PatientDashboard.fxml", actionEvent);
