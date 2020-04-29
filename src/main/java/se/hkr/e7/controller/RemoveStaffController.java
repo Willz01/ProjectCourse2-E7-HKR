@@ -10,6 +10,8 @@ import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Location;
 import se.hkr.e7.model.Singleton;
 
+import javax.xml.crypto.Data;
+
 public class RemoveStaffController extends Controller {
 
     public TextField ssnField;
@@ -32,10 +34,11 @@ public class RemoveStaffController extends Controller {
 
         try {
             DatabaseHandler.delete(employee);
-            showConfirmation("Deleted", "Done");
         } catch (Exception exception) {
-            showError("Did not delete, make sure you have right ssn");
-
+            employee.clear();
+            DatabaseHandler.save(employee);
+        } finally {
+            showConfirmation("Deleted", "Done");
         }
     }
 }

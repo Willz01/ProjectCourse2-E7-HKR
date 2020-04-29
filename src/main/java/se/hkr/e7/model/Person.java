@@ -1,6 +1,7 @@
 package se.hkr.e7.model;
 
 import org.mindrot.jbcrypt.BCrypt;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -50,11 +51,22 @@ public abstract class Person implements Serializable {
         return salary >= 0;
     }
 
+    protected void clear() {
+        setPassword("");
+        setName(null);
+        setEmail(null);
+        setPhone(null);
+        setAddress(null);
+    }
+
     public void updatePassword(String password) {
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
     public boolean checkPassword(String password) {
+        if (password.length() == 0 || this.password.length() == 0) {
+            return false;
+        }
         return BCrypt.checkpw(password, this.password);
     }
 
@@ -120,6 +132,4 @@ public abstract class Person implements Serializable {
                 ", address='" + address + '\'' +
                 '}';
     }
-
-
 }
