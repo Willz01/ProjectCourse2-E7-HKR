@@ -11,10 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
-import se.hkr.e7.model.DatabaseHandler;
-import se.hkr.e7.model.Employee;
-import se.hkr.e7.model.Patient;
-import se.hkr.e7.model.Singleton;
+import se.hkr.e7.model.*;
 
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -88,40 +85,58 @@ public class LoginController extends Controller {
         ButtonType loginButtonType = new ButtonType("Login", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
 
-// Create the username and password labels and fields.
+// Create the ssn and email labels and fields.
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 150, 10, 10));
 
-        TextField username = new TextField();
-        username.setPromptText("SSN");
-        PasswordField password = new PasswordField();
-        password.setPromptText("Email");
+        TextField ssn = new TextField();
+        ssn.setPromptText("SSN");
+        PasswordField email = new PasswordField();
+        email.setPromptText("Email");
 
         grid.add(new Label("SSN:"), 0, 0);
-        grid.add(username, 1, 0);
+        grid.add(ssn, 1, 0);
         grid.add(new Label("Email:"), 0, 1);
-        grid.add(password, 1, 1);
+        grid.add(email, 1, 1);
 
-// Enable/Disable login button depending on whether a username was entered.
+// Enable/Disable login button depending on whether a ssn was entered.
         Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
         loginButton.setDisable(true);
 
 // Do some validation (using the Java 8 lambda syntax).
-        username.textProperty().addListener((observable, oldValue, newValue) -> {
+        ssn.textProperty().addListener((observable, oldValue, newValue) -> {
             loginButton.setDisable(newValue.trim().isEmpty());
         });
 
         dialog.getDialogPane().setContent(grid);
 
-// Request focus on the username field by default.
-        Platform.runLater(() -> username.requestFocus());
+// Request focus on the ssn field by default.
+        Platform.runLater(ssn::requestFocus);
 
-// Convert the result to a username-password-pair when the login button is clicked.
+// Convert the result to a ssn-email-pair when the login button is clicked.
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == loginButtonType) {
-                return new Pair<>(username.getText(), password.getText());
+                try {
+                    Person person =DatabaseHandler.load(Person.class,ssn.getText());
+                    if (person.getEmail().equals(email.getText())){
+
+                                Mail.send("reset","password",person,person);
+                                showConfirmation("","email has ben Sent ");
+                    }else {
+                        showError("wrong email address");
+                    }
+
+
+
+
+                }catch (Exception exception){
+                    showError("wrong ssn");
+                }
+
+
+                return new Pair<>(ssn.getText(), email.getText());
             }
             return null;
         });
