@@ -6,10 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import se.hkr.e7.model.DatabaseHandler;
-import se.hkr.e7.model.Patient;
-import se.hkr.e7.model.Result;
-import se.hkr.e7.model.Singleton;
+import se.hkr.e7.model.*;
 
 import java.time.LocalDate;
 
@@ -39,7 +36,7 @@ public class AddResultController extends Controller {
 
         } else if (!negativeCheckBox.isSelected() && !positiveCheckBox.isSelected()&& !pendingCheckBox.isSelected()) {
             showError("please put valid test result");
-        } else if (!ssnTextField.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
+        } else if (!Person.isValidSsn(ssnTextField.getText())) {
             showError("ssn must be valid 10 digits as YYMMDDXXXX");
         } else {
 

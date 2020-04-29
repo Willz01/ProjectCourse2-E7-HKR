@@ -5,7 +5,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.AddPatientController">
-    <TextField fx:id="ssn" layoutX="24.0" layoutY="69.0" prefHeight="25.0" prefWidth="175.0" promptText="SSN" />
+    <TextField fx:id="ssnTextField" layoutX="24.0" layoutY="69.0" prefHeight="25.0" prefWidth="175.0" promptText="SSN" />
     <TextField fx:id="name" layoutX="24.0" layoutY="110.0" prefHeight="25.0" prefWidth="175.0" promptText="Name" />
     <TextField fx:id="password" layoutX="24.0" layoutY="160.0" prefHeight="25.0" prefWidth="175.0" promptText="password" />
     <TextField fx:id="address" layoutX="24.0" layoutY="211.0" prefHeight="25.0" prefWidth="175.0" promptText="Address" />
