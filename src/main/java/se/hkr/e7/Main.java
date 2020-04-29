@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import se.hkr.e7.model.Email;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,5 +23,6 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        Email.Send("sucbqk6@whmailtop.com","test","complete");
     }
 }
