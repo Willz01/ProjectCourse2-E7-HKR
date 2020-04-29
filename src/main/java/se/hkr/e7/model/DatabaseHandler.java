@@ -77,7 +77,7 @@ public class DatabaseHandler {
         save(new Employee("199701010000", "123456", "Wills", "wills@example.com",
                 "073656656", "Home", Location.STOCKHOLM, Employee.Role.ADMIN, 123.12));
 
-        save(new Employee("1993249503", "13412", "Marcos", "marcos@example.com",
+        save(new Employee("199304140000", "13412", "Marcos", "marcos@example.com",
                 "073656656", "Street lamp 432", Location.KALMAR, Employee.Role.ANALYSER, 111.12));
 
         save(new Employee("198005087778", "wegpijewg", "Nilson", "nilson@example.com",
