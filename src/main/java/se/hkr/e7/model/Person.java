@@ -3,6 +3,7 @@ package se.hkr.e7.model;
 import org.mindrot.jbcrypt.BCrypt;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.security.InvalidParameterException;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -18,7 +19,16 @@ public abstract class Person implements Serializable {
     }
 
     public Person(String ssn, String password, String name, String email, String phone, String address) {
-        this.ssn = ssn;
+        if (!isValidSsn(ssn)) {
+            throw new IllegalArgumentException("The SSN is not valid.");
+        } else {
+            if (ssn.length() == 10) {
+                setSsn(ssn);
+            } else {
+                setSsn(ssn.substring(2));
+            }
+        }
+
         this.name = name;
         this.email = email;
         this.phone = phone;
