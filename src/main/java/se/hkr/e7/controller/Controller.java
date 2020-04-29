@@ -9,9 +9,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import se.hkr.e7.model.Singleton;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 
 public abstract class Controller {
 
@@ -57,6 +59,24 @@ public abstract class Controller {
         alert.getDialogPane().setGraphic(new ImageView("alert_confirmation.png"));
         alert.showAndWait();
     }
+
+    boolean move(String massage, String info) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(info);
+        alert.setContentText(massage);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            return true;
+        } else {
+            // ... user chose CANCEL or closed the dialog
+
+            return false;
+        }
+
+    }
+
+
 
     public void exit(ActionEvent actionEvent) {
         System.exit(0);

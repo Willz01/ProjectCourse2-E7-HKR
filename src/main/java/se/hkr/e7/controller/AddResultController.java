@@ -36,7 +36,7 @@ public class AddResultController extends Controller {
             showError("you can not chose date after today ");
             System.out.println(date);
 
-        } else if (!negativeCheckBox.isSelected() && !positiveCheckBox.isSelected()&& !pendingCheckBox.isSelected()) {
+        } else if (!negativeCheckBox.isSelected() && !positiveCheckBox.isSelected() && !pendingCheckBox.isSelected()) {
             showError("please put valid test result");
         } else if (!ssnTextField.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
             showError("ssn must be valid 10 digits as YYMMDDXXXX");
@@ -62,7 +62,11 @@ public class AddResultController extends Controller {
                 }
 
             } catch (Exception e) {
-                showError("can not find the patient");
+                if (move("do you want to add new patient", "Can't find patient")) {
+                    loadScene("view/AddPatientDoctor.fxml", event);
+                }
+
+
             }
 
         }
