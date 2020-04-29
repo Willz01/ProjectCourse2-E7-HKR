@@ -24,8 +24,7 @@ public class AddResultController extends Controller {
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/AddResult.fxml");
-        while (negativeCheckBox.isSelected()) positiveCheckBox.setSelected(true);
-        while (positiveCheckBox.isSelected()) negativeCheckBox.setSelected(true);
+
     }
 
     public void Save(ActionEvent event) {
@@ -69,5 +68,20 @@ public class AddResultController extends Controller {
         }
 
 
+    }
+
+    public void negative(ActionEvent event) {
+        positiveCheckBox.setSelected(false);
+        pendingCheckBox.setSelected(false);
+    }
+
+    public void positive(ActionEvent event) {
+        negativeCheckBox.setSelected(false);
+        pendingCheckBox.setSelected(false);
+    }
+
+    public void pending(ActionEvent event) {
+        positiveCheckBox.setSelected(false);
+        negativeCheckBox.setSelected(false);
     }
 }
