@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import se.hkr.e7.model.DatabaseHandler;
-import se.hkr.e7.model.Employee;
-import se.hkr.e7.model.Location;
-import se.hkr.e7.model.Singleton;
+import se.hkr.e7.model.*;
 
 public class RemoveStaffController extends Controller {
 
@@ -22,12 +19,12 @@ public class RemoveStaffController extends Controller {
     }
 
     public void Remove(ActionEvent actionEvent) {
-        if (ssnField.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
+        if (Person.isValidSsn(ssnField.getText())) {
             saveLabel.setText("");
-        }
-        if (!ssnField.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
+        } else {
             saveLabel.setText("input in YYMMDDXXXX form");
         }
+
         Employee employee = DatabaseHandler.load(Employee.class, ssnField.getText());
 
         try {

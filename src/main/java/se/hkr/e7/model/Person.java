@@ -1,6 +1,7 @@
 package se.hkr.e7.model;
 
 import org.mindrot.jbcrypt.BCrypt;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -18,7 +19,16 @@ public abstract class Person implements Serializable {
     }
 
     public Person(String ssn, String password, String name, String email, String phone, String address) {
-        this.ssn = ssn;
+        if (!isValidSsn(ssn)) {
+            throw new IllegalArgumentException("The SSN is not valid.");
+        } else {
+            if (ssn.length() == 10) {
+                setSsn(ssn);
+            } else {
+                setSsn(ssn.substring(2));
+            }
+        }
+
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -27,7 +37,20 @@ public abstract class Person implements Serializable {
     }
 
     public static boolean isValidSsn(String ssn) {
-        return ssn.matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$");
+        // TODO: 29.04.20 Implement checksum calculation https://en.wikipedia.org/wiki/Personal_identity_number_(Sweden)#Checksum
+        if (!ssn.matches("^(\\d{2})?\\d{10}$")) {
+            return false;
+        }
+
+        if (ssn.length() == 12) {
+            ssn = ssn.substring(2);
+        }
+
+        if (Integer.parseInt(ssn.substring(2, 4)) > 12) {
+            return false;
+        }
+
+        return Integer.parseInt(ssn.substring(4, 6)) <= 31;
     }
 
     public static boolean isValidEmail(String email) {
