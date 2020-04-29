@@ -51,7 +51,7 @@ public abstract class Controller {
         error.showAndWait();
     }
 
-    public static void showConfirmation(String title, String message) {
+    void showConfirmation(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, message, ButtonType.OK);
         alert.setTitle(title);
         alert.getDialogPane().setGraphic(new ImageView("alert_confirmation.png"));

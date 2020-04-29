@@ -19,6 +19,6 @@
     <PasswordField fx:id="passwordField" layoutX="92.0" layoutY="212.0" prefHeight="25.0" prefWidth="427.0" promptText="Enter your password" />
     <CheckBox fx:id="passwordCheckBox" layoutX="494.0" layoutY="216.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="3.0" />
     <Button fx:id="loginButton" layoutX="269.0" layoutY="272.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="login" />
+    <Label fx:id="passwordResetLabel" layoutX="92.0" layoutY="332.0" text="Forgot your Password ?" textFill="#280fc9" />
     <fx:include source="../template/buttons.fxml" />
-   <Label fx:id="forgot" layoutX="92.0" layoutY="332.0" onMouseClicked="#reset" text="Forgot your Password ?" textFill="#280fc9" />
 </AnchorPane>

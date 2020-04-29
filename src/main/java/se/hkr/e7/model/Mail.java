@@ -57,24 +57,17 @@ public class Mail {
     }
 
     public static String generatePassword(int length) {
-        // Function to generate random alpha-numeric password of specific length
+        final String pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-
-        // ASCII range - alphanumeric (0-9, a-z, A-Z)
-        final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-        SecureRandom random = new SecureRandom();
-        StringBuilder sb = new StringBuilder();
-
-        // each iteration of loop choose a character randomly from the given ASCII range
-        // and append it to StringBuilder instance
+        SecureRandom secureRandom = new SecureRandom();
+        StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < length; i++) {
-            int randomIndex = random.nextInt(chars.length());
-            sb.append(chars.charAt(randomIndex));
+            int randomIndex = secureRandom.nextInt(pool.length());
+            stringBuilder.append(pool.charAt(randomIndex));
         }
 
-        return sb.toString();
+        return stringBuilder.toString();
     }
 
     public void setTo(Person... recipients) throws MessagingException, UnsupportedEncodingException {
@@ -101,5 +94,3 @@ public class Mail {
         Transport.send(message);
     }
 }
-
-

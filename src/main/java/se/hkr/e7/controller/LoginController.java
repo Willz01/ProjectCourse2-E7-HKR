@@ -13,6 +13,8 @@ import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 import se.hkr.e7.model.*;
 
+import javax.mail.MessagingException;
+import java.io.UnsupportedEncodingException;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -23,12 +25,14 @@ public class LoginController extends Controller {
     public TextField passwordTextField;
     public PasswordField passwordField;
     public CheckBox passwordCheckBox;
+    public Label passwordResetLabel;
 
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/Login.fxml");
         loginButton.setOnAction(this::login);
         Stream.of(ssnTextField, passwordField, passwordTextField).forEach(e -> e.setOnKeyPressed(this::onEnter));
+        passwordResetLabel.setOnMouseClicked(this::resetPassword);
 
         passwordTextField.setManaged(false);
         passwordTextField.setVisible(true);
@@ -74,82 +78,71 @@ public class LoginController extends Controller {
         }
     }
 
-    public void reset(MouseEvent mouseEvent) {
-
+    public void resetPassword(MouseEvent mouseEvent) {
         Dialog<Pair<String, String>> dialog = new Dialog<>();
-        dialog.setTitle("Login Dialog");
-        dialog.setHeaderText("Look, a Custom Login Dialog");
-
-
-// Set the button types.
+        dialog.setTitle("Password Reset");
+        dialog.setHeaderText("");
         ButtonType sendButtonType = new ButtonType("Send", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(sendButtonType, ButtonType.CANCEL);
-// Create the ssn and email labels and fields.
+
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 150, 10, 10));
 
-        TextField ssn = new TextField();
-        ssn.setPromptText("SSN");
-        PasswordField email = new PasswordField();
-        email.setPromptText("Email");
+        TextField ssnTextField = new TextField();
+        ssnTextField.setPromptText("SSN");
+        TextField emailTextField = new TextField();
+        emailTextField.setPromptText("Email");
 
         grid.add(new Label("SSN:"), 0, 0);
-        grid.add(ssn, 1, 0);
+        grid.add(ssnTextField, 1, 0);
         grid.add(new Label("Email:"), 0, 1);
-        grid.add(email, 1, 1);
+        grid.add(emailTextField, 1, 1);
 
-// Enable/Disable login button depending on whether a ssn was entered.
-        Node loginButton = dialog.getDialogPane().lookupButton(sendButtonType);
-        loginButton.setDisable(true);
-
-// Do some validation (using the Java 8 lambda syntax).
-        ssn.textProperty().addListener((observable, oldValue, newValue) -> {
-            loginButton.setDisable(newValue.trim().isEmpty());
-        });
+        Node sendButton = dialog.getDialogPane().lookupButton(sendButtonType);
+        sendButton.setDisable(true);
+        ssnTextField.textProperty().addListener((observable, oldValue, newValue) ->
+                sendButton.setDisable(newValue.trim().isEmpty()));
 
         dialog.getDialogPane().setContent(grid);
 
-// Request focus on the ssn field by default.
-        Platform.runLater(ssn::requestFocus);
+        Platform.runLater(ssnTextField::requestFocus);
 
-// Convert the result to a ssn-email-pair when the login button is clicked.
         dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == sendButtonType) {
-                try {
-                    Person person = DatabaseHandler.load(Person.class, ssn.getText());
-                    if (person.getEmail().equals(email.getText())) {
+            if (dialogButton != sendButtonType) {
+                return null;
+            }
 
+            try {
+                Person person = Person.load(Person.class, ssnTextField.getText());
 
-                        String password = Mail.generatePassword(10);
-                        person.updatePassword(password);
-                        DatabaseHandler.save(person);
-
-                        Mail.send("reset", password, person, person);
-                        showConfirmation("", "email has ben Sent ");
-
-                    } else {
-                        showError("wrong email address");
-                    }
-
-
-                } catch (Exception exception) {
+                if (person == null) {
                     showError("wrong ssn");
+                    return null;
                 }
 
-
-                return new Pair<>(ssn.getText(), email.getText());
+                if (!person.getEmail().equals(emailTextField.getText())) {
+                    showError("wrong email address");
+                } else {
+                    String password = Mail.generatePassword(10);
+                    person.updatePassword(password);
+                    DatabaseHandler.save(person);
+                    Mail.send("Password Reset",
+                            String.format("Dear %s,<br>Your new password is %s.<br>Kind regards", person.getName(), password),
+                            person);
+                    showConfirmation("Success", "Email has been sent.");
+                }
+            } catch (UnsupportedEncodingException | MessagingException e) {
+                showError("Email could not be sent.");
             }
-            return null;
+
+            return new Pair<>(ssnTextField.getText(), emailTextField.getText());
         });
 
         Optional<Pair<String, String>> result = dialog.showAndWait();
 
         result.ifPresent(usernamePassword -> {
-            System.out.println("Username=" + usernamePassword.getKey() + ", Password=" + usernamePassword.getValue());
         });
     }
-
-
 }
