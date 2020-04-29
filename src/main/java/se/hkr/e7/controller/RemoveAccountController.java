@@ -7,10 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
-import se.hkr.e7.model.Location;
 import se.hkr.e7.model.Singleton;
 
-public class RemoveStaffController extends Controller {
+public class RemoveAccountController extends Controller {
 
     public TextField ssnField;
     public Label saveLabel;
@@ -18,7 +17,7 @@ public class RemoveStaffController extends Controller {
 
     @FXML
     public void initialize() {
-        Singleton.getInstance().addSceneHistory("view/RemoveStaff.fxml");
+        Singleton.getInstance().addSceneHistory("view/RemoveAccount.fxml");
     }
 
     public void Remove(ActionEvent actionEvent) {

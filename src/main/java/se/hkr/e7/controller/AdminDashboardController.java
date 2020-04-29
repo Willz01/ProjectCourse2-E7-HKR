@@ -28,7 +28,7 @@ public class AdminDashboardController extends Controller {
         viewResultsButton.setOnAction(actionEvent -> loadScene("view/ViewResults.fxml", actionEvent));
         viewPatientButton.setOnAction(actionEvent -> loadScene("view/ViewPatients.fxml", actionEvent));
         viewStaffButton.setOnAction(actionEvent -> loadScene("view/ViewStaff.fxml", actionEvent));
-        removeStaffButton.setOnAction(actionEvent -> loadScene("view/RemoveStaff.fxml", actionEvent));
+        removeStaffButton.setOnAction(actionEvent -> loadScene("view/RemoveAccount.fxml", actionEvent));
     }
 
     public void search(ActionEvent actionEvent) {
