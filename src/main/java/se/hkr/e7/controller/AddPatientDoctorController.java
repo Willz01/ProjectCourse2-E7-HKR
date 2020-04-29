@@ -70,7 +70,7 @@ public class AddPatientDoctorController extends Controller {
                         phone.getText(), address.getText()));
                 showConfirmation("", "saved");
             } catch (Exception exception) {
-                showError("did't save ","this ssn is already in the System ");
+                showError("did't save ", "this ssn is already in the System ");
 
             }
         }

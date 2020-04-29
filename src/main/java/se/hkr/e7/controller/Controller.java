@@ -9,7 +9,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import se.hkr.e7.model.Singleton;
 
 import java.io.IOException;
 import java.net.URL;
@@ -60,23 +59,13 @@ public abstract class Controller {
         alert.showAndWait();
     }
 
-    boolean move(String massage, String info) {
+    boolean showChoice(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText(info);
-        alert.setContentText(massage);
-
+        alert.setHeaderText(title);
+        alert.setContentText(message);
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
-            return true;
-        } else {
-            // ... user chose CANCEL or closed the dialog
-
-            return false;
-        }
-
+        return result.isPresent() && result.get() == ButtonType.OK;
     }
-
-
 
     public void exit(ActionEvent actionEvent) {
         System.exit(0);

@@ -2,7 +2,6 @@ package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -24,7 +23,6 @@ public class AddResultController extends Controller {
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/AddResult.fxml");
-
     }
 
     public void Save(ActionEvent event) {
@@ -32,10 +30,7 @@ public class AddResultController extends Controller {
         LocalDate bdate = datePicker.getValue();
         String date = String.valueOf(bdate);
         if (bdate != null && bdate.isAfter(today)) {
-
             showError("you can not chose date after today ");
-            System.out.println(date);
-
         } else if (!negativeCheckBox.isSelected() && !positiveCheckBox.isSelected() && !pendingCheckBox.isSelected()) {
             showError("please put valid test result");
         } else if (!ssnTextField.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
@@ -45,33 +40,27 @@ public class AddResultController extends Controller {
             try {
 
                 Patient patient = DatabaseHandler.load(Patient.class, ssnTextField.getText());
-                Singleton.getInstance().getEmployee();
                 if (negativeCheckBox.isSelected()) {
                     Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.NEGATIVE);
                     showConfirmation("Saved", "thank you ");
-
                 }
+
                 if (positiveCheckBox.isSelected()) {
                     Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.POSITIVE);
                     showConfirmation("Saved", "thank you ");
                 }
+
                 if (pendingCheckBox.isSelected()) {
                     Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.PENDING);
                     showConfirmation("Saved", "thank you ");
-
                 }
-
             } catch (Exception e) {
-                if (move("do you want to add new patient", "Can't find patient")) {
+                if (showChoice("Can't find patient", "do you want to add new patient")) {
                     loadScene("view/AddPatientDoctor.fxml", event);
                 }
-
-
             }
 
         }
-
-
     }
 
     public void negative(ActionEvent event) {
