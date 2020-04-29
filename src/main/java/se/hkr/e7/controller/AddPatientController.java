@@ -63,7 +63,7 @@ public class AddPatientController extends Controller {
         if (phone.getText().equals("")) {
             phoneLabel.setText(" can't be empty");
         }
-        if (!(ssn.getText().equals("")) && !(password.getText().equals("")) && !(name.getText().equals("")) && !(email.getText() == "") &&
+        if (!(ssnTextField.getText().equals("")) && !(password.getText().equals("")) && !(name.getText().equals("")) && !(email.getText() == "") &&
                 !(phone.getText().equals("")) && !(address.getText().equals(""))) {
             try {
 
