@@ -7,12 +7,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Person;
 import se.hkr.e7.model.Singleton;
 
 public class AddPatientController extends Controller {
 
     public Button addButton;
-    public TextField ssn;
+    public TextField ssnTextField;
     public TextField name;
     public TextField password;
     public TextField address;
@@ -41,12 +42,12 @@ public class AddPatientController extends Controller {
         addressLabel.setText("");
         saveLabel.setText("");
 
-        if (ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
+        if (Person.isValidSsn(ssnTextField.getText())) {
             ssnLabel.setText("");
-        }
-        if (!ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
+        } else {
             ssnLabel.setText("input in YYMMDDXXXX form");
         }
+
         if (name.getText().equals("")) {
             nameLabel.setText("can't be empty");
         }
@@ -66,7 +67,7 @@ public class AddPatientController extends Controller {
                 !(phone.getText().equals("")) && !(address.getText().equals(""))) {
             try {
 
-                DatabaseHandler.save(new Patient(ssn.getText(), password.getText(), name.getText(), email.getText(),
+                DatabaseHandler.save(new Patient(ssnTextField.getText(), password.getText(), name.getText(), email.getText(),
                         phone.getText(), address.getText()));
                 showConfirmation("", "saved");
             } catch (Exception exception) {
