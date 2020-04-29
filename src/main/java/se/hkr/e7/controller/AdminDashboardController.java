@@ -34,26 +34,30 @@ public class AdminDashboardController extends Controller {
     }
 
     public void search(ActionEvent actionEvent) {
-            if (!searchText.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
-                showError("input in YYMMDDXXXX form");
+        if (!searchText.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
+            showError("input in YYMMDDXXXX form");
+        } else {
+            Patient patient = DatabaseHandler.load(Patient.class, searchText.getText());
+            Employee employee = DatabaseHandler.load(Employee.class, searchText.getText());
+
+            if (patient == null && employee == null) {
+                showError("There is no one with that ssn in the system.");
+                return;
             }
-            if (searchText.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
-                try {
-                    Patient patient = DatabaseHandler.load(Patient.class, searchText.getText());
-                    Singleton.getInstance().setPatient(patient);
-                }catch (Exception e){
-                    showError("Not a Patient", "");
-                }try {
-                    Employee employee = DatabaseHandler.load(Employee.class, searchText.getText());
-                    Singleton.getInstance().setEmployee(employee);
-                }catch (Exception e){
-                    showError("Not Staff");
-                }finally {
-                    loadScene("view/Search.fxml",actionEvent);
-                }
+
+            Singleton singleton = Singleton.getInstance();
+            if (patient == null) {
+                singleton.setEmployee(employee);
+                singleton.setPatient(null);
+            } else {
+                singleton.setPatient(patient);
+                singleton.setEmployee(null);
             }
+
+            loadScene("view/Search.fxml", actionEvent);
         }
-        }
+    }
+}
 
 
 

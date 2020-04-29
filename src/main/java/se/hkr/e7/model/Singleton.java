@@ -5,12 +5,10 @@ import java.util.LinkedList;
 public class Singleton {
 
     private static Singleton instance = null;
+    private final LinkedList<String> sceneHistory;
     private Person currentUser;
     private Employee employee;
-    private LinkedList<String> sceneHistory;
     private Patient patient;
-    private Result result;
-    private String ssn;
 
     private Singleton() {
         sceneHistory = new LinkedList<>();
@@ -32,6 +30,14 @@ public class Singleton {
         return sceneHistory.removeFirst();
     }
 
+    public Person getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(Person currentUser) {
+        this.currentUser = currentUser;
+    }
+
     public Employee getEmployee() {
         return employee;
     }
@@ -46,30 +52,6 @@ public class Singleton {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
-    }
-
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
-    public String getSsn() {
-        return ssn;
-    }
-
-    public void setSsn(String ssn) {
-        this.ssn = ssn;
-    }
-
-    public Person getCurrentUser() {
-        return currentUser;
-    }
-
-    public void setCurrentUser(Person currentUser) {
-        this.currentUser = currentUser;
     }
 }
 
