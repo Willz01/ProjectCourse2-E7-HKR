@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
+import java.security.SecureRandom;
 import java.util.Properties;
 
 public class Mail {
@@ -55,6 +56,27 @@ public class Mail {
         mail.send();
     }
 
+    public static String generatePassword(int length) {
+        // Function to generate random alpha-numeric password of specific length
+
+
+        // ASCII range - alphanumeric (0-9, a-z, A-Z)
+        final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        SecureRandom random = new SecureRandom();
+        StringBuilder sb = new StringBuilder();
+
+        // each iteration of loop choose a character randomly from the given ASCII range
+        // and append it to StringBuilder instance
+
+        for (int i = 0; i < length; i++) {
+            int randomIndex = random.nextInt(chars.length());
+            sb.append(chars.charAt(randomIndex));
+        }
+
+        return sb.toString();
+    }
+
     public void setTo(Person... recipients) throws MessagingException, UnsupportedEncodingException {
         message.setRecipients(Message.RecipientType.TO, null);
         for (Person recipient : recipients) {
@@ -79,3 +101,5 @@ public class Mail {
         Transport.send(message);
     }
 }
+
+

@@ -82,9 +82,8 @@ public class LoginController extends Controller {
 
 
 // Set the button types.
-        ButtonType loginButtonType = new ButtonType("Login", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
-
+        ButtonType sendButtonType = new ButtonType("Send", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(sendButtonType, ButtonType.CANCEL);
 // Create the ssn and email labels and fields.
         GridPane grid = new GridPane();
         grid.setHgap(10);
@@ -102,7 +101,7 @@ public class LoginController extends Controller {
         grid.add(email, 1, 1);
 
 // Enable/Disable login button depending on whether a ssn was entered.
-        Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
+        Node loginButton = dialog.getDialogPane().lookupButton(sendButtonType);
         loginButton.setDisable(true);
 
 // Do some validation (using the Java 8 lambda syntax).
@@ -117,21 +116,25 @@ public class LoginController extends Controller {
 
 // Convert the result to a ssn-email-pair when the login button is clicked.
         dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == loginButtonType) {
+            if (dialogButton == sendButtonType) {
                 try {
-                    Person person =DatabaseHandler.load(Person.class,ssn.getText());
-                    if (person.getEmail().equals(email.getText())){
+                    Person person = DatabaseHandler.load(Person.class, ssn.getText());
+                    if (person.getEmail().equals(email.getText())) {
 
-                                Mail.send("reset","password",person,person);
-                                showConfirmation("","email has ben Sent ");
-                    }else {
+
+                        String password = Mail.generatePassword(10);
+                        person.updatePassword(password);
+                        DatabaseHandler.save(person);
+
+                        Mail.send("reset", password, person, person);
+                        showConfirmation("", "email has ben Sent ");
+
+                    } else {
                         showError("wrong email address");
                     }
 
 
-
-
-                }catch (Exception exception){
+                } catch (Exception exception) {
                     showError("wrong ssn");
                 }
 
@@ -146,7 +149,7 @@ public class LoginController extends Controller {
         result.ifPresent(usernamePassword -> {
             System.out.println("Username=" + usernamePassword.getKey() + ", Password=" + usernamePassword.getValue());
         });
-        }
+    }
 
 
 }
