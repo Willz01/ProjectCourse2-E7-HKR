@@ -5,10 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import se.hkr.e7.controller.Controller;
 import se.hkr.e7.model.DatabaseHandler;
-import se.hkr.e7.model.Employee;
+import se.hkr.e7.model.Mail;
+import se.hkr.e7.model.Person;
 
 
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.net.URL;
 
@@ -27,6 +30,16 @@ public class Main extends Application {
         stage.show();
 
 
-        DatabaseHandler.loadAll(Employee.class);
+//        Person person = DatabaseHandler.load(Person.class,"199701010000");
+//
+//        try {
+//            Mail.send("reset","password",person,person);
+//            Controller.showConfirmation("","email has ben Sent ");
+//        } catch (MessagingException e) {
+//            e.printStackTrace();
+//        }
+
+
+
     }
 }
