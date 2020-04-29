@@ -23,7 +23,7 @@ public class LoginController extends Controller {
 
     @FXML
     public void initialize() {
-        Singleton.getInstance().addSceneHistory("view/StaffLogin.fxml");
+        Singleton.getInstance().addSceneHistory("view/Login.fxml");
         loginButton.setOnAction(this::login);
         Stream.of(ssnTextField, passwordField, passwordTextField).forEach(e -> e.setOnKeyPressed(this::onEnter));
 
