@@ -17,7 +17,6 @@ public class AdminDashboardController extends Controller {
     public Button viewPatientButton;
     public Button viewStaffButton;
     public Button removeStaffButton;
-    public Button removeAdminButton;
     public Button searchButton;
     public TextField searchText;
 
@@ -30,7 +29,6 @@ public class AdminDashboardController extends Controller {
         viewPatientButton.setOnAction(actionEvent -> loadScene("view/ViewPatients.fxml", actionEvent));
         viewStaffButton.setOnAction(actionEvent -> loadScene("view/ViewStaff.fxml", actionEvent));
         removeStaffButton.setOnAction(actionEvent -> loadScene("view/RemoveStaff.fxml", actionEvent));
-        removeAdminButton.setOnAction(actionEvent -> loadScene("view/RemoveAdmin.fxml", actionEvent));
     }
 
     public void search(ActionEvent actionEvent) {
