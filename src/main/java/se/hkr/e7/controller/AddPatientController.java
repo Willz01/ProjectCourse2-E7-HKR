@@ -47,7 +47,6 @@ public class AddPatientController extends Controller {
         } else {
             ssnLabel.setText("input in YYMMDDXXXX form");
         }
-
         if (name.getText().equals("")) {
             nameLabel.setText("can't be empty");
         }
@@ -63,18 +62,21 @@ public class AddPatientController extends Controller {
         if (phone.getText().equals("")) {
             phoneLabel.setText(" can't be empty");
         }
-        if (!(ssnTextField.getText().equals("")) && !(password.getText().equals("")) && !(name.getText().equals("")) && !(email.getText() == "") &&
-                !(phone.getText().equals("")) && !(address.getText().equals(""))) {
+
+        if (!ssnTextField.getText().isBlank()
+                && !password.getText().isBlank()
+                && !name.getText().isBlank()
+                && !email.getText().isBlank()
+                && !phone.getText().isBlank()
+                && !address.getText().isBlank()
+        ) {
             try {
-
-                DatabaseHandler.save(new Patient(ssnTextField.getText(), password.getText(), name.getText(), email.getText(),
-                        phone.getText(), address.getText()));
-                showConfirmation("", "saved");
+                DatabaseHandler.save(new Patient(ssnTextField.getText(), password.getText(),
+                        name.getText(), email.getText(), phone.getText(), address.getText()));
+                showConfirmation("Success", "The patient was added.");
             } catch (Exception exception) {
-                showError("did't save ", "this ssn is already in the System ");
-
+                showError("Did't save", "There was an error adding the patient.");
             }
         }
     }
 }
-
