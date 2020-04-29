@@ -44,7 +44,7 @@ public class LoginController extends Controller {
         Employee employee = DatabaseHandler.load(Employee.class, ssnTextField.getText());
         Patient patient = DatabaseHandler.load(Patient.class, ssnTextField.getText());
 
-        if (employee != null && employee.checkPassword(passwordTextField.getText())) {
+        if (employee != null && employee.isEnabled() && employee.checkPassword(passwordTextField.getText())) {
             Singleton.getInstance().setEmployee(employee);
             switch (employee.getRole()) {
                 case ADMIN:
@@ -57,7 +57,7 @@ public class LoginController extends Controller {
                     loadScene("view/DoctorDashboard.fxml", node);
                     break;
             }
-        } else if (patient != null && patient.checkPassword(passwordTextField.getText())) {
+        } else if (patient != null && patient.isEnabled() && patient.checkPassword(passwordTextField.getText())) {
             Singleton.getInstance().setCurrentUser(patient);
             loadScene("view/PatientDashboard.fxml", node);
         } else {

@@ -10,6 +10,7 @@ import java.io.Serializable;
 public abstract class Person implements Serializable {
     private String ssn;
     private String password;
+    private boolean enabled;
     private String name;
     private String email;
     private String phone;
@@ -20,11 +21,12 @@ public abstract class Person implements Serializable {
 
     public Person(String ssn, String password, String name, String email, String phone, String address) {
         this.ssn = ssn;
+        updatePassword(password);
+        this.enabled = true;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.address = address;
-        updatePassword(password);
     }
 
     public static boolean isValidSsn(String ssn) {
@@ -53,6 +55,7 @@ public abstract class Person implements Serializable {
 
     protected void clear() {
         setPassword("");
+        setEnabled(false);
         setName(null);
         setEmail(null);
         setPhone(null);
@@ -87,6 +90,14 @@ public abstract class Person implements Serializable {
 
     private void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getName() {
