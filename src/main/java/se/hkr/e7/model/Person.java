@@ -27,7 +27,24 @@ public abstract class Person implements Serializable {
     }
 
     public static boolean isValidSsn(String ssn) {
-        return ssn.matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$");
+        // TODO: 29.04.20 Implement checksum calculation https://en.wikipedia.org/wiki/Personal_identity_number_(Sweden)#Checksum
+        if (!ssn.matches("^(\\d{2})?\\d{10}$")) {
+            return false;
+        }
+
+        if (ssn.length() == 12) {
+            ssn = ssn.substring(2);
+        }
+
+        if (Integer.parseInt(ssn.substring(2, 4)) > 12) {
+            return false;
+        }
+
+        if (Integer.parseInt(ssn.substring(4, 6)) > 31) {
+            return false;
+        }
+
+        return true;
     }
 
     public static boolean isValidEmail(String email) {
