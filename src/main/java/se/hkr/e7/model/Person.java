@@ -1,9 +1,9 @@
 package se.hkr.e7.model;
 
 import org.mindrot.jbcrypt.BCrypt;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.security.InvalidParameterException;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -50,11 +50,7 @@ public abstract class Person implements Serializable {
             return false;
         }
 
-        if (Integer.parseInt(ssn.substring(4, 6)) > 31) {
-            return false;
-        }
-
-        return true;
+        return Integer.parseInt(ssn.substring(4, 6)) <= 31;
     }
 
     public static boolean isValidEmail(String email) {
