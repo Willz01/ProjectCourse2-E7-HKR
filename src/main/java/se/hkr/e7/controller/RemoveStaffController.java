@@ -7,10 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
-import se.hkr.e7.model.Location;
 import se.hkr.e7.model.Singleton;
-
-import javax.xml.crypto.Data;
 
 public class RemoveStaffController extends Controller {
 
