@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
+import java.security.SecureRandom;
 import java.util.Properties;
 
 public class Mail {
@@ -53,6 +54,20 @@ public class Mail {
         mail.setSubject(subject);
         mail.setBody(body);
         mail.send();
+    }
+
+    public static String generatePassword(int length) {
+        final String pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        SecureRandom secureRandom = new SecureRandom();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < length; i++) {
+            int randomIndex = secureRandom.nextInt(pool.length());
+            stringBuilder.append(pool.charAt(randomIndex));
+        }
+
+        return stringBuilder.toString();
     }
 
     public void setTo(Person... recipients) throws MessagingException, UnsupportedEncodingException {

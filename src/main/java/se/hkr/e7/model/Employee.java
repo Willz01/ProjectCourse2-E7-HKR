@@ -27,6 +27,13 @@ public class Employee extends Person {
         this.patientResults = new ArrayList<>();
     }
 
+    public void clear() {
+        super.clear();
+        setLocation(null);
+        setRole(null);
+        setSalary(0);
+    }
+
     public void addPatientResult(Result result) {
         this.patientResults.add(result);
     }
@@ -56,10 +63,9 @@ public class Employee extends Person {
     }
 
     @OneToMany(
-            cascade = CascadeType.ALL,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
             fetch = FetchType.LAZY,
-            mappedBy = "examiner",
-            orphanRemoval = true
+            mappedBy = "examiner"
     )
     public List<Result> getPatientResults() {
         return patientResults;

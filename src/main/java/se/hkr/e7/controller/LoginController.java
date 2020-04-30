@@ -1,16 +1,21 @@
 package se.hkr.e7.controller;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import se.hkr.e7.model.DatabaseHandler;
-import se.hkr.e7.model.Employee;
-import se.hkr.e7.model.Patient;
-import se.hkr.e7.model.Singleton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.util.Pair;
+import se.hkr.e7.model.*;
 
+import javax.mail.MessagingException;
+import java.io.UnsupportedEncodingException;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class LoginController extends Controller {
@@ -20,12 +25,14 @@ public class LoginController extends Controller {
     public TextField passwordTextField;
     public PasswordField passwordField;
     public CheckBox passwordCheckBox;
+    public Label passwordResetLabel;
 
     @FXML
     public void initialize() {
-        Singleton.getInstance().addSceneHistory("view/StaffLogin.fxml");
+        Singleton.getInstance().addSceneHistory("view/Login.fxml");
         loginButton.setOnAction(this::login);
         Stream.of(ssnTextField, passwordField, passwordTextField).forEach(e -> e.setOnKeyPressed(this::onEnter));
+        passwordResetLabel.setOnMouseClicked(this::resetPassword);
 
         passwordTextField.setManaged(false);
         passwordTextField.setVisible(true);
@@ -44,7 +51,7 @@ public class LoginController extends Controller {
         Employee employee = DatabaseHandler.load(Employee.class, ssnTextField.getText());
         Patient patient = DatabaseHandler.load(Patient.class, ssnTextField.getText());
 
-        if (employee != null && employee.checkPassword(passwordTextField.getText())) {
+        if (employee != null && employee.isEnabled() && employee.checkPassword(passwordTextField.getText())) {
             Singleton.getInstance().setEmployee(employee);
             switch (employee.getRole()) {
                 case ADMIN:
@@ -57,8 +64,9 @@ public class LoginController extends Controller {
                     loadScene("view/DoctorDashboard.fxml", node);
                     break;
             }
-        } else if (patient != null && patient.checkPassword(passwordTextField.getText())) {
+        } else if (patient != null && patient.isEnabled() && patient.checkPassword(passwordTextField.getText())) {
             Singleton.getInstance().setCurrentUser(patient);
+            Singleton.getInstance().setPatient(patient);
             loadScene("view/PatientDashboard.fxml", node);
         } else {
             showError("Login unsuccessful", "Please check your username and password.");
@@ -69,5 +77,73 @@ public class LoginController extends Controller {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             login((Node) keyEvent.getSource());
         }
+    }
+
+    public void resetPassword(MouseEvent mouseEvent) {
+        Dialog<Pair<String, String>> dialog = new Dialog<>();
+        dialog.setTitle("Password Reset");
+        dialog.setHeaderText("");
+        ButtonType sendButtonType = new ButtonType("Send", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(sendButtonType, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+
+        TextField ssnTextField = new TextField();
+        ssnTextField.setPromptText("SSN");
+        TextField emailTextField = new TextField();
+        emailTextField.setPromptText("Email");
+
+        grid.add(new Label("SSN:"), 0, 0);
+        grid.add(ssnTextField, 1, 0);
+        grid.add(new Label("Email:"), 0, 1);
+        grid.add(emailTextField, 1, 1);
+
+        Node sendButton = dialog.getDialogPane().lookupButton(sendButtonType);
+        sendButton.setDisable(true);
+        ssnTextField.textProperty().addListener((observable, oldValue, newValue) ->
+                sendButton.setDisable(newValue.trim().isEmpty()));
+
+        dialog.getDialogPane().setContent(grid);
+
+        Platform.runLater(ssnTextField::requestFocus);
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton != sendButtonType) {
+                return null;
+            }
+
+            try {
+                Person person = Person.load(Person.class, ssnTextField.getText());
+
+                if (person == null) {
+                    showError("wrong ssn");
+                    return null;
+                }
+
+                if (!person.getEmail().equals(emailTextField.getText())) {
+                    showError("wrong email address");
+                } else {
+                    String password = Mail.generatePassword(10);
+                    person.updatePassword(password);
+                    DatabaseHandler.save(person);
+                    Mail.send("Password Reset",
+                            String.format("Dear %s,<br>Your new password is %s.<br>Kind regards", person.getName(), password),
+                            person);
+                    showConfirmation("Success", "Email has been sent.");
+                }
+            } catch (UnsupportedEncodingException | MessagingException e) {
+                showError("Email could not be sent.");
+            }
+
+            return new Pair<>(ssnTextField.getText(), emailTextField.getText());
+        });
+
+        Optional<Pair<String, String>> result = dialog.showAndWait();
+
+        result.ifPresent(usernamePassword -> {
+        });
     }
 }
