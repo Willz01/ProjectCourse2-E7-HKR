@@ -75,7 +75,7 @@ public abstract class Person implements Serializable {
         return salary >= 0;
     }
 
-    protected void clear() {
+    public void clear() {
         setPassword("");
         setEnabled(false);
         setName(null);
