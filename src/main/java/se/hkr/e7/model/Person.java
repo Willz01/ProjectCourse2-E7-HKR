@@ -10,6 +10,7 @@ import java.io.Serializable;
 public abstract class Person implements Serializable {
     private String ssn;
     private String password;
+    private boolean enabled;
     private String name;
     private String email;
     private String phone;
@@ -29,11 +30,12 @@ public abstract class Person implements Serializable {
             }
         }
 
+        updatePassword(password);
+        this.enabled = true;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.address = address;
-        updatePassword(password);
     }
 
     public static <T extends Person> T load(Class<T> tClass, String ssn) {
@@ -80,11 +82,23 @@ public abstract class Person implements Serializable {
         return salary >= 0;
     }
 
+    public void clear() {
+        setPassword("");
+        setEnabled(false);
+        setName(null);
+        setEmail(null);
+        setPhone(null);
+        setAddress(null);
+    }
+
     public void updatePassword(String password) {
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
     public boolean checkPassword(String password) {
+        if (password.length() == 0 || this.password.length() == 0) {
+            return false;
+        }
         return BCrypt.checkpw(password, this.password);
     }
 
@@ -105,6 +119,14 @@ public abstract class Person implements Serializable {
 
     private void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getName() {
@@ -150,6 +172,4 @@ public abstract class Person implements Serializable {
                 ", address='" + address + '\'' +
                 '}';
     }
-
-
 }
