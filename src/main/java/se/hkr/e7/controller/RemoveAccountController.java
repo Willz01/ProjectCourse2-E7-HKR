@@ -34,10 +34,24 @@ public class RemoveAccountController extends Controller {
                 return;
             }
 
-            DatabaseHandler.delete(Objects.requireNonNullElse(employee, patient));
-            showConfirmation("Deleted", "Done");
+            try {
+                DatabaseHandler.delete(Objects.requireNonNullElse(employee, patient));
+                showConfirmation("Deleted", "Done");
+            } catch (Exception exception) {
+                if (employee != null) {
+                    employee.clear();
+                    DatabaseHandler.save(employee);
+                }
+                if (patient != null) {
+                    patient.clear();
+                    DatabaseHandler.save(patient);
+                }
+            } finally {
+                showConfirmation("Deleted", "Done");
+            }
         } catch (Exception exception) {
             showError("The account could not be deleted.");
         }
+
     }
 }
