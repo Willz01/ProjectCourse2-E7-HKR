@@ -5,8 +5,8 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.DoctorDashboardController">
     <Button fx:id="viewPatientButton" layoutX="47.0" layoutY="62.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="View patient" />
-    <Button fx:id="AddResultButton" layoutX="47.0" layoutY="185.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="Add result" />
-    <Button fx:id="listCasesButton" layoutX="343.0" layoutY="62.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="List of cases" />
+    <Button fx:id="addResultButton" layoutX="47.0" layoutY="185.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="Add result" />
+    <Button fx:id="addPatientButton" layoutX="343.0" layoutY="62.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="Add patient" />
     <Button fx:id="viewResultsButton" layoutX="343.0" layoutY="185.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="View results" />
     <fx:include source="../template/buttons.fxml"/>
 </AnchorPane>

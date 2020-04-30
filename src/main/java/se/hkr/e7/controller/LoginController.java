@@ -3,7 +3,10 @@ package se.hkr.e7.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import se.hkr.e7.model.DatabaseHandler;
@@ -59,6 +62,7 @@ public class LoginController extends Controller {
             }
         } else if (patient != null && patient.checkPassword(passwordTextField.getText())) {
             Singleton.getInstance().setCurrentUser(patient);
+            Singleton.getInstance().setPatient(patient);
             loadScene("view/PatientDashboard.fxml", node);
         } else {
             showError("Login unsuccessful", "Please check your username and password.");

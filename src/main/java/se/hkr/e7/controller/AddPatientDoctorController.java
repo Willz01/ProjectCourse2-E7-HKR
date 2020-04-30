@@ -7,13 +7,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Patient;
-import se.hkr.e7.model.Person;
 import se.hkr.e7.model.Singleton;
 
-public class AddPatientController extends Controller {
+public class AddPatientDoctorController extends Controller {
 
     public Button addButton;
-    public TextField ssnTextField;
+    public TextField ssn;
     public TextField name;
     public TextField password;
     public TextField address;
@@ -29,7 +28,7 @@ public class AddPatientController extends Controller {
 
     @FXML
     public void initialize() {
-        Singleton.getInstance().addSceneHistory("view/AddPatient.fxml");
+        Singleton.getInstance().addSceneHistory("view/AddPatientDoctor.fxml");
         addButton.setOnAction(this::addPatient);
     }
 
@@ -42,9 +41,10 @@ public class AddPatientController extends Controller {
         addressLabel.setText("");
         saveLabel.setText("");
 
-        if (Person.isValidSsn(ssnTextField.getText())) {
+        if (ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
             ssnLabel.setText("");
-        } else {
+        }
+        if (!ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
             ssnLabel.setText("input in YYMMDDXXXX form");
         }
         if (name.getText().equals("")) {
@@ -62,21 +62,18 @@ public class AddPatientController extends Controller {
         if (phone.getText().equals("")) {
             phoneLabel.setText(" can't be empty");
         }
-
-        if (!ssnTextField.getText().isBlank()
-                && !password.getText().isBlank()
-                && !name.getText().isBlank()
-                && !email.getText().isBlank()
-                && !phone.getText().isBlank()
-                && !address.getText().isBlank()
-        ) {
+        if (!(ssn.getText().equals("")) && !(password.getText().equals("")) && !(name.getText().equals("")) && !(email.getText() == "") &&
+                !(phone.getText().equals("")) && !(address.getText().equals(""))) {
             try {
-                DatabaseHandler.save(new Patient(ssnTextField.getText(), password.getText(),
-                        name.getText(), email.getText(), phone.getText(), address.getText()));
-                showConfirmation("Success", "The patient was added.");
+
+                DatabaseHandler.save(new Patient(ssn.getText(), password.getText(), name.getText(), email.getText(),
+                        phone.getText(), address.getText()));
+                showConfirmation("", "saved");
             } catch (Exception exception) {
-                showError("Did't save", "There was an error adding the patient.");
+                showError("did't save ", "this ssn is already in the System ");
+
             }
         }
     }
 }
+

@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 
 public abstract class Controller {
 
@@ -56,6 +57,14 @@ public abstract class Controller {
         alert.setTitle(title);
         alert.getDialogPane().setGraphic(new ImageView("alert_confirmation.png"));
         alert.showAndWait();
+    }
+
+    boolean showChoice(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(title);
+        alert.setContentText(message);
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.isPresent() && result.get() == ButtonType.OK;
     }
 
     public void exit(ActionEvent actionEvent) {
