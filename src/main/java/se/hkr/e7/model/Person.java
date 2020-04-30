@@ -38,6 +38,13 @@ public abstract class Person implements Serializable {
         this.address = address;
     }
 
+    public static <T extends Person> T load(Class<T> tClass, String ssn) {
+        if (ssn.length() == 12) {
+            ssn = ssn.substring(2);
+        }
+        return DatabaseHandler.load(tClass, ssn);
+    }
+
     public static boolean isValidSsn(String ssn) {
         // TODO: 29.04.20 Implement checksum calculation https://en.wikipedia.org/wiki/Personal_identity_number_(Sweden)#Checksum
         if (!ssn.matches("^(\\d{2})?\\d{10}$")) {

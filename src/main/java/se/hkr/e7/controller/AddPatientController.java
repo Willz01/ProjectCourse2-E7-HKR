@@ -47,6 +47,7 @@ public class AddPatientController extends Controller {
         } else {
             ssnLabel.setText("input in YYMMDDXXXX form");
         }
+
         if (name.getText().equals("")) {
             nameLabel.setText("can't be empty");
         }
@@ -62,14 +63,8 @@ public class AddPatientController extends Controller {
         if (phone.getText().equals("")) {
             phoneLabel.setText(" can't be empty");
         }
-
-        if (!ssnTextField.getText().isBlank()
-                && !password.getText().isBlank()
-                && !name.getText().isBlank()
-                && !email.getText().isBlank()
-                && !phone.getText().isBlank()
-                && !address.getText().isBlank()
-        ) {
+        if (!ssnTextField.getText().isBlank() && !password.getText().isBlank() && !name.getText().isBlank()
+                && !email.getText().isBlank() && !phone.getText().isBlank() && !address.getText().isBlank()) {
             try {
                 DatabaseHandler.save(new Patient(ssnTextField.getText(), password.getText(),
                         name.getText(), email.getText(), phone.getText(), address.getText()));
