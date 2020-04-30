@@ -3,7 +3,10 @@ package se.hkr.e7.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import se.hkr.e7.model.DatabaseHandler;
@@ -23,7 +26,7 @@ public class LoginController extends Controller {
 
     @FXML
     public void initialize() {
-        Singleton.getInstance().addSceneHistory("view/StaffLogin.fxml");
+        Singleton.getInstance().addSceneHistory("view/Login.fxml");
         loginButton.setOnAction(this::login);
         Stream.of(ssnTextField, passwordField, passwordTextField).forEach(e -> e.setOnKeyPressed(this::onEnter));
 
@@ -44,7 +47,7 @@ public class LoginController extends Controller {
         Employee employee = DatabaseHandler.load(Employee.class, ssnTextField.getText());
         Patient patient = DatabaseHandler.load(Patient.class, ssnTextField.getText());
 
-        if (employee != null && employee.checkPassword(passwordTextField.getText())) {
+        if (employee != null && employee.isEnabled() && employee.checkPassword(passwordTextField.getText())) {
             Singleton.getInstance().setEmployee(employee);
             switch (employee.getRole()) {
                 case ADMIN:
@@ -57,8 +60,9 @@ public class LoginController extends Controller {
                     loadScene("view/DoctorDashboard.fxml", node);
                     break;
             }
-        } else if (patient != null && patient.checkPassword(passwordTextField.getText())) {
+        } else if (patient != null && patient.isEnabled() && patient.checkPassword(passwordTextField.getText())) {
             Singleton.getInstance().setCurrentUser(patient);
+            Singleton.getInstance().setPatient(patient);
             loadScene("view/PatientDashboard.fxml", node);
         } else {
             showError("Login unsuccessful", "Please check your username and password.");
