@@ -43,32 +43,32 @@ public class AddEmployeeController extends Controller {
         }
 
         if (!Person.isValidEmail(emailTextField.getText())) {
-            showError("Please enter valid email address.");
+            showError("Enter a valid email address.");
             return;
         }
 
         if (nameTextField.getText().isEmpty()) {
-            showError("Name can't be empty.");
+            showError("Name field can't be empty.");
             return;
         }
 
         if (addressTextField.getText().isEmpty()) {
-            showError("Address can't be empty.");
+            showError("Address field can't be empty.");
             return;
         }
 
         if (passwordTextField.getText().length() < 8) {
-            showError("Please enter a password at least eight characters in length.");
+            showError("Password length should be 8 ");
             return;
         }
 
         if (!Person.isValidPhone(phoneTextField.getText())) {
-            showError("Please enter valid phone number.");
+            showError("Enter a valid phone number.");
             return;
         }
 
         if (!Person.isValidSalary(salaryTextField.getText())) {
-            showError("Salary must be number.");
+            showError("Invalid salary format");
             return;
         }
 
@@ -93,6 +93,6 @@ public class AddEmployeeController extends Controller {
                 roleChoiceBox.getValue(),
                 Double.parseDouble(salaryTextField.getText())
         ));
-        showConfirmation("Finished successfully!", "The account was created.");
+        showConfirmation("Finished successfully!", "The account has been created.");
     }
 }

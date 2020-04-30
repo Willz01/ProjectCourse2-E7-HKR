@@ -69,7 +69,7 @@ public class LoginController extends Controller {
             Singleton.getInstance().setPatient(patient);
             loadScene("view/PatientDashboard.fxml", node);
         } else {
-            showError("Login unsuccessful", "Please check your username and password.");
+            showError("Login unsuccessful", "Please check username and password.");
         }
     }
 
@@ -119,12 +119,12 @@ public class LoginController extends Controller {
                 Person person = Person.load(Person.class, ssnTextField.getText());
 
                 if (person == null) {
-                    showError("wrong ssn");
+                    showError("Wrong SSN");
                     return null;
                 }
 
                 if (!person.getEmail().equals(emailTextField.getText())) {
-                    showError("wrong email address");
+                    showError("Wrong email address");
                 } else {
                     String password = Mail.generatePassword(10);
                     person.updatePassword(password);
