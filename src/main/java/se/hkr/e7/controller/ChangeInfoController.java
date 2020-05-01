@@ -34,6 +34,7 @@ public class ChangeInfoController extends Controller {
         if (name.getText().equals("")) {
             name.setText(" can't be empty");
         }
+
         if (address.getText().equals("")) {
             addressLabel.setText(" can't be empty");
         }
