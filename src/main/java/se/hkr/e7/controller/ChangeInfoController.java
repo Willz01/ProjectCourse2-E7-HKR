@@ -38,13 +38,12 @@ public class ChangeInfoController extends Controller {
 
         while (name.getText().isEmpty())
             nameg.setFill(Paint.valueOf("#d1231f"));
-        while (phone.getText().isEmpty())
+        while (Person.isValidPhone(phone.getText()))
             phoneg.setFill(Paint.valueOf("#d1231f"));
         while (address.getText().isEmpty())
             addressg.setFill(Paint.valueOf("#d1231f"));
-        while (email.getText().isEmpty())
+        while (Person.isValidEmail(email.getText()))
             emailg.setFill(Paint.valueOf("#d1231f"));
-
     }
 
     public void Save(ActionEvent event) {
