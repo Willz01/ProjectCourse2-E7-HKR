@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import se.hkr.e7.model.*;
 
@@ -36,13 +37,13 @@ public class ChangeInfoController extends Controller {
         address.setVisible(false);
 
         while (name.getText().isEmpty())
-            nameg.setVisible(false);
+            nameg.setFill(Paint.valueOf("#d1231f"));
         while (phone.getText().isEmpty())
-            phoneg.setVisible(false);
+            phoneg.setFill(Paint.valueOf("#d1231f"));
         while (address.getText().isEmpty())
-            addressg.setVisible(false);
+            addressg.setFill(Paint.valueOf("#d1231f"));
         while (email.getText().isEmpty())
-            emailg.setVisible(false);
+            emailg.setFill(Paint.valueOf("#d1231f"));
 
     }
 
