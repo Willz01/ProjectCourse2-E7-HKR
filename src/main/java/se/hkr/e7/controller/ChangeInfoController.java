@@ -38,7 +38,7 @@ public class ChangeInfoController extends Controller {
 
         if (email.getText().isEmpty()) {
             emailLabel.setText(" can't be empty");
-        }
+        }if (Person.isValidEmail("please enter valid email"))
 
         if (phone.getText().isEmpty()) {
             phoneLabel.setText(" can't be empty");
