@@ -59,7 +59,6 @@ public class ChangeInfoController extends Controller {
         }
         if ((Singleton.getInstance().getCurrentUser() == Singleton.getInstance().getPatient())) {
             Patient patient = DatabaseHandler.load(Patient.class, Singleton.getInstance().getCurrentUser());
-
             patient.setName(name.getText());
             patient.setAddress(address.getText());
             patient.setEmail(email.getText());
