@@ -4,6 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.ChangeInfoController">
     <fx:include source="../template/buttons.fxml" />
@@ -16,4 +19,44 @@
    <Label fx:id="emailLabel" layoutX="14.0" layoutY="140.0" prefHeight="17.0" prefWidth="34.0" />
    <Label fx:id="phoneLabel" layoutX="265.0" layoutY="68.0" prefHeight="17.0" prefWidth="0.0" />
    <Label fx:id="addressLabel" layoutX="265.0" layoutY="140.0" prefHeight="17.0" prefWidth="0.0" />
+   <Circle fx:id="name" fill="#25d31f" layoutX="168.0" layoutY="57.0" radius="5.0" strokeType="INSIDE">
+      <stroke>
+         <LinearGradient endX="1.0" endY="1.0">
+            <stops>
+               <Stop color="BLACK" />
+               <Stop color="WHITE" offset="1.0" />
+            </stops>
+         </LinearGradient>
+      </stroke>
+   </Circle>
+   <Circle fx:id="email" fill="#25d31f" layoutX="168.0" layoutY="128.0" radius="5.0" strokeType="INSIDE">
+      <stroke>
+         <LinearGradient endX="1.0" endY="1.0">
+            <stops>
+               <Stop color="BLACK" />
+               <Stop color="WHITE" offset="1.0" />
+            </stops>
+         </LinearGradient>
+      </stroke>
+   </Circle>
+   <Circle fx:id="phone" fill="#25d31f" layoutX="419.0" layoutY="57.0" radius="5.0" strokeType="INSIDE">
+      <stroke>
+         <LinearGradient endX="1.0" endY="1.0">
+            <stops>
+               <Stop color="BLACK" />
+               <Stop color="WHITE" offset="1.0" />
+            </stops>
+         </LinearGradient>
+      </stroke>
+   </Circle>
+   <Circle fx:id="address" fill="#25d31f" layoutX="419.0" layoutY="128.0" radius="5.0" strokeType="INSIDE">
+      <stroke>
+         <LinearGradient endX="1.0" endY="1.0">
+            <stops>
+               <Stop color="BLACK" />
+               <Stop color="WHITE" offset="1.0" />
+            </stops>
+         </LinearGradient>
+      </stroke>
+   </Circle>
 </AnchorPane>
