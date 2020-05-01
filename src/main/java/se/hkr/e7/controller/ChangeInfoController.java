@@ -15,12 +15,10 @@ public class ChangeInfoController extends Controller {
 
     public Button Save;
     public TextField name;
-    public TextField password;
     public TextField email;
     public TextField phone;
     public TextField address;
     public Label nameLabel;
-    public Label passwordLabel;
     public Label emailLabel;
     public Label phoneLabel;
     public Label addressLabel;
@@ -40,9 +38,7 @@ public class ChangeInfoController extends Controller {
         if (address.getText().equals("")) {
             addressLabel.setText(" can't be empty");
         }
-        if (password.getText().equals("")) {
-            passwordLabel.setText(" can't be empty");
-        }
+
         if (email.getText().equals("")) {
             emailLabel.setText(" can't be empty");
         }
