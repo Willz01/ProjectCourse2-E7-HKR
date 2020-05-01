@@ -31,10 +31,7 @@ public class ChangeInfoController extends Controller {
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/ChangeInfo.fxml");
-        phoneg.setVisible(false);
-        emailg.setVisible(false);
-        nameg.setVisible(false);
-        address.setVisible(false);
+
 
         while (name.getText().isEmpty())
             nameg.setFill(Paint.valueOf("#d1231f"));
