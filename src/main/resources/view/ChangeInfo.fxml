@@ -4,9 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Circle?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.ChangeInfoController">
     <fx:include source="../template/buttons.fxml" />
@@ -15,48 +12,10 @@
    <TextField fx:id="email" layoutX="14.0" layoutY="115.0" promptText="email" />
    <TextField fx:id="phone" layoutX="265.0" layoutY="44.0" promptText="phone" />
    <TextField fx:id="address" layoutX="265.0" layoutY="115.0" promptText="address" />
-   <Label fx:id="nameLabel" layoutX="14.0" layoutY="76.0" prefHeight="17.0" prefWidth="0.0" />
-   <Label fx:id="emailLabel" layoutX="14.0" layoutY="140.0" prefHeight="17.0" prefWidth="34.0" />
-   <Label fx:id="phoneLabel" layoutX="265.0" layoutY="68.0" prefHeight="17.0" prefWidth="0.0" />
-   <Label fx:id="addressLabel" layoutX="265.0" layoutY="140.0" prefHeight="17.0" prefWidth="0.0" />
-   <Circle fx:id="nameg" fill="#25d31f" layoutX="168.0" layoutY="57.0" radius="5.0" strokeType="INSIDE">
-      <stroke>
-         <LinearGradient>
-            <stops>
-               <Stop color="BLACK" />
-               <Stop color="WHITE" offset="1.0" />
-            </stops>
-         </LinearGradient>
-      </stroke>
-   </Circle>
-   <Circle fx:id="emailg" fill="#25d31f" layoutX="168.0" layoutY="128.0" radius="5.0" strokeType="INSIDE">
-      <stroke>
-         <LinearGradient>
-            <stops>
-               <Stop color="BLACK" />
-               <Stop color="WHITE" offset="1.0" />
-            </stops>
-         </LinearGradient>
-      </stroke>
-   </Circle>
-   <Circle fx:id="phoneg" fill="#25d31f" layoutX="419.0" layoutY="57.0" radius="5.0" strokeType="INSIDE">
-      <stroke>
-         <LinearGradient>
-            <stops>
-               <Stop color="BLACK" />
-               <Stop color="WHITE" offset="1.0" />
-            </stops>
-         </LinearGradient>
-      </stroke>
-   </Circle>
-   <Circle fx:id="addressg" fill="#25d31f" layoutX="419.0" layoutY="128.0" radius="5.0" strokeType="INSIDE">
-      <stroke>
-         <LinearGradient>
-            <stops>
-               <Stop color="BLACK" />
-               <Stop color="WHITE" offset="1.0" />
-            </stops>
-         </LinearGradient>
-      </stroke>
-   </Circle>
+   <TextField fx:id="password" layoutX="14.0" layoutY="175.0" promptText="password" />
+   <Label fx:id="nameLabel" layoutX="14.0" layoutY="76.0" prefHeight="17.0" prefWidth="149.0" />
+   <Label fx:id="emailLabel" layoutX="14.0" layoutY="140.0" prefHeight="17.0" prefWidth="149.0" />
+   <Label fx:id="phoneLabel" layoutX="265.0" layoutY="68.0" prefHeight="17.0" prefWidth="149.0" />
+   <Label fx:id="addressLabel" layoutX="265.0" layoutY="140.0" prefHeight="17.0" prefWidth="149.0" />
+   <Label fx:id="passwordLebel" layoutX="14.0" layoutY="200.0" prefHeight="17.0" prefWidth="149.0" />
 </AnchorPane>
