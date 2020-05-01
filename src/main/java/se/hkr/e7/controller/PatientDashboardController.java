@@ -1,9 +1,7 @@
 package se.hkr.e7.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Result;
 import se.hkr.e7.model.Singleton;
@@ -29,7 +27,7 @@ public class PatientDashboardController extends Controller {
             }
             resultTextArea.setText(stringBuilder.toString());
         } catch (Exception exception) {
-            resultTextArea.setText("Could not find result please press back and try again.");
+            resultTextArea.setText("Couldn't find result, Please try again.");
         }
     }
 }
