@@ -31,11 +31,11 @@ public class ChangeInfoController extends Controller {
 
     public void Save(ActionEvent event) {
 
-        if (name.getText().equals("")) {
+        if (name.getText().isEmpty()) {
             name.setText(" can't be empty");
         }
 
-        if (address.getText().equals("")) {
+        if (address.getText().isEmpty()) {
             addressLabel.setText(" can't be empty");
         }
 
