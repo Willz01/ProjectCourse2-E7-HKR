@@ -11,6 +11,8 @@ public class DoctorDashboardController extends Controller {
     public Button viewResultsButton;
     public Button addPatientButton;
 
+
+
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/DoctorDashboard.fxml");
