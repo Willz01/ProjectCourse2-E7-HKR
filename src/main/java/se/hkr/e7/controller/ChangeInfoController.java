@@ -39,7 +39,7 @@ public class ChangeInfoController extends Controller {
             addressLabel.setText(" can't be empty");
         }
 
-        if (email.getText().equals("")) {
+        if (email.getText().isEmpty()) {
             emailLabel.setText(" can't be empty");
         }
 
