@@ -45,7 +45,6 @@ public class ChangeInfoController extends Controller {
             phoneLabel.setText(" can't be empty");
         }
 
-
         if (Singleton.getInstance().getCurrentUser() == Singleton.getInstance().getEmployee()) {
 
             Employee employee = DatabaseHandler.load(Employee.class, Singleton.getInstance().getCurrentUser());
