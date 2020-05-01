@@ -27,20 +27,40 @@ public class ChangeInfoController extends Controller {
     public Circle addressg;
 
 
-
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/ChangeInfo.fxml");
 
 
-        while (name.getText().isEmpty())
+        while (name.getText().isEmpty()) {
             nameg.setFill(Paint.valueOf("#d1231f"));
-        while (Person.isValidPhone(phone.getText()))
+            if (!name.getText().isEmpty())
+                nameg.setFill(Paint.valueOf("#25d31f"));
+
+            break;
+        }
+
+        while (Person.isValidPhone(phone.getText())) {
             phoneg.setFill(Paint.valueOf("#d1231f"));
-        while (address.getText().isEmpty())
+            if (!Person.isValidPhone(phone.getText()))
+                phoneg.setFill(Paint.valueOf("#25d31f"));
+            break;
+        }
+
+        while (address.getText().isEmpty()) {
             addressg.setFill(Paint.valueOf("#d1231f"));
-        while (Person.isValidEmail(email.getText()))
+            if (!address.getText().isEmpty())
+                addressg.setFill(Paint.valueOf("#25d31f"));
+            break;
+        }
+
+        while (Person.isValidEmail(email.getText())) {
             emailg.setFill(Paint.valueOf("#d1231f"));
+            if (!Person.isValidEmail(email.getText()))
+                emailg.setFill(Paint.valueOf("#25d31f"));
+            break;
+        }
+
     }
 
     public void Save(ActionEvent event) {
@@ -55,11 +75,13 @@ public class ChangeInfoController extends Controller {
 
         if (email.getText().isEmpty()) {
             emailLabel.setText(" can't be empty");
-        }if (Person.isValidEmail("please enter valid email"))
+        }
+        if (Person.isValidEmail("please enter valid email"))
 
-        if (phone.getText().isEmpty()) {
-            phoneLabel.setText(" can't be empty");
-        }if (Person.isValidPhone(phone.getText())){
+            if (phone.getText().isEmpty()) {
+                phoneLabel.setText(" can't be empty");
+            }
+        if (Person.isValidPhone(phone.getText())) {
             showError("pleas enter valid phone number");
         }
 
