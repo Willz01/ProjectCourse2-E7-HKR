@@ -19,9 +19,9 @@
    <Label fx:id="emailLabel" layoutX="14.0" layoutY="140.0" prefHeight="17.0" prefWidth="34.0" />
    <Label fx:id="phoneLabel" layoutX="265.0" layoutY="68.0" prefHeight="17.0" prefWidth="0.0" />
    <Label fx:id="addressLabel" layoutX="265.0" layoutY="140.0" prefHeight="17.0" prefWidth="0.0" />
-   <Circle fx:id="name" fill="#25d31f" layoutX="168.0" layoutY="57.0" radius="5.0" strokeType="INSIDE">
+   <Circle fx:id="nameg" fill="#25d31f" layoutX="168.0" layoutY="57.0" radius="5.0" strokeType="INSIDE">
       <stroke>
-         <LinearGradient endX="1.0" endY="1.0">
+         <LinearGradient>
             <stops>
                <Stop color="BLACK" />
                <Stop color="WHITE" offset="1.0" />
@@ -29,9 +29,9 @@
          </LinearGradient>
       </stroke>
    </Circle>
-   <Circle fx:id="email" fill="#25d31f" layoutX="168.0" layoutY="128.0" radius="5.0" strokeType="INSIDE">
+   <Circle fx:id="emailg" fill="#25d31f" layoutX="168.0" layoutY="128.0" radius="5.0" strokeType="INSIDE">
       <stroke>
-         <LinearGradient endX="1.0" endY="1.0">
+         <LinearGradient>
             <stops>
                <Stop color="BLACK" />
                <Stop color="WHITE" offset="1.0" />
@@ -39,9 +39,9 @@
          </LinearGradient>
       </stroke>
    </Circle>
-   <Circle fx:id="phone" fill="#25d31f" layoutX="419.0" layoutY="57.0" radius="5.0" strokeType="INSIDE">
+   <Circle fx:id="phoneg" fill="#25d31f" layoutX="419.0" layoutY="57.0" radius="5.0" strokeType="INSIDE">
       <stroke>
-         <LinearGradient endX="1.0" endY="1.0">
+         <LinearGradient>
             <stops>
                <Stop color="BLACK" />
                <Stop color="WHITE" offset="1.0" />
@@ -49,9 +49,9 @@
          </LinearGradient>
       </stroke>
    </Circle>
-   <Circle fx:id="address" fill="#25d31f" layoutX="419.0" layoutY="128.0" radius="5.0" strokeType="INSIDE">
+   <Circle fx:id="addressg" fill="#25d31f" layoutX="419.0" layoutY="128.0" radius="5.0" strokeType="INSIDE">
       <stroke>
-         <LinearGradient endX="1.0" endY="1.0">
+         <LinearGradient>
             <stops>
                <Stop color="BLACK" />
                <Stop color="WHITE" offset="1.0" />

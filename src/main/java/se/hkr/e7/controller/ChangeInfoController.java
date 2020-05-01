@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.shape.Circle;
 import se.hkr.e7.model.*;
 
 public class ChangeInfoController extends Controller {
@@ -19,11 +20,30 @@ public class ChangeInfoController extends Controller {
     public Label emailLabel;
     public Label phoneLabel;
     public Label addressLabel;
+    public Circle phoneg;
+    public Circle emailg;
+    public Circle nameg;
+    public Circle addressg;
+
 
 
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/ChangeInfo.fxml");
+        phoneg.setVisible(false);
+        emailg.setVisible(false);
+        nameg.setVisible(false);
+        address.setVisible(false);
+
+        while (name.getText().isEmpty())
+            nameg.setVisible(false);
+        while (phone.getText().isEmpty())
+            phoneg.setVisible(false);
+        while (address.getText().isEmpty())
+            addressg.setVisible(false);
+        while (email.getText().isEmpty())
+            emailg.setVisible(false);
+
     }
 
     public void Save(ActionEvent event) {
