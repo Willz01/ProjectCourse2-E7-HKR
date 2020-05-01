@@ -48,13 +48,13 @@ public class ChangeInfoController extends Controller {
             passwordLebel.setText(" can't be empty");
         }
 
-
+        try {
         Singleton.getInstance().getEmployee().setName(name.getText());
         Singleton.getInstance().getEmployee().setAddress(address.getText());
         Singleton.getInstance().getEmployee().setEmail(email.getText());
         Singleton.getInstance().getEmployee().setPhone(phone.getText());
         Singleton.getInstance().getEmployee().updatePassword(password.getText());
-        try {
+
             new Employee(Singleton.getInstance().getEmployee().getSsn(),
                     Singleton.getInstance().getEmployee().getPassword(),
                     Singleton.getInstance().getEmployee().getName(),
