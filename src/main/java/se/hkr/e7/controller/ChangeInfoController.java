@@ -27,7 +27,6 @@ public class ChangeInfoController extends Controller {
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/ChangeInfo.fxml");
-
     }
 
     public void Save(ActionEvent event) {
