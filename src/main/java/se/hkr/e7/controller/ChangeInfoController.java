@@ -56,13 +56,13 @@ public class ChangeInfoController extends Controller {
 
 
 
-        if (Employee.isValidEmail(email.getText()) && Employee.isValidPhone(phone.getText())) {
+
 
             if (Singleton.getInstance().getEmployee() != null)
-                try {
 
+                    if (Employee.isValidEmail(email.getText()) && Employee.isValidPhone(phone.getText())) {
                     Employee employee = DatabaseHandler.load(Employee.class, Singleton.getInstance().getCurrentUser().getSsn());
-
+                        try {
                     employee.updatePassword(password.getText());
                     employee.setName(name.getText());
                     employee.setEmail(email.getText());
@@ -82,8 +82,10 @@ public class ChangeInfoController extends Controller {
 
 
 
-        if (Employee.isValidEmail(email.getText()) && Employee.isValidPhone(phone.getText())) {
+
             if (Singleton.getInstance().getPatient() != null) {
+
+                if (Employee.isValidEmail(email.getText()) && Employee.isValidPhone(phone.getText())) {
                 try {
 
 
