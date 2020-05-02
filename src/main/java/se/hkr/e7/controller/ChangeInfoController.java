@@ -39,6 +39,8 @@ public class ChangeInfoController extends Controller {
         emailLabel.setText(null);
         addressLabel.setText(null);
         phoneLabel.setText(null);
+
+
         if (name.getText().isEmpty()) {
             nameLabel.setText(" can't be empty");
         }
@@ -55,6 +57,13 @@ public class ChangeInfoController extends Controller {
 
         if (password.getText().isEmpty()) {
             passwordLebel.setText(" can't be empty");
+        }
+
+        if (!Employee.isValidEmail(email.getText())){
+            emailLabel.setText("this email is not valid");
+        }
+        if (!Employee.isValidPhone(phone.getText())){
+            phoneLabel.setText("this phone number is not valid");
         }
 
 
