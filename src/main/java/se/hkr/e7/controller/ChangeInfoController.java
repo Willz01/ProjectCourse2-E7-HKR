@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import se.hkr.e7.model.DatabaseHandler;
-import se.hkr.e7.model.Employee;
-import se.hkr.e7.model.Patient;
-import se.hkr.e7.model.Singleton;
+import se.hkr.e7.model.*;
 
 public class ChangeInfoController extends Controller {
 
@@ -53,7 +50,6 @@ public class ChangeInfoController extends Controller {
         if (password.getText().isEmpty()) {
             passwordLebel.setText(" can't be empty");
         }
-
 
         if (Singleton.getInstance().getEmployee()!=null)
             try {
