@@ -60,10 +60,10 @@ public class ChangeInfoController extends Controller {
         }
 
         if (!Employee.isValidEmail(email.getText())){
-            emailLabel.setText("this email is not valid");
+            emailLabel.setText("email is not valid");
         }
         if (!Employee.isValidPhone(phone.getText())){
-            phoneLabel.setText("this phone number is not valid");
+            phoneLabel.setText("phone is not valid");
         }
 
 
