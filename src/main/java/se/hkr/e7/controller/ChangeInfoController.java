@@ -9,8 +9,6 @@ import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Singleton;
 
-import java.sql.SQLOutput;
-
 public class ChangeInfoController extends Controller {
 
 
@@ -40,7 +38,9 @@ public class ChangeInfoController extends Controller {
         if (name.getText().isEmpty()) {
             nameLabel.setText(" can't be empty");
         }
-
+        if (phone.getText().isEmpty()) {
+            phoneLabel.setText("can't be empty ");
+        }
 
         if (address.getText().isEmpty()) {
             addressLabel.setText(" can't be empty");
