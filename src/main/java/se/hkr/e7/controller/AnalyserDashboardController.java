@@ -41,7 +41,7 @@ public class AnalyserDashboardController extends Controller {
             if (result.getStatus() == Result.Status.POSITIVE) {
                 counter++;
 
-                positiveSeries.getData().add(new XYChart.Data(Integer.parseInt(result.getDate()), counter));
+                positiveSeries.getData().add(new XYChart.Data( 12312313, counter));
 
             }
         }
