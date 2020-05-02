@@ -52,22 +52,29 @@ public class LoginController extends Controller {
         Patient patient = DatabaseHandler.load(Patient.class, ssnTextField.getText());
 
         if (employee != null && employee.isEnabled() && employee.checkPassword(passwordTextField.getText())) {
+            Singleton.getInstance().setCurrentUser(employee);
             Singleton.getInstance().setEmployee(employee);
             switch (employee.getRole()) {
                 case ADMIN:
                     loadScene("view/AdminDashboard.fxml", node);
+                    Singleton.getInstance().setPatient(null);
                     break;
                 case ANALYSER:
                     loadScene("view/AnalyserDashboard.fxml", node);
+                    Singleton.getInstance().setPatient(null);
+
                     break;
                 case DOCTOR:
                     loadScene("view/DoctorDashboard.fxml", node);
+                    Singleton.getInstance().setPatient(null);
+
                     break;
             }
         } else if (patient != null && patient.isEnabled() && patient.checkPassword(passwordTextField.getText())) {
             Singleton.getInstance().setCurrentUser(patient);
             Singleton.getInstance().setPatient(patient);
             loadScene("view/PatientDashboard.fxml", node);
+            Singleton.getInstance().setEmployee(null);
         } else {
             showError("Login unsuccessful", "Please check your username and password.");
         }

@@ -55,23 +55,17 @@ public class ChangeInfoController extends Controller {
         }
 
 
-        if (Singleton.getInstance().getCurrentUser() == Singleton.getInstance().getEmployee())
+        if (Singleton.getInstance().getEmployee()!=null)
             try {
-                Singleton.getInstance().getEmployee().setName(name.getText());
-                Singleton.getInstance().getEmployee().setAddress(address.getText());
-                Singleton.getInstance().getEmployee().setEmail(email.getText());
-                Singleton.getInstance().getEmployee().setPhone(phone.getText());
-                Singleton.getInstance().getEmployee().updatePassword(password.getText());
 
-                Employee employee = new Employee(Singleton.getInstance().getEmployee().getSsn(),
-                        Singleton.getInstance().getEmployee().getPassword(),
-                        Singleton.getInstance().getEmployee().getName(),
-                        Singleton.getInstance().getEmployee().getEmail(),
-                        Singleton.getInstance().getEmployee().getPhone(),
-                        Singleton.getInstance().getEmployee().getSsn(),
-                        Singleton.getInstance().getEmployee().getLocation(),
-                        Singleton.getInstance().getEmployee().getRole(),
-                        Singleton.getInstance().getEmployee().getSalary());
+                Employee employee = DatabaseHandler.load(Employee.class,Singleton.getInstance().getCurrentUser().getSsn());
+
+                      employee.updatePassword(password.getText());
+                        employee.setName(name.getText());
+                        employee.setEmail(email.getText());
+                        employee.setPhone(phone.getText());
+                        employee.setAddress(address.getText());
+
                 DatabaseHandler.save(employee);
 
                 showConfirmation("Complete", "you edit your info successfully");
@@ -80,26 +74,23 @@ public class ChangeInfoController extends Controller {
                 e.printStackTrace();
             }
 
-        if (Singleton.getInstance().getCurrentUser() == Singleton.getInstance().getPatient()) {
+        if (Singleton.getInstance().getPatient() != null) {
             try {
-                Singleton.getInstance().getPatient().setName(name.getText());
-                Singleton.getInstance().getPatient().setAddress(address.getText());
-                Singleton.getInstance().getPatient().setEmail(email.getText());
-                Singleton.getInstance().getPatient().setPhone(phone.getText());
-                Singleton.getInstance().getPatient().updatePassword(password.getText());
 
-                Patient patient = new Patient(Singleton.getInstance().getPatient().getSsn(),
-                        Singleton.getInstance().getPatient().getPassword(),
-                        Singleton.getInstance().getPatient().getName(),
-                        Singleton.getInstance().getPatient().getEmail(),
-                        Singleton.getInstance().getPatient().getPhone(),
-                        Singleton.getInstance().getPatient().getAddress());
-                patient.setTestResults(Singleton.getInstance().getPatient().getTestResults());
+
+                Patient patient = DatabaseHandler.load(Patient.class,Singleton.getInstance().getCurrentUser().getSsn());
+
+                patient.updatePassword(password.getText());
+                patient.setName(name.getText());
+                patient.setEmail(email.getText());
+                patient.setPhone(phone.getText());
+                patient.setAddress(address.getText());
+
                 DatabaseHandler.save(patient);
 
                 showConfirmation("Complete", "you edit your info successfully");
             } catch (Exception e) {
-                showError("something went wrong");
+                showError("something went wrong..");
                 e.printStackTrace();
 
             }
