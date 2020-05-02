@@ -34,8 +34,11 @@ public class ChangeInfoController extends Controller {
     }
 
     public void Save(ActionEvent event) {
-
-
+        nameLabel.setText(null);
+        passwordLebel.setText(null);
+        emailLabel.setText(null);
+        addressLabel.setText(null);
+        phoneLabel.setText(null);
         if (name.getText().isEmpty()) {
             nameLabel.setText(" can't be empty");
         }
@@ -55,14 +58,12 @@ public class ChangeInfoController extends Controller {
         }
 
 
+        if (Singleton.getInstance().getEmployee() != null) {
 
-
-
-            if (Singleton.getInstance().getEmployee() != null)
-
-                    if (Employee.isValidEmail(email.getText()) && Employee.isValidPhone(phone.getText())) {
+            if (Employee.isValidEmail(email.getText()) && Employee.isValidPhone(phone.getText())) {
+                try {
                     Employee employee = DatabaseHandler.load(Employee.class, Singleton.getInstance().getCurrentUser().getSsn());
-                        try {
+
                     employee.updatePassword(password.getText());
                     employee.setName(name.getText());
                     employee.setEmail(email.getText());
@@ -76,19 +77,17 @@ public class ChangeInfoController extends Controller {
                     showError("something went wrong");
                     e.printStackTrace();
                 }
-        } else {
-            showError("please enter valid information");
+            }
+            if (!Employee.isValidEmail(email.getText()) || !Employee.isValidPhone(phone.getText())) {
+                showError("please enter valid information");
+            }
         }
 
+        if (Singleton.getInstance().getPatient() != null) {
 
+            if (Employee.isValidEmail(email.getText()) && Employee.isValidPhone(phone.getText())) {
 
-
-            if (Singleton.getInstance().getPatient() != null) {
-
-                if (Employee.isValidEmail(email.getText()) && Employee.isValidPhone(phone.getText())) {
                 try {
-
-
                     Patient patient = DatabaseHandler.load(Patient.class, Singleton.getInstance().getCurrentUser().getSsn());
 
                     patient.updatePassword(password.getText());
@@ -105,13 +104,13 @@ public class ChangeInfoController extends Controller {
                     e.printStackTrace();
 
                 }
+
+            }
+            if (!Employee.isValidEmail(email.getText()) || !Employee.isValidPhone(phone.getText())) {
+                showError("please enter valid information");
             }
 
-        } else {
-            showError("please enter valid information");
+
         }
-
-
-
     }
 }
