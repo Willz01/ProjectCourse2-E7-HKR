@@ -5,7 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import se.hkr.e7.model.*;
+import se.hkr.e7.model.DatabaseHandler;
+import se.hkr.e7.model.Employee;
+import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Singleton;
 
 public class ChangeInfoController extends Controller {
 
@@ -51,45 +54,62 @@ public class ChangeInfoController extends Controller {
             passwordLebel.setText(" can't be empty");
         }
 
-        if (Singleton.getInstance().getEmployee()!=null)
-            try {
-
-                Employee employee = DatabaseHandler.load(Employee.class,Singleton.getInstance().getCurrentUser().getSsn());
-
-                      employee.updatePassword(password.getText());
-                        employee.setName(name.getText());
-                        employee.setEmail(email.getText());
-                        employee.setPhone(phone.getText());
-                        employee.setAddress(address.getText());
-
-                DatabaseHandler.save(employee);
-
-                showConfirmation("Complete", "you edit your info successfully");
-            } catch (Exception e) {
-                showError("something went wrong");
-                e.printStackTrace();
-            }
-
-        if (Singleton.getInstance().getPatient() != null) {
-            try {
 
 
-                Patient patient = DatabaseHandler.load(Patient.class,Singleton.getInstance().getCurrentUser().getSsn());
+        if (Employee.isValidEmail(email.getText()) && Employee.isValidPhone(phone.getText())) {
 
-                patient.updatePassword(password.getText());
-                patient.setName(name.getText());
-                patient.setEmail(email.getText());
-                patient.setPhone(phone.getText());
-                patient.setAddress(address.getText());
+            if (Singleton.getInstance().getEmployee() != null)
+                try {
 
-                DatabaseHandler.save(patient);
+                    Employee employee = DatabaseHandler.load(Employee.class, Singleton.getInstance().getCurrentUser().getSsn());
 
-                showConfirmation("Complete", "you edit your info successfully");
-            } catch (Exception e) {
-                showError("something went wrong..");
-                e.printStackTrace();
+                    employee.updatePassword(password.getText());
+                    employee.setName(name.getText());
+                    employee.setEmail(email.getText());
+                    employee.setPhone(phone.getText());
+                    employee.setAddress(address.getText());
 
-            }
+                    DatabaseHandler.save(employee);
+
+                    showConfirmation("Complete", "you edit your info successfully");
+                } catch (Exception e) {
+                    showError("something went wrong");
+                    e.printStackTrace();
+                }
+        } else {
+            showError("please enter valid information");
         }
+
+
+
+        if (Employee.isValidEmail(email.getText()) && Employee.isValidPhone(phone.getText())) {
+            if (Singleton.getInstance().getPatient() != null) {
+                try {
+
+
+                    Patient patient = DatabaseHandler.load(Patient.class, Singleton.getInstance().getCurrentUser().getSsn());
+
+                    patient.updatePassword(password.getText());
+                    patient.setName(name.getText());
+                    patient.setEmail(email.getText());
+                    patient.setPhone(phone.getText());
+                    patient.setAddress(address.getText());
+
+                    DatabaseHandler.save(patient);
+
+                    showConfirmation("Complete", "you edit your info successfully");
+                } catch (Exception e) {
+                    showError("something went wrong..");
+                    e.printStackTrace();
+
+                }
+            }
+
+        } else {
+            showError("please enter valid information");
+        }
+
+
+
     }
 }
