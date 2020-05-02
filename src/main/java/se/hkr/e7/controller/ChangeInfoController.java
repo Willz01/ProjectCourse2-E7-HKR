@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Singleton;
@@ -62,7 +63,7 @@ public class ChangeInfoController extends Controller {
                 Singleton.getInstance().getEmployee().setPhone(phone.getText());
                 Singleton.getInstance().getEmployee().updatePassword(password.getText());
 
-                new Employee(Singleton.getInstance().getEmployee().getSsn(),
+                Employee employee = new Employee(Singleton.getInstance().getEmployee().getSsn(),
                         Singleton.getInstance().getEmployee().getPassword(),
                         Singleton.getInstance().getEmployee().getName(),
                         Singleton.getInstance().getEmployee().getEmail(),
@@ -71,6 +72,8 @@ public class ChangeInfoController extends Controller {
                         Singleton.getInstance().getEmployee().getLocation(),
                         Singleton.getInstance().getEmployee().getRole(),
                         Singleton.getInstance().getEmployee().getSalary());
+                DatabaseHandler.save(employee);
+
                 showConfirmation("Complete", "you edit your info successfully");
             } catch (Exception e) {
                 showError("something went wrong");
@@ -92,6 +95,7 @@ public class ChangeInfoController extends Controller {
                         Singleton.getInstance().getPatient().getPhone(),
                         Singleton.getInstance().getPatient().getAddress());
                 patient.setTestResults(Singleton.getInstance().getPatient().getTestResults());
+                DatabaseHandler.save(patient);
 
                 showConfirmation("Complete", "you edit your info successfully");
             } catch (Exception e) {
