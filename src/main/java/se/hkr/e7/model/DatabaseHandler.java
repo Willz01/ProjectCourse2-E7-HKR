@@ -70,6 +70,14 @@ public class DatabaseHandler {
         session.getTransaction().commit();
     }
 
+    public static void createDefaultAdmin() {
+        List<Employee> employees = loadAll(Employee.class);
+        if (employees.size() == 0) {
+            save(new Employee("0101010000", "password", "", "", "",
+                    "", Location.STOCKHOLM, Employee.Role.ADMIN, 0));
+        }
+    }
+
     /**
      * Insert some default data into the system.
      */
