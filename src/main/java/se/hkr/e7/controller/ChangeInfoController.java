@@ -7,119 +7,95 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import se.hkr.e7.model.DatabaseHandler;
 import se.hkr.e7.model.Employee;
-import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Person;
 import se.hkr.e7.model.Singleton;
 
 public class ChangeInfoController extends Controller {
 
-
-    public Button Save;
-    public TextField name;
-    public TextField email;
-    public TextField phone;
-    public TextField address;
+    public Button saveButton;
+    public TextField nameTextField;
+    public TextField emailTextField;
+    public TextField phoneTextField;
+    public TextField addressTextField;
+    public TextField passwordTextField;
     public Label nameLabel;
     public Label emailLabel;
     public Label phoneLabel;
     public Label addressLabel;
-    public Label passwordLebel;
-    public TextField password;
-
+    public Label passwordLabel;
 
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/ChangeInfo.fxml");
+        saveButton.setOnAction(this::save);
 
-
+        Person currentUser = Singleton.getInstance().getCurrentUser();
+        nameTextField.setText(currentUser.getName());
+        emailTextField.setText(currentUser.getEmail());
+        phoneTextField.setText(currentUser.getPhone());
+        addressTextField.setText(currentUser.getAddress());
     }
 
-    public void Save(ActionEvent event) {
+    public void save(ActionEvent event) {
         nameLabel.setText(null);
-        passwordLebel.setText(null);
+        passwordLabel.setText(null);
         emailLabel.setText(null);
         addressLabel.setText(null);
         phoneLabel.setText(null);
+        boolean error = false;
 
-
-        if (name.getText().isEmpty()) {
+        if (nameTextField.getText().isEmpty()) {
             nameLabel.setText(" can't be empty");
+            error = true;
         }
-        if (phone.getText().isEmpty()) {
+
+        if (phoneTextField.getText().isEmpty()) {
             phoneLabel.setText("can't be empty ");
+            error = true;
         }
 
-        if (address.getText().isEmpty()) {
+        if (addressTextField.getText().isEmpty()) {
             addressLabel.setText(" can't be empty");
+            error = true;
         }
-        if (email.getText().isEmpty()) {
+
+        if (emailTextField.getText().isEmpty()) {
             emailLabel.setText("cant be empty");
+            error = true;
         }
 
-        if (password.getText().isEmpty()) {
-            passwordLebel.setText(" can't be empty");
-        }
-
-        if (!Employee.isValidEmail(email.getText())){
+        if (!Employee.isValidEmail(emailTextField.getText())) {
             emailLabel.setText("email is not valid");
+            error = true;
         }
-        if (!Employee.isValidPhone(phone.getText())){
+
+        if (!Employee.isValidPhone(phoneTextField.getText())) {
             phoneLabel.setText("phone is not valid");
+            error = true;
         }
 
+        if (!error) {
+            try {
+                Person person = Singleton.getInstance().getCurrentUser();
 
-        if (Singleton.getInstance().getEmployee() != null) {
-
-            if (Employee.isValidEmail(email.getText()) && Employee.isValidPhone(phone.getText())) {
-                try {
-                    Employee employee = DatabaseHandler.load(Employee.class, Singleton.getInstance().getCurrentUser().getSsn());
-
-                    employee.updatePassword(password.getText());
-                    employee.setName(name.getText());
-                    employee.setEmail(email.getText());
-                    employee.setPhone(phone.getText());
-                    employee.setAddress(address.getText());
-
-                    DatabaseHandler.save(employee);
-
-                    showConfirmation("Complete", "you edit your info successfully");
-                } catch (Exception e) {
-                    showError("something went wrong");
-                    e.printStackTrace();
-                }
-            }
-            if (!Employee.isValidEmail(email.getText()) || !Employee.isValidPhone(phone.getText())) {
-                showError("please enter valid information");
-            }
-        }
-
-        if (Singleton.getInstance().getPatient() != null) {
-
-            if (Employee.isValidEmail(email.getText()) && Employee.isValidPhone(phone.getText())) {
-
-                try {
-                    Patient patient = DatabaseHandler.load(Patient.class, Singleton.getInstance().getCurrentUser().getSsn());
-
-                    patient.updatePassword(password.getText());
-                    patient.setName(name.getText());
-                    patient.setEmail(email.getText());
-                    patient.setPhone(phone.getText());
-                    patient.setAddress(address.getText());
-
-                    DatabaseHandler.save(patient);
-
-                    showConfirmation("Complete", "you edit your info successfully");
-                } catch (Exception e) {
-                    showError("something went wrong..");
-                    e.printStackTrace();
-
+                if (!passwordTextField.getText().isBlank()) {
+                    person.updatePassword(passwordTextField.getText());
                 }
 
-            }
-            if (!Employee.isValidEmail(email.getText()) || !Employee.isValidPhone(phone.getText())) {
-                showError("please enter valid information");
-            }
+                person.setName(nameTextField.getText());
+                person.setEmail(emailTextField.getText());
+                person.setPhone(phoneTextField.getText());
+                person.setAddress(addressTextField.getText());
 
+                DatabaseHandler.save(person);
 
+                showConfirmation("Complete", "Update information successfully.");
+            } catch (Exception e) {
+                e.printStackTrace();
+                showError("Something went wrong.");
+            }
+        } else {
+            showError("Please enter valid information");
         }
     }
 }

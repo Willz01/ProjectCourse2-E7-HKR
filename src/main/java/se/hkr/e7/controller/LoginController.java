@@ -29,7 +29,9 @@ public class LoginController extends Controller {
 
     @FXML
     public void initialize() {
+        Singleton.getInstance().clear();
         Singleton.getInstance().addSceneHistory("view/Login.fxml");
+
         loginButton.setOnAction(this::login);
         Stream.of(ssnTextField, passwordField, passwordTextField).forEach(e -> e.setOnKeyPressed(this::onEnter));
         passwordResetLabel.setOnMouseClicked(this::resetPassword);
@@ -57,16 +59,13 @@ public class LoginController extends Controller {
             switch (employee.getRole()) {
                 case ADMIN:
                     loadScene("view/AdminDashboard.fxml", node);
-                    Singleton.getInstance().setPatient(null);
                     break;
                 case ANALYSER:
                     loadScene("view/AnalyserDashboard.fxml", node);
-                    Singleton.getInstance().setPatient(null);
 
                     break;
                 case DOCTOR:
                     loadScene("view/DoctorDashboard.fxml", node);
-                    Singleton.getInstance().setPatient(null);
 
                     break;
             }
@@ -74,7 +73,6 @@ public class LoginController extends Controller {
             Singleton.getInstance().setCurrentUser(patient);
             Singleton.getInstance().setPatient(patient);
             loadScene("view/PatientDashboard.fxml", node);
-            Singleton.getInstance().setEmployee(null);
         } else {
             showError("Login unsuccessful", "Please check your username and password.");
         }

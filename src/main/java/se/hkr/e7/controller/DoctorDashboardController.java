@@ -13,7 +13,6 @@ public class DoctorDashboardController extends Controller {
     public Button addPatientButton;
     public Button edit;
 
-
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/DoctorDashboard.fxml");
