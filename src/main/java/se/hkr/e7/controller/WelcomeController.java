@@ -10,6 +10,7 @@ public class WelcomeController extends Controller {
 
     @FXML
     public void initialize() {
+        Singleton.getInstance().clear();
         Singleton.getInstance().addSceneHistory("view/Welcome.fxml");
         loginButton.setOnAction(actionEvent -> loadScene("view/Login.fxml", actionEvent));
     }

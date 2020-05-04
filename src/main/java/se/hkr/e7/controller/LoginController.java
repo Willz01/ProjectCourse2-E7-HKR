@@ -29,7 +29,9 @@ public class LoginController extends Controller {
 
     @FXML
     public void initialize() {
+        Singleton.getInstance().clear();
         Singleton.getInstance().addSceneHistory("view/Login.fxml");
+
         loginButton.setOnAction(this::login);
         Stream.of(ssnTextField, passwordField, passwordTextField).forEach(e -> e.setOnKeyPressed(this::onEnter));
         passwordResetLabel.setOnMouseClicked(this::resetPassword);
@@ -52,6 +54,7 @@ public class LoginController extends Controller {
         Patient patient = DatabaseHandler.load(Patient.class, ssnTextField.getText());
 
         if (employee != null && employee.isEnabled() && employee.checkPassword(passwordTextField.getText())) {
+            Singleton.getInstance().setCurrentUser(employee);
             Singleton.getInstance().setEmployee(employee);
             switch (employee.getRole()) {
                 case ADMIN:
