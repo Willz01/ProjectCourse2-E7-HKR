@@ -62,11 +62,9 @@ public class LoginController extends Controller {
                     break;
                 case ANALYSER:
                     loadScene("view/AnalyserDashboard.fxml", node);
-
                     break;
                 case DOCTOR:
                     loadScene("view/DoctorDashboard.fxml", node);
-
                     break;
             }
         } else if (patient != null && patient.isEnabled() && patient.checkPassword(passwordTextField.getText())) {

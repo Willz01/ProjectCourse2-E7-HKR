@@ -34,7 +34,7 @@ public class Patient extends Person {
         return testResults;
     }
 
-    public void setTestResults(List<Result> testResults) {
+    private void setTestResults(List<Result> testResults) {
         this.testResults = testResults;
     }
 
