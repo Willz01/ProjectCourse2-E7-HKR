@@ -1,6 +1,7 @@
 package se.hkr.e7.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Result;

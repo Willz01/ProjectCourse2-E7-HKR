@@ -165,7 +165,6 @@ public abstract class Person implements Serializable {
     public String toString() {
         return "Person{" +
                 "ssn='" + ssn + '\'' +
-                ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +

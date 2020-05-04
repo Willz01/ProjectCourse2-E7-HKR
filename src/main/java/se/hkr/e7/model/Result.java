@@ -29,6 +29,11 @@ public class Result implements Serializable {
         DatabaseHandler.save(this.examiner);
     }
 
+    @Transient
+    public String getPatientName() {
+        return patient.getName();
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
