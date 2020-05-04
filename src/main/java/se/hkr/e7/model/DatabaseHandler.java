@@ -96,6 +96,8 @@ public class DatabaseHandler {
         save(patient);
 
         new Result(patient, employee, "2020-01-01", Result.Status.PENDING);
-        new Result(patient, employee, "2020-01-01", Result.Status.POSITIVE);
+        Result result = new Result(patient, employee, "2020-01-01", Result.Status.POSITIVE);
+        result.setNote("Test note");
+        DatabaseHandler.save(result);
     }
 }
