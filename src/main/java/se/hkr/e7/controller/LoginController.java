@@ -29,7 +29,9 @@ public class LoginController extends Controller {
 
     @FXML
     public void initialize() {
+        Singleton.getInstance().clear();
         Singleton.getInstance().addSceneHistory("view/Login.fxml");
+
         loginButton.setOnAction(this::login);
         Stream.of(ssnTextField, passwordField, passwordTextField).forEach(e -> e.setOnKeyPressed(this::onEnter));
         passwordResetLabel.setOnMouseClicked(this::resetPassword);
@@ -52,6 +54,7 @@ public class LoginController extends Controller {
         Patient patient = DatabaseHandler.load(Patient.class, ssnTextField.getText());
 
         if (employee != null && employee.isEnabled() && employee.checkPassword(passwordTextField.getText())) {
+            Singleton.getInstance().setCurrentUser(employee);
             Singleton.getInstance().setEmployee(employee);
             switch (employee.getRole()) {
                 case ADMIN:
@@ -69,7 +72,7 @@ public class LoginController extends Controller {
             Singleton.getInstance().setPatient(patient);
             loadScene("view/PatientDashboard.fxml", node);
         } else {
-            showError("Login unsuccessful", "Please check your username and password.");
+            showError("Login unsuccessful", "Please check username and password.");
         }
     }
 
@@ -119,12 +122,12 @@ public class LoginController extends Controller {
                 Person person = Person.load(Person.class, ssnTextField.getText());
 
                 if (person == null) {
-                    showError("wrong ssn");
+                    showError("Wrong SSN");
                     return null;
                 }
 
                 if (!person.getEmail().equals(emailTextField.getText())) {
-                    showError("wrong email address");
+                    showError("Wrong email address");
                 } else {
                     String password = Mail.generatePassword(10);
                     person.updatePassword(password);

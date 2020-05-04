@@ -45,23 +45,23 @@ public class AddPatientController extends Controller {
         if (Person.isValidSsn(ssnTextField.getText())) {
             ssnLabel.setText("");
         } else {
-            ssnLabel.setText("input in YYMMDDXXXX form");
+            ssnLabel.setText("Input format YYMMDDXXXX");
         }
 
-        if (name.getText().equals("")) {
-            nameLabel.setText("can't be empty");
+        if (name.getText().isBlank()) {
+            nameLabel.setText("Field can't be empty");
         }
-        if (address.getText().equals("")) {
-            addressLabel.setText(" can't be empty");
+        if (address.getText().isBlank()) {
+            addressLabel.setText("Field can't be empty");
         }
-        if (password.getText().equals("")) {
-            passwordLabel.setText(" can't be empty");
+        if (password.getText().isBlank()) {
+            passwordLabel.setText("Field can't be empty");
         }
-        if (email.getText().equals("")) {
-            emailLabel.setText(" can't be empty");
+        if (email.getText().isBlank()) {
+            emailLabel.setText("Field can't be empty");
         }
-        if (phone.getText().equals("")) {
-            phoneLabel.setText(" can't be empty");
+        if (phone.getText().isBlank()) {
+            phoneLabel.setText("Field can't be empty");
         }
         if (!ssnTextField.getText().isBlank() && !password.getText().isBlank() && !name.getText().isBlank()
                 && !email.getText().isBlank() && !phone.getText().isBlank() && !address.getText().isBlank()) {
@@ -70,7 +70,7 @@ public class AddPatientController extends Controller {
                         name.getText(), email.getText(), phone.getText(), address.getText()));
                 showConfirmation("Success", "The patient was added.");
             } catch (Exception exception) {
-                showError("Did't save", "There was an error adding the patient.");
+                showError("Couldn't save", "There was an error adding the patient.");
             }
         }
     }
