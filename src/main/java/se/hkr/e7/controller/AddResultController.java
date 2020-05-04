@@ -27,11 +27,11 @@ public class AddResultController extends Controller {
         LocalDate bdate = datePicker.getValue();
         String date = String.valueOf(bdate);
         if (bdate != null && bdate.isAfter(today)) {
-            showError("you can not chose date after today ");
+            showError("You can not chose a date after today");
         } else if (!negativeCheckBox.isSelected() && !positiveCheckBox.isSelected() && !pendingCheckBox.isSelected()) {
-            showError("please put valid test result");
+            showError("Please enter a valid test result");
         } else if (!Person.isValidSsn(ssnTextField.getText())) {
-            showError("ssn must be valid 10 digits as YYMMDDXXXX");
+            showError("SSN must be valid 10 digits as YYMMDDXXXX");
         } else {
 
             try {
@@ -39,20 +39,20 @@ public class AddResultController extends Controller {
                 Patient patient = DatabaseHandler.load(Patient.class, ssnTextField.getText());
                 if (negativeCheckBox.isSelected()) {
                     Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.NEGATIVE);
-                    showConfirmation("Saved", "thank you ");
+                    showConfirmation("Saved", "Thank you ");
                 }
 
                 if (positiveCheckBox.isSelected()) {
                     Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.POSITIVE);
-                    showConfirmation("Saved", "thank you ");
+                    showConfirmation("Saved", "Thank you ");
                 }
 
                 if (pendingCheckBox.isSelected()) {
                     Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.PENDING);
-                    showConfirmation("Saved", "thank you ");
+                    showConfirmation("Saved", "Thank you ");
                 }
             } catch (Exception e) {
-                if (showChoice("Can't find patient", "do you want to add new patient")) {
+                if (showChoice("Couldn't find patient", "Do you want to add new patient")) {
                     loadScene("view/AddPatientDoctor.fxml", event);
                 }
             }

@@ -22,7 +22,7 @@ public class RemoveAccountController extends Controller {
     public void remove(ActionEvent actionEvent) {
         try {
             if (!Person.isValidSsn(ssnField.getText())) {
-                showError("Please input a valid SSN.");
+                showError("Enter a valid SSN");
                 return;
             }
 
@@ -30,13 +30,13 @@ public class RemoveAccountController extends Controller {
             Patient patient = DatabaseHandler.load(Patient.class, ssnField.getText());
 
             if (employee == null && patient == null) {
-                showError("No one with that SSN exists.");
+                showError("Entered SSN doesn't exist in the system.");
                 return;
             }
 
             try {
                 DatabaseHandler.delete(Objects.requireNonNullElse(employee, patient));
-                showConfirmation("Deleted", "Done");
+                showConfirmation("Account Deleted", "Done");
             } catch (Exception exception) {
                 if (employee != null) {
                     employee.clear();
@@ -47,7 +47,7 @@ public class RemoveAccountController extends Controller {
                     DatabaseHandler.save(patient);
                 }
             } finally {
-                showConfirmation("Deleted", "Done");
+                showConfirmation("Account Deleted", "Done");
             }
         } catch (Exception exception) {
             showError("The account could not be deleted.");
