@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="255.0" prefWidth="217.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.HelpController">
+   <children>
+      <Label alignment="TOP_CENTER" layoutX="10.0" layoutY="7.0" prefHeight="238.0" prefWidth="191.0" text="General Help menu" />
+   </children>
+</AnchorPane>
