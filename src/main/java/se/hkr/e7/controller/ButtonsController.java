@@ -22,18 +22,18 @@ public class ButtonsController extends Controller {
         helpButton.setOnMouseClicked(mouseEvent -> {
             Stage stage = new Stage();
             URL resource = getClass().getClassLoader().getResource("view/HelpMenu.fxml");
-            Parent root = null;
             try {
-                root = FXMLLoader.load(resource);
+                Parent root = FXMLLoader.load(resource);
+                Scene scene = new Scene(root);
+                stage.setTitle("Help Menu");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Scene scene = new Scene(root);
-            stage.setTitle("Help Menu");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setResizable(false);
-            stage.setScene(scene);
-            stage.show();
+
         });
     }
 }
