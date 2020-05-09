@@ -16,7 +16,7 @@
         <children>
             <TextField fx:id="ssnTextField" prefHeight="25.0" prefWidth="175.0" promptText="SSN"/>
             <TextField fx:id="nameTextField" prefHeight="25.0" prefWidth="175.0" promptText="Name"/>
-            <TextField fx:id="passwordTextField" prefHeight="25.0" prefWidth="175.0" promptText="password"/>
+            <PasswordField fx:id="passwordTextField" prefHeight="25.0" prefWidth="175.0" promptText="password"/>
             <TextField fx:id="addressTextField" prefHeight="25.0" prefWidth="175.0" promptText="Address"/>
             <TextField fx:id="emailTextField" prefHeight="25.0" prefWidth="175.0" promptText="email"/>
             <TextField fx:id="phoneTextField" prefHeight="25.0" prefWidth="175.0" promptText="Phone"/>
