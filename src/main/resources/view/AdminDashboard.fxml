@@ -11,20 +11,21 @@
             prefWidth="154.0" text="Add patient"/>
     <Button fx:id="viewResultsButton" layoutX="416.0" layoutY="56.0" mnemonicParsing="false" prefHeight="37.0"
             prefWidth="154.0" text="View results"/>
-    <Button fx:id="viewPatientButton" layoutX="223.0" layoutY="139.0" mnemonicParsing="false" prefHeight="37.0"
-            prefWidth="154.0" text="View all patient"/>
     <Button fx:id="viewStaffButton" layoutX="14.0" layoutY="139.0" mnemonicParsing="false" prefHeight="37.0"
             prefWidth="154.0" text="View staff"/>
-    <Button fx:id="searchButton" layoutX="224.0" layoutY="288.0" mnemonicParsing="false" onAction="#search"
-            prefHeight="37.0" prefWidth="154.0" text="Search"/>
+    <Button fx:id="viewPatientButton" layoutX="223.0" layoutY="139.0" mnemonicParsing="false" prefHeight="37.0"
+            prefWidth="154.0" text="View all patient"/>
+    <Button fx:id="removeAccountButton" layoutX="416.0" layoutY="139.0" mnemonicParsing="false" prefHeight="37.0"
+            prefWidth="154.0" text="Remove account"/>
     <TextField fx:id="searchText" alignment="CENTER" layoutX="186.0" layoutY="236.0" prefHeight="39.0" prefWidth="216.0"
                promptText="YYMMDDXXXX">
         <font>
             <Font size="23.0"/>
         </font>
     </TextField>
-    <Button fx:id="removeAccountButton" layoutX="416.0" layoutY="139.0" mnemonicParsing="false" prefHeight="37.0"
-            prefWidth="154.0" text="Remove account"/>
+    <Button fx:id="searchButton" layoutX="224.0" layoutY="288.0" mnemonicParsing="false" onAction="#search"
+            prefHeight="37.0" prefWidth="154.0" text="Search"/>
+
     <Label layoutX="219.0" layoutY="207.0" prefHeight="19.0" prefWidth="163.0" text="Search for Staff/ Patient"
            textAlignment="CENTER"/>
     <fx:include source="../template/buttons.fxml"/>

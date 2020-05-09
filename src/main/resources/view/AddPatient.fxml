@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/11.0.1" fx:controller="se.hkr.e7.controller.AddPatientController">
@@ -14,41 +13,20 @@
         </font>
     </Label>
     <fx:include source="../template/buttons.fxml"/>
-    <FlowPane layoutX="88.0" layoutY="71.0" prefHeight="205.0" prefWidth="403.0">
-        <children>
-            <TextField fx:id="ssnTextField" prefHeight="25.0" prefWidth="175.0" promptText="SSN">
-                <FlowPane.margin>
-                    <Insets bottom="20.0" left="10.0" right="10.0" top="10.0"/>
-                </FlowPane.margin>
-            </TextField>
-            <PasswordField fx:id="password" prefHeight="27.0" prefWidth="175.0" promptText="password">
-                <FlowPane.margin>
-                    <Insets bottom="20.0" left="10.0" right="10.0" top="10.0"/>
-                </FlowPane.margin>
-            </PasswordField>
-            <TextField fx:id="email" prefHeight="25.0" prefWidth="175.0" promptText="email">
-                <FlowPane.margin>
-                    <Insets bottom="20.0" left="10.0" right="10.0" top="10.0"/>
-                </FlowPane.margin>
-            </TextField>
-            <TextField fx:id="phone" prefHeight="25.0" prefWidth="175.0" promptText="Phone">
-                <FlowPane.margin>
-                    <Insets bottom="20.0" left="10.0" right="10.0" top="10.0"/>
-                </FlowPane.margin>
-            </TextField>
-            <TextField fx:id="address" prefHeight="25.0" prefWidth="175.0" promptText="Address">
-                <FlowPane.margin>
-                    <Insets bottom="20.0" left="10.0" right="10.0" top="10.0"/>
-                </FlowPane.margin>
-            </TextField>
-            <TextField fx:id="name" prefHeight="25.0" prefWidth="175.0" promptText="Name">
-                <FlowPane.margin>
-                    <Insets bottom="20.0" left="10.0" right="10.0" top="10.0"/>
-                </FlowPane.margin>
-            </TextField>
-        </children>
-        <opaqueInsets>
-            <Insets/>
-        </opaqueInsets>
-    </FlowPane>
+    <TextField fx:id="ssnTextField" layoutX="105.0" layoutY="83.0" prefHeight="25.0" prefWidth="175.0"
+               promptText="SSN"/>
+    <TextField fx:id="name" layoutX="313.0" layoutY="83.0" prefHeight="25.0" prefWidth="175.0" promptText="Name"/>
+    <PasswordField fx:id="password" layoutX="105.0" layoutY="137.0" prefHeight="27.0" prefWidth="175.0"
+                   promptText="password"/>
+    <TextField fx:id="address" layoutX="313.0" layoutY="137.0" prefHeight="25.0" prefWidth="175.0"
+               promptText="Address"/>
+    <TextField fx:id="phone" layoutX="105.0" layoutY="192.0" prefHeight="25.0" prefWidth="175.0" promptText="Phone"/>
+    <TextField fx:id="email" layoutX="313.0" layoutY="192.0" prefHeight="25.0" prefWidth="175.0" promptText="email"/>
+
+    <Label fx:id="ssnLabel" layoutX="116.0" layoutY="110.0" prefHeight="19.0" prefWidth="154.0"/>
+    <Label fx:id="addressLabel" layoutX="324.0" layoutY="164.0" prefHeight="19.0" prefWidth="154.0"/>
+    <Label fx:id="emailLabel" layoutX="324.0" layoutY="219.0" prefHeight="19.0" prefWidth="154.0"/>
+    <Label fx:id="nameLabel" layoutX="324.0" layoutY="110.0" prefHeight="19.0" prefWidth="154.0"/>
+    <Label fx:id="passwordLabel" layoutX="116.0" layoutY="164.0" prefHeight="19.0" prefWidth="154.0"/>
+    <Label fx:id="phoneLabel" layoutX="116.0" layoutY="219.0" prefHeight="19.0" prefWidth="154.0"/>
 </AnchorPane>
