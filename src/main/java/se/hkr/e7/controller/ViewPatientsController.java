@@ -25,10 +25,10 @@ public class ViewPatientsController extends Controller {
         List<Patient> patients = DatabaseHandler.loadAll(Patient.class);
 
         for (Map.Entry<String, String> entry : Map.ofEntries(
-                new AbstractMap.SimpleEntry<>("name", "name"),
-                new AbstractMap.SimpleEntry<>("ssn", "ssn"),
-                new AbstractMap.SimpleEntry<>("email", "email"),
-                new AbstractMap.SimpleEntry<>("address", "address")
+                new AbstractMap.SimpleEntry<>("name", "Name"),
+                new AbstractMap.SimpleEntry<>("ssn", "SSN"),
+                new AbstractMap.SimpleEntry<>("email", "Email"),
+                new AbstractMap.SimpleEntry<>("address", "Address")
         ).entrySet()) {
             TableColumn<Patient, String> tableColumn = new TableColumn<>(entry.getValue());
             tableColumn.setCellValueFactory(new PropertyValueFactory<>(entry.getKey()));

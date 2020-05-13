@@ -24,10 +24,10 @@ public class ViewStaffController extends Controller {
         Singleton.getInstance().addSceneHistory("view/ViewStaff.fxml");
         List<Employee> employees = DatabaseHandler.loadAll(Employee.class);
         for (Map.Entry<String, String> entry : Map.ofEntries(
-                new AbstractMap.SimpleEntry<>("location", "location"),
-                new AbstractMap.SimpleEntry<>("role", "role"),
-                new AbstractMap.SimpleEntry<>("salary", "salary"),
-                new AbstractMap.SimpleEntry<>("ssn", "ssn")
+                new AbstractMap.SimpleEntry<>("location", "Location"),
+                new AbstractMap.SimpleEntry<>("role", "Role"),
+                new AbstractMap.SimpleEntry<>("salary", "Salary"),
+                new AbstractMap.SimpleEntry<>("ssn", "SSN")
         ).entrySet()) {
             TableColumn<Employee, String> tableColumn = new TableColumn<>(entry.getValue());
             tableColumn.setCellValueFactory(new PropertyValueFactory<>(entry.getKey()));

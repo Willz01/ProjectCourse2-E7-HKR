@@ -31,7 +31,7 @@
       </font></PasswordField>
     <CheckBox fx:id="passwordCheckBox" layoutX="487.0" layoutY="214.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="25.0" />
     <Button fx:id="loginButton" layoutX="269.0" layoutY="269.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="62.0" text="Login" />
-    <Label fx:id="passwordResetLabel" layoutX="391.0" layoutY="261.0" onMouseEntered="#underlineText" onMouseExited="#removeUnderline" styleClass="forgotPasswordLabel" text="Forgot your Password ?" textFill="#280fc9" />
+    <Label fx:id="passwordResetLabel" layoutX="391.0" layoutY="261.0" styleClass="forgotPasswordLabel" text="Forgot your Password ?" textFill="#280fc9" />
     <fx:include source="../template/buttons.fxml" />
     <ImageView fitHeight="57.0" fitWidth="62.0" layoutX="99.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/User.png" />
