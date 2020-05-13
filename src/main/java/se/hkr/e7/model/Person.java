@@ -62,8 +62,20 @@ public abstract class Person implements Serializable {
         return Integer.parseInt(ssn.substring(4, 6)) <= 31;
     }
 
-    public static boolean isValidPassword(String password) {
-        return password.length() >= 8;
+    public static  boolean isValidPassword(String password){
+        if (password.length() < 8){
+            return false;
+        } else {
+            return password.matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}");
+        }
+        /*
+         * (?=.*[0-9]) a digit must occur at least once
+         * (?=.*[a-z]) a lower case letter must occur at least once
+         * (?=.*[A-Z]) an upper case letter must occur at least once
+         * (?=.*[@#$%^&+=]) a special character must occur at least once
+         * (?=\\S+$) no whitespace allowed in the entire string
+         * .{8,} at least 8 characters
+         */
     }
 
     public static boolean isValidEmail(String email) {
