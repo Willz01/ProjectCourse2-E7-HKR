@@ -1,0 +1,20 @@
+Button{
+    -fx-background-color: lightgrey;
+    -fx-border-style: solid;
+    -fx-border-radius: 0px;
+    -fx-border-insets: inherit;
+    -fx-border-image-slice: inherit;
+}
+Button:hover{
+    -fx-background-color: mediumseagreen;
+}
+ChoiceBox{
+    -fx-background-color: lightgrey;
+    -fx-border-style: solid;
+    -fx-border-radius: 0px;
+    -fx-border-insets: inherit;
+    -fx-border-image-slice: inherit;
+}
+ChoiceBox:hover{
+    -fx-background-color: mediumseagreen;
+}

@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
+<?import java.net.URL?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/10.0.2-internal" fx:controller="se.hkr.e7.controller.AddEmployeeController">
     <Label alignment="CENTER" layoutX="171.0" layoutY="25.0" prefHeight="64.0" prefWidth="600.0" text="Add Account"
@@ -38,4 +39,7 @@
     <Button fx:id="addButton" layoutX="388.0" layoutY="352.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0"
             text="Add"/>
     <fx:include source="../template/buttons.fxml"/>
+    <stylesheets>
+        <URL value="@../view/Style.css"/>
+    </stylesheets>
 </AnchorPane>
