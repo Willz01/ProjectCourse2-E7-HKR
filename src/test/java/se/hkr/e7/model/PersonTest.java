@@ -2,7 +2,8 @@ package se.hkr.e7.model;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PersonTest {
 
@@ -35,8 +36,13 @@ class PersonTest {
         // False: Too short
         assertFalse(Person.isValidPassword("abc"));
 
-        // True: Long enough
-        assertTrue(Person.isValidPassword("weogweuhgweg"));
+        // False: Long enough but no uppercase,digit and special characters
+        assertFalse(Person.isValidPassword("weogweuhgweg"));
+
+        // True : Long and complex enough
+        assertTrue(Person.isValidPassword("abc1@Aabc"));
+        // True : Long and complex enough
+        assertTrue(Person.isValidPassword("El1@bubkqQ"));
     }
 
     @Test
