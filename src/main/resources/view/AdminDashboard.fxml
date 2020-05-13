@@ -36,24 +36,24 @@
            textAlignment="CENTER"/>
     <fx:include source="../template/buttons.fxml"/>
     <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="55.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/Add_account.png"/>
+        <Image url="@images/add-account.png"/>
     </ImageView>
     <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="269.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/Add_patient.png"/>
+        <Image url="@images/add-patient.png"/>
     </ImageView>
     <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="462.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/Test_result.png"/>
+        <Image url="@images/test-result.png"/>
     </ImageView>
     <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="462.0" layoutY="127.0" pickOnBounds="true"
                preserveRatio="true">
-        <Image url="@images/Remove.png"/>
+        <Image url="@images/remove.png"/>
     </ImageView>
     <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="269.0" layoutY="127.0" pickOnBounds="true"
                preserveRatio="true">
-        <Image url="@images/View_patient.png"/>
+        <Image url="@images/view-patients.png"/>
     </ImageView>
     <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="55.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/View_staff.png"/>
+        <Image url="@images/view-staff.png"/>
     </ImageView>
     <stylesheets>
         <URL value="@../view/Style.css"/>

@@ -16,10 +16,10 @@
     <fx:include source="../template/exitButton.fxml"/>
     <ImageView fitHeight="43.0" fitWidth="173.0" layoutX="214.0" layoutY="179.0" pickOnBounds="true"
                preserveRatio="true">
-        <Image url="@images/Login.png"/>
+        <Image url="@images/login.png"/>
     </ImageView>
     <ImageView fitHeight="109.0" fitWidth="295.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/logo.png"/>
+        <Image url="@images/app-logo.png"/>
     </ImageView>
     <stylesheets>
         <URL value="@../view/Style.css"/>

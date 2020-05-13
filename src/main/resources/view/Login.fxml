@@ -34,10 +34,10 @@
     <Label fx:id="passwordResetLabel" layoutX="391.0" layoutY="261.0" styleClass="forgotPasswordLabel" text="Forgot your Password ?" textFill="#280fc9" />
     <fx:include source="../template/buttons.fxml" />
     <ImageView fitHeight="57.0" fitWidth="62.0" layoutX="99.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/User.png" />
+        <Image url="@images/user.png" />
     </ImageView>
     <ImageView fitHeight="57.0" fitWidth="62.0" layoutX="99.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/Password.png" />
+        <Image url="@images/password.png" />
     </ImageView>
     <stylesheets>
         <URL value="@../view/Style.css" />
