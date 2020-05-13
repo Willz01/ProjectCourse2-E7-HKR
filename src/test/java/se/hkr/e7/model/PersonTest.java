@@ -31,6 +31,15 @@ class PersonTest {
     }
 
     @Test
+    void isValidPassword() {
+        // False: Too short
+        assertFalse(Person.isValidPassword("abc"));
+
+        // True: Long enough
+        assertTrue(Person.isValidPassword("weogweuhgweg"));
+    }
+
+    @Test
     void isValidEmail() {
     }
 
