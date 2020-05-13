@@ -149,4 +149,12 @@ public class LoginController extends Controller {
         result.ifPresent(usernamePassword -> {
         });
     }
+
+    public void underlineText(MouseEvent mouseEvent) {
+        passwordResetLabel.setUnderline(true);
+    }
+
+    public void removeUnderline(MouseEvent mouseEvent) {
+        passwordResetLabel.setUnderline(false);
+    }
 }

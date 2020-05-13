@@ -8,6 +8,9 @@ Button{
 Button:hover{
     -fx-background-color: mediumseagreen;
 }
+Button:focused{
+    -fx-background-color: mediumseagreen;
+}
 ChoiceBox{
     -fx-background-color: lightgrey;
     -fx-border-style: solid;
@@ -17,4 +20,7 @@ ChoiceBox{
 }
 ChoiceBox:hover{
     -fx-background-color: mediumseagreen;
+}
+.forgotPasswordLabel {
+
 }
