@@ -45,11 +45,14 @@ class PersonTest {
         // False: Long enough but no uppercase
         assertFalse(Person.isValidPassword("complexity1"));
 
-        // True: Long enough to not need complexity
-        assertTrue(Person.isValidPassword("discontinuation"));
+        // False: Long enough but no number
+        assertFalse(Person.isValidPassword("Complexity"));
 
         // True : Long enough with uppercase and number
         assertTrue(Person.isValidPassword("El1buBkqQ"));
+
+        // True: Long enough to not need complexity
+        assertTrue(Person.isValidPassword("discontinuation"));
     }
 
     @Test
