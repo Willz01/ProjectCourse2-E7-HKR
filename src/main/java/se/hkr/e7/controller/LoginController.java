@@ -31,7 +31,8 @@ public class LoginController extends Controller {
     public void initialize() {
         Singleton.getInstance().clear();
         Singleton.getInstance().addSceneHistory("view/Login.fxml");
-
+        passwordResetLabel.setOnMouseEntered(mouseEvent -> passwordResetLabel.setUnderline(true));
+        passwordResetLabel.setOnMouseExited(mouseEvent -> passwordResetLabel.setUnderline(false));
         loginButton.setOnAction(this::login);
         Stream.of(ssnTextField, passwordField, passwordTextField).forEach(e -> e.setOnKeyPressed(this::onEnter));
         passwordResetLabel.setOnMouseClicked(this::resetPassword);
@@ -151,4 +152,5 @@ public class LoginController extends Controller {
         result.ifPresent(usernamePassword -> {
         });
     }
+
 }

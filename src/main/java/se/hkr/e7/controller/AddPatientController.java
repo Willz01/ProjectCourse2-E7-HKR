@@ -25,7 +25,6 @@ public class AddPatientController extends Controller {
     public Label addressLabel;
     public Label emailLabel;
     public Label phoneLabel;
-    public Label saveLabel;
 
     @FXML
     public void initialize() {
@@ -40,7 +39,6 @@ public class AddPatientController extends Controller {
         emailLabel.setText("");
         phoneLabel.setText("");
         addressLabel.setText("");
-        saveLabel.setText("");
 
         if (Person.isValidSsn(ssnTextField.getText())) {
             ssnLabel.setText("");
