@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import java.net.URL?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.DoctorDashboardController">
-    <Button fx:id="viewPatientButton" layoutX="47.0" layoutY="62.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="View patient" />
-    <Button fx:id="addResultButton" layoutX="47.0" layoutY="185.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="Add result" />
-    <Button fx:id="addPatientButton" layoutX="343.0" layoutY="62.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="Add patient" />
-    <Button fx:id="viewResultsButton" layoutX="343.0" layoutY="185.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="View results" />
+    <Button fx:id="edit" layoutX="449.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="update my info" />
+    <Button fx:id="viewPatientButton" layoutX="110.0" layoutY="138.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="View patient" />
+    <Button fx:id="addPatientButton" layoutX="349.0" layoutY="138.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="Add patient" />
+    <Button fx:id="addResultButton" layoutX="110.0" layoutY="253.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="Add result" />
+    <Button fx:id="viewResultsButton" layoutX="349.0" layoutY="253.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="View results" />
     <fx:include source="../template/buttons.fxml" />
-   <Button fx:id="edit" layoutX="47.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="update my info" />
+    <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="148.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/view-patients.png"/>
+    </ImageView>
+    <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="387.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/add-patient.png"/>
+    </ImageView>
+    <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="148.0" layoutY="191.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@images/add-result.png"/>
+    </ImageView>
+    <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="387.0" layoutY="191.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@images/test-result.png"/>
+    </ImageView>
+    <stylesheets>
+        <URL value="@Style.css"/>
+    </stylesheets>
 </AnchorPane>
