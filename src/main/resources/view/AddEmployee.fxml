@@ -1,43 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.AddEmployeeController">
-    <Label alignment="CENTER" layoutX="171.0" layoutY="25.0" prefHeight="64.0" prefWidth="600.0" text="Add Account" AnchorPane.bottomAnchor="336.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <TextField fx:id="ssnTextField" layoutX="111.0" layoutY="70.0" prefHeight="25.0" prefWidth="175.0" promptText="SSN" />
+    <TextField fx:id="nameTextField" layoutX="368.0" layoutY="70.0" prefHeight="25.0" prefWidth="175.0" promptText="Name" />
+    <TextField fx:id="addressTextField" layoutX="111.0" layoutY="119.0" prefHeight="25.0" prefWidth="175.0" promptText="Address" />
+    <PasswordField fx:id="passwordTextField" layoutX="368.0" layoutY="119.0" prefHeight="25.0" prefWidth="175.0" promptText="password" />
+    <TextField fx:id="phoneTextField" layoutX="111.0" layoutY="168.0" prefHeight="25.0" prefWidth="175.0" promptText="Phone" />
+    <TextField fx:id="emailTextField" layoutX="368.0" layoutY="168.0" prefHeight="25.0" prefWidth="175.0" promptText="email" />
+    <TextField fx:id="salaryTextField" layoutX="111.0" layoutY="215.0" prefHeight="25.0" prefWidth="175.0" promptText="Salary" />
+    <Label layoutX="368.0" layoutY="221.0" prefHeight="17.0" prefWidth="175.0" text="Location" />
+    <ChoiceBox fx:id="locationChoiceBox" layoutX="368.0" layoutY="238.0" prefHeight="25.0" prefWidth="175.0" />
+    <Label layoutX="111.0" layoutY="266.0" prefHeight="17.0" prefWidth="175.0" text="Role" />
+    <ChoiceBox fx:id="roleChoiceBox" layoutX="111.0" layoutY="283.0" prefHeight="25.0" prefWidth="175.0" />
+    <Label alignment="CENTER" layoutX="241.0" prefHeight="64.0" prefWidth="119.0" text="Add Account" AnchorPane.bottomAnchor="336.0" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="0.0">
         <font>
             <Font size="18.0" />
         </font>
     </Label>
-   <FlowPane hgap="20.0" layoutX="100.0" layoutY="74.0" prefHeight="153.0" rowValignment="BOTTOM" vgap="15.0">
-      <children>
-          <TextField fx:id="ssnTextField" prefHeight="25.0" prefWidth="175.0" promptText="SSN" />
-          <TextField fx:id="nameTextField" prefHeight="25.0" prefWidth="175.0" promptText="Name" />
-          <TextField fx:id="passwordTextField" prefHeight="25.0" prefWidth="175.0" promptText="password" />
-          <TextField fx:id="addressTextField" prefHeight="25.0" prefWidth="175.0" promptText="Address" />
-          <TextField fx:id="emailTextField" prefHeight="25.0" prefWidth="175.0" promptText="email" />
-          <TextField fx:id="phoneTextField" prefHeight="25.0" prefWidth="175.0" promptText="Phone" />
-          <TextField fx:id="salaryTextField" prefHeight="25.0" prefWidth="175.0" promptText="Salary" />
-         <FlowPane prefHeight="27.0" prefWidth="175.0">
-            <children>
-                <Label prefHeight="17.0" prefWidth="175.0" text="Location" />
-                <ChoiceBox fx:id="locationChoiceBox" prefHeight="25.0" prefWidth="175.0" />
-            </children>
-         </FlowPane>
-         <FlowPane prefHeight="27.0" prefWidth="175.0">
-            <children>
-               <Label prefHeight="17.0" prefWidth="175.0" text="Role" />
-               <ChoiceBox fx:id="roleChoiceBox" prefHeight="25.0" prefWidth="175.0" />
-            </children>
-         </FlowPane>
-      </children>
-   </FlowPane>
-    <Button fx:id="addButton" layoutX="364.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Add" />
-    <Button fx:id="backButton" layoutX="442.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Back" />
-    <Button fx:id="exitButton" layoutX="519.0" layoutY="361.0" mnemonicParsing="false" text="Exit" />
+    <Button fx:id="addButton" layoutX="387.0" layoutY="350.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="63.0" text="Add" />
+    <fx:include source="../template/buttons.fxml" />
+    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="45.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/ssn.png" />
+    </ImageView>
+    <ImageView fitHeight="40.0" fitWidth="45.0" layoutX="316.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/user.png" />
+    </ImageView>
+    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="316.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/location.png" />
+    </ImageView>
+    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="316.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/password.png" />
+    </ImageView>
+    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="316.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/email.png" />
+    </ImageView>
+    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="45.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/address.png" />
+    </ImageView>
+    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="45.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/phone.png" />
+    </ImageView>
+    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="45.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/salary.png" />
+    </ImageView>
+    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="45.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/role.png" />
+    </ImageView>
+    <stylesheets>
+        <URL value="@../view/Style.css" />
+    </stylesheets>
 </AnchorPane>
