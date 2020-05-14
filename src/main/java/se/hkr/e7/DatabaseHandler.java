@@ -89,15 +89,15 @@ public class DatabaseHandler {
         save(new Employee("9701010000", "oE0mxbdxhCpqvI", "Wills", "wills@example.com",
                 "073656656", "Home", Location.STOCKHOLM, Employee.Role.ADMIN, 123.12));
 
-        save(new Employee("8005087778", "wegpijewg", "Nilson", "nilson@example.com",
+        save(new Employee("8005087778", "oE0mxbdxhCpqvI", "Nilson", "nilson@example.com",
                 "056356556", "Kristan Street", Location.DALARNA, Employee.Role.ANALYSER, 111.12));
 
-        Employee employee1 = new Employee("8002249876", "98745794", "Petson",
+        Employee employee1 = new Employee("8002249876", "t4mI7zEiPPN8nf", "Petson",
                 "petson@example.com", "056356556", "Kristan Street", Location.SKANE, Employee.Role.DOCTOR,
                 98.1);
         save(employee1);
 
-        Employee employee2 = new Employee("9304140000", "13412", "Marcos", "marcos@example.com",
+        Employee employee2 = new Employee("9304140000", "fsSBHFqQRPWBkI", "Marcos", "marcos@example.com",
                 "073656656", "Street lamp 432", Location.KALMAR, Employee.Role.DOCTOR, 111.12);
         save(employee2);
 
@@ -105,7 +105,7 @@ public class DatabaseHandler {
                 "mohammed@example.com", "062563454", "onehomet 32");
         save(patient1);
 
-        Patient patient2 = new Patient("8801089940", "password1", "Jone", "mymail@yahoo.com",
+        Patient patient2 = new Patient("8801089940", "QNnHfBY0FcYd6O", "Jone", "mymail@yahoo.com",
                 "07332233", "oneStreet 32");
         save(patient2);
 
