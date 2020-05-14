@@ -17,7 +17,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        DatabaseHandler.reset();
+        DatabaseHandler.createDefaultAdmin();
         URL resource = getClass().getClassLoader().getResource("view/Welcome.fxml");
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
