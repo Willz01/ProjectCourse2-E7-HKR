@@ -3,7 +3,12 @@ package se.hkr.e7.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import se.hkr.e7.model.*;
+import se.hkr.e7.DatabaseHandler;
+import se.hkr.e7.Singleton;
+import se.hkr.e7.model.Employee;
+import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Person;
+import se.hkr.e7.model.Result;
 
 import java.time.LocalDate;
 

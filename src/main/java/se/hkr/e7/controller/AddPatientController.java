@@ -5,10 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import se.hkr.e7.model.DatabaseHandler;
+import se.hkr.e7.DatabaseHandler;
+import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Person;
-import se.hkr.e7.model.Singleton;
 
 public class AddPatientController extends Controller {
 

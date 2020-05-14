@@ -1,6 +1,7 @@
 package se.hkr.e7.model;
 
 import org.mindrot.jbcrypt.BCrypt;
+import se.hkr.e7.DatabaseHandler;
 
 import javax.persistence.*;
 import java.io.Serializable;

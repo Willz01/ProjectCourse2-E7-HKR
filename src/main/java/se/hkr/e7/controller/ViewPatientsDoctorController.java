@@ -1,11 +1,10 @@
 package se.hkr.e7.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import se.hkr.e7.model.DatabaseHandler;
+import se.hkr.e7.DatabaseHandler;
+import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Patient;
-import se.hkr.e7.model.Singleton;
 
 import java.util.List;
 

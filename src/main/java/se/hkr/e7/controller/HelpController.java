@@ -2,10 +2,7 @@ package se.hkr.e7.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import se.hkr.e7.model.Employee;
-import se.hkr.e7.model.Patient;
-import se.hkr.e7.model.Singleton;
+import se.hkr.e7.Singleton;
 
 public class HelpController {
     public Label label;
