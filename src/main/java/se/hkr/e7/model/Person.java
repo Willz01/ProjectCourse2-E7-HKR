@@ -84,7 +84,7 @@ public abstract class Person implements Serializable {
         }
 
         if (password.length() < 14) {
-            return password.matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$)");
+            return password.matches("(?=.*\\d)(?=.*\\w)(?=\\S+$).*");
         }
 
         return true;

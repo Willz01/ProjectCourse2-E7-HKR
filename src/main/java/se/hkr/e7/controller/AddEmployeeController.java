@@ -57,8 +57,9 @@ public class AddEmployeeController extends Controller {
             return;
         }
 
-        if (passwordTextField.getText().length() < 8) {
-            showError("Password length should be at least 8 characters.");
+        if (!Person.isValidPassword(passwordTextField.getText())) {
+            showError("Enter a valid password. The password should be at least 8 characters in length and have an " +
+                    "uppercase and a lowercase letter as well as a number.");
             return;
         }
 
