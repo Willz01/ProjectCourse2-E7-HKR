@@ -13,8 +13,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.security.SecureRandom;
-import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -114,8 +112,8 @@ public class DatabaseHandler {
 
         long now = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         for (int i = 0; i < 20; i++) {
-            String date = LocalDateTime.ofEpochSecond(ThreadLocalRandom.current().nextLong(0, now),
-                    0, ZoneOffset.UTC).toString();
+            LocalDateTime date = LocalDateTime.ofEpochSecond(ThreadLocalRandom.current().nextLong(0, now),
+                    0, ZoneOffset.UTC);
             Result.Status status;
             switch (ThreadLocalRandom.current().nextInt(3)) {
                 case 0:
