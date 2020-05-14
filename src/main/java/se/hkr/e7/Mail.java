@@ -1,4 +1,6 @@
-package se.hkr.e7.model;
+package se.hkr.e7;
+
+import se.hkr.e7.model.Person;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;

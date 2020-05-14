@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import se.hkr.e7.model.Singleton;
+import se.hkr.e7.Singleton;
 
 import java.io.IOException;
 import java.net.URL;

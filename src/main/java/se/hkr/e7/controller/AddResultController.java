@@ -5,7 +5,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import se.hkr.e7.model.*;
+import se.hkr.e7.DatabaseHandler;
+import se.hkr.e7.Singleton;
+import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Person;
+import se.hkr.e7.model.Result;
 
 import java.time.LocalDate;
 
