@@ -1,28 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.AddPatientDoctorController">
-    <TextField fx:id="ssn" layoutX="24.0" layoutY="69.0" prefHeight="25.0" prefWidth="175.0" promptText="SSN" />
-    <TextField fx:id="name" layoutX="24.0" layoutY="110.0" prefHeight="25.0" prefWidth="175.0" promptText="Name" />
-    <TextField fx:id="password" layoutX="24.0" layoutY="160.0" prefHeight="25.0" prefWidth="175.0" promptText="password" />
-    <TextField fx:id="address" layoutX="24.0" layoutY="211.0" prefHeight="25.0" prefWidth="175.0" promptText="Address" />
-    <TextField fx:id="email" layoutX="251.0" layoutY="69.0" prefHeight="25.0" prefWidth="175.0" promptText="email" />
-    <TextField fx:id="phone" layoutX="251.0" layoutY="110.0" prefHeight="25.0" prefWidth="175.0" promptText="Phone" />
-    <Button fx:id="addButton" layoutX="364.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Add" />
-    <Label fx:id="ssnLabel" layoutX="24.0" layoutY="94.0" prefHeight="17.0" prefWidth="175.0" text="YYMMDDXXXX"/>
-    <Label fx:id="nameLabel" layoutX="24.0" layoutY="135.0" prefHeight="17.0" prefWidth="175.0" />
-    <Label fx:id="passwordLabel" layoutX="24.0" layoutY="185.0" prefHeight="17.0" prefWidth="175.0" />
-    <Label fx:id="addressLabel" layoutX="24.0" layoutY="236.0" prefHeight="17.0" prefWidth="175.0" />
-    <Label fx:id="emailLabel" layoutX="251.0" layoutY="94.0" prefHeight="17.0" prefWidth="175.0" />
-    <Label fx:id="phoneLabel" layoutX="251.0" layoutY="135.0" prefHeight="17.0" prefWidth="175.0" />
-    <Label fx:id="saveLabel" layoutX="171.0" layoutY="365.0" prefHeight="17.0" prefWidth="175.0" />
-    <Label layoutX="185.0" layoutY="23.0" prefHeight="25.0" prefWidth="175.0" text="Add patient">
+<?import java.net.URL?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.AddPatientDoctorController">
+    <TextField fx:id="ssn" layoutX="109.0" layoutY="128.0" prefHeight="25.0" prefWidth="175.0" promptText="SSN" />
+    <TextField fx:id="name" layoutX="373.0" layoutY="125.0" prefHeight="25.0" prefWidth="175.0" promptText="Name" />
+    <TextField fx:id="email" layoutX="109.0" layoutY="186.0" prefHeight="25.0" prefWidth="175.0" promptText="email" />
+    <TextField fx:id="phone" layoutX="373.0" layoutY="186.0" prefHeight="25.0" prefWidth="175.0" promptText="Phone" />
+    <TextField fx:id="password" layoutX="109.0" layoutY="243.0" prefHeight="25.0" prefWidth="175.0" promptText="password" />
+    <TextField fx:id="address" layoutX="373.0" layoutY="240.0" prefHeight="25.0" prefWidth="175.0" promptText="Address" />
+    <Button fx:id="addButton" layoutX="396.0" layoutY="352.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Add" />
+    <Label fx:id="ssnLabel" layoutX="109.0" layoutY="153.0" prefHeight="17.0" prefWidth="175.0" />
+    <Label fx:id="nameLabel" layoutX="373.0" layoutY="150.0" prefHeight="17.0" prefWidth="175.0" />
+    <Label fx:id="passwordLabel" layoutX="109.0" layoutY="268.0" prefHeight="17.0" prefWidth="175.0" />
+    <Label fx:id="addressLabel" layoutX="373.0" layoutY="265.0" prefHeight="17.0" prefWidth="175.0" />
+    <Label fx:id="emailLabel" layoutX="109.0" layoutY="209.0" prefHeight="17.0" prefWidth="175.0" />
+    <Label fx:id="phoneLabel" layoutX="373.0" layoutY="214.0" prefHeight="17.0" prefWidth="175.0" />
+    <Label layoutX="253.0" layoutY="27.0" prefHeight="25.0" prefWidth="95.0" text="Add patient">
        <font>
          <Font size="18.0" />
        </font>
     </Label>
-    <fx:include source="../template/buttons.fxml"/>
+    <fx:include source="../template/buttons.fxml" />
+    <ImageView fitHeight="45.0" fitWidth="50.0" layoutX="52.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/ssn.png"/>
+    </ImageView>
+    <ImageView fitHeight="45.0" fitWidth="50.0" layoutX="316.0" layoutY="116.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@images/user.png"/>
+    </ImageView>
+    <ImageView fitHeight="45.0" fitWidth="50.0" layoutX="52.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/password.png"/>
+    </ImageView>
+    <ImageView fitHeight="45.0" fitWidth="50.0" layoutX="316.0" layoutY="231.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@images/address.png"/>
+    </ImageView>
+    <ImageView fitHeight="45.0" fitWidth="50.0" layoutX="52.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/email.png"/>
+    </ImageView>
+    <ImageView fitHeight="45.0" fitWidth="50.0" layoutX="320.0" layoutY="177.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@images/phone.png"/>
+    </ImageView>
+    <stylesheets>
+        <URL value="@Style.css"/>
+    </stylesheets>
 </AnchorPane>
