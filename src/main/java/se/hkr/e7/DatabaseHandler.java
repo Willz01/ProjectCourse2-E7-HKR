@@ -1,4 +1,4 @@
-package se.hkr.e7.model;
+package se.hkr.e7;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -7,10 +7,12 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
+import se.hkr.e7.model.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class DatabaseHandler {
@@ -70,32 +72,42 @@ public class DatabaseHandler {
         session.getTransaction().commit();
     }
 
+    public static void createDefaultAdmin() {
+        List<Employee> employees = loadAll(Employee.class);
+        if (employees.size() == 0) {
+            save(new Employee("0101010000", "H8hLqlTz5QfJmh", "", "", "",
+                    "", Location.STOCKHOLM, Employee.Role.ADMIN, 0));
+        }
+    }
+
     /**
      * Insert some default data into the system.
      */
     public static void reset() {
-        save(new Employee("199701010000", "123456", "Wills", "wills@example.com",
+        save(new Employee("9701010000", "oE0mxbdxhCpqvI", "Wills", "wills@example.com",
                 "073656656", "Home", Location.STOCKHOLM, Employee.Role.ADMIN, 123.12));
 
-        save(new Employee("199304140000", "13412", "Marcos", "marcos@example.com",
-                "073656656", "Street lamp 432", Location.KALMAR, Employee.Role.ANALYSER, 111.12));
+        save(new Employee("9304140000", "fsSBHFqQRPWBkI", "Marcos", "marcos@example.com",
+                "073656656", "Street lamp 432", Location.KALMAR, Employee.Role.DOCTOR, 111.12));
 
-        save(new Employee("198005087778", "wegpijewg", "Nilson", "nilson@example.com",
+        save(new Employee("8005087778", "t4mI7zEiPPN8nf", "Nilson", "nilson@example.com",
                 "056356556", "Kristan Street", Location.DALARNA, Employee.Role.ANALYSER, 111.12));
 
-        save(new Patient("8801089940", "password1", "Jone", "mymail@yahoo.com",
+        save(new Patient("8801089940", "QNnHfBY0FcYd6O", "Jone", "mymail@yahoo.com",
                 "07332233", "oneStreet 32"));
 
-        Employee employee = new Employee("198002249876", "98745794", "Petson",
+        Employee employee = new Employee("8002249876", "kU2T7uBoGAj1EV", "Petson",
                 "petson@example.com", "056356556", "Kristan Street", Location.SKANE, Employee.Role.DOCTOR,
                 98.1);
         save(employee);
 
-        Patient patient = new Patient("6101054565", "password1", "Mohammed",
+        Patient patient = new Patient("6101054565", "9CgPOgCtpA190R", "Mohammed",
                 "mohammed@example.com", "062563454", "onehomet 32");
         save(patient);
 
-        new Result(patient, employee, "2020-01-01", Result.Status.PENDING);
-        new Result(patient, employee, "2020-01-01", Result.Status.POSITIVE);
+        new Result(patient, employee, LocalDateTime.parse("2020-01-01T10:15:00"), Result.Status.PENDING);
+        Result result = new Result(patient, employee, LocalDateTime.parse("2020-01-01T14:39:23"), Result.Status.POSITIVE);
+        result.setNote("Test note");
+        DatabaseHandler.save(result);
     }
 }

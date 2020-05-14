@@ -1,10 +1,14 @@
 package se.hkr.e7.controller;
+
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import se.hkr.e7.model.*;
+import se.hkr.e7.Singleton;
+import se.hkr.e7.model.Employee;
+import se.hkr.e7.model.Patient;
+
 public class SearchController extends Controller {
     public TextArea text;
+
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/Search.fxml");

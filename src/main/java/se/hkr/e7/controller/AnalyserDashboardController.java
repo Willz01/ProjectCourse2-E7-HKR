@@ -1,8 +1,8 @@
 package se.hkr.e7.controller;
 
 import javafx.fxml.FXML;
+import se.hkr.e7.Singleton;
 import javafx.scene.chart.*;
-import se.hkr.e7.model.Singleton;
 
 import java.util.concurrent.ThreadLocalRandom;
 

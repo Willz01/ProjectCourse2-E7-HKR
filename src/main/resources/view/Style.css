@@ -1,0 +1,68 @@
+Button {
+    -fx-background-color: lightgrey;
+    -fx-border-style: solid;
+    -fx-border-radius: 0px;
+    -fx-border-insets: inherit;
+    -fx-border-image-slice: inherit;
+}
+
+Button:hover {
+    -fx-background-color: mediumseagreen;
+}
+
+Button:focused {
+    -fx-background-color: mediumseagreen;
+}
+
+TextField {
+    -fx-border-style: solid;
+    -fx-border-radius: 0px;
+    -fx-border-insets: inherit;
+    -fx-border-image-slice: inherit;
+}
+
+TextField:hover {
+    -fx-border-radius: 2px;
+}
+
+TextField:focused {
+    -fx-border-radius: 2px;
+}
+
+PasswordField {
+    -fx-border-style: solid;
+    -fx-border-radius: 0px;
+    -fx-border-insets: inherit;
+    -fx-border-image-slice: inherit;
+}
+
+PasswordField:hover {
+    -fx-border-radius: 2px;
+}
+
+PasswordField:focused {
+    -fx-border-radius: 2px;
+}
+
+ChoiceBox {
+    -fx-background-color: lightgrey;
+    -fx-border-style: solid;
+    -fx-border-radius: 0px;
+    -fx-border-insets: inherit;
+    -fx-border-image-slice: inherit;
+}
+
+ChoiceBox:hover {
+    -fx-background-color: mediumseagreen;
+}
+
+ChoiceBox:focused {
+    -fx-background-color: mediumseagreen;
+}
+
+TextArea {
+    -fx-border-style: solid;
+    -fx-border-radius: 0px;
+    -fx-border-insets: inherit;
+    -fx-border-image-slice: inherit;
+}

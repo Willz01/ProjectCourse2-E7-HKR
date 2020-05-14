@@ -4,7 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import se.hkr.e7.model.*;
+import se.hkr.e7.DatabaseHandler;
+import se.hkr.e7.Singleton;
+import se.hkr.e7.model.Employee;
+import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Person;
 
 import java.util.Objects;
 
@@ -22,7 +26,7 @@ public class RemoveAccountController extends Controller {
     public void remove(ActionEvent actionEvent) {
         try {
             if (!Person.isValidSsn(ssnField.getText())) {
-                showError("Please input a valid SSN.");
+                showError("Enter a valid SSN");
                 return;
             }
 
@@ -30,13 +34,13 @@ public class RemoveAccountController extends Controller {
             Patient patient = DatabaseHandler.load(Patient.class, ssnField.getText());
 
             if (employee == null && patient == null) {
-                showError("No one with that SSN exists.");
+                showError("Entered SSN doesn't exist in the system.");
                 return;
             }
 
             try {
                 DatabaseHandler.delete(Objects.requireNonNullElse(employee, patient));
-                showConfirmation("Deleted", "Done");
+                showConfirmation("Account Deleted", "Done");
             } catch (Exception exception) {
                 if (employee != null) {
                     employee.clear();
@@ -47,7 +51,7 @@ public class RemoveAccountController extends Controller {
                     DatabaseHandler.save(patient);
                 }
             } finally {
-                showConfirmation("Deleted", "Done");
+                showConfirmation("Account Deleted", "Done");
             }
         } catch (Exception exception) {
             showError("The account could not be deleted.");

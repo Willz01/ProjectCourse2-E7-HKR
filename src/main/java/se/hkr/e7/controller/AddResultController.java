@@ -2,76 +2,88 @@ package se.hkr.e7.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
-import se.hkr.e7.model.*;
+import javafx.scene.control.*;
+import se.hkr.e7.DatabaseHandler;
+import se.hkr.e7.Singleton;
+import se.hkr.e7.model.Employee;
+import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Person;
+import se.hkr.e7.model.Result;
 
 import java.time.LocalDate;
 
 public class AddResultController extends Controller {
 
     public TextField ssnTextField;
-    public CheckBox negativeCheckBox;
-    public CheckBox positiveCheckBox;
     public DatePicker datePicker;
-    public CheckBox pendingCheckBox;
+    public Button saveButton;
+    public ToggleGroup resultToggleGroup;
 
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/AddResult.fxml");
+        saveButton.setOnAction(this::addResult);
     }
 
-    public void Save(ActionEvent event) {
-        LocalDate today = LocalDate.now();
-        LocalDate bdate = datePicker.getValue();
-        String date = String.valueOf(bdate);
-        if (bdate != null && bdate.isAfter(today)) {
-            showError("you can not chose date after today ");
-        } else if (!negativeCheckBox.isSelected() && !positiveCheckBox.isSelected() && !pendingCheckBox.isSelected()) {
-            showError("please put valid test result");
-        } else if (!Person.isValidSsn(ssnTextField.getText())) {
-            showError("ssn must be valid 10 digits as YYMMDDXXXX");
-        } else {
+    public void addResult(ActionEvent event) {
+        LocalDate date = datePicker.getValue();
+        RadioButton resultRadioButton = (RadioButton) resultToggleGroup.getSelectedToggle();
+        Result.Status status;
 
-            try {
+        if (!Person.isValidSsn(ssnTextField.getText())) {
+            showError("Please enter a valid SSN");
+            return;
+        }
 
-                Patient patient = DatabaseHandler.load(Patient.class, ssnTextField.getText());
-                if (negativeCheckBox.isSelected()) {
-                    Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.NEGATIVE);
-                    showConfirmation("Saved", "thank you ");
-                }
+        if (date == null) {
+            showError("Please choose a valid date");
+            return;
+        }
 
-                if (positiveCheckBox.isSelected()) {
-                    Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.POSITIVE);
-                    showConfirmation("Saved", "thank you ");
-                }
+        if (date.isAfter(LocalDate.now())) {
+            showError("You cannot chose a date after today");
+            return;
+        }
 
-                if (pendingCheckBox.isSelected()) {
-                    Result Result = new Result(patient, Singleton.getInstance().getEmployee(), date, se.hkr.e7.model.Result.Status.PENDING);
-                    showConfirmation("Saved", "thank you ");
-                }
-            } catch (Exception e) {
-                if (showChoice("Can't find patient", "do you want to add new patient")) {
+        if (!Person.isValidSsn(ssnTextField.getText())) {
+            showError("SSN must be valid 10 digits as YYMMDDXXXX");
+            return;
+        }
+
+        if (resultRadioButton == null) {
+            showError("Please choose a test result status");
+            return;
+        }
+
+        switch (resultRadioButton.getText()) {
+            case "Positive":
+                status = Result.Status.POSITIVE;
+                break;
+            case "Negative":
+                status = Result.Status.NEGATIVE;
+                break;
+            default:
+                status = Result.Status.PENDING;
+                break;
+        }
+
+        try {
+            Employee currentUser = (Employee) Singleton.getInstance().getCurrentUser();
+            Patient patient = DatabaseHandler.load(Patient.class, ssnTextField.getText());
+
+            if (patient == null) {
+                if (showChoice("Couldn't find patient", "Do you want to add new patient")) {
                     loadScene("view/AddPatientDoctor.fxml", event);
+                } else {
+                    return;
                 }
             }
 
+            Result result = new Result(patient, currentUser, date.atStartOfDay(), status);
+            DatabaseHandler.save(result);
+            showConfirmation("Saved", "Thank you");
+        } catch (Exception e) {
+            showError("Something went wrong");
         }
-    }
-
-    public void negative(ActionEvent event) {
-        positiveCheckBox.setSelected(false);
-        pendingCheckBox.setSelected(false);
-    }
-
-    public void positive(ActionEvent event) {
-        negativeCheckBox.setSelected(false);
-        pendingCheckBox.setSelected(false);
-    }
-
-    public void pending(ActionEvent event) {
-        positiveCheckBox.setSelected(false);
-        negativeCheckBox.setSelected(false);
     }
 }

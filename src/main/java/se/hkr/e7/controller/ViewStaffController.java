@@ -1,44 +1,38 @@
 package se.hkr.e7.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import se.hkr.e7.model.DatabaseHandler;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import se.hkr.e7.DatabaseHandler;
+import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Employee;
-import se.hkr.e7.model.Singleton;
 
+import java.util.AbstractMap;
 import java.util.List;
+import java.util.Map;
 
 public class ViewStaffController extends Controller {
 
-    public ChoiceBox<String> choiceBox;
+
+    public TableView<Employee> staffTableView;
 
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/ViewStaff.fxml");
-        List<Employee> users = DatabaseHandler.loadAll(Employee.class);
-        int count = 0;
-
-        for (Employee employee : users) {
-            count++;
-            if (employee.getRole() == Employee.Role.ADMIN)
-                choiceBox.getItems().add(count + "- {  " + employee.getRole() + "  }" + "   " + employee.getName() + " ----  " + " Location: " + employee.getLocation() + "  ---- " + " SSN: " + employee.getSsn());
+        List<Employee> employees = DatabaseHandler.loadAll(Employee.class);
+        for (Map.Entry<String, String> entry : Map.ofEntries(
+                new AbstractMap.SimpleEntry<>("location", "Location"),
+                new AbstractMap.SimpleEntry<>("role", "Role"),
+                new AbstractMap.SimpleEntry<>("salary", "Salary"),
+                new AbstractMap.SimpleEntry<>("ssn", "SSN")
+        ).entrySet()) {
+            TableColumn<Employee, String> tableColumn = new TableColumn<>(entry.getValue());
+            tableColumn.setCellValueFactory(new PropertyValueFactory<>(entry.getKey()));
+            staffTableView.getColumns().add(tableColumn);
         }
 
-        for (Employee employee : users) {
-            count++;
-            if (employee.getRole() == Employee.Role.DOCTOR)
-                choiceBox.getItems().add(count + "- {  " + employee.getRole() + "  }" + "   " + employee.getName() + " ----  " + " Location: " + employee.getLocation() + "  ---- " + " SSN: " + employee.getSsn());
+        staffTableView.getItems().addAll(employees);
 
-        }
-
-        for (Employee employee : users) {
-            count++;
-            if (employee.getRole() == Employee.Role.ANALYSER)
-                choiceBox.getItems().add(count + "- {  " + employee.getRole() + "  }" + "   " + employee.getName() + " ----  " + " Location: " + employee.getLocation() + "  ---- " + " SSN: " + employee.getSsn());
-        }
-
-        choiceBox.getItems().add("View Staff");
-        choiceBox.setValue("View Staff");
     }
 }

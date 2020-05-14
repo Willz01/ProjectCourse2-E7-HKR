@@ -8,5 +8,6 @@
     <Button fx:id="addResultButton" layoutX="47.0" layoutY="185.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="Add result" />
     <Button fx:id="addPatientButton" layoutX="343.0" layoutY="62.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="Add patient" />
     <Button fx:id="viewResultsButton" layoutX="343.0" layoutY="185.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="View results" />
-    <fx:include source="../template/buttons.fxml"/>
+    <fx:include source="../template/buttons.fxml" />
+   <Button fx:id="edit" layoutX="47.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="update my info" />
 </AnchorPane>

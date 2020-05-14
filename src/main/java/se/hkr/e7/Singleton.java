@@ -1,10 +1,14 @@
-package se.hkr.e7.model;
+package se.hkr.e7;
+
+import se.hkr.e7.model.Employee;
+import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Person;
 
 import java.util.LinkedList;
 
 public class Singleton {
-
     private static Singleton instance = null;
+
     private final LinkedList<String> sceneHistory;
     private Person currentUser;
     private Employee employee;
@@ -19,6 +23,12 @@ public class Singleton {
             instance = new Singleton();
         }
         return instance;
+    }
+
+    public void clear() {
+        this.currentUser = null;
+        this.employee = null;
+        this.patient = null;
     }
 
     public void addSceneHistory(String path) {

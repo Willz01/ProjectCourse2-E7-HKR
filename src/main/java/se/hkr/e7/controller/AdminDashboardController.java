@@ -4,7 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import se.hkr.e7.model.*;
+import se.hkr.e7.DatabaseHandler;
+import se.hkr.e7.Singleton;
+import se.hkr.e7.model.Employee;
+import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Person;
 
 public class AdminDashboardController extends Controller {
 
@@ -34,7 +38,7 @@ public class AdminDashboardController extends Controller {
             Employee employee = DatabaseHandler.load(Employee.class, searchText.getText());
 
             if (patient == null && employee == null) {
-                showError("There is no one with that ssn in the system.");
+                showError("Entered SSN doesn't exist in the system.");
                 return;
             }
 
@@ -49,7 +53,7 @@ public class AdminDashboardController extends Controller {
 
             loadScene("view/Search.fxml", actionEvent);
         } else {
-            showError("input in YYMMDDXXXX form");
+            showError("SSN must be valid 10 digits as YYMMDDXXXX.");
         }
     }
 }
