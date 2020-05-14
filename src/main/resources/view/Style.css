@@ -59,3 +59,10 @@ ChoiceBox:hover {
 ChoiceBox:focused {
     -fx-background-color: mediumseagreen;
 }
+
+TextArea {
+    -fx-border-style: solid;
+    -fx-border-radius: 0px;
+    -fx-border-insets: inherit;
+    -fx-border-image-slice: inherit;
+}
