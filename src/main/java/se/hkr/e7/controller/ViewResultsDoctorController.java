@@ -20,18 +20,18 @@ public class ViewResultsDoctorController extends Controller {
 
         for (Result result : results) {
             if (result.getStatus() == Result.Status.PENDING) {
-                choiceBox.getItems().add(result.getStatus() + " ----  " + "Patient SSN:  " + result.getPatient().getSsn() + " ---- " + " Date : " + result.getDate() + "  ---- " + " Doctor name: " + result.getExaminer().getName() + "  ---- " + " Doctor SSN: " + result.getExaminer().getSsn());
+                choiceBox.getItems().add(result.getStatus() + " ----  " + "Patient SSN:  " + result.getPatient().getSsn() + " ---- " + " Date : " + result.getDateTime() + "  ---- " + " Doctor name: " + result.getExaminer().getName() + "  ---- " + " Doctor SSN: " + result.getExaminer().getSsn());
             }
         }
         for (Result result : results) {
             if (result.getStatus() == Result.Status.POSITIVE) {
-                choiceBox.getItems().add(result.getStatus() + " ----  " + "Patient SSN:  " + result.getPatient().getSsn() + " ---- " + " Date : " + result.getDate() + "  ---- " + " Doctor name: " + result.getExaminer().getName() + "  ---- " + " Doctor SSN: " + result.getExaminer().getSsn());
+                choiceBox.getItems().add(result.getStatus() + " ----  " + "Patient SSN:  " + result.getPatient().getSsn() + " ---- " + " Date : " + result.getDateTime() + "  ---- " + " Doctor name: " + result.getExaminer().getName() + "  ---- " + " Doctor SSN: " + result.getExaminer().getSsn());
             }
         }
 
         for (Result result : results) {
             if (result.getStatus() == Result.Status.NEGATIVE) {
-                choiceBox.getItems().add(result.getStatus() + " ----  " + "Patient SSN:  " + result.getPatient().getSsn() + " ---- " + " Date : " + result.getDate() + "  ---- " + " Doctor name: " + result.getExaminer().getName() + "  ---- " + " Doctor SSN: " + result.getExaminer().getSsn());
+                choiceBox.getItems().add(result.getStatus() + " ----  " + "Patient SSN:  " + result.getPatient().getSsn() + " ---- " + " Date : " + result.getDateTime() + "  ---- " + " Doctor name: " + result.getExaminer().getName() + "  ---- " + " Doctor SSN: " + result.getExaminer().getSsn());
             }
         }
 

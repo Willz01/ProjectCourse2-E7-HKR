@@ -4,6 +4,7 @@ import se.hkr.e7.DatabaseHandler;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 public class Result implements Serializable {
@@ -11,17 +12,17 @@ public class Result implements Serializable {
     private Long id;
     private Employee examiner;
     private Patient patient;
-    private String date;
+    private LocalDateTime dateTime;
     private Status status;
     private String note;
 
     public Result() {
     }
 
-    public Result(Patient patient, Employee examiner, String date, Status status) {
+    public Result(Patient patient, Employee examiner, LocalDateTime dateTime, Status status) {
         this.examiner = examiner;
         this.patient = patient;
-        this.date = date;
+        this.dateTime = dateTime;
         this.status = status;
 
         this.patient.addTestResult(this);
@@ -71,12 +72,12 @@ public class Result implements Serializable {
     }
 
     @Column(nullable = false)
-    public String getDate() {
-        return date;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    private void setDate(String date) {
-        this.date = date;
+    private void setDateTime(LocalDateTime date) {
+        this.dateTime = date;
     }
 
     @Column(nullable = false)
@@ -100,7 +101,7 @@ public class Result implements Serializable {
     public String toString() {
         return "Result{" +
                 "id=" + id +
-                ", date='" + date + '\'' +
+                ", date='" + dateTime + '\'' +
                 ", status=" + status +
                 ", note='" + note + '\'' +
                 '}';

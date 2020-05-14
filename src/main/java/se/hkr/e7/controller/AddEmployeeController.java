@@ -55,8 +55,9 @@ public class AddEmployeeController extends Controller {
             return;
         }
 
-        if (passwordTextField.getText().length() < 8) {
-            showError("Password length should be at least 8 characters.");
+        if (!Person.isValidPassword(passwordTextField.getText())) {
+            showError("Enter a valid password. The password should be at least 8 characters in length and have an " +
+                    "uppercase and a lowercase letter as well as a number.");
             return;
         }
 
@@ -80,17 +81,21 @@ public class AddEmployeeController extends Controller {
             return;
         }
 
-        DatabaseHandler.save(new Employee(
-                ssnTextField.getText(),
-                passwordTextField.getText(),
-                nameTextField.getText(),
-                emailTextField.getText(),
-                phoneTextField.getText(),
-                addressTextField.getText(),
-                locationChoiceBox.getValue(),
-                roleChoiceBox.getValue(),
-                Double.parseDouble(salaryTextField.getText())
-        ));
-        showConfirmation("Finished successfully!", "The account has been created.");
+        try {
+            DatabaseHandler.save(new Employee(
+                    ssnTextField.getText(),
+                    passwordTextField.getText(),
+                    nameTextField.getText(),
+                    emailTextField.getText(),
+                    phoneTextField.getText(),
+                    addressTextField.getText(),
+                    locationChoiceBox.getValue(),
+                    roleChoiceBox.getValue(),
+                    Double.parseDouble(salaryTextField.getText())
+            ));
+            showConfirmation("Finished successfully!", "The account has been created.");
+        } catch (IllegalArgumentException e) {
+            showError(e.getMessage());
+        }
     }
 }

@@ -61,7 +61,6 @@ public class LoginController extends Controller {
 
         if (employee != null && employee.isEnabled() && employee.checkPassword(passwordTextField.getText())) {
             Singleton.getInstance().setCurrentUser(employee);
-            Singleton.getInstance().setEmployee(employee);
             switch (employee.getRole()) {
                 case ADMIN:
                     loadScene("view/AdminDashboard.fxml", node);
@@ -143,6 +142,8 @@ public class LoginController extends Controller {
                             person);
                     showConfirmation("Success", "Email has been sent.");
                 }
+            } catch (IllegalArgumentException e) {
+                showError(e.getMessage());
             } catch (UnsupportedEncodingException | MessagingException e) {
                 showError("Email could not be sent.");
             }
