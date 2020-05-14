@@ -11,6 +11,7 @@ import org.hibernate.service.ServiceRegistry;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class DatabaseHandler {
@@ -103,8 +104,8 @@ public class DatabaseHandler {
                 "mohammed@example.com", "062563454", "onehomet 32");
         save(patient);
 
-        new Result(patient, employee, "2020-01-01", Result.Status.PENDING);
-        Result result = new Result(patient, employee, "2020-01-01", Result.Status.POSITIVE);
+        new Result(patient, employee, LocalDateTime.parse("2020-01-01T10:15:00"), Result.Status.PENDING);
+        Result result = new Result(patient, employee, LocalDateTime.parse("2020-01-01T14:39:23"), Result.Status.POSITIVE);
         result.setNote("Test note");
         DatabaseHandler.save(result);
     }

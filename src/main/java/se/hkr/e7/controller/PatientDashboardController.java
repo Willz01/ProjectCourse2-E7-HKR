@@ -20,7 +20,7 @@ public class PatientDashboardController extends Controller {
             Patient currentUser = (Patient) Singleton.getInstance().getCurrentUser();
             StringBuilder stringBuilder = new StringBuilder();
             for (Result testResult : currentUser.getTestResults()) {
-                stringBuilder.append(testResult.getDate())
+                stringBuilder.append(testResult.getDateTime())
                         .append(", The examiner: ")
                         .append(testResult.getExaminer().getName())
                         .append(", || Status: ")
