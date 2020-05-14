@@ -82,17 +82,21 @@ public class AddEmployeeController extends Controller {
             return;
         }
 
-        DatabaseHandler.save(new Employee(
-                ssnTextField.getText(),
-                passwordTextField.getText(),
-                nameTextField.getText(),
-                emailTextField.getText(),
-                phoneTextField.getText(),
-                addressTextField.getText(),
-                locationChoiceBox.getValue(),
-                roleChoiceBox.getValue(),
-                Double.parseDouble(salaryTextField.getText())
-        ));
-        showConfirmation("Finished successfully!", "The account has been created.");
+        try {
+            DatabaseHandler.save(new Employee(
+                    ssnTextField.getText(),
+                    passwordTextField.getText(),
+                    nameTextField.getText(),
+                    emailTextField.getText(),
+                    phoneTextField.getText(),
+                    addressTextField.getText(),
+                    locationChoiceBox.getValue(),
+                    roleChoiceBox.getValue(),
+                    Double.parseDouble(salaryTextField.getText())
+            ));
+            showConfirmation("Finished successfully!", "The account has been created.");
+        } catch (IllegalArgumentException e) {
+            showError(e.getMessage());
+        }
     }
 }

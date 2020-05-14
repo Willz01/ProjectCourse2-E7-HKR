@@ -119,7 +119,17 @@ public abstract class Person implements Serializable {
         setAddress(null);
     }
 
+    /**
+     * Hashes the password and updates the Person object.
+     *
+     * @param password The new password of the user
+     * @throws IllegalArgumentException is thrown when the password does not meet the minimum requirements
+     */
     public void updatePassword(String password) {
+        if (!isValidPassword(password)) {
+            throw new IllegalArgumentException("The password does not meet the minimum requirements");
+        }
+
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
