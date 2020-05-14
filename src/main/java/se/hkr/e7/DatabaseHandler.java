@@ -1,4 +1,4 @@
-package se.hkr.e7.model;
+package se.hkr.e7;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -7,10 +7,12 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
+import se.hkr.e7.model.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -77,7 +79,7 @@ public class DatabaseHandler {
     public static void createDefaultAdmin() {
         List<Employee> employees = loadAll(Employee.class);
         if (employees.size() == 0) {
-            save(new Employee("0101010000", "password", "", "", "",
+            save(new Employee("0101010000", "H8hLqlTz5QfJmh", "", "", "",
                     "", Location.STOCKHOLM, Employee.Role.ADMIN, 0));
         }
     }
@@ -86,7 +88,7 @@ public class DatabaseHandler {
      * Insert some default data into the system.
      */
     public static void reset() {
-        save(new Employee("9701010000", "123456", "Wills", "wills@example.com",
+        save(new Employee("9701010000", "oE0mxbdxhCpqvI", "Wills", "wills@example.com",
                 "073656656", "Home", Location.STOCKHOLM, Employee.Role.ADMIN, 123.12));
 
         save(new Employee("8005087778", "wegpijewg", "Nilson", "nilson@example.com",
@@ -101,7 +103,7 @@ public class DatabaseHandler {
                 "073656656", "Street lamp 432", Location.KALMAR, Employee.Role.DOCTOR, 111.12);
         save(employee2);
 
-        Patient patient1 = new Patient("6101054565", "password1", "Mohammed",
+        Patient patient1 = new Patient("6101054565", "9CgPOgCtpA190R", "Mohammed",
                 "mohammed@example.com", "062563454", "onehomet 32");
         save(patient1);
 

@@ -1,6 +1,7 @@
 package se.hkr.e7.model;
 
 import org.mindrot.jbcrypt.BCrypt;
+import se.hkr.e7.DatabaseHandler;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,7 +22,7 @@ public abstract class Person implements Serializable {
 
     public Person(String ssn, String password, String name, String email, String phone, String address) {
         if (!isValidSsn(ssn)) {
-            throw new IllegalArgumentException("The SSN is not valid.");
+            throw new IllegalArgumentException("The SSN is not valid");
         } else {
             if (ssn.length() == 10) {
                 setSsn(ssn);
@@ -62,6 +63,34 @@ public abstract class Person implements Serializable {
         return Integer.parseInt(ssn.substring(4, 6)) <= 31;
     }
 
+    /**
+     * The password must be at least 8 characters. If it is fewer
+     * than 14 characters in length, it must contain at least one
+     * lowercase and one uppercase letter and at least one number.
+     * If it is at least 14 characters in length, any character
+     * combination is allowed.
+     *
+     * @param password The password that should be checked against
+     *                 the minimum complexity requirements
+     * @return True if the password is complex enough and false if it isn't
+     *
+     * (?=.*[0-9]) a digit must occur at least once
+     * (?=.*[a-z]) a lower case letter must occur at least once
+     * (?=.*[A-Z]) an upper case letter must occur at least once
+     * (?=\\S+$) no whitespace allowed in the entire string
+     */
+    public static boolean isValidPassword(String password) {
+        if (password.length() < 8) {
+            return false;
+        }
+
+        if (password.length() < 14) {
+            return password.matches("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).*");
+        }
+
+        return true;
+    }
+
     public static boolean isValidEmail(String email) {
         return email.matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$");
     }
@@ -91,7 +120,17 @@ public abstract class Person implements Serializable {
         setAddress(null);
     }
 
+    /**
+     * Hashes the password and updates the Person object.
+     *
+     * @param password The new password of the user
+     * @throws IllegalArgumentException is thrown when the password does not meet the minimum requirements
+     */
     public void updatePassword(String password) {
+        if (!isValidPassword(password)) {
+            throw new IllegalArgumentException("The password does not meet the minimum requirements");
+        }
+
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
 

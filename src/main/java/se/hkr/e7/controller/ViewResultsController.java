@@ -1,16 +1,16 @@
 package se.hkr.e7.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import se.hkr.e7.model.DatabaseHandler;
+import se.hkr.e7.DatabaseHandler;
+import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Result;
-import se.hkr.e7.model.Singleton;
 
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class ViewResultsController extends Controller {
@@ -23,7 +23,7 @@ public class ViewResultsController extends Controller {
         List<Result> results = DatabaseHandler.loadAll(Result.class);
 
         for (Map.Entry<String, String> entry : Map.ofEntries(
-                new AbstractMap.SimpleEntry<>("date", "Date"),
+                new AbstractMap.SimpleEntry<>("dateTime", "Date"),
                 new AbstractMap.SimpleEntry<>("status", "Status"),
                 new AbstractMap.SimpleEntry<>("patientName", "Patient"),
                 new AbstractMap.SimpleEntry<>("note", "Note")

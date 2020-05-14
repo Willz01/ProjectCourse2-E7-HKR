@@ -1,7 +1,7 @@
 package se.hkr.e7.controller;
 
 import javafx.fxml.FXML;
-import se.hkr.e7.model.Singleton;
+import se.hkr.e7.Singleton;
 
 public class AnalyserDashboardController extends Controller {
 

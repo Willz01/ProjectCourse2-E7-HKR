@@ -11,7 +11,12 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
-import se.hkr.e7.model.*;
+import se.hkr.e7.DatabaseHandler;
+import se.hkr.e7.Mail;
+import se.hkr.e7.Singleton;
+import se.hkr.e7.model.Employee;
+import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Person;
 
 import javax.mail.MessagingException;
 import java.io.UnsupportedEncodingException;
@@ -31,7 +36,8 @@ public class LoginController extends Controller {
     public void initialize() {
         Singleton.getInstance().clear();
         Singleton.getInstance().addSceneHistory("view/Login.fxml");
-
+        passwordResetLabel.setOnMouseEntered(mouseEvent -> passwordResetLabel.setUnderline(true));
+        passwordResetLabel.setOnMouseExited(mouseEvent -> passwordResetLabel.setUnderline(false));
         loginButton.setOnAction(this::login);
         Stream.of(ssnTextField, passwordField, passwordTextField).forEach(e -> e.setOnKeyPressed(this::onEnter));
         passwordResetLabel.setOnMouseClicked(this::resetPassword);
@@ -55,7 +61,6 @@ public class LoginController extends Controller {
 
         if (employee != null && employee.isEnabled() && employee.checkPassword(passwordTextField.getText())) {
             Singleton.getInstance().setCurrentUser(employee);
-            Singleton.getInstance().setEmployee(employee);
             switch (employee.getRole()) {
                 case ADMIN:
                     loadScene("view/AdminDashboard.fxml", node);
@@ -137,6 +142,8 @@ public class LoginController extends Controller {
                             person);
                     showConfirmation("Success", "Email has been sent.");
                 }
+            } catch (IllegalArgumentException e) {
+                showError(e.getMessage());
             } catch (UnsupportedEncodingException | MessagingException e) {
                 showError("Email could not be sent.");
             }
@@ -149,4 +156,5 @@ public class LoginController extends Controller {
         result.ifPresent(usernamePassword -> {
         });
     }
+
 }

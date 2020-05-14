@@ -5,9 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import se.hkr.e7.model.DatabaseHandler;
+import se.hkr.e7.DatabaseHandler;
+import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Patient;
-import se.hkr.e7.model.Singleton;
+import se.hkr.e7.model.Person;
 
 public class AddPatientDoctorController extends Controller {
 
@@ -62,6 +63,13 @@ public class AddPatientDoctorController extends Controller {
         if (phone.getText().isBlank()) {
             phoneLabel.setText("Field can't be empty");
         }
+
+        if (!Person.isValidPassword(password.getText())) {
+            showError("Enter a valid password. The password should be at least 8 characters in length and have an " +
+                    "uppercase and a lowercase letter as well as a number.");
+            return;
+        }
+
         if (!(ssn.getText().isBlank()) && !(password.getText().isBlank()) && !(name.getText().isBlank()) && !(email.getText().isBlank()) &&
                 !(phone.getText().isBlank()) && !(address.getText().isBlank())) {
             try {

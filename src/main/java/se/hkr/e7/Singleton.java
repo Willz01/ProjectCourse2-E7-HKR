@@ -1,4 +1,8 @@
-package se.hkr.e7.model;
+package se.hkr.e7;
+
+import se.hkr.e7.model.Employee;
+import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Person;
 
 import java.util.LinkedList;
 

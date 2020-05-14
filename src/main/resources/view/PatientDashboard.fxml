@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.control.Button?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="se.hkr.e7.controller.PatientDashboardController">
-    <TextArea fx:id="resultTextArea" editable="false" layoutX="11.0" layoutY="14.0" prefHeight="336.0" prefWidth="579.0"/>
-    <Button fx:id="edit" layoutX="47.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="update my info" />
-
+<?import java.net.URL?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/11.0.1" fx:controller="se.hkr.e7.controller.PatientDashboardController">
+    <Button fx:id="edit" layoutX="455.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0"
+            text="update my info"/>
+    <TextArea fx:id="resultTextArea" editable="false" layoutX="11.0" layoutY="52.0" prefHeight="291.0"
+              prefWidth="579.0"/>
     <fx:include source="../template/buttons.fxml"/>
+    <stylesheets>
+        <URL value="@Style.css"/>
+    </stylesheets>
 </AnchorPane>

@@ -5,7 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import se.hkr.e7.model.DatabaseHandler;
+import se.hkr.e7.DatabaseHandler;
+import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Location;
 import se.hkr.e7.model.Person;
@@ -22,17 +23,14 @@ public class AddEmployeeController extends Controller {
     public TextField phoneTextField;
     public TextField salaryTextField;
     public Button addButton;
-    public Button backButton;
-    public Button exitButton;
 
     @FXML
     public void initialize() {
+        Singleton.getInstance().addSceneHistory("view/AddEmployee.fxml");
         locationChoiceBox.getItems().setAll(Location.values());
         roleChoiceBox.getItems().setAll(Employee.Role.values());
 
         addButton.setOnAction(this::addAccount);
-        backButton.setOnAction(actionEvent -> loadScene("view/AdminDashboard.fxml", actionEvent));
-        exitButton.setOnAction(this::exit);
     }
 
     private void addAccount(ActionEvent actionEvent) {
@@ -57,8 +55,9 @@ public class AddEmployeeController extends Controller {
             return;
         }
 
-        if (passwordTextField.getText().length() < 8) {
-            showError("Password length should be at least 8 characters.");
+        if (!Person.isValidPassword(passwordTextField.getText())) {
+            showError("Enter a valid password. The password should be at least 8 characters in length and have an " +
+                    "uppercase and a lowercase letter as well as a number.");
             return;
         }
 
@@ -82,17 +81,21 @@ public class AddEmployeeController extends Controller {
             return;
         }
 
-        DatabaseHandler.save(new Employee(
-                ssnTextField.getText(),
-                passwordTextField.getText(),
-                nameTextField.getText(),
-                emailTextField.getText(),
-                phoneTextField.getText(),
-                addressTextField.getText(),
-                locationChoiceBox.getValue(),
-                roleChoiceBox.getValue(),
-                Double.parseDouble(salaryTextField.getText())
-        ));
-        showConfirmation("Finished successfully!", "The account has been created.");
+        try {
+            DatabaseHandler.save(new Employee(
+                    ssnTextField.getText(),
+                    passwordTextField.getText(),
+                    nameTextField.getText(),
+                    emailTextField.getText(),
+                    phoneTextField.getText(),
+                    addressTextField.getText(),
+                    locationChoiceBox.getValue(),
+                    roleChoiceBox.getValue(),
+                    Double.parseDouble(salaryTextField.getText())
+            ));
+            showConfirmation("Finished successfully!", "The account has been created.");
+        } catch (IllegalArgumentException e) {
+            showError(e.getMessage());
+        }
     }
 }
