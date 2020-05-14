@@ -90,6 +90,8 @@ public class ChangeInfoController extends Controller {
                 DatabaseHandler.save(person);
 
                 showConfirmation("Complete", "Update information successfully.");
+            } catch (IllegalArgumentException e) {
+                showError(e.getMessage());
             } catch (Exception e) {
                 e.printStackTrace();
                 showError("Something went wrong.");

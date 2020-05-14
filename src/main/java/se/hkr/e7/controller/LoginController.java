@@ -137,6 +137,8 @@ public class LoginController extends Controller {
                             person);
                     showConfirmation("Success", "Email has been sent.");
                 }
+            } catch (IllegalArgumentException e) {
+                showError(e.getMessage());
             } catch (UnsupportedEncodingException | MessagingException e) {
                 showError("Email could not be sent.");
             }

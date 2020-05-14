@@ -61,6 +61,13 @@ public class AddPatientController extends Controller {
         if (phone.getText().isBlank()) {
             phoneLabel.setText("Field can't be empty");
         }
+
+        if (!Person.isValidPassword(password.getText())) {
+            showError("Enter a valid password. The password should be at least 8 characters in length and have an " +
+                    "uppercase and a lowercase letter as well as a number.");
+            return;
+        }
+
         if (!ssnTextField.getText().isBlank() && !password.getText().isBlank() && !name.getText().isBlank()
                 && !email.getText().isBlank() && !phone.getText().isBlank() && !address.getText().isBlank()) {
             try {
