@@ -61,6 +61,7 @@ public class LoginController extends Controller {
 
         if (employee != null && employee.isEnabled() && employee.checkPassword(passwordTextField.getText())) {
             Singleton.getInstance().setCurrentUser(employee);
+            Singleton.getInstance().setEmployee(employee);
             switch (employee.getRole()) {
                 case ADMIN:
                     loadScene("view/AdminDashboard.fxml", node);
