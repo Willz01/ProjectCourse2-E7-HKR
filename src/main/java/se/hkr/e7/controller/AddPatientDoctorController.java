@@ -25,7 +25,6 @@ public class AddPatientDoctorController extends Controller {
     public Label addressLabel;
     public Label emailLabel;
     public Label phoneLabel;
-    public Label saveLabel;
 
     @FXML
     public void initialize() {
@@ -40,38 +39,58 @@ public class AddPatientDoctorController extends Controller {
         emailLabel.setText("");
         phoneLabel.setText("");
         addressLabel.setText("");
-        saveLabel.setText("");
 
-        if (ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
+        if (Person.isValidSsn(ssn.getText())) {
             ssnLabel.setText("");
-        }
-        if (!ssn.getText().matches("^([0-9]{2})([0-9]{2})([0-9]{2})([a-zA-Z0-9][0-9]{3})$")) {
+        } else {
             ssnLabel.setText("Input format YYMMDDXXXX");
         }
+
+
+
         if (name.getText().isBlank()) {
             nameLabel.setText("Field can't be empty");
         }
+
+
         if (address.getText().isBlank()) {
             addressLabel.setText("Field can't be empty");
         }
+
+
+
         if (password.getText().isBlank()) {
             passwordLabel.setText("Field can't be empty");
         }
-        if (email.getText().isBlank()) {
-            emailLabel.setText("Field can't be empty");
-        }
-        if (phone.getText().isBlank()) {
-            phoneLabel.setText("Field can't be empty");
-        }
-
         if (!Person.isValidPassword(password.getText())) {
             showError("Enter a valid password. The password should be at least 8 characters in length and have an " +
                     "uppercase and a lowercase letter as well as a number.");
-            return;
+
         }
 
-        if (!(ssn.getText().isBlank()) && !(password.getText().isBlank()) && !(name.getText().isBlank()) && !(email.getText().isBlank()) &&
-                !(phone.getText().isBlank()) && !(address.getText().isBlank())) {
+
+
+        if (email.getText().isBlank()) {
+            emailLabel.setText("Field can't be empty");
+        }
+        if (!Person.isValidEmail(email.getText())) {
+            showError("Email is not valid");
+        }
+
+
+
+
+        if (phone.getText().isBlank()) {
+            phoneLabel.setText("Field can't be empty");
+        }
+        if (!Person.isValidPhone(phone.getText())) {
+            showError("Phone number not valid");
+        }
+
+
+
+        if (Person.isValidSsn(ssn.getText()) && Person.isValidPassword(password.getText()) && !name.getText().isBlank()
+                && Person.isValidEmail(email.getText()) && Person.isValidPhone(phone.getText()) && !address.getText().isBlank()) {
             try {
 
                 DatabaseHandler.save(new Patient(ssn.getText(), password.getText(), name.getText(), email.getText(),
