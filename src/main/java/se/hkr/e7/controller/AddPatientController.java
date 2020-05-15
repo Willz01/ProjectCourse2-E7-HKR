@@ -47,7 +47,6 @@ public class AddPatientController extends Controller {
         }
 
 
-
         if (name.getText().isBlank()) {
             nameLabel.setText("Field can't be empty");
         }
@@ -56,7 +55,6 @@ public class AddPatientController extends Controller {
         if (address.getText().isBlank()) {
             addressLabel.setText("Field can't be empty");
         }
-
 
 
         if (password.getText().isBlank()) {
@@ -69,7 +67,6 @@ public class AddPatientController extends Controller {
         }
 
 
-
         if (email.getText().isBlank()) {
             emailLabel.setText("Field can't be empty");
         }
@@ -78,15 +75,12 @@ public class AddPatientController extends Controller {
         }
 
 
-
-
         if (phone.getText().isBlank()) {
             phoneLabel.setText("Field can't be empty");
         }
         if (!Person.isValidPhone(phone.getText())) {
             showError("Phone number not valid");
         }
-
 
 
         if (Person.isValidSsn(ssnTextField.getText()) && Person.isValidPassword(password.getText()) && !name.getText().isBlank()
