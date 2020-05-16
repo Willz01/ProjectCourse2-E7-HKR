@@ -13,7 +13,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class DatabaseHandler {
 
@@ -87,27 +89,50 @@ public class DatabaseHandler {
         save(new Employee("9701010000", "oE0mxbdxhCpqvI", "Wills", "wills@example.com",
                 "073656656", "Home", Location.STOCKHOLM, Employee.Role.ADMIN, 123.12));
 
-        save(new Employee("9304140000", "fsSBHFqQRPWBkI", "Marcos", "marcos@example.com",
-                "073656656", "Street lamp 432", Location.KALMAR, Employee.Role.DOCTOR, 111.12));
-
-        save(new Employee("8005087778", "t4mI7zEiPPN8nf", "Nilson", "nilson@example.com",
+        save(new Employee("8005087778", "oE0mxbdxhCpqvI", "Nilson", "nilson@example.com",
                 "056356556", "Kristan Street", Location.DALARNA, Employee.Role.ANALYSER, 111.12));
 
-        save(new Patient("8801089940", "QNnHfBY0FcYd6O", "Jone", "mymail@yahoo.com",
-                "07332233", "oneStreet 32"));
-
-        Employee employee = new Employee("8002249876", "kU2T7uBoGAj1EV", "Petson",
+        Employee employee1 = new Employee("8002249876", "t4mI7zEiPPN8nf", "Petson",
                 "petson@example.com", "056356556", "Kristan Street", Location.SKANE, Employee.Role.DOCTOR,
                 98.1);
-        save(employee);
+        save(employee1);
 
-        Patient patient = new Patient("6101054565", "9CgPOgCtpA190R", "Mohammed",
+        Employee employee2 = new Employee("9304140000", "fsSBHFqQRPWBkI", "Marcos", "marcos@example.com",
+                "073656656", "Street lamp 432", Location.KALMAR, Employee.Role.DOCTOR, 111.12);
+        save(employee2);
+
+        Patient patient1 = new Patient("6101054565", "9CgPOgCtpA190R", "Mohammed",
                 "mohammed@example.com", "062563454", "onehomet 32");
-        save(patient);
+        save(patient1);
 
-        new Result(patient, employee, LocalDateTime.parse("2020-01-01T10:15:00"), Result.Status.PENDING);
-        Result result = new Result(patient, employee, LocalDateTime.parse("2020-01-01T14:39:23"), Result.Status.POSITIVE);
-        result.setNote("Test note");
-        DatabaseHandler.save(result);
+        Patient patient2 = new Patient("8801089940", "QNnHfBY0FcYd6O", "Jone", "mymail@yahoo.com",
+                "07332233", "oneStreet 32");
+        save(patient2);
+
+
+        long now = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
+        for (int i = 0; i < 20; i++) {
+            LocalDateTime date = LocalDateTime.ofEpochSecond(ThreadLocalRandom.current().nextLong(0, now),
+                    0, ZoneOffset.UTC);
+            Result.Status status;
+            switch (ThreadLocalRandom.current().nextInt(3)) {
+                case 0:
+                    status = Result.Status.POSITIVE;
+                    break;
+                case 1:
+                    status = Result.Status.NEGATIVE;
+                    break;
+                default:
+                    status = Result.Status.PENDING;
+                    break;
+            }
+
+            Result result = new Result(
+                    ThreadLocalRandom.current().nextBoolean() ? patient1 : patient2,
+                    ThreadLocalRandom.current().nextBoolean() ? employee1 : employee2, date, status
+            );
+            result.setNote("Test note");
+            DatabaseHandler.save(result);
+        }
     }
 }
