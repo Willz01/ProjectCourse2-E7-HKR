@@ -1,10 +1,15 @@
 package se.hkr.e7.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Singleton;
-import javafx.scene.chart.*;
+import se.hkr.e7.model.Result;
 
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Date;
+import java.util.List;
 
 public class AnalyserDashboardController extends Controller {
 
@@ -16,15 +21,22 @@ public class AnalyserDashboardController extends Controller {
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/AnalyserDashboard.fxml");
 
+        List<Result> results = DatabaseHandler.loadAll(Result.class);
+
+// Create a data series
+        XYChart.Series series = new XYChart.Series<Integer, Integer>();
+        series.setName("Results");
+
         lineChart.setTitle("Line chart");
         xAxis.setLabel("xAxis");
         yAxis.setLabel("yAxis");
 
-        XYChart.Series<Number, Number> series = new XYChart.Series<>();
         series.setName("Random numbers");
 
-        for (int i = 0; i < 20; i++) {
-            series.getData().add(new XYChart.Data<>(i, ThreadLocalRandom.current().nextInt(100)));
+        int i = 0;
+        for (Result result : results) {
+            i++;
+            series.getData().add(new XYChart.Data<>(result.getDateTime().getYear(), i));
         }
 
         lineChart.getData().add(series);
