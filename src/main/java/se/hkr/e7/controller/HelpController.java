@@ -24,6 +24,42 @@ public class HelpController extends Controller {
             case "view/PatientDashboard.fxml":
                 helpHeading.setText("Patient Dashboard");
                 break;
+            case "view/AddEmployee.fxml":
+                helpHeading.setText("Add Employee");
+                break;
+            case "view/AddPatient.fxml":
+                helpHeading.setText("Add Patient");
+                break;
+            case "view/AddPatientDoctor.fxml":
+                helpHeading.setText("Add Patient (Doctor)");
+                break;
+            case "view/AddResult.fxml":
+                helpHeading.setText("Add Result");
+                break;
+            case "view/AnalyserDashboard.fxml":
+                helpHeading.setText("Analyser Dashboard");
+                break;
+            case "view/ChangeInfo.fxml":
+                helpHeading.setText("Update Info");
+                break;
+            case "view/RemoveAccount.fxml":
+                helpHeading.setText("Removing account");
+                break;
+            case "view/ViewPatients.fxml":
+                helpHeading.setText("View patients");
+                break;
+            case "view/ViewPatientsDoctor.fxml":
+                helpHeading.setText("View patients (Doctor)");
+                break;
+            case "view/ViewResults.fxml":
+                helpHeading.setText("View results");
+                break;
+            case "view/ViewResultsDoctor.fxml":
+                helpHeading.setText("View results (Doctor)");
+                break;
+            case "view/ViewStaff.fxml":
+                helpHeading.setText("View staffs");
+                break;
             default:
                 helpHeading.setText("Help Menu");
                 helpContent.setText("Help menu could not be loaded.");
