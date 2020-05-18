@@ -46,16 +46,13 @@ public class AddPatientController extends Controller {
             ssnLabel.setText("Input format YYMMDDXXXX");
         }
 
-
         if (name.getText().isBlank()) {
             nameLabel.setText("Field can't be empty");
         }
 
-
         if (address.getText().isBlank()) {
             addressLabel.setText("Field can't be empty");
         }
-
 
         if (password.getText().isBlank()) {
             passwordLabel.setText("Field can't be empty");
@@ -63,25 +60,24 @@ public class AddPatientController extends Controller {
         if (!Person.isValidPassword(password.getText())) {
             showError("Enter a valid password. The password should be at least 8 characters in length and have an " +
                     "uppercase and a lowercase letter as well as a number.");
-
+            return;
         }
-
 
         if (email.getText().isBlank()) {
             emailLabel.setText("Field can't be empty");
         }
         if (!Person.isValidEmail(email.getText())) {
             showError("Email is not valid");
+            return;
         }
-
 
         if (phone.getText().isBlank()) {
             phoneLabel.setText("Field can't be empty");
         }
         if (!Person.isValidPhone(phone.getText())) {
             showError("Phone number not valid");
+            return;
         }
-
 
         if (Person.isValidSsn(ssnTextField.getText()) && Person.isValidPassword(password.getText()) && !name.getText().isBlank()
                 && Person.isValidEmail(email.getText()) && Person.isValidPhone(phone.getText()) && !address.getText().isBlank()) {
