@@ -66,8 +66,4 @@ public abstract class Controller {
         Optional<ButtonType> result = alert.showAndWait();
         return result.isPresent() && result.get() == ButtonType.OK;
     }
-
-    public void exit(ActionEvent actionEvent) {
-        System.exit(0);
-    }
 }

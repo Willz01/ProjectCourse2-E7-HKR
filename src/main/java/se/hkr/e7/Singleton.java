@@ -35,9 +35,25 @@ public class Singleton {
         sceneHistory.addFirst(path);
     }
 
+    /**
+     * This method will remove the current scene from the history.
+     * It will then remove and return the previous scene. This
+     * scene will be re-added when the previous scene is loaded.
+     *
+     * @return The location of the previous scene's FXML file
+     */
     public String getPreviousScene() {
         sceneHistory.removeFirst();
         return sceneHistory.removeFirst();
+    }
+
+    /**
+     * This method returns the current scene without changing the history.
+     *
+     * @return The location of the current scene's FXML file
+     */
+    public String getCurrentScene() {
+        return sceneHistory.getFirst();
     }
 
     public Person getCurrentUser() {
