@@ -1,5 +1,6 @@
 package se.hkr.e7;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -134,5 +135,13 @@ public class DatabaseHandler {
             result.setNote("Test note");
             DatabaseHandler.save(result);
         }
+    }
+
+    public static List query(String q){
+
+        String hql = q;
+        Query query = session.createQuery(hql,Object[].class);
+        List results = query.getResultList();
+        return results;
     }
 }
