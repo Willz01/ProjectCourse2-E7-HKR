@@ -27,6 +27,10 @@ public class Employee extends Person {
         this.patientResults = new ArrayList<>();
     }
 
+    public static Employee load(String ssn) {
+        return Person.load(Employee.class, ssn);
+    }
+
     public void clear() {
         super.clear();
         setLocation(null);
