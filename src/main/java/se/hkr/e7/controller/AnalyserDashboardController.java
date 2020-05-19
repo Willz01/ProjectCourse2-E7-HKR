@@ -3,20 +3,18 @@ package se.hkr.e7.controller;
 import javafx.fxml.FXML;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Result;
 
-import java.sql.Date;
 import java.util.List;
 
 public class AnalyserDashboardController extends Controller {
 
-    public LineChart<Date, Integer> lineChart;
+    public LineChart<String, String> lineChart;
     public CategoryAxis xAxis;
-    public NumberAxis yAxis;
+    public CategoryAxis yAxis;
 
     @FXML
     public void initialize() {
@@ -28,21 +26,18 @@ public class AnalyserDashboardController extends Controller {
 
 
 // Create a data series
-        XYChart.Series series = new XYChart.Series<Date, Integer>();
+        XYChart.Series<String, String> series = new XYChart.Series<>();
         series.setName("Results");
 
         lineChart.setTitle("Line chart");
-        xAxis.setLabel("xAxis");
-        yAxis.setLabel("yAxis");
+        xAxis.setLabel("Date");
+        yAxis.setLabel("Cases");
 
-        series.setName("Random numbers");
+        series.setName("All test");
 
         for (Object item : list) {
             Object[] row = (Object[]) item;
-            System.out.println(row[1] + "  " + row[0]);
-
-            series.getData().add(new XYChart.Data<>(row[1], row[0]));
-
+            series.getData().add(new XYChart.Data<>(row[1].toString(), row[0].toString()));
         }
 
         lineChart.getData().add(series);
