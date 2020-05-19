@@ -49,27 +49,38 @@ public class AddPatientController extends Controller {
         if (name.getText().isBlank()) {
             nameLabel.setText("Field can't be empty");
         }
+
         if (address.getText().isBlank()) {
             addressLabel.setText("Field can't be empty");
         }
+
         if (password.getText().isBlank()) {
             passwordLabel.setText("Field can't be empty");
         }
-        if (email.getText().isBlank()) {
-            emailLabel.setText("Field can't be empty");
-        }
-        if (phone.getText().isBlank()) {
-            phoneLabel.setText("Field can't be empty");
-        }
-
         if (!Person.isValidPassword(password.getText())) {
             showError("Enter a valid password. The password should be at least 8 characters in length and have an " +
                     "uppercase and a lowercase letter as well as a number.");
             return;
         }
 
-        if (!ssnTextField.getText().isBlank() && !password.getText().isBlank() && !name.getText().isBlank()
-                && !email.getText().isBlank() && !phone.getText().isBlank() && !address.getText().isBlank()) {
+        if (email.getText().isBlank()) {
+            emailLabel.setText("Field can't be empty");
+        }
+        if (!Person.isValidEmail(email.getText())) {
+            showError("Email is not valid");
+            return;
+        }
+
+        if (phone.getText().isBlank()) {
+            phoneLabel.setText("Field can't be empty");
+        }
+        if (!Person.isValidPhone(phone.getText())) {
+            showError("Phone number not valid");
+            return;
+        }
+
+        if (Person.isValidSsn(ssnTextField.getText()) && Person.isValidPassword(password.getText()) && !name.getText().isBlank()
+                && Person.isValidEmail(email.getText()) && Person.isValidPhone(phone.getText()) && !address.getText().isBlank()) {
             try {
                 DatabaseHandler.save(new Patient(ssnTextField.getText(), password.getText(),
                         name.getText(), email.getText(), phone.getText(), address.getText()));

@@ -20,10 +20,10 @@ public class RemoveAccountController extends Controller {
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/RemoveAccount.fxml");
-        removeButton.setOnAction(this::remove);
+        removeButton.setOnAction(this::removeAccount);
     }
 
-    public void remove(ActionEvent actionEvent) {
+    public void removeAccount(ActionEvent actionEvent) {
         try {
             if (!Person.isValidSsn(ssnField.getText())) {
                 showError("Enter a valid SSN");
@@ -32,9 +32,14 @@ public class RemoveAccountController extends Controller {
 
             Employee employee = DatabaseHandler.load(Employee.class, ssnField.getText());
             Patient patient = DatabaseHandler.load(Patient.class, ssnField.getText());
-
             if (employee == null && patient == null) {
                 showError("Entered SSN doesn't exist in the system.");
+                return;
+            }
+
+            Employee currentUser = (Employee) Singleton.getInstance().getCurrentUser();
+            if (employee != null && currentUser.getSsn().equals(employee.getSsn())) {
+                showError("You can't delete your own account.");
                 return;
             }
 
@@ -56,6 +61,5 @@ public class RemoveAccountController extends Controller {
         } catch (Exception exception) {
             showError("The account could not be deleted.");
         }
-
     }
 }

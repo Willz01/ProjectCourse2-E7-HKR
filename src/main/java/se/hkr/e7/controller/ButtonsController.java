@@ -33,7 +33,6 @@ public class ButtonsController extends Controller {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         });
     }
 }
