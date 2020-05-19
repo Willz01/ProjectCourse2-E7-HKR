@@ -15,6 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.time.temporal.TemporalAdjuster;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -85,8 +86,9 @@ public class DatabaseHandler {
 
     /**
      * Insert some default data into the system.
+     * @param resultAmount The amount of results that should be automatically generated
      */
-    public static void reset() {
+    public static void reset(int resultAmount) {
         save(new Employee("9701010000", "oE0mxbdxhCpqvI", "Wills", "wills@example.com",
                 "073656656", "Home", Location.STOCKHOLM, Employee.Role.ADMIN, 123.12));
 
@@ -110,13 +112,27 @@ public class DatabaseHandler {
                 "07332233", "oneStreet 32");
         save(patient2);
 
+        generateResults(resultAmount, new Employee[]{employee1, employee2}, new Patient[]{patient1, patient2});
+    }
 
-        long now = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
-        for (int i = 0; i < 20; i++) {
-            LocalDateTime date = LocalDateTime.ofEpochSecond(ThreadLocalRandom.current().nextLong(0, now),
-                    0, ZoneOffset.UTC);
+    /**
+     * This method generates Results with random status, a default note, and a randomly selected employee and patient.
+     *
+     * @param amount The amount of results to generate
+     * @param employees An array of employees from which one will be selected per result
+     * @param patients An array of patients from which one will be selected per result
+     */
+    public static void generateResults(int amount, Employee[] employees, Patient[] patients) {
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+        LocalDateTime now = LocalDateTime.now();
+        long latest = now.toEpochSecond(ZoneOffset.UTC);
+        long earliest = now.minusDays(30).toEpochSecond(ZoneOffset.UTC);
+
+        for (int i = 0; i < amount; i++) {
+            LocalDateTime localDateTime = LocalDateTime.ofEpochSecond(
+                    random.nextLong(earliest, latest), 0, ZoneOffset.UTC);
             Result.Status status;
-            switch (ThreadLocalRandom.current().nextInt(3)) {
+            switch (random.nextInt(3)) {
                 case 0:
                     status = Result.Status.POSITIVE;
                     break;
@@ -129,10 +145,12 @@ public class DatabaseHandler {
             }
 
             Result result = new Result(
-                    ThreadLocalRandom.current().nextBoolean() ? patient1 : patient2,
-                    ThreadLocalRandom.current().nextBoolean() ? employee1 : employee2, date, status
+                    patients[random.nextInt(0, patients.length)],
+                    employees[random.nextInt(0, employees.length)],
+                    localDateTime,
+                    status
             );
-            result.setNote("Test note");
+            result.setNote("Lorem ipsum");
             DatabaseHandler.save(result);
         }
     }
