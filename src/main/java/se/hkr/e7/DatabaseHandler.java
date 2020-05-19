@@ -137,11 +137,11 @@ public class DatabaseHandler {
         }
     }
 
-    public static List query(String q){
+    public static List query(String query){
 
-        String hql = q;
-        Query query = session.createQuery(hql,Object[].class);
-        List results = query.getResultList();
+
+        Query sessionQuery = session.createQuery(query,Object[].class);
+        List results = sessionQuery.getResultList();
         return results;
     }
 }
