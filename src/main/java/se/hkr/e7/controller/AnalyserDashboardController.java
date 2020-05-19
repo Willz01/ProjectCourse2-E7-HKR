@@ -31,14 +31,14 @@ public class AnalyserDashboardController extends Controller {
         XYChart.Series<String, String> seriesPending = new XYChart.Series<>();
 
         seriesPositive.setName("Positive Results");
-        seriesNegative.setName("Negative  Results");
-        seriesPending.setName("Negative  Pending");
+        seriesNegative.setName("Negative Results");
+        seriesPending.setName("Pending Results");
 
         lineChart.setTitle("Results chart");
         xAxis.setLabel("Date");
         yAxis.setLabel("Cases");
 
-//          adding the negative result.
+        //          adding the negative result.
         for (Object line : negative) {
             Object[] row = (Object[]) line;
             seriesNegative.getData().add(new XYChart.Data<>(row[1].toString(), row[0].toString()));
@@ -49,10 +49,10 @@ public class AnalyserDashboardController extends Controller {
             Object[] row = (Object[]) line;
             seriesPositive.getData().add(new XYChart.Data<>(row[1].toString(), row[0].toString()));
         }
-//        adding the pending result.
+        //        adding the pending result.
         for (Object line : pending) {
             Object[] row = (Object[]) line;
-            seriesNegative.getData().add(new XYChart.Data<>(row[1].toString(), row[0].toString()));
+            seriesPending.getData().add(new XYChart.Data<>(row[1].toString(), row[0].toString()));
         }
 
         lineChart.getData().add(seriesPositive);
