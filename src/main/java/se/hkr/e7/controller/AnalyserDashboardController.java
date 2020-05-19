@@ -6,7 +6,6 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Singleton;
-import se.hkr.e7.model.Result;
 
 import java.util.List;
 
@@ -21,24 +20,34 @@ public class AnalyserDashboardController extends Controller {
         Singleton.getInstance().addSceneHistory("view/AnalyserDashboard.fxml");
 
 
-        List list = DatabaseHandler.query("SELECT COUNT(R.id), DATE(R.dateTime) AS date_only FROM Result R GROUP BY date_only");
+        List positive = DatabaseHandler.query("SELECT COUNT(R.id), DATE(R.dateTime) AS date_only FROM Result R where R.status='0' GROUP BY date_only");
+        List negative = DatabaseHandler.query("SELECT COUNT(R.id), DATE(R.dateTime) AS date_only FROM Result R where R.status='1' GROUP BY date_only");
 
 
 // Create a data series
-        XYChart.Series<String, String> series = new XYChart.Series<>();
-        series.setName("Results");
+        XYChart.Series<String, String> seriesPositive = new XYChart.Series<>();
+        XYChart.Series<String, String> seriesNegative = new XYChart.Series<>();
 
-        lineChart.setTitle("Line chart");
+        seriesPositive.setName("Positive Results");
+        seriesNegative.setName("Negative  Results");
+
+        lineChart.setTitle("Results chart");
         xAxis.setLabel("Date");
         yAxis.setLabel("Cases");
 
-        series.setName("All test");
-
-        for (Object line : list) {
+//          adding the negative result.
+        for (Object line : negative) {
             Object[] row = (Object[]) line;
-            series.getData().add(new XYChart.Data<>(row[1].toString(), row[0].toString()));
+            seriesNegative.getData().add(new XYChart.Data<>(row[1].toString(), row[0].toString()));
         }
 
-        lineChart.getData().add(series);
+        //          adding the positive result.
+        for (Object line : positive) {
+            Object[] row = (Object[]) line;
+            seriesPositive.getData().add(new XYChart.Data<>(row[1].toString(), row[0].toString()));
+        }
+
+        lineChart.getData().add(seriesPositive);
+        lineChart.getData().add(seriesNegative);
     }
 }
