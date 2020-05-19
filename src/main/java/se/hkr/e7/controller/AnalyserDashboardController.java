@@ -20,7 +20,6 @@ public class AnalyserDashboardController extends Controller {
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/AnalyserDashboard.fxml");
 
-        List<Result> results = DatabaseHandler.loadAll(Result.class);
 
         List list = DatabaseHandler.query("SELECT COUNT(R.id), DATE(R.dateTime) AS date_only FROM Result R GROUP BY date_only");
 
@@ -35,8 +34,8 @@ public class AnalyserDashboardController extends Controller {
 
         series.setName("All test");
 
-        for (Object item : list) {
-            Object[] row = (Object[]) item;
+        for (Object line : list) {
+            Object[] row = (Object[]) line;
             series.getData().add(new XYChart.Data<>(row[1].toString(), row[0].toString()));
         }
 
