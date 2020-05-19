@@ -49,7 +49,7 @@ public class AnalyserDashboardController extends Controller {
             Object[] row = (Object[]) line;
             seriesPositive.getData().add(new XYChart.Data<>(row[1].toString(), row[0].toString()));
         }
-//        adding the negative result.
+//        adding the pending result.
         for (Object line : pending) {
             Object[] row = (Object[]) line;
             seriesNegative.getData().add(new XYChart.Data<>(row[1].toString(), row[0].toString()));
