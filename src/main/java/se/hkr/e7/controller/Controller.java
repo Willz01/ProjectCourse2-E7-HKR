@@ -26,6 +26,7 @@ public abstract class Controller {
             Stage stage = (Stage) currScene.getWindow();
             URL resource = getClass().getClassLoader().getResource(name);
             Parent root = FXMLLoader.load(resource);
+            stage.setResizable(false);
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
