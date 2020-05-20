@@ -6,6 +6,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
 import se.hkr.e7.model.*;
 
@@ -14,7 +15,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.time.temporal.TemporalAdjuster;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -85,6 +85,7 @@ public class DatabaseHandler {
 
     /**
      * Insert some default data into the system.
+     *
      * @param resultAmount The amount of results that should be automatically generated
      */
     public static void reset(int resultAmount) {
@@ -117,9 +118,9 @@ public class DatabaseHandler {
     /**
      * This method generates Results with random status, a default note, and a randomly selected employee and patient.
      *
-     * @param amount The amount of results to generate
+     * @param amount    The amount of results to generate
      * @param employees An array of employees from which one will be selected per result
-     * @param patients An array of patients from which one will be selected per result
+     * @param patients  An array of patients from which one will be selected per result
      */
     public static void generateResults(int amount, Employee[] employees, Patient[] patients) {
         ThreadLocalRandom random = ThreadLocalRandom.current();
@@ -152,5 +153,9 @@ public class DatabaseHandler {
             result.setNote("Lorem ipsum");
             DatabaseHandler.save(result);
         }
+    }
+
+    public static List<Object[]> query(String query) {
+        return session.createQuery(query, Object[].class).getResultList();
     }
 }
