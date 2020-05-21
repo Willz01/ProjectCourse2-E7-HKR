@@ -33,13 +33,6 @@ public class AddPatientDoctorController extends Controller {
     }
 
     private void addPatient(ActionEvent actionEvent) {
-        nameLabel.setText("");
-        ssnLabel.setText("");
-        passwordLabel.setText("");
-        emailLabel.setText("");
-        phoneLabel.setText("");
-        addressLabel.setText("");
-
         if (Person.isValidSsn(ssn.getText())) {
             ssnLabel.setText("");
         } else {
@@ -85,7 +78,13 @@ public class AddPatientDoctorController extends Controller {
 
                 DatabaseHandler.save(new Patient(ssn.getText(), password.getText(), name.getText(), email.getText(),
                         phone.getText(), address.getText()));
-                showConfirmation("", "Saved");
+                showConfirmation("Success", "The patient was added.");
+                ssn.setText("");
+                password.setText("");
+                name.setText("");
+                email.setText("");
+                phone.setText("");
+                address.setText("");
             } catch (Exception exception) {
                 showError("Couldn't save ", "This SSN is already in the System ");
 

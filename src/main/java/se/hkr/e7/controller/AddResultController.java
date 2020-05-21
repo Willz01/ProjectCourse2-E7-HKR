@@ -82,6 +82,9 @@ public class AddResultController extends Controller {
             Result result = new Result(patient, currentUser, date.atStartOfDay(), status);
             DatabaseHandler.save(result);
             showConfirmation("Saved", "Thank you");
+            ssnTextField.setText("");
+            datePicker.setValue(null);
+            resultRadioButton.setSelected(false);
         } catch (Exception e) {
             showError("Something went wrong");
         }

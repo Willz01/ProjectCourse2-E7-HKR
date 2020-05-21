@@ -33,12 +33,6 @@ public class AddPatientController extends Controller {
     }
 
     private void addPatient(ActionEvent actionEvent) {
-        nameLabel.setText("");
-        ssnLabel.setText("");
-        passwordLabel.setText("");
-        emailLabel.setText("");
-        phoneLabel.setText("");
-        addressLabel.setText("");
 
         if (Person.isValidSsn(ssnTextField.getText())) {
             ssnLabel.setText("");
@@ -82,11 +76,19 @@ public class AddPatientController extends Controller {
         if (Person.isValidSsn(ssnTextField.getText()) && Person.isValidPassword(password.getText()) && !name.getText().isBlank()
                 && Person.isValidEmail(email.getText()) && Person.isValidPhone(phone.getText()) && !address.getText().isBlank()) {
             try {
-                DatabaseHandler.save(new Patient(ssnTextField.getText(), password.getText(),
-                        name.getText(), email.getText(), phone.getText(), address.getText()));
+
+                DatabaseHandler.save(new Patient(ssnTextField.getText(), password.getText(), name.getText(), email.getText(),
+                        phone.getText(), address.getText()));
                 showConfirmation("Success", "The patient was added.");
+                ssnTextField.setText("");
+                password.setText("");
+                name.setText("");
+                email.setText("");
+                phone.setText("");
+                address.setText("");
             } catch (Exception exception) {
-                showError("Couldn't save", "There was an error adding the patient.");
+                showError("Couldn't save ", "This SSN is already in the System ");
+
             }
         }
     }

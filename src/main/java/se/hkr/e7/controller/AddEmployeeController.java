@@ -95,6 +95,16 @@ public class AddEmployeeController extends Controller {
                     Double.parseDouble(salaryTextField.getText())
             ));
             showConfirmation("Finished successfully!", "The account has been created.");
+            ssnTextField.setText("");
+            passwordTextField.setText("");
+            nameTextField.setText("");
+            emailTextField.setText("");
+            salaryTextField.setText("");
+            phoneTextField.setText("");
+            phoneTextField.setText("");
+            addressTextField.setText("");
+            locationChoiceBox.setValue(null);
+            roleChoiceBox.setValue(null);
         } catch (IllegalArgumentException e) {
             showError(e.getMessage());
         }catch (HibernateException e){
