@@ -3,13 +3,18 @@ package se.hkr.e7.controller;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Mail;
@@ -19,7 +24,9 @@ import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Person;
 
 import javax.mail.MessagingException;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -31,6 +38,8 @@ public class LoginController extends Controller {
     public PasswordField passwordField;
     public CheckBox passwordCheckBox;
     public Label passwordResetLabel;
+    public Button helpButton;
+    public Button backButton;
 
     @FXML
     public void initialize() {
@@ -49,6 +58,24 @@ public class LoginController extends Controller {
         passwordField.managedProperty().bind(passwordCheckBox.selectedProperty().not());
         passwordField.visibleProperty().bind(passwordCheckBox.selectedProperty().not());
         passwordTextField.textProperty().bindBidirectional(passwordField.textProperty());
+        backButton.setOnAction(actionEvent -> {
+            loadScene(Singleton.getInstance().getPreviousScene(), actionEvent);
+        });
+        helpButton.setOnAction(actionEvent -> {
+            Stage stage = new Stage();
+            URL resource = getClass().getClassLoader().getResource("view/HelpMenu.fxml");
+            try {
+                Parent root = FXMLLoader.load(resource);
+                Scene scene = new Scene(root);
+                stage.setTitle("Help Menu");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void login(ActionEvent actionEvent) {
