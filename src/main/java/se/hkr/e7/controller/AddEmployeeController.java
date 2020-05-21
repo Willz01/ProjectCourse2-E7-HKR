@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import org.hibernate.HibernateException;
 import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Employee;
@@ -96,6 +97,8 @@ public class AddEmployeeController extends Controller {
             showConfirmation("Finished successfully!", "The account has been created.");
         } catch (IllegalArgumentException e) {
             showError(e.getMessage());
+        }catch (HibernateException e){
+            showError("Account already exists");
         }
     }
 }
