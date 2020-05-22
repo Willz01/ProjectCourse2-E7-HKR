@@ -6,7 +6,7 @@
 <?import java.net.URL?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.ViewStaffController">
     <TableView fx:id="staffTableView" layoutX="14.0" layoutY="49.0" prefHeight="292.0" prefWidth="560.0" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="49.0" />
-    <fx:include source="../template/buttons.fxml" />
+    <fx:include source="../template/LogoutButton.fxml" />
     <stylesheets>
         <URL value="@../view/Style.css"/>
     </stylesheets>

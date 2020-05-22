@@ -17,7 +17,7 @@
             <Font size="18.0" />
         </font>
     </Label>
-    <fx:include source="../template/buttons.fxml" />
+    <fx:include source="../template/LogoutButton.fxml" />
     <TextField fx:id="ssnTextField" layoutX="78.0" layoutY="87.0" prefHeight="25.0" prefWidth="175.0" promptText="SSN" />
     <TextField fx:id="name" layoutX="356.0" layoutY="82.0" prefHeight="25.0" prefWidth="175.0" promptText="Name" />
     <PasswordField fx:id="password" layoutX="79.0" layoutY="155.0" prefHeight="27.0" prefWidth="175.0" promptText="password" />

@@ -38,8 +38,7 @@
     <ImageView fitHeight="57.0" fitWidth="62.0" layoutX="99.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/password.png" />
     </ImageView>
-   <Button fx:id="helpButton" layoutX="44.0" layoutY="339.0" mnemonicParsing="false" text="Help" />
-   <Button fx:id="backButton" layoutX="500.0" layoutY="340.0" mnemonicParsing="false" text="Back" />
+    <fx:include source="../template/buttons.fxml"/>
     <stylesheets>
         <URL value="@../view/Style.css" />
     </stylesheets>

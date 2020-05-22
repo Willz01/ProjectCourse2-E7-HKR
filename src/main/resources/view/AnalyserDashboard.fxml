@@ -14,5 +14,5 @@
        <CategoryAxis fx:id="yAxis" side="LEFT" />
      </yAxis>
    </LineChart>
-    <fx:include source="../template/buttons.fxml" />
+    <fx:include source="../template/LogoutButton.fxml" />
 </AnchorPane>

@@ -58,24 +58,6 @@ public class LoginController extends Controller {
         passwordField.managedProperty().bind(passwordCheckBox.selectedProperty().not());
         passwordField.visibleProperty().bind(passwordCheckBox.selectedProperty().not());
         passwordTextField.textProperty().bindBidirectional(passwordField.textProperty());
-        backButton.setOnAction(actionEvent -> {
-            loadScene(Singleton.getInstance().getPreviousScene(), actionEvent);
-        });
-        helpButton.setOnAction(actionEvent -> {
-            Stage stage = new Stage();
-            URL resource = getClass().getClassLoader().getResource("view/HelpMenu.fxml");
-            try {
-                Parent root = FXMLLoader.load(resource);
-                Scene scene = new Scene(root);
-                stage.setTitle("Help Menu");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setResizable(false);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
     }
 
     private void login(ActionEvent actionEvent) {

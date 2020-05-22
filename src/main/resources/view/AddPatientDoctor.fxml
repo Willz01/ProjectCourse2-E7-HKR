@@ -28,7 +28,7 @@
          <Font size="18.0" />
        </font>
     </Label>
-    <fx:include source="../template/buttons.fxml" />
+    <fx:include source="../template/LogoutButton.fxml" />
     <ImageView fitHeight="45.0" fitWidth="50.0" layoutX="52.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/ssn.png" />
     </ImageView>
