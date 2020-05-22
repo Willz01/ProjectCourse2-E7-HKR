@@ -23,7 +23,7 @@ public class ViewResultsController extends Controller {
         List<Result> results = DatabaseHandler.loadAll(Result.class);
 
         for (Map.Entry<String, String> entry : Map.ofEntries(
-                new AbstractMap.SimpleEntry<>("dateTime", "Date"),
+                new AbstractMap.SimpleEntry<>("dateFormat", "Date"),
                 new AbstractMap.SimpleEntry<>("status", "Status"),
                 new AbstractMap.SimpleEntry<>("patientName", "Patient"),
                 new AbstractMap.SimpleEntry<>("note", "Note")

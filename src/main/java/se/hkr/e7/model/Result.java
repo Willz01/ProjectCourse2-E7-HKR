@@ -4,6 +4,8 @@ import se.hkr.e7.DatabaseHandler;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 
 @Entity
@@ -35,6 +37,12 @@ public class Result implements Serializable {
     @Transient
     public String getPatientName() {
         return patient.getName();
+    }
+
+    @Transient
+    public String getDateFormat() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
+        return simpleDateFormat.format(Timestamp.valueOf(dateTime));
     }
 
     @Id
