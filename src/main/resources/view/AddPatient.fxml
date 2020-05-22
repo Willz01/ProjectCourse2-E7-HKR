@@ -18,45 +18,45 @@
         </font>
     </Label>
     <fx:include source="../template/LogoutButton.fxml" />
-    <TextField fx:id="ssnTextField" layoutX="78.0" layoutY="87.0" prefHeight="25.0" prefWidth="175.0" promptText="SSN" />
-    <TextField fx:id="name" layoutX="356.0" layoutY="82.0" prefHeight="25.0" prefWidth="175.0" promptText="Name" />
-    <PasswordField fx:id="password" layoutX="79.0" layoutY="155.0" prefHeight="27.0" prefWidth="175.0" promptText="password" />
-    <TextField fx:id="address" layoutX="357.0" layoutY="150.0" prefHeight="25.0" prefWidth="175.0" promptText="Address" />
-    <TextField fx:id="phone" layoutX="80.0" layoutY="227.0" prefHeight="25.0" prefWidth="175.0" promptText="Phone" />
-    <TextField fx:id="email" layoutX="358.0" layoutY="226.0" prefHeight="25.0" prefWidth="175.0" promptText="email" />
+    <TextField fx:id="ssnTextField" layoutX="105.0" layoutY="87.0" prefHeight="25.0" prefWidth="175.0" promptText="SSN" />
+    <TextField fx:id="name" layoutX="383.0" layoutY="82.0" prefHeight="25.0" prefWidth="175.0" promptText="Name" />
+    <PasswordField fx:id="password" layoutX="106.0" layoutY="155.0" prefHeight="27.0" prefWidth="175.0" promptText="password" />
+    <TextField fx:id="address" layoutX="384.0" layoutY="150.0" prefHeight="25.0" prefWidth="175.0" promptText="Address" />
+    <TextField fx:id="phone" layoutX="107.0" layoutY="227.0" prefHeight="25.0" prefWidth="175.0" promptText="Phone" />
+    <TextField fx:id="email" layoutX="385.0" layoutY="226.0" prefHeight="25.0" prefWidth="175.0" promptText="email" />
 
-    <Label fx:id="ssnLabel" layoutX="89.0" layoutY="114.0" prefHeight="19.0" prefWidth="154.0" />
-    <Label fx:id="addressLabel" layoutX="368.0" layoutY="177.0" prefHeight="19.0" prefWidth="154.0" />
-    <Label fx:id="emailLabel" layoutX="369.0" layoutY="253.0" prefHeight="19.0" prefWidth="154.0" />
-    <Label fx:id="nameLabel" layoutX="367.0" layoutY="109.0" prefHeight="19.0" prefWidth="154.0" />
-    <Label fx:id="passwordLabel" layoutX="90.0" layoutY="182.0" prefHeight="19.0" prefWidth="154.0" />
-    <Label fx:id="phoneLabel" layoutX="91.0" layoutY="254.0" prefHeight="19.0" prefWidth="154.0" />
-   <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="290.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+    <Label fx:id="ssnLabel" layoutX="116.0" layoutY="114.0" prefHeight="19.0" prefWidth="154.0" />
+    <Label fx:id="addressLabel" layoutX="395.0" layoutY="177.0" prefHeight="19.0" prefWidth="154.0" />
+    <Label fx:id="emailLabel" layoutX="396.0" layoutY="253.0" prefHeight="19.0" prefWidth="154.0" />
+    <Label fx:id="nameLabel" layoutX="394.0" layoutY="109.0" prefHeight="19.0" prefWidth="154.0" />
+    <Label fx:id="passwordLabel" layoutX="117.0" layoutY="182.0" prefHeight="19.0" prefWidth="154.0" />
+    <Label fx:id="phoneLabel" layoutX="118.0" layoutY="254.0" prefHeight="19.0" prefWidth="154.0" />
+   <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="317.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@images/user.png" />
       </image>
    </ImageView>
-   <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="14.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="41.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@images/password.png" />
       </image>
    </ImageView>
-   <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="14.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="41.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@images/phone.png" />
       </image>
    </ImageView>
-   <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="14.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="41.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@images/ssn.png" />
       </image>
    </ImageView>
-   <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="290.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="317.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@images/address.png" />
       </image>
    </ImageView>
-   <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="290.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="317.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@images/email.png" />
       </image>
