@@ -33,6 +33,13 @@ public class AddPatientDoctorController extends Controller {
     }
 
     private void addPatient(ActionEvent actionEvent) {
+        nameLabel.setText("");
+        ssnLabel.setText("");
+        passwordLabel.setText("");
+        emailLabel.setText("");
+        phoneLabel.setText("");
+        addressLabel.setText("");
+
         if (Person.isValidSsn(ssn.getText())) {
             ssnLabel.setText("");
         } else {
