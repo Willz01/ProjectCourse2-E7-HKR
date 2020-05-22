@@ -101,7 +101,6 @@ public class AddEmployeeController extends Controller {
             emailTextField.setText("");
             salaryTextField.setText("");
             phoneTextField.setText("");
-            phoneTextField.setText("");
             addressTextField.setText("");
             locationChoiceBox.setValue(null);
             roleChoiceBox.setValue(null);

@@ -93,7 +93,7 @@ public class AddPatientController extends Controller {
                 phone.setText("");
                 address.setText("");
             } catch (Exception exception) {
-                showError("Couldn't save ", "This SSN is already in the System ");
+                showError("Couldn't save ", "There was an error adding the patient.");
 
             }
         }

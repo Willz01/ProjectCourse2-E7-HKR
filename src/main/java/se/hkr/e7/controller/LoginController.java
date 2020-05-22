@@ -38,8 +38,6 @@ public class LoginController extends Controller {
     public PasswordField passwordField;
     public CheckBox passwordCheckBox;
     public Label passwordResetLabel;
-    public Button helpButton;
-    public Button backButton;
 
     @FXML
     public void initialize() {
