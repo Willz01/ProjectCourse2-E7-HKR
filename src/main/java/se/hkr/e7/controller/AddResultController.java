@@ -11,6 +11,7 @@ import se.hkr.e7.model.Person;
 import se.hkr.e7.model.Result;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class AddResultController extends Controller {
 
@@ -18,11 +19,13 @@ public class AddResultController extends Controller {
     public DatePicker datePicker;
     public Button saveButton;
     public ToggleGroup resultToggleGroup;
+    public TextArea resultNote;
 
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/AddResult.fxml");
         saveButton.setOnAction(this::addResult);
+        datePicker.setValue(LocalDate.now());
     }
 
     public void addResult(ActionEvent event) {
@@ -78,13 +81,21 @@ public class AddResultController extends Controller {
                     return;
                 }
             }
+            LocalDateTime localDateTime;
+            if (date.equals(LocalDate.now())) {
+                localDateTime = LocalDateTime.now();
+            } else{
+                localDateTime = date.atStartOfDay();
+            }
 
-            Result result = new Result(patient, currentUser, date.atStartOfDay(), status);
+            Result result = new Result(patient, currentUser, localDateTime, status);
+            result.setNote(resultNote.getText());
             DatabaseHandler.save(result);
             showConfirmation("Saved", "Thank you");
             ssnTextField.setText("");
             datePicker.setValue(null);
             resultRadioButton.setSelected(false);
+            resultNote.setText("");
         } catch (Exception e) {
             showError("Something went wrong");
         }
