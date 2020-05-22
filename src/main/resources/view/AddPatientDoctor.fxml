@@ -15,6 +15,7 @@
     <TextField fx:id="name" layoutX="373.0" layoutY="125.0" prefHeight="25.0" prefWidth="175.0" promptText="Name" />
     <TextField fx:id="email" layoutX="109.0" layoutY="186.0" prefHeight="25.0" prefWidth="175.0" promptText="email" />
     <TextField fx:id="phone" layoutX="373.0" layoutY="186.0" prefHeight="25.0" prefWidth="175.0" promptText="Phone" />
+    <PasswordField layoutX="109.0" layoutY="240.0" prefHeight="29.0" prefWidth="175.0" promptText="Password" />
     <TextField fx:id="address" layoutX="373.0" layoutY="240.0" prefHeight="25.0" prefWidth="175.0" promptText="Address" />
     <Button fx:id="addButton" layoutX="388.0" layoutY="351.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Add" />
     <Label fx:id="ssnLabel" layoutX="109.0" layoutY="153.0" prefHeight="17.0" prefWidth="175.0" />
@@ -47,7 +48,6 @@
     <ImageView fitHeight="45.0" fitWidth="50.0" layoutX="320.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/phone.png" />
     </ImageView>
-   <PasswordField layoutX="109.0" layoutY="240.0" prefHeight="29.0" prefWidth="175.0" promptText="Password" />
     <stylesheets>
         <URL value="@Style.css" />
     </stylesheets>
