@@ -29,7 +29,7 @@
         </font>
     </Label>
     <Button fx:id="addButton" layoutX="387.0" layoutY="350.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="63.0" text="Add" />
-    <fx:include source="../template/buttons.fxml" />
+    <fx:include source="../template/LogoutButton.fxml" />
     <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="45.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/ssn.png" />
     </ImageView>

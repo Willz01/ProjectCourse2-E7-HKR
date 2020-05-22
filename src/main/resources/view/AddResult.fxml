@@ -33,7 +33,7 @@
     </FlowPane>
     <Button fx:id="saveButton" layoutX="266.0" layoutY="265.0" mnemonicParsing="false" prefHeight="27.0"
             prefWidth="86.0" text="Save"/>
-    <fx:include source="../template/buttons.fxml"/>
+    <fx:include source="../template/LogoutButton.fxml"/>
 
     <ImageView fitHeight="45.0" fitWidth="51.0" layoutX="29.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/ssn.png"/>

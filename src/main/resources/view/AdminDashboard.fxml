@@ -34,7 +34,7 @@
 
     <Label layoutX="232.0" layoutY="250.0" prefHeight="19.0" prefWidth="139.0" text="Search for Staff/ Patient"
            textAlignment="CENTER"/>
-    <fx:include source="../template/buttons.fxml"/>
+    <fx:include source="../template/LogoutButton.fxml"/>
     <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="55.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/add-account.png"/>
     </ImageView>

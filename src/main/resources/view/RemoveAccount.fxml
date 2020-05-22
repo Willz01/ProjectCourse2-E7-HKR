@@ -12,7 +12,7 @@
          <Font size="22.0" />
       </font></TextField>
     <Button fx:id="removeButton" layoutX="274.0" layoutY="234.0" mnemonicParsing="false" text="Remove" />
-    <fx:include source="../template/buttons.fxml" />
+    <fx:include source="../template/LogoutButton.fxml" />
     <stylesheets>
         <URL value="@../view/Style.css" />
     </stylesheets>

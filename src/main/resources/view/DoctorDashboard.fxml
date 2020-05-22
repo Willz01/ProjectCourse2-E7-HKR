@@ -12,7 +12,7 @@
     <Button fx:id="addPatientButton" layoutX="349.0" layoutY="138.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="Add patient" />
     <Button fx:id="addResultButton" layoutX="110.0" layoutY="253.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="Add result" />
     <Button fx:id="viewResultsButton" layoutX="349.0" layoutY="253.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="View results" />
-    <fx:include source="../template/buttons.fxml" />
+    <fx:include source="../template/LogoutButton.fxml" />
     <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="148.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/view-patients.png"/>
     </ImageView>

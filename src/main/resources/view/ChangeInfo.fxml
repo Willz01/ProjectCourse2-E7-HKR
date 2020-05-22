@@ -12,7 +12,7 @@
     <TextField fx:id="addressTextField" layoutX="378.0" layoutY="167.0" promptText="Address"/>
     <PasswordField fx:id="passwordTextField" layoutX="127.0" layoutY="241.0" promptText="Password"/>
     <Button fx:id="saveButton" layoutX="402.0" layoutY="351.0" mnemonicParsing="false" text="Save"/>
-    <fx:include source="../template/buttons.fxml"/>
+    <fx:include source="../template/LogoutButton.fxml"/>
     <Label fx:id="nameLabel" layoutX="127.0" layoutY="128.0" prefHeight="17.0" prefWidth="149.0" textFill="#b23f3f"/>
     <Label fx:id="emailLabel" layoutX="127.0" layoutY="192.0" prefHeight="17.0" prefWidth="149.0" textFill="#b23f3f"/>
     <Label fx:id="phoneLabel" layoutX="378.0" layoutY="120.0" prefHeight="17.0" prefWidth="149.0" textFill="#b23f3f"/>

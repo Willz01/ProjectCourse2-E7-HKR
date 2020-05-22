@@ -55,7 +55,6 @@ public class RemoveAccountController extends Controller {
                     patient.clear();
                     DatabaseHandler.save(patient);
                 }
-            } finally {
                 showConfirmation("Account Deleted", "Done");
             }
         } catch (Exception exception) {

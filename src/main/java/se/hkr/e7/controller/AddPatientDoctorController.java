@@ -85,9 +85,15 @@ public class AddPatientDoctorController extends Controller {
 
                 DatabaseHandler.save(new Patient(ssn.getText(), password.getText(), name.getText(), email.getText(),
                         phone.getText(), address.getText()));
-                showConfirmation("", "Saved");
+                showConfirmation("Success", "The patient was added.");
+                ssn.setText("");
+                password.setText("");
+                name.setText("");
+                email.setText("");
+                phone.setText("");
+                address.setText("");
             } catch (Exception exception) {
-                showError("Couldn't save ", "This SSN is already in the System ");
+                showError("Couldn't save ", "There was an error adding the patient");
 
             }
         }

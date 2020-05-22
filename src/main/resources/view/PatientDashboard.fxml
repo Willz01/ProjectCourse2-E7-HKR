@@ -10,7 +10,7 @@
             text="update my info"/>
     <TextArea fx:id="resultTextArea" editable="false" layoutX="11.0" layoutY="52.0" prefHeight="291.0"
               prefWidth="579.0"/>
-    <fx:include source="../template/buttons.fxml"/>
+    <fx:include source="../template/LogoutButton.fxml.fxml"/>
     <stylesheets>
         <URL value="@Style.css"/>
     </stylesheets>
