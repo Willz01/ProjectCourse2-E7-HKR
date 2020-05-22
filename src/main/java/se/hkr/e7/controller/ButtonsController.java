@@ -11,6 +11,7 @@ import se.hkr.e7.Singleton;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.NoSuchElementException;
 
 public class ButtonsController extends Controller {
     public Button backButton;
@@ -18,7 +19,13 @@ public class ButtonsController extends Controller {
 
     @FXML
     public void initialize() {
-        backButton.setOnAction(actionEvent -> loadScene(Singleton.getInstance().getPreviousScene(), actionEvent));
+        backButton.setOnAction(actionEvent -> {
+            try {
+                loadScene(Singleton.getInstance().getPreviousScene(), actionEvent);
+            } catch (NoSuchElementException e) {
+                loadScene("view/Welcome.fxml", actionEvent);
+            }
+        });
         helpButton.setOnMouseClicked(mouseEvent -> {
             Stage stage = new Stage();
             URL resource = getClass().getClassLoader().getResource("view/HelpMenu.fxml");

@@ -11,6 +11,7 @@ public class LogoutController extends Controller {
     @FXML
     public void initialize() {
         logoutButton.setOnAction(actionEvent -> {
+            Singleton.getInstance().clear();
             loadScene("view/Login.fxml", actionEvent);
         });
     }

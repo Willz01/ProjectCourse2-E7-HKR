@@ -29,6 +29,7 @@ public class Singleton {
         this.currentUser = null;
         this.employee = null;
         this.patient = null;
+        sceneHistory.clear();
     }
 
     public void addSceneHistory(String path) {
