@@ -15,7 +15,7 @@ public class PatientDashboardController extends Controller {
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/PatientDashboard.fxml");
-        edit.setOnAction(actionEvent -> loadScene("view/ChangeInfo.fxml", actionEvent));
+        edit.setOnAction(actionEvent -> loadScene("view/ChangeInfo.fxml"));
         try {
             Patient currentUser = (Patient) Singleton.getInstance().getCurrentUser();
             StringBuilder stringBuilder = new StringBuilder();

@@ -16,15 +16,15 @@ import java.util.Optional;
 
 public abstract class Controller {
 
-    public void loadScene(String name, ActionEvent actionEvent) {
-        loadScene(name, (Node) actionEvent.getSource());
+    private static Stage stage;
+
+    public static void setStage(Stage stage) {
+        Controller.stage = stage;
     }
 
-    public void loadScene(String name, Node node) {
+    public void loadScene(String path) {
         try {
-            Scene currScene = node.getScene();
-            Stage stage = (Stage) currScene.getWindow();
-            URL resource = getClass().getClassLoader().getResource(name);
+            URL resource = getClass().getClassLoader().getResource(path);
             Parent root = FXMLLoader.load(resource);
             stage.setResizable(false);
             Scene scene = new Scene(root);
@@ -32,8 +32,8 @@ public abstract class Controller {
             stage.show();
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
-            if (!name.equals("view/Welcome.fxml")) {
-                loadScene("view/Welcome.fxml", node);
+            if (!path.equals("view/Welcome.fxml")) {
+                loadScene("view/Welcome.fxml");
             } else {
                 new Alert(Alert.AlertType.ERROR, "There was an error loading the default scene.", ButtonType.CLOSE)
                         .showAndWait();
