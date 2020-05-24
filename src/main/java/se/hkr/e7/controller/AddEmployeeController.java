@@ -30,7 +30,6 @@ public class AddEmployeeController extends Controller {
         Singleton.getInstance().addSceneHistory("view/AddEmployee.fxml");
         locationChoiceBox.getItems().setAll(Location.values());
         roleChoiceBox.getItems().setAll(Employee.Role.values());
-
         addButton.setOnAction(this::addAccount);
     }
 
@@ -83,17 +82,38 @@ public class AddEmployeeController extends Controller {
         }
 
         try {
-            DatabaseHandler.save(new Employee(
-                    ssnTextField.getText(),
-                    passwordTextField.getText(),
-                    nameTextField.getText(),
-                    emailTextField.getText(),
-                    phoneTextField.getText(),
-                    addressTextField.getText(),
-                    locationChoiceBox.getValue(),
-                    roleChoiceBox.getValue(),
-                    Double.parseDouble(salaryTextField.getText())
-            ));
+            Employee employee = Employee.load(ssnTextField.getText());
+
+            if (employee != null && employee.isEnabled()) {
+                showError("The account already exists.");
+                return;
+            }
+
+            if (employee == null) {
+                DatabaseHandler.save(new Employee(
+                        ssnTextField.getText(),
+                        passwordTextField.getText(),
+                        nameTextField.getText(),
+                        emailTextField.getText(),
+                        phoneTextField.getText(),
+                        addressTextField.getText(),
+                        locationChoiceBox.getValue(),
+                        roleChoiceBox.getValue(),
+                        Double.parseDouble(salaryTextField.getText())
+                ));
+            } else {
+                employee.setName(nameTextField.getText());
+                employee.updatePassword(passwordTextField.getText());
+                employee.setEmail(emailTextField.getText());
+                employee.setPhone(phoneTextField.getText());
+                employee.setAddress(addressTextField.getText());
+                employee.setRole(roleChoiceBox.getValue());
+                employee.setLocation(locationChoiceBox.getValue());
+                employee.setSalary(Double.parseDouble(salaryTextField.getText()));
+                employee.setEnabled(true);
+                DatabaseHandler.save(employee);
+            }
+
             showConfirmation("Finished successfully!", "The account has been created.");
             ssnTextField.setText("");
             passwordTextField.setText("");
@@ -106,8 +126,8 @@ public class AddEmployeeController extends Controller {
             roleChoiceBox.setValue(null);
         } catch (IllegalArgumentException e) {
             showError(e.getMessage());
-        }catch (HibernateException e){
-            showError("Account already exists");
+        } catch (HibernateException e) {
+            showError("There was an error saving the account.");
         }
     }
 }
