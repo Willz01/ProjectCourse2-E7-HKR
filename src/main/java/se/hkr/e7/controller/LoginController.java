@@ -70,19 +70,19 @@ public class LoginController extends Controller {
             Singleton.getInstance().setCurrentUser(employee);
             switch (employee.getRole()) {
                 case ADMIN:
-                    loadScene("view/AdminDashboard.fxml", node);
+                    loadScene("view/AdminDashboard.fxml");
                     break;
                 case ANALYSER:
-                    loadScene("view/AnalyserDashboard.fxml", node);
+                    loadScene("view/AnalyserDashboard.fxml");
                     break;
                 case DOCTOR:
-                    loadScene("view/DoctorDashboard.fxml", node);
+                    loadScene("view/DoctorDashboard.fxml");
                     break;
             }
         } else if (patient != null && patient.isEnabled() && patient.checkPassword(passwordTextField.getText())) {
             Singleton.getInstance().setCurrentUser(patient);
             Singleton.getInstance().setPatient(patient);
-            loadScene("view/PatientDashboard.fxml", node);
+            loadScene("view/PatientDashboard.fxml");
         } else {
             showError("Login unsuccessful", "Please check username and password.");
         }

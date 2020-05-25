@@ -3,7 +3,6 @@ package se.hkr.e7.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Singleton;
@@ -14,17 +13,11 @@ public class AddPatientController extends Controller {
 
     public Button addButton;
     public TextField ssnTextField;
-    public TextField name;
-    public TextField password;
-    public TextField address;
-    public TextField email;
-    public TextField phone;
-    public Label ssnLabel;
-    public Label nameLabel;
-    public Label passwordLabel;
-    public Label addressLabel;
-    public Label emailLabel;
-    public Label phoneLabel;
+    public TextField nameTextField;
+    public TextField passwordTextField;
+    public TextField addressTextField;
+    public TextField emailTextField;
+    public TextField phoneTextField;
 
     @FXML
     public void initialize() {
@@ -33,69 +26,73 @@ public class AddPatientController extends Controller {
     }
 
     private void addPatient(ActionEvent actionEvent) {
-        nameLabel.setText("");
-        ssnLabel.setText("");
-        passwordLabel.setText("");
-        emailLabel.setText("");
-        phoneLabel.setText("");
-        addressLabel.setText("");
-
-        if (Person.isValidSsn(ssnTextField.getText())) {
-            ssnLabel.setText("");
-        } else {
-            ssnLabel.setText("Input format YYMMDDXXXX");
+        if (!Person.isValidSsn(ssnTextField.getText())) {
+            showError("The SSN is no valid");
+            return;
         }
 
-        if (name.getText().isBlank()) {
-            nameLabel.setText("Field can't be empty");
+        if (nameTextField.getText().isBlank()) {
+            showError("Enter a name");
+            return;
         }
 
-        if (address.getText().isBlank()) {
-            addressLabel.setText("Field can't be empty");
+        if (addressTextField.getText().isBlank()) {
+            showError("Enter an address");
+            return;
         }
 
-        if (password.getText().isBlank()) {
-            passwordLabel.setText("Field can't be empty");
-        }
-        if (!Person.isValidPassword(password.getText())) {
+        if (!Person.isValidPassword(passwordTextField.getText())) {
             showError("Enter a valid password. The password should be at least 8 characters in length and have an " +
                     "uppercase and a lowercase letter as well as a number.");
             return;
         }
 
-        if (email.getText().isBlank()) {
-            emailLabel.setText("Field can't be empty");
-        }
-        if (!Person.isValidEmail(email.getText())) {
-            showError("Email is not valid");
+        if (!Person.isValidEmail(emailTextField.getText())) {
+            showError("Enter a valid email");
             return;
         }
 
-        if (phone.getText().isBlank()) {
-            phoneLabel.setText("Field can't be empty");
-        }
-        if (!Person.isValidPhone(phone.getText())) {
-            showError("Phone number not valid");
+        if (!Person.isValidPhone(phoneTextField.getText())) {
+            showError("Enter a valid phone number");
             return;
         }
 
-        if (Person.isValidSsn(ssnTextField.getText()) && Person.isValidPassword(password.getText()) && !name.getText().isBlank()
-                && Person.isValidEmail(email.getText()) && Person.isValidPhone(phone.getText()) && !address.getText().isBlank()) {
-            try {
+        try {
+            Patient patient = Patient.load(ssnTextField.getText());
 
-                DatabaseHandler.save(new Patient(ssnTextField.getText(), password.getText(), name.getText(), email.getText(),
-                        phone.getText(), address.getText()));
-                showConfirmation("Success", "The patient was added.");
-                ssnTextField.setText("");
-                password.setText("");
-                name.setText("");
-                email.setText("");
-                phone.setText("");
-                address.setText("");
-            } catch (Exception exception) {
-                showError("Couldn't save ", "There was an error adding the patient.");
-
+            if (patient != null && patient.isEnabled()) {
+                showError("The account already exists.");
+                return;
             }
+
+            if (patient == null) {
+                DatabaseHandler.save(new Patient(
+                        ssnTextField.getText(),
+                        passwordTextField.getText(),
+                        nameTextField.getText(),
+                        emailTextField.getText(),
+                        phoneTextField.getText(),
+                        addressTextField.getText()
+                ));
+            } else {
+                patient.setName(nameTextField.getText());
+                patient.updatePassword(passwordTextField.getText());
+                patient.setEmail(emailTextField.getText());
+                patient.setPhone(phoneTextField.getText());
+                patient.setAddress(addressTextField.getText());
+                patient.setEnabled(true);
+                DatabaseHandler.save(patient);
+            }
+
+            showConfirmation("Success", "The patient was added.");
+            ssnTextField.setText("");
+            passwordTextField.setText("");
+            nameTextField.setText("");
+            emailTextField.setText("");
+            phoneTextField.setText("");
+            addressTextField.setText("");
+        } catch (Exception exception) {
+            showError("Couldn't save ", "There was an error adding the patient.");
         }
     }
 }

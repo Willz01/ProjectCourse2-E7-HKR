@@ -8,6 +8,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Employee;
+import se.hkr.e7.model.Person;
 
 import java.util.AbstractMap;
 import java.util.List;
@@ -23,8 +24,8 @@ public class ViewStaffController extends Controller {
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/ViewStaff.fxml");
-        List<Employee> employees = DatabaseHandler.loadAll(Employee.class);
-
+        List<Employee> employees = DatabaseHandler.loadAll(Employee.class).stream()
+                .filter(Person::isEnabled).collect(Collectors.toList());
         for (Map.Entry<String, String> entry : Map.ofEntries(
                 new AbstractMap.SimpleEntry<>("ssn", "SSN"),
                 new AbstractMap.SimpleEntry<>("name", "Name"),

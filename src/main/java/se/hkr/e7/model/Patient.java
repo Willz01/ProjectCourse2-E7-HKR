@@ -20,15 +20,18 @@ public class Patient extends Person {
         this.testResults = new ArrayList<>();
     }
 
+    public static Patient load(String ssn) {
+        return load(Patient.class, ssn);
+    }
+
     public void addTestResult(Result result) {
         this.testResults.add(result);
     }
 
     @OneToMany(
-            cascade = CascadeType.ALL,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
             fetch = FetchType.LAZY,
-            mappedBy = "patient",
-            orphanRemoval = true
+            mappedBy = "patient"
     )
     public List<Result> getTestResults() {
         return testResults;

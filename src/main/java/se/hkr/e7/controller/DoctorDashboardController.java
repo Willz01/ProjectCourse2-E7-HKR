@@ -15,10 +15,10 @@ public class DoctorDashboardController extends Controller {
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/DoctorDashboard.fxml");
-        viewPatientButton.setOnAction(actionEvent -> loadScene("view/ViewPatientsDoctor.fxml", actionEvent));
-        addResultButton.setOnAction(actionEvent -> loadScene("view/AddResult.fxml", actionEvent));
-        viewResultsButton.setOnAction(actionEvent -> loadScene("view/ViewResultsDoctor.fxml", actionEvent));
-        addPatientButton.setOnAction(actionEvent -> loadScene("view/AddPatientDoctor.fxml", actionEvent));
-        edit.setOnAction(actionEvent -> loadScene("view/ChangeInfo.fxml", actionEvent));
+        viewPatientButton.setOnAction(actionEvent -> loadScene("view/ViewPatientsDoctor.fxml"));
+        addResultButton.setOnAction(actionEvent -> loadScene("view/AddResult.fxml"));
+        viewResultsButton.setOnAction(actionEvent -> loadScene("view/ViewResults.fxml"));
+        addPatientButton.setOnAction(actionEvent -> loadScene("view/AddPatient.fxml"));
+        edit.setOnAction(actionEvent -> loadScene("view/ChangeInfo.fxml"));
     }
 }
