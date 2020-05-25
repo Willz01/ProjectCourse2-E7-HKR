@@ -42,11 +42,13 @@ public class ViewSingleResultController extends Controller {
         dateText.setText(result.getDateFormat());
         statusText.setText(result.getStatus().toString());
         noteText.setText(result.getNote());
+        patientNameText.setText(result.getPatientName());
 
         Employee examiner = result.getExaminer();
         doctorNameText.setText(examiner.getName());
         doctorEmailText.setText(examiner.getEmail());
         doctorPhoneText.setText(examiner.getPhone());
+
     }
 
     private void addResult(ActionEvent actionEvent) {
