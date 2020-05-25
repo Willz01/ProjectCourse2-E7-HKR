@@ -76,7 +76,7 @@ public class AddResultController extends Controller {
 
             if (patient == null) {
                 if (showChoice("Couldn't find patient", "Do you want to add new patient")) {
-                    loadScene("view/AddPatientDoctor.fxml");
+                    loadScene("view/AddPatient.fxml");
                 } else {
                     return;
                 }

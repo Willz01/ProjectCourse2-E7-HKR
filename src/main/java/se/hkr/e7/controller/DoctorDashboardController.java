@@ -18,7 +18,7 @@ public class DoctorDashboardController extends Controller {
         viewPatientButton.setOnAction(actionEvent -> loadScene("view/ViewPatientsDoctor.fxml"));
         addResultButton.setOnAction(actionEvent -> loadScene("view/AddResult.fxml"));
         viewResultsButton.setOnAction(actionEvent -> loadScene("view/ViewResults.fxml"));
-        addPatientButton.setOnAction(actionEvent -> loadScene("view/AddPatientDoctor.fxml"));
+        addPatientButton.setOnAction(actionEvent -> loadScene("view/AddPatient.fxml"));
         edit.setOnAction(actionEvent -> loadScene("view/ChangeInfo.fxml"));
     }
 }
