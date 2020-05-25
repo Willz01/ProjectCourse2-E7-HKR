@@ -24,12 +24,12 @@ public class AdminDashboardController extends Controller {
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/AdminDashboard.fxml");
-        addEmployeeButton.setOnAction(actionEvent -> loadScene("view/AddEmployee.fxml", actionEvent));
-        addPatientButton.setOnAction(actionEvent -> loadScene("view/AddPatient.fxml", actionEvent));
-        viewResultsButton.setOnAction(actionEvent -> loadScene("view/ViewResults.fxml", actionEvent));
-        viewPatientButton.setOnAction(actionEvent -> loadScene("view/ViewPatients.fxml", actionEvent));
-        viewStaffButton.setOnAction(actionEvent -> loadScene("view/ViewStaff.fxml", actionEvent));
-        removeAccountButton.setOnAction(actionEvent -> loadScene("view/RemoveAccount.fxml", actionEvent));
+        addEmployeeButton.setOnAction(actionEvent -> loadScene("view/AddEmployee.fxml"));
+        addPatientButton.setOnAction(actionEvent -> loadScene("view/AddPatient.fxml"));
+        viewResultsButton.setOnAction(actionEvent -> loadScene("view/ViewResults.fxml"));
+        viewPatientButton.setOnAction(actionEvent -> loadScene("view/ViewPatients.fxml"));
+        viewStaffButton.setOnAction(actionEvent -> loadScene("view/ViewStaff.fxml"));
+        removeAccountButton.setOnAction(actionEvent -> loadScene("view/RemoveAccount.fxml"));
     }
 
     public void search(ActionEvent actionEvent) {
@@ -51,7 +51,7 @@ public class AdminDashboardController extends Controller {
                 singleton.setEmployee(null);
             }
 
-            loadScene("view/Search.fxml", actionEvent);
+            loadScene("view/Search.fxml");
         } else {
             showError("SSN must be valid 10 digits as YYMMDDXXXX.");
         }

@@ -40,9 +40,19 @@ public class Result implements Serializable {
     }
 
     @Transient
+    public String getExaminerName() {
+        return examiner.getName();
+    }
+
+    @Transient
     public String getDateFormat() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
         return simpleDateFormat.format(Timestamp.valueOf(dateTime));
+    }
+
+    public void updateStatus(Status status) {
+        this.status = status;
+        this.dateTime = LocalDateTime.now();
     }
 
     @Id
@@ -93,7 +103,7 @@ public class Result implements Serializable {
         return status;
     }
 
-    public void setStatus(Status status) {
+    private void setStatus(Status status) {
         this.status = status;
     }
 

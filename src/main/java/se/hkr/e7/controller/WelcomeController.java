@@ -12,6 +12,6 @@ public class WelcomeController extends Controller {
     public void initialize() {
         Singleton.getInstance().clear();
         Singleton.getInstance().addSceneHistory("view/Welcome.fxml");
-        loginButton.setOnAction(actionEvent -> loadScene("view/Login.fxml", actionEvent));
+        loginButton.setOnAction(actionEvent -> loadScene("view/Login.fxml"));
     }
 }

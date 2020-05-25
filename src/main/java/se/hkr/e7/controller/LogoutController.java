@@ -12,7 +12,7 @@ public class LogoutController extends Controller {
     public void initialize() {
         logoutButton.setOnAction(actionEvent -> {
             Singleton.getInstance().clear();
-            loadScene("view/Login.fxml", actionEvent);
+            loadScene("view/Login.fxml");
         });
     }
 }
