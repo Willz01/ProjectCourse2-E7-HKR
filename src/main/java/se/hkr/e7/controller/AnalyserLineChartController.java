@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnalyserDashboardController extends Controller {
+public class AnalyserLineChartController extends Controller {
 
     public LineChart<String, Number> lineChart;
     public CategoryAxis xAxis;

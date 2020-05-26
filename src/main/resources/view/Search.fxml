@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import java.net.URL?>
+
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.SearchController">
     <TextArea fx:id="text" editable="false" layoutX="12.0" layoutY="23.0" prefHeight="316.0" prefWidth="575.0" text="not found " />
-    <fx:include source="../template/LogoutButton.fxml"/>
+    <fx:include source="../template/LogoutButton.fxml" />
+   <Button fx:id="editBtn" layoutX="332.0" layoutY="352.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="85.0" text="Update Info" />
     <stylesheets>
-        <URL value="@../view/Style.css"/>
+        <URL value="@../view/Style.css" />
     </stylesheets>
 </AnchorPane>

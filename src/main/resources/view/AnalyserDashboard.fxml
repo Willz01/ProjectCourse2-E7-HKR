@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.AnalyserDashboardController">
-   <ButtonBar prefHeight="40.0" prefWidth="200.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
-      <buttons>
-         <ToggleButton fx:id="positiveButton" mnemonicParsing="false" selected="true" text="Positive" />
-         <ToggleButton fx:id="negativeButton" mnemonicParsing="false" text="Negative" />
-         <ToggleButton fx:id="pendingButton" mnemonicParsing="false" text="Pending" />
-      </buttons>
-   </ButtonBar>
-   <LineChart fx:id="lineChart" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="60.0">
-     <xAxis>
-       <CategoryAxis label="Date" side="BOTTOM" fx:id="xAxis" />
-     </xAxis>
-     <yAxis>
-       <NumberAxis label="Cases" side="LEFT" />
-     </yAxis>
-   </LineChart>
-    <fx:include source="../template/LogoutButton.fxml" />
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/10.0.2-internal" fx:controller="se.hkr.e7.controller.AnalyserDashboard">
+   <fx:include source="../template/LogoutButton.fxml"/>
+   <Button fx:id="lineChart" layoutX="89.0" layoutY="190.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="131.0"
+           text="Show LineChart"/>
+   <Button fx:id="edit" layoutX="449.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0"
+           text="update my info"/>
+   <Label layoutX="220.0" layoutY="35.0" prefHeight="60.0" prefWidth="161.0" text="Analyser Login">
+      <font>
+         <Font name="Bodoni MT" size="24.0"/>
+      </font>
+   </Label>
+   <Button fx:id="viewResultsButton" layoutX="380.0" layoutY="190.0" mnemonicParsing="false" prefHeight="54.0"
+           prefWidth="131.0" text="ViewResults"/>
+   <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="415.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@images/test-result.png"/>
+      </image>
+   </ImageView>
+   <ImageView fitHeight="62.0" fitWidth="76.0" layoutX="124.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@images/graph-logo.png"/>
+      </image>
+   </ImageView>
+   <stylesheets>
+      <URL value="@../view/Style.css"/>
+   </stylesheets>
 </AnchorPane>

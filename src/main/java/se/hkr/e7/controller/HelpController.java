@@ -33,7 +33,7 @@ public class HelpController extends Controller {
             case "view/AddResult.fxml":
                 helpHeading.setText("Add Result");
                 break;
-            case "view/AnalyserDashboard.fxml":
+            case "view/AnalyserLineChart.fxml":
                 helpHeading.setText("Analyser Dashboard");
                 break;
             case "view/ChangeInfo.fxml":

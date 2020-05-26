@@ -1,16 +1,21 @@
 package se.hkr.e7.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Patient;
+import se.hkr.e7.model.Person;
 
 public class SearchController extends Controller {
     public TextArea text;
+    public Button editBtn;
 
     @FXML
     public void initialize() {
+
         Singleton.getInstance().addSceneHistory("view/Search.fxml");
         StringBuilder stringBuilder = new StringBuilder();
         if (Singleton.getInstance().getPatient() != null) {
@@ -29,6 +34,9 @@ public class SearchController extends Controller {
                     .append(patient.getAddress()).append(System.lineSeparator())
                     .append(patient.getTestResults() != null ? "     || Note : " + patient.getTestResults() : "")
                     .append(System.lineSeparator()).append(System.lineSeparator()).append(System.lineSeparator());
+            Person person = DatabaseHandler.load(Person.class,patient.getSsn());
+            Singleton.getInstance().setTempPerson(person);
+
         }
         try {
             if (Singleton.getInstance().getEmployee() != null) {
@@ -53,9 +61,13 @@ public class SearchController extends Controller {
                         .append(" Salary : ")
                         .append(employee.getSalary()).append(System.lineSeparator())
                         .append(System.lineSeparator()).append(System.lineSeparator()).append(System.lineSeparator());
+                Person person = DatabaseHandler.load(Person.class,employee.getSsn());
+                Singleton.getInstance().setTempPerson(person);
+
             }
         } finally {
             text.setText(String.valueOf(stringBuilder));
         }
+        editBtn.setOnAction(actionEvent -> loadScene("view/ChangeInfo2.fxml"));
     }
 }
