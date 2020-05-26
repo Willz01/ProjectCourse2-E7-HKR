@@ -21,11 +21,12 @@ public class ButtonsController extends Controller {
     public void initialize() {
         backButton.setOnAction(actionEvent -> {
             try {
-                loadScene(Singleton.getInstance().getPreviousScene(), actionEvent);
+                loadScene(Singleton.getInstance().getPreviousScene());
             } catch (NoSuchElementException e) {
-                loadScene("view/Welcome.fxml", actionEvent);
+                loadScene("view/Welcome.fxml");
             }
         });
+
         helpButton.setOnMouseClicked(mouseEvent -> {
             Stage stage = new Stage();
             URL resource = getClass().getClassLoader().getResource("view/HelpMenu.fxml");

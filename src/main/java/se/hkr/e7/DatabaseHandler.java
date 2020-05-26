@@ -88,6 +88,7 @@ public class DatabaseHandler {
      * @param resultAmount The amount of results that should be automatically generated
      */
     public static void reset(int resultAmount) {
+        createDefaultAdmin();
         save(new Employee("9701010000", "oE0mxbdxhCpqvI", "Wills", "wills@example.com",
                 "073656656", "Home", Location.STOCKHOLM, Employee.Role.ADMIN, 123.12));
 
