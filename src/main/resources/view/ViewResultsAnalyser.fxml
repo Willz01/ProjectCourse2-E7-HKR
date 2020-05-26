@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import java.net.URL?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.ViewResultsAnalyserController">
+    <TableView fx:id="resultsTableView" layoutX="20.0" layoutY="47.0" prefHeight="300.0" prefWidth="560.0" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="47.0" />
+    <fx:include source="../template/LogoutButton.fxml" />
+    <stylesheets>
+        <URL value="@../view/Style.css"/>
+    </stylesheets>
+</AnchorPane>

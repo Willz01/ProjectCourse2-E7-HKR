@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Singleton;
 
@@ -14,6 +15,7 @@ public class AnalyserDashboardController extends Controller {
     public LineChart<String, String> lineChart;
     public CategoryAxis xAxis;
     public CategoryAxis yAxis;
+    public Button showBtn;
 
     @FXML
     public void initialize() {
@@ -53,5 +55,6 @@ public class AnalyserDashboardController extends Controller {
         lineChart.getData().add(seriesPositive);
         lineChart.getData().add(seriesNegative);
         lineChart.getData().add(seriesPending);
+
     }
 }

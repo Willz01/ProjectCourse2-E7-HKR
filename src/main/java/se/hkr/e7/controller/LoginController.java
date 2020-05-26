@@ -73,7 +73,7 @@ public class LoginController extends Controller {
                     loadScene("view/AdminDashboard.fxml", node);
                     break;
                 case ANALYSER:
-                    loadScene("view/AnalyserDashboard.fxml", node);
+                    loadScene("view/AnalyserFirstScene.fxml", node);
                     break;
                 case DOCTOR:
                     loadScene("view/DoctorDashboard.fxml", node);
