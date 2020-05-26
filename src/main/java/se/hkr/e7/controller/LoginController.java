@@ -3,18 +3,13 @@ package se.hkr.e7.controller;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.util.Pair;
 import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Mail;
@@ -24,9 +19,7 @@ import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Person;
 
 import javax.mail.MessagingException;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -73,7 +66,7 @@ public class LoginController extends Controller {
                     loadScene("view/AdminDashboard.fxml", node);
                     break;
                 case ANALYSER:
-                    loadScene("view/AnalyserFirstScene.fxml", node);
+                    loadScene("view/AnalyserDashboard.fxml", node);
                     break;
                 case DOCTOR:
                     loadScene("view/DoctorDashboard.fxml", node);

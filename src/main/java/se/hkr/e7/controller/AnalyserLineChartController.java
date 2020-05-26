@@ -10,7 +10,7 @@ import se.hkr.e7.Singleton;
 
 import java.util.List;
 
-public class AnalyserDashboardController extends Controller {
+public class AnalyserLineChartController extends Controller {
 
     public LineChart<String, String> lineChart;
     public CategoryAxis xAxis;
@@ -19,7 +19,7 @@ public class AnalyserDashboardController extends Controller {
 
     @FXML
     public void initialize() {
-        Singleton.getInstance().addSceneHistory("view/AnalyserDashboard.fxml");
+        Singleton.getInstance().addSceneHistory("view/AnalyserLineChart.fxml");
 
         List<Object[]> positive = DatabaseHandler.query("SELECT COUNT(R.id), DATE(R.dateTime) AS date_only FROM Result R where R.status='0' GROUP BY date_only");
         List<Object[]> negative = DatabaseHandler.query("SELECT COUNT(R.id), DATE(R.dateTime) AS date_only FROM Result R where R.status='1' GROUP BY date_only");

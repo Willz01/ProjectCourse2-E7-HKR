@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/10.0.2-internal"
+            fx:controller="se.hkr.e7.controller.AnalyserLineChartController">
+    <LineChart fx:id="lineChart" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="20.0"
+               AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+        <xAxis>
+            <CategoryAxis side="BOTTOM" fx:id="xAxis"/>
+        </xAxis>
+        <yAxis>
+            <CategoryAxis fx:id="yAxis" side="LEFT"/>
+        </yAxis>
+    </LineChart>
+    <fx:include source="../template/LogoutButton.fxml"/>
+</AnchorPane>
