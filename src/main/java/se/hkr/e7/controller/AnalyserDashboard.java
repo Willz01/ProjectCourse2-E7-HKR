@@ -13,9 +13,9 @@ public class AnalyserDashboard extends Controller {
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/AnalyserDashboard.fxml");
-        edit.setOnAction(actionEvent -> loadScene("view/ChangeInfo.fxml", actionEvent));
-        viewResultsButton.setOnAction(actionEvent -> loadScene("view/ViewResultsAnalyser.fxml", actionEvent));
-        lineChart.setOnAction(actionEvent -> loadScene("view/AnalyserLineChart.fxml", actionEvent));
+        edit.setOnAction(actionEvent -> loadScene("view/ChangeInfo.fxml"));
+        viewResultsButton.setOnAction(actionEvent -> loadScene("view/ViewResultsAnalyser.fxml"));
+        lineChart.setOnAction(actionEvent -> loadScene("view/AnalyserLineChart.fxml"));
 
     }
 
