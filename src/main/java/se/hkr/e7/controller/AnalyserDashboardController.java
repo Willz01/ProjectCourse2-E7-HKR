@@ -1,9 +1,10 @@
 package se.hkr.e7.controller;
 
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.chart.*;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.ToggleButton;
 import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Singleton;
@@ -44,7 +45,7 @@ public class AnalyserDashboardController extends Controller {
 
         if (negativeButton.isSelected()) {
             addSeries(DatabaseHandler.query("SELECT DATE(R.dateTime), COUNT(R.id) FROM Result R WHERE R.status='1' " +
-                    "AND DATE(R.dateTime) >= CURDATE() - 30 GROUP BY DATE(R.dateTime)"),"Negative results");
+                    "AND DATE(R.dateTime) >= CURDATE() - 30 GROUP BY DATE(R.dateTime)"), "Negative results");
         }
 
         if (pendingButton.isSelected()) {
