@@ -21,12 +21,22 @@ public class AnalyserDashboardController extends Controller {
     public ToggleButton positiveButton;
     public ToggleButton negativeButton;
     public ToggleButton pendingButton;
+    private List<Object[]> positiveResults;
+    private List<Object[]> negativeResults;
+    private List<Object[]> pendingResults;
 
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/AnalyserDashboard.fxml");
 
         lineChart.setTitle("Results chart");
+
+        positiveResults = DatabaseHandler.query("SELECT DATE(R.dateTime), COUNT(R.id) FROM Result R WHERE R.status='0' " +
+                "AND DATE(R.dateTime) >= CURDATE() - 30 GROUP BY DATE(R.dateTime)");
+        negativeResults = DatabaseHandler.query("SELECT DATE(R.dateTime), COUNT(R.id) FROM Result R WHERE R.status='1' " +
+                "AND DATE(R.dateTime) >= CURDATE() - 30 GROUP BY DATE(R.dateTime)");
+        pendingResults = DatabaseHandler.query("SELECT DATE(R.dateTime), COUNT(R.id) FROM Result R WHERE R.status='2' " +
+                "AND DATE(R.dateTime) >= CURDATE() - 30 GROUP BY DATE(R.dateTime)");
 
         ArrayList<String> dates = new ArrayList<>();
         for (int i = 30; i >= 0; i--) {
@@ -44,22 +54,19 @@ public class AnalyserDashboardController extends Controller {
         lineChart.getData().clear();
 
         if (negativeButton.isSelected()) {
-            addSeries(DatabaseHandler.query("SELECT DATE(R.dateTime), COUNT(R.id) FROM Result R WHERE R.status='1' " +
-                    "AND DATE(R.dateTime) >= CURDATE() - 30 GROUP BY DATE(R.dateTime)"), "Negative results");
+            lineChart.getData().add(generateSeries(negativeResults, "Negative results"));
         }
 
         if (pendingButton.isSelected()) {
-            addSeries(DatabaseHandler.query("SELECT DATE(R.dateTime), COUNT(R.id) FROM Result R WHERE R.status='2' " +
-                    "AND DATE(R.dateTime) >= CURDATE() - 30 GROUP BY DATE(R.dateTime)"), "Pending results");
+            lineChart.getData().add(generateSeries(pendingResults, "Pending results"));
         }
 
         if (positiveButton.isSelected()) {
-            addSeries(DatabaseHandler.query("SELECT DATE(R.dateTime), COUNT(R.id) FROM Result R WHERE R.status='0' " +
-                    "AND DATE(R.dateTime) >= CURDATE() - 30 GROUP BY DATE(R.dateTime)"), "Positive results");
+            lineChart.getData().add(generateSeries(positiveResults, "Positive results"));
         }
     }
 
-    private void addSeries(List<Object[]> rows, String seriesName) {
+    private XYChart.Series<String, Number> generateSeries(List<Object[]> rows, String seriesName) {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName(seriesName);
 
@@ -67,6 +74,6 @@ public class AnalyserDashboardController extends Controller {
             series.getData().add(new XYChart.Data<>(row[0].toString(), (Number) row[1]));
         }
 
-        lineChart.getData().add(series);
+        return series;
     }
 }
