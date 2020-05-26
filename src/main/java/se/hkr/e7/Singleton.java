@@ -14,6 +14,16 @@ public class Singleton {
     private Employee employee;
     private Patient patient;
 
+    public Person getTempPerson() {
+        return tempPerson;
+    }
+
+    public void setTempPerson(Person tempPerson) {
+        this.tempPerson = tempPerson;
+    }
+
+    private Person tempPerson;
+
     private Singleton() {
         sceneHistory = new LinkedList<>();
     }

@@ -11,30 +11,38 @@ import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Person;
 
-public class ChangeInfoController extends Controller {
-
-    public Button saveButton;
+public class ChangeInfoController2 extends Controller {
     public TextField nameTextField;
-    public TextField emailTextField;
     public TextField phoneTextField;
-    public TextField addressTextField;
+    public TextField emailTextField;
     public PasswordField passwordTextField;
+    public TextField addressTextField;
+    public Button saveButton;
     public Label nameLabel;
     public Label emailLabel;
     public Label phoneLabel;
     public Label addressLabel;
     public Label passwordLabel;
 
+
     @FXML
     public void initialize() {
         Singleton.getInstance().addSceneHistory("view/ChangeInfo2.fxml");
-        saveButton.setOnAction(this::save);
 
-        Person currentUser = Singleton.getInstance().getCurrentUser();
-        nameTextField.setText(currentUser.getName());
-        emailTextField.setText(currentUser.getEmail());
-        phoneTextField.setText(currentUser.getPhone());
-        addressTextField.setText(currentUser.getAddress());
+        try {
+            if (Singleton.getInstance().getTempPerson() != null) {
+                Employee employee = Singleton.getInstance().getEmployee();
+
+                nameTextField.setText(employee.getName());
+                phoneTextField.setText(employee.getPhone());
+                emailTextField.setText(employee.getEmail());
+                addressTextField.setText(employee.getAddress());
+
+            }
+        } catch (Exception ignore) {
+
+        }
+
     }
 
     public void save(ActionEvent event) {
@@ -77,7 +85,7 @@ public class ChangeInfoController extends Controller {
 
         if (!error) {
             try {
-                Person person = Singleton.getInstance().getCurrentUser();
+                Person person = Singleton.getInstance().getTempPerson();
 
                 if (!passwordTextField.getText().isBlank()) {
                     person.updatePassword(passwordTextField.getText());
@@ -101,4 +109,5 @@ public class ChangeInfoController extends Controller {
             showError("Please enter valid information");
         }
     }
+
 }
