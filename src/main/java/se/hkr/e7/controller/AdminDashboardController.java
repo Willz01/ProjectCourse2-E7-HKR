@@ -10,6 +10,8 @@ import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Person;
 
+import java.util.Date;
+
 public class AdminDashboardController extends Controller {
 
     public Button addPatientButton;
@@ -35,23 +37,14 @@ public class AdminDashboardController extends Controller {
 
     public void search(ActionEvent actionEvent) {
         if (Person.isValidSsn(searchText.getText())) {
-            Patient patient = DatabaseHandler.load(Patient.class, searchText.getText());
-            Employee employee = DatabaseHandler.load(Employee.class, searchText.getText());
+            Person person = DatabaseHandler.load(Person.class, searchText.getText());
 
-            if (patient == null && employee == null) {
+            if (person == null) {
                 showError("Entered SSN doesn't exist in the system.");
                 return;
             }
 
-            Singleton singleton = Singleton.getInstance();
-            if (patient == null) {
-                singleton.setEmployee(employee);
-                singleton.setPatient(null);
-            } else {
-                singleton.setPatient(patient);
-                singleton.setEmployee(null);
-            }
-
+            Singleton.getInstance().setPerson(person);
             loadScene("view/Search.fxml");
         } else {
             showError("SSN must be valid 10 digits as YYMMDDXXXX.");
