@@ -53,33 +53,48 @@ public class HelpController extends Controller {
                 break;
             case "view/AddEmployee.fxml":
                 helpHeading.setText("Add Employee");
+                helpContent.setText("Fill all required fields with the right data to an an employee account." +
+                        "On addition of wrong data type am error is showed depending on the error.");
                 break;
             case "view/AddPatient.fxml":
                 helpHeading.setText("Add Patient");
+                helpContent.setText("Fill all required fields with the right data to an an patient to the system." +
+                        "On addition of wrong data type am error is showed depending on the error.");
                 break;
             case "view/AddResult.fxml":
                 helpHeading.setText("Add Result");
+                helpContent.setText("Adds new result to the specified SSN.By default the date field is set to today's" +
+                        "date but can be changed to date earlier than that. Adding a note isn't mandatory  but other are required.");
                 break;
             case "view/AnalyserDashboard.fxml":
                 helpHeading.setText("Analyser Dashboard");
                 break;
             case "view/AnalyserLineChart.fxml":
                 helpHeading.setText("Analyser Line Chart");
+                helpContent.setText("The Line chart illustrates a graphical representation of the number of 'POSITIVE','NEGATIVE' " +
+                        "and 'PENDING' results added against their 'DATES'");
                 break;
             case "view/ChangeInfo.fxml":
                 helpHeading.setText("Update Info");
+                helpContent.setText("You can edit your current basic information here,just changed the fields that require can and save.");
                 break;
             case "view/RemoveAccount.fxml":
                 helpHeading.setText("Removing account");
+                helpContent.setText("Provide the SSN of the account to be deleted and click remove.");
                 break;
             case "view/ViewPatients.fxml":
                 helpHeading.setText("View patients");
+                helpContent.setText("Displays all patients saved in the system");
                 break;
             case "view/ViewResults.fxml":
                 helpHeading.setText("View results");
+                helpContent.setText("Displays all results saved in the system as well as their respective status and date added," +
+                        "you can view more info about a particular result by clicking on it column");
                 break;
             case "view/ViewStaff.fxml":
                 helpHeading.setText("View staffs");
+                helpContent.setText("Displays all staff saved in the system. A filter field exists in which the user can input a" +
+                        "text about the particular staff he/she is currently in search of.");
                 break;
             default:
                 helpHeading.setText("Help Menu");
