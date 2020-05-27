@@ -11,7 +11,7 @@ import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Person;
 
-public class ChangeInfoController2 extends Controller {
+public class EditAccountController extends Controller {
     public TextField nameTextField;
     public TextField phoneTextField;
     public TextField emailTextField;
@@ -24,25 +24,19 @@ public class ChangeInfoController2 extends Controller {
     public Label addressLabel;
     public Label passwordLabel;
 
-
     @FXML
     public void initialize() {
-        Singleton.getInstance().addSceneHistory("view/ChangeInfo2.fxml");
+        Singleton.getInstance().addSceneHistory("view/EditAccountController.fxml");
 
-        try {
-            if (Singleton.getInstance().getTempPerson() != null) {
-                Employee employee = Singleton.getInstance().getEmployee();
+        Person person = Singleton.getInstance().getPerson();
+        if (person != null) {
+            nameTextField.setText(person.getName());
+            phoneTextField.setText(person.getPhone());
+            emailTextField.setText(person.getEmail());
+            addressTextField.setText(person.getAddress());
 
-                nameTextField.setText(employee.getName());
-                phoneTextField.setText(employee.getPhone());
-                emailTextField.setText(employee.getEmail());
-                addressTextField.setText(employee.getAddress());
-
-            }
-        } catch (Exception ignore) {
-
+            saveButton.setOnAction(this::save);
         }
-
     }
 
     public void save(ActionEvent event) {
@@ -85,7 +79,7 @@ public class ChangeInfoController2 extends Controller {
 
         if (!error) {
             try {
-                Person person = Singleton.getInstance().getTempPerson();
+                Person person = Singleton.getInstance().getPerson();
 
                 if (!passwordTextField.getText().isBlank()) {
                     person.updatePassword(passwordTextField.getText());
@@ -102,7 +96,6 @@ public class ChangeInfoController2 extends Controller {
             } catch (IllegalArgumentException e) {
                 showError(e.getMessage());
             } catch (Exception e) {
-                e.printStackTrace();
                 showError("Something went wrong.");
             }
         } else {

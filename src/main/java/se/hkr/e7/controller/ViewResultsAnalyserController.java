@@ -12,7 +12,7 @@ import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
 
-public class ViewResultsAnalyserController extends Controller{
+public class ViewResultsAnalyserController extends Controller {
 
     public TableView<Result> resultsTableView;
 

@@ -27,7 +27,7 @@ public class ChangeInfoController extends Controller {
 
     @FXML
     public void initialize() {
-        Singleton.getInstance().addSceneHistory("view/ChangeInfo2.fxml");
+        Singleton.getInstance().addSceneHistory("view/ChangeInfo.fxml");
         saveButton.setOnAction(this::save);
 
         Person currentUser = Singleton.getInstance().getCurrentUser();

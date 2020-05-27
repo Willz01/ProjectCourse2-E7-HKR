@@ -74,7 +74,6 @@ public class LoginController extends Controller {
             }
         } else if (patient != null && patient.isEnabled() && patient.checkPassword(passwordTextField.getText())) {
             Singleton.getInstance().setCurrentUser(patient);
-            Singleton.getInstance().setPatient(patient);
             loadScene("view/PatientDashboard.fxml");
         } else {
             showError("Login unsuccessful", "Please check username and password.");

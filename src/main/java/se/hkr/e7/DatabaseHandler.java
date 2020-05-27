@@ -158,4 +158,11 @@ public class DatabaseHandler {
     public static List<Object[]> query(String query) {
         return session.createQuery(query, Object[].class).getResultList();
     }
+
+    public static List<Patient> getPatients(Employee employee) {
+        return session.createQuery("SELECT T FROM Patient T JOIN Person P ON T LIKE P JOIN Result R ON T " +
+                "LIKE R.patient JOIN Employee E ON E LIKE R.examiner WHERE E.ssn LIKE :ssn GROUP BY T", Patient.class)
+                .setParameter("ssn", employee.getSsn())
+                .getResultList();
+    }
 }

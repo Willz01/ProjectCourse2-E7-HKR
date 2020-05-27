@@ -1,7 +1,5 @@
 package se.hkr.e7;
 
-import se.hkr.e7.model.Employee;
-import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Person;
 import se.hkr.e7.model.Result;
 
@@ -12,19 +10,8 @@ public class Singleton {
 
     private final LinkedList<String> sceneHistory;
     private Person currentUser;
-    private Employee employee;
-    private Patient patient;
+    private Person person;
     private Result result;
-
-    public Person getTempPerson() {
-        return tempPerson;
-    }
-
-    public void setTempPerson(Person tempPerson) {
-        this.tempPerson = tempPerson;
-    }
-
-    private Person tempPerson;
 
     private Singleton() {
         sceneHistory = new LinkedList<>();
@@ -39,8 +26,6 @@ public class Singleton {
 
     public void clear() {
         this.currentUser = null;
-        this.employee = null;
-        this.patient = null;
         sceneHistory.clear();
     }
 
@@ -77,22 +62,6 @@ public class Singleton {
         this.currentUser = currentUser;
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
     public Result getResult() {
         return result;
     }
@@ -100,5 +69,12 @@ public class Singleton {
     public void setResult(Result result) {
         this.result = result;
     }
-}
 
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+}
