@@ -15,7 +15,6 @@ public class SearchController extends Controller {
 
     @FXML
     public void initialize() {
-
         Singleton.getInstance().addSceneHistory("view/Search.fxml");
         StringBuilder stringBuilder = new StringBuilder();
         if (Singleton.getInstance().getPatient() != null) {
@@ -35,7 +34,7 @@ public class SearchController extends Controller {
                     .append(patient.getTestResults() != null ? "     || Note : " + patient.getTestResults() : "")
                     .append(System.lineSeparator()).append(System.lineSeparator()).append(System.lineSeparator());
             Person person = DatabaseHandler.load(Person.class, patient.getSsn());
-            Singleton.getInstance().setTempPerson(person);
+            Singleton.getInstance().setPerson(person);
 
         }
         try {
@@ -62,12 +61,13 @@ public class SearchController extends Controller {
                         .append(employee.getSalary()).append(System.lineSeparator())
                         .append(System.lineSeparator()).append(System.lineSeparator()).append(System.lineSeparator());
                 Person person = DatabaseHandler.load(Person.class, employee.getSsn());
-                Singleton.getInstance().setTempPerson(person);
+                Singleton.getInstance().setPerson(person);
 
             }
         } finally {
             text.setText(String.valueOf(stringBuilder));
         }
+
         editBtn.setOnAction(actionEvent -> loadScene("view/EditAccountController.fxml"));
     }
 }

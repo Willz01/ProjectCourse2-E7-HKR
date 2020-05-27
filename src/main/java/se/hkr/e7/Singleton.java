@@ -15,7 +15,7 @@ public class Singleton {
     private Employee employee;
     private Patient patient;
     private Result result;
-    private Person tempPerson;
+    private Person person;
 
     private Singleton() {
         sceneHistory = new LinkedList<>();
@@ -92,11 +92,11 @@ public class Singleton {
         this.result = result;
     }
 
-    public Person getTempPerson() {
-        return tempPerson;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setTempPerson(Person tempPerson) {
-        this.tempPerson = tempPerson;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }

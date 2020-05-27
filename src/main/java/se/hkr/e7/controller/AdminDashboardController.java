@@ -30,6 +30,7 @@ public class AdminDashboardController extends Controller {
         viewPatientButton.setOnAction(actionEvent -> loadScene("view/ViewPatients.fxml"));
         viewStaffButton.setOnAction(actionEvent -> loadScene("view/ViewStaff.fxml"));
         removeAccountButton.setOnAction(actionEvent -> loadScene("view/RemoveAccount.fxml"));
+        searchButton.setOnAction(this::search);
     }
 
     public void search(ActionEvent actionEvent) {

@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.AdminDashboardController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.AdminDashboardController">
     <Button fx:id="addEmployeeButton" layoutX="14.0" layoutY="84.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="154.0" text="Add account" />
     <Button fx:id="addPatientButton" layoutX="223.0" layoutY="84.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="154.0" text="Add patient" />
     <Button fx:id="viewResultsButton" layoutX="416.0" layoutY="84.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="154.0" text="View results" />
     <Button fx:id="viewStaffButton" layoutX="14.0" layoutY="189.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="154.0" text="View staff" />
     <Button fx:id="viewPatientButton" layoutX="224.0" layoutY="189.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="154.0" text="View all patient" />
     <Button fx:id="removeAccountButton" layoutX="416.0" layoutY="189.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="154.0" text="Remove account" />
+
+    <Label layoutX="232.0" layoutY="250.0" prefHeight="19.0" prefWidth="139.0" text="Search for Staff/ Patient" textAlignment="CENTER" />
     <TextField fx:id="searchText" alignment="CENTER" layoutX="192.0" layoutY="278.0" prefHeight="39.0" prefWidth="216.0" promptText="YYMMDDXXXX">
         <font>
             <Font size="23.0" />
         </font>
     </TextField>
-    <Button fx:id="searchButton" layoutX="225.0" layoutY="333.0" mnemonicParsing="false" onAction="#search" prefHeight="37.0" prefWidth="154.0" text="Search" />
-
-    <Label layoutX="232.0" layoutY="250.0" prefHeight="19.0" prefWidth="139.0" text="Search for Staff/ Patient" textAlignment="CENTER" />
+    <Button fx:id="searchButton" layoutX="225.0" layoutY="333.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="154.0" text="Search" />
     <fx:include source="../template/LogoutButton.fxml" />
     <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="55.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/add-account.png" />
@@ -31,14 +34,14 @@
     <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="462.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/test-result.png" />
     </ImageView>
-    <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="462.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/remove.png" />
+    <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="55.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/view-staff.png" />
     </ImageView>
     <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="269.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/view-patients.png" />
     </ImageView>
-    <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="55.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/view-staff.png" />
+    <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="462.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/remove.png" />
     </ImageView>
     <stylesheets>
         <URL value="@../view/Style.css" />

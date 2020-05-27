@@ -29,7 +29,7 @@ public class EditAccountController extends Controller {
         Singleton.getInstance().addSceneHistory("view/EditAccountController.fxml");
 
         try {
-            if (Singleton.getInstance().getTempPerson() != null) {
+            if (Singleton.getInstance().getPerson() != null) {
                 Employee employee = Singleton.getInstance().getEmployee();
 
                 nameTextField.setText(employee.getName());
@@ -83,7 +83,7 @@ public class EditAccountController extends Controller {
 
         if (!error) {
             try {
-                Person person = Singleton.getInstance().getTempPerson();
+                Person person = Singleton.getInstance().getPerson();
 
                 if (!passwordTextField.getText().isBlank()) {
                     person.updatePassword(passwordTextField.getText());
