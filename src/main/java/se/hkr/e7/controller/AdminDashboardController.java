@@ -6,11 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Singleton;
-import se.hkr.e7.model.Employee;
-import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Person;
-
-import java.util.Date;
 
 public class AdminDashboardController extends Controller {
 
