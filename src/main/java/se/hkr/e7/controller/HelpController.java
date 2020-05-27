@@ -48,9 +48,6 @@ public class HelpController extends Controller {
             case "view/ViewPatients.fxml":
                 helpHeading.setText("View patients");
                 break;
-            case "view/ViewPatientsDoctor.fxml":
-                helpHeading.setText("View patients (Doctor)");
-                break;
             case "view/ViewResults.fxml":
                 helpHeading.setText("View results");
                 break;

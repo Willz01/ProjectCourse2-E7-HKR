@@ -1,9 +1,8 @@
 package se.hkr.e7.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import se.hkr.e7.DatabaseHandler;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +35,11 @@ public class Employee extends Person {
         setLocation(null);
         setRole(null);
         setSalary(0);
+    }
+
+    @Transient
+    public List<Patient> getPatients() {
+        return DatabaseHandler.getPatients(this);
     }
 
     public void addPatientResult(Result result) {
