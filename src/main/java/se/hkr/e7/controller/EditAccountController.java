@@ -11,7 +11,7 @@ import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Person;
 
-public class ChangeInfoController2 extends Controller {
+public class EditAccountController extends Controller {
     public TextField nameTextField;
     public TextField phoneTextField;
     public TextField emailTextField;
@@ -24,10 +24,9 @@ public class ChangeInfoController2 extends Controller {
     public Label addressLabel;
     public Label passwordLabel;
 
-
     @FXML
     public void initialize() {
-        Singleton.getInstance().addSceneHistory("view/ChangeInfo2.fxml");
+        Singleton.getInstance().addSceneHistory("view/EditAccountController.fxml");
 
         try {
             if (Singleton.getInstance().getTempPerson() != null) {
@@ -38,10 +37,10 @@ public class ChangeInfoController2 extends Controller {
                 emailTextField.setText(employee.getEmail());
                 addressTextField.setText(employee.getAddress());
 
+                saveButton.setOnAction(this::save);
             }
         } catch (Exception ignore) {
         }
-
     }
 
     public void save(ActionEvent event) {

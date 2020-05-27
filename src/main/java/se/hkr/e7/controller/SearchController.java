@@ -68,6 +68,6 @@ public class SearchController extends Controller {
         } finally {
             text.setText(String.valueOf(stringBuilder));
         }
-        editBtn.setOnAction(actionEvent -> loadScene("view/ChangeInfo2.fxml"));
+        editBtn.setOnAction(actionEvent -> loadScene("view/EditAccountController.fxml"));
     }
 }
