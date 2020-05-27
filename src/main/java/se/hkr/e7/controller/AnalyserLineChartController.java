@@ -21,7 +21,7 @@ public class AnalyserLineChartController extends Controller {
 
     @FXML
     public void initialize() {
-        Singleton.getInstance().addSceneHistory("view/AnalyserDashboard.fxml");
+        Singleton.getInstance().addSceneHistory("view/AnalyserLineChart.fxml");
         lineChart.setTitle("Results chart");
 
         ArrayList<String> dates = new ArrayList<>();
