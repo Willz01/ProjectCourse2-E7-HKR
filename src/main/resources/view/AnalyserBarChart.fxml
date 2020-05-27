@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/10.0.2-internal"
+            fx:controller="se.hkr.e7.controller.AnalyserBarChartController">
+    <children>
+        <fx:include source="../template/LogoutButton.fxml"/>
+        <BarChart fx:id="BarChart" layoutX="13.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                  minHeight="-Infinity" minWidth="-Infinity" prefHeight="291.0" prefWidth="575.0">
+            <xAxis>
+                <CategoryAxis side="BOTTOM" fx:id="x"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis fx:id="y" side="LEFT"/>
+            </yAxis>
+        </BarChart>
+        <ButtonBar layoutX="257.0" layoutY="10.0" prefHeight="40.0" prefWidth="200.0">
+            <buttons>
+                <ToggleButton fx:id="positiveButton" mnemonicParsing="false" selected="true" text="Positive"/>
+                <ToggleButton fx:id="negativeButton" mnemonicParsing="false" text="Negative"/>
+                <ToggleButton fx:id="pendingButton" mnemonicParsing="false" text="Pending"/>
+            </buttons>
+        </ButtonBar>
+    </children>
+
+</AnchorPane>
