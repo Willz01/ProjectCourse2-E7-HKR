@@ -34,7 +34,7 @@ public class SearchController extends Controller {
                     .append(patient.getAddress()).append(System.lineSeparator())
                     .append(patient.getTestResults() != null ? "     || Note : " + patient.getTestResults() : "")
                     .append(System.lineSeparator()).append(System.lineSeparator()).append(System.lineSeparator());
-            Person person = DatabaseHandler.load(Person.class,patient.getSsn());
+            Person person = DatabaseHandler.load(Person.class, patient.getSsn());
             Singleton.getInstance().setTempPerson(person);
 
         }
@@ -61,7 +61,7 @@ public class SearchController extends Controller {
                         .append(" Salary : ")
                         .append(employee.getSalary()).append(System.lineSeparator())
                         .append(System.lineSeparator()).append(System.lineSeparator()).append(System.lineSeparator());
-                Person person = DatabaseHandler.load(Person.class,employee.getSsn());
+                Person person = DatabaseHandler.load(Person.class, employee.getSsn());
                 Singleton.getInstance().setTempPerson(person);
 
             }

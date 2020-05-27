@@ -40,7 +40,6 @@ public class ChangeInfoController2 extends Controller {
 
             }
         } catch (Exception ignore) {
-
         }
 
     }

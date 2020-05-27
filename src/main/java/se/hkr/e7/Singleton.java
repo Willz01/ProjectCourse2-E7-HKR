@@ -15,15 +15,6 @@ public class Singleton {
     private Employee employee;
     private Patient patient;
     private Result result;
-
-    public Person getTempPerson() {
-        return tempPerson;
-    }
-
-    public void setTempPerson(Person tempPerson) {
-        this.tempPerson = tempPerson;
-    }
-
     private Person tempPerson;
 
     private Singleton() {
@@ -100,5 +91,12 @@ public class Singleton {
     public void setResult(Result result) {
         this.result = result;
     }
-}
 
+    public Person getTempPerson() {
+        return tempPerson;
+    }
+
+    public void setTempPerson(Person tempPerson) {
+        this.tempPerson = tempPerson;
+    }
+}

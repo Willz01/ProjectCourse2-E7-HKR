@@ -73,7 +73,7 @@ public abstract class Person implements Serializable {
      * @param password The password that should be checked against
      *                 the minimum complexity requirements
      * @return True if the password is complex enough and false if it isn't
-     *
+     * <p>
      * (?=.*[0-9]) a digit must occur at least once
      * (?=.*[a-z]) a lower case letter must occur at least once
      * (?=.*[A-Z]) an upper case letter must occur at least once
@@ -179,9 +179,11 @@ public abstract class Person implements Serializable {
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
+
     public String getPhone() {
         return phone;
     }
