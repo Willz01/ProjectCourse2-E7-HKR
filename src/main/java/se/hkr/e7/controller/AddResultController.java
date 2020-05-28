@@ -26,6 +26,14 @@ public class AddResultController extends Controller {
         Singleton.getInstance().addSceneHistory("view/AddResult.fxml");
         saveButton.setOnAction(this::addResult);
         datePicker.setValue(LocalDate.now());
+        datePicker.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+
+                setDisable(empty || date.compareTo(today) > 0);
+            }
+        });
     }
 
     public void addResult(ActionEvent event) {
@@ -42,12 +50,7 @@ public class AddResultController extends Controller {
             showError("Please choose a valid date");
             return;
         }
-
-        if (date.isAfter(LocalDate.now())) {
-            showError("You cannot chose a date after today");
-            return;
-        }
-
+        
         if (!Person.isValidSsn(ssnTextField.getText())) {
             showError("SSN must be valid 10 digits as YYMMDDXXXX");
             return;
@@ -84,7 +87,7 @@ public class AddResultController extends Controller {
             LocalDateTime localDateTime;
             if (date.equals(LocalDate.now())) {
                 localDateTime = LocalDateTime.now();
-            } else{
+            } else {
                 localDateTime = date.atStartOfDay();
             }
 
