@@ -14,25 +14,25 @@ public class HelpController extends Controller {
         switch (Singleton.getInstance().getCurrentScene()) {
             case "view/Login.fxml":
                 helpHeading.setText("Login");
-                helpContent.setText("- Enter your valid already registered login credentials.\n" +
-                        "- Your SSN(YYMMDDXXXX) and password and then login.\n" +
+                helpContent.setText("- Enter your valid already registered login credentials.\n\n" +
+                        "- Your SSN(YYMMDDXXXX) and password and then login.\n\n" +
                         "- If you have a problem logging try the forgot password link " +
-                        "and enter your valid email address for a new password.");
+                        "and enter your valid email address for a new password.\n\n");
                 break;
             case "view/AdminDashboard.fxml":
                 helpHeading.setText("Admin Dashboard");
-                helpContent.setText("Control panel for all administrative privileges." +
-                        "1) Add account : Add account adds a new employee account to the system's DB." +
+                helpContent.setText("\tControl panel for all administrative privileges.\n\n" +
+                        "1) Add account : Add account adds a new employee account to the system's DB. " +
                         "Depending on its selected role(ADMIN,ANALYSER,DOCTOR) it can perform certain " +
-                        "functions and login into the system at anytime." +
+                        "functions and login into the system at anytime.\n\n" +
                         "2) Add patient : Add patients add a new patient to the system, the user fills in " +
-                        "the required info and saves it, if the inputted data is perfect it saves automatically." +
-                        "3) View results : The admin can view all results in the system with no restricted access or view." +
-                        "4) View staff : Displays information pertaining all employees in the system irrespective of their roles" +
-                        "5) View patient : Displays all patient in the system and their respective saved info." +
+                        "the required info and saves it, if the inputted data is perfect it saves automatically with no error messages.\n\n" +
+                        "3) View results : The admin can view all results in the system with no restricted access or view.\n\n" +
+                        "4) View staff : Displays information pertaining all employees in the system irrespective of their roles.\n\n" +
+                        "5) View patient : Displays all patients in the system and their respective saved info.\n\n" +
                         "6) Remove account : Remove account deletes the account of the inputted SSN " +
-                        "immediately be it and Employee or patient account." +
-                        "7) Search : All information of the provided SSN is displayed immediately.");
+                        "immediately be it an employee or patient account.\n\n" +
+                        "7) Search : All information of the provided SSN is displayed immediately.\n\n");
                 break;
             case "view/DoctorDashboard.fxml":
                 helpHeading.setText("Doctor Dashboard");
@@ -53,13 +53,13 @@ public class HelpController extends Controller {
                 break;
             case "view/AddEmployee.fxml":
                 helpHeading.setText("Add Employee");
-                helpContent.setText("Fill all required fields with the right data to an an employee account." +
-                        "On addition of wrong data type am error is showed depending on the error.");
+                helpContent.setText("Fill all required fields with the right data for an employee account." +
+                        " On addition of wrong data type an error message is shown.\n\n");
                 break;
             case "view/AddPatient.fxml":
                 helpHeading.setText("Add Patient");
-                helpContent.setText("Fill all required fields with the right data to an an patient to the system." +
-                        "On addition of wrong data type am error is showed depending on the error.");
+                helpContent.setText("Fill all required fields with the right data to add a patient to the system." +
+                        "On addition of wrong data type an error is shown.\n\n");
                 break;
             case "view/AddResult.fxml":
                 helpHeading.setText("Add Result");
@@ -80,21 +80,21 @@ public class HelpController extends Controller {
                 break;
             case "view/RemoveAccount.fxml":
                 helpHeading.setText("Removing account");
-                helpContent.setText("Provide the SSN of the account to be deleted and click remove.");
+                helpContent.setText("Provide the SSN of the account to be deleted and click remove and the account is bye gone.\n\n");
                 break;
             case "view/ViewPatients.fxml":
                 helpHeading.setText("View patients");
-                helpContent.setText("Displays all patients saved in the system");
+                helpContent.setText("Displays all patients saved in the system.\n\n");
                 break;
             case "view/ViewResults.fxml":
                 helpHeading.setText("View results");
-                helpContent.setText("Displays all results saved in the system as well as their respective status and date added," +
-                        "you can view more info about a particular result by clicking on it column");
+                helpContent.setText("Displays all results saved in the system as well as their respective status and date issued," +
+                        "you can view more info about a particular result by clicking on the result.\n\n");
                 break;
             case "view/ViewStaff.fxml":
                 helpHeading.setText("View staffs");
                 helpContent.setText("Displays all staff saved in the system. A filter field exists in which the user can input a" +
-                        "text about the particular staff he/she is currently in search of.");
+                        " text about the particular staff he/she is currently in search of.\n\n");
                 break;
             default:
                 helpHeading.setText("Help Menu");
