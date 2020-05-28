@@ -9,6 +9,7 @@ public class AnalyserDashboard extends Controller {
     public Button edit;
 
     public Button viewResultsButton;
+    public Button Bar;
 
     @FXML
     public void initialize() {
@@ -16,6 +17,7 @@ public class AnalyserDashboard extends Controller {
         edit.setOnAction(actionEvent -> loadScene("view/ChangeInfo.fxml"));
         viewResultsButton.setOnAction(actionEvent -> loadScene("view/ViewResultsAnalyser.fxml"));
         lineChart.setOnAction(actionEvent -> loadScene("view/AnalyserLineChart.fxml"));
+        Bar.setOnAction(actionEvent -> loadScene("view/AnalyserBarChart.fxml"));
     }
 
 }
