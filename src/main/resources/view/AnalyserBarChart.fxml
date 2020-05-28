@@ -3,12 +3,10 @@
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/10.0.2-internal"
-            fx:controller="se.hkr.e7.controller.AnalyserBarChartController">
+            xmlns="http://javafx.com/javafx/11.0.1" fx:controller="se.hkr.e7.controller.AnalyserBarChartController">
     <children>
         <fx:include source="../template/LogoutButton.fxml"/>
         <BarChart fx:id="BarChart" layoutX="13.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity"
@@ -20,11 +18,16 @@
                 <NumberAxis fx:id="y" side="LEFT"/>
             </yAxis>
         </BarChart>
-        <ButtonBar layoutX="257.0" layoutY="10.0" prefHeight="40.0" prefWidth="200.0">
+        <ButtonBar layoutX="136.0" layoutY="14.0" prefHeight="40.0" prefWidth="367.0">
             <buttons>
-                <ToggleButton fx:id="positiveButton" mnemonicParsing="false" selected="true" text="Positive"/>
-                <ToggleButton fx:id="negativeButton" mnemonicParsing="false" text="Negative"/>
-                <ToggleButton fx:id="pendingButton" mnemonicParsing="false" text="Pending"/>
+                <RadioButton id="six" mnemonicParsing="false" prefHeight="17.0" prefWidth="112.0" text="Last 6 months">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="dateRange"/>
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton id="month" mnemonicParsing="false" text="Last month" toggleGroup="$dateRange"/>
+                <RadioButton id="week" mnemonicParsing="false" selected="true" text="Last week"
+                             toggleGroup="$dateRange"/>
             </buttons>
         </ButtonBar>
     </children>

@@ -1,18 +1,16 @@
 package se.hkr.e7.controller;
 
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Singleton;
+import se.hkr.e7.model.Result;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AnalyserBarChartController {
@@ -21,16 +19,15 @@ public class AnalyserBarChartController {
     @FXML
     public CategoryAxis x;
     @FXML
-    public ToggleButton positiveButton;
-    @FXML
-    public ToggleButton negativeButton;
-    @FXML
-    public ToggleButton pendingButton;
+    public ToggleGroup dateRange;
     @FXML
     private BarChart<String, Number> BarChart;
-    private List<Object[]> positiveResults;
-    private List<Object[]> negativeResults;
-    private List<Object[]> pendingResults;
+    @FXML
+    private List sevenDays;
+    @FXML
+    private List month;
+    @FXML
+    private List sixMonths;
 
 
     @FXML
@@ -39,40 +36,40 @@ public class AnalyserBarChartController {
         BarChart.setTitle("Results chart");
 
 
-        positiveResults = DatabaseHandler.query("SELECT DATE(R.dateTime), COUNT(R.id) FROM Result R WHERE R.status='0' " +
-                "AND DATE(R.dateTime) >= CURDATE() - 30 GROUP BY DATE(R.dateTime)");
-        negativeResults = DatabaseHandler.query("SELECT DATE(R.dateTime), COUNT(R.id) FROM Result R WHERE R.status='1' " +
-                "AND DATE(R.dateTime) >= CURDATE() - 30 GROUP BY DATE(R.dateTime)");
-        pendingResults = DatabaseHandler.query("SELECT DATE(R.dateTime), COUNT(R.id) FROM Result R WHERE R.status='2' " +
-                "AND DATE(R.dateTime) >= CURDATE() - 30 GROUP BY DATE(R.dateTime)");
+        sevenDays = DatabaseHandler.sqlQuery("SELECT R.status, COUNT(R.id) FROM Result R WHERE DATE(R.dateTime) >= " +
+                "date_sub(curdate(),interval 7 day) group by R.status");
 
-        ArrayList<String> dates = new ArrayList<>();
+        month = DatabaseHandler.sqlQuery("SELECT R.status, COUNT(R.id) FROM Result R WHERE DATE(R.dateTime) >= " +
+                "date_sub(curdate(),interval 30 day) group by R.status");
 
-        for (int i = 30; i >= 0; i--) {
-            dates.add(LocalDateTime.now().minusDays(i).format(DateTimeFormatter.ISO_DATE));
-        }
-        x.setCategories(FXCollections.observableList(dates));
+        sixMonths = DatabaseHandler.sqlQuery("SELECT R.status, COUNT(R.id) FROM Result R WHERE DATE(R.dateTime) >= " +
+                "date_sub(curdate(),interval 180 day) group by R.status");
 
         showData();
-        for (ToggleButton toggleButton : new ToggleButton[]{positiveButton, negativeButton, pendingButton}) {
-            toggleButton.setOnAction(actionEvent -> showData());
-        }
+
+        dateRange.selectedToggleProperty().addListener(observable -> showData());
+
     }
 
 
     private void showData() {
         BarChart.getData().clear();
-        if (negativeButton.isSelected()) {
-            BarChart.getData().add(generateSeries(negativeResults, "Negative results"));
+
+        RadioButton radioButton = (RadioButton) dateRange.getSelectedToggle();
+
+        switch (radioButton.getId()) {
+            case "week":
+                BarChart.getData().add(generateSeries(sevenDays, "Past 7 Days results"));
+                break;
+            case "month":
+                BarChart.getData().add(generateSeries(month, "Past 30 Days results"));
+                break;
+            case "six":
+                BarChart.getData().add(generateSeries(sixMonths, "Past 180 Days results"));
+                break;
+
         }
 
-        if (pendingButton.isSelected()) {
-            BarChart.getData().add(generateSeries(pendingResults, "Pending results"));
-        }
-
-        if (positiveButton.isSelected()) {
-            BarChart.getData().add(generateSeries(positiveResults, "Positive results"));
-        }
     }
 
 
@@ -81,7 +78,21 @@ public class AnalyserBarChartController {
         series.setName(seriesName);
 
         for (Object[] row : rows) {
-            series.getData().add(new XYChart.Data<>(row[0].toString(), (Number) row[1]));
+
+            Result.Status status;
+
+            switch ((Integer) row[0]) {
+                case 0:
+                    status = Result.Status.POSITIVE;
+                    break;
+                case 1:
+                    status = Result.Status.NEGATIVE;
+                    break;
+                default:
+                    status = Result.Status.PENDING;
+            }
+
+            series.getData().add(new XYChart.Data<>(status.toString(), (Number) row[1]));
         }
 
         return series;
