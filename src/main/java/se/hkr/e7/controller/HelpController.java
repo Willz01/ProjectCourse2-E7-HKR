@@ -69,11 +69,14 @@ public class HelpController extends Controller {
                 break;
             case "view/AnalyserDashboard.fxml":
                 helpHeading.setText("Analyser Dashboard");
+                helpContent.setText("Line chart gives a line chart representation of all results added.\n\n" +
+                        "View result displays all result in the system.\n\n" +
+                        "Update info changes basic info user wants to change.\n\n");
                 break;
             case "view/AnalyserLineChart.fxml":
                 helpHeading.setText("Analyser Line Chart");
                 helpContent.setText("The Line chart illustrates a graphical representation of the number of 'POSITIVE','NEGATIVE' " +
-                        "and 'PENDING' results added against their 'DATES'");
+                        "and 'PENDING' results added against their 'DATES'.\n\n");
                 break;
             case "view/ChangeInfo.fxml":
                 helpHeading.setText("Update Info");
