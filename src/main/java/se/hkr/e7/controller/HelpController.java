@@ -49,8 +49,8 @@ public class HelpController extends Controller {
                 break;
             case "view/PatientDashboard.fxml":
                 helpHeading.setText("Patient Dashboard");
-                helpContent.setText("The logged in patient cam view all of his/her " +
-                        "results as well as updating his basic information.");
+                helpContent.setText("Patient can view all of his/her " +
+                        "results as well as updating his/her basic information.\n\n");
                 break;
             case "view/AddEmployee.fxml":
                 helpHeading.setText("Add Employee");
@@ -77,7 +77,7 @@ public class HelpController extends Controller {
                 break;
             case "view/ChangeInfo.fxml":
                 helpHeading.setText("Update Info");
-                helpContent.setText("You can edit your current basic information here,just changed the fields that require can and save.");
+                helpContent.setText("You can edit your current basic information here, just changed the fields that require change and save.\n\n");
                 break;
             case "view/RemoveAccount.fxml":
                 helpHeading.setText("Removing account");
