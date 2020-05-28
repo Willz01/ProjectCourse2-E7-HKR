@@ -36,15 +36,16 @@ public class HelpController extends Controller {
                 break;
             case "view/DoctorDashboard.fxml":
                 helpHeading.setText("Doctor Dashboard");
-                helpContent.setText("1) View patient : Displays all patients added by the currently logged in doctor " +
-                        "in the system and their respective saved info." +
-                        "2) Add patient : Add patients add a new patient to the system, the user fills in " +
-                        "the required info and saves it, if the inputted data is perfect it saves automatically." +
-                        "3) Add result : Adds new result to the patients SSN provided. By default the Date field is set" +
-                        " to today's date but can be changed to and earlier date only." +
+                helpContent.setText("\tControl panel for all administrative privileges.\n\n" +
+                        "1) View patients : Displays all patients added by the currently logged in doctor " +
+                        "in the system and their respective saved info.\n\n" +
+                        "2) Add patient : Adds a new patient to the system, the user fills in " +
+                        "the required info and saves it, if the inputted data is perfect it saves automatically.\n\n" +
+                        "3) Add result : Adds new result to the patient's SSN provided. By default the Date field is set" +
+                        " to today's date but can be changed to an earlier date only.\n\n" +
                         "4) View results : Displays all results added by the currently logged in doctor." +
-                        "Depending on the status of the result all 'pending' results can the changed to 'Positive or negative'" +
-                        "after further tests.");
+                        "Depending on the status of the result all 'PENDING' results can the changed to 'POSITIVE or NEGATIVE'" +
+                        " after further tests.\n\n");
                 break;
             case "view/PatientDashboard.fxml":
                 helpHeading.setText("Patient Dashboard");
@@ -64,7 +65,7 @@ public class HelpController extends Controller {
             case "view/AddResult.fxml":
                 helpHeading.setText("Add Result");
                 helpContent.setText("Adds new result to the specified SSN.By default the date field is set to today's" +
-                        "date but can be changed to date earlier than that. Adding a note isn't mandatory  but other are required.");
+                        "date but can be changed to date earlier than that. Adding a note isn't mandatory but others are required.\n\n");
                 break;
             case "view/AnalyserDashboard.fxml":
                 helpHeading.setText("Analyser Dashboard");
