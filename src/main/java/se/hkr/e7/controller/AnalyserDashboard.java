@@ -10,6 +10,7 @@ public class AnalyserDashboard extends Controller {
 
     public Button viewResultsButton;
     public Button Bar;
+    public Button pieChart;
 
     @FXML
     public void initialize() {
@@ -18,6 +19,7 @@ public class AnalyserDashboard extends Controller {
         viewResultsButton.setOnAction(actionEvent -> loadScene("view/ViewResultsAnalyser.fxml"));
         lineChart.setOnAction(actionEvent -> loadScene("view/AnalyserLineChart.fxml"));
         Bar.setOnAction(actionEvent -> loadScene("view/AnalyserBarChart.fxml"));
+        pieChart.setOnAction(actionEvent -> loadScene("view/AnalyserPieChart.fxml"));
     }
 
 }
