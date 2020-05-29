@@ -95,7 +95,7 @@ public class AddResultController extends Controller {
             Result result = new Result(patient, currentUser, localDateTime, status);
             result.setNote(resultNote.getText());
             DatabaseHandler.save(result);
-            Mail.send("Result available", "Your results are now available. <br> Best Regards.", patient);
+            Mail.send("Result available", "Hello.<br> Your results are now available. <br> Best Regards.", patient);
             showConfirmation("Saved", "Email has been sent to the patient. \nThank you.");
             ssnTextField.setText("");
             datePicker.setValue(null);
