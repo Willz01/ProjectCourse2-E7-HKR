@@ -26,7 +26,7 @@ public class EditAccountController extends Controller {
 
     @FXML
     public void initialize() {
-        Singleton.getInstance().addSceneHistory("view/EditAccountController.fxml");
+        Singleton.getInstance().addSceneHistory("view/EditAccount.fxml");
 
         Person person = Singleton.getInstance().getPerson();
         if (person != null) {
