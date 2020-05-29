@@ -6,7 +6,6 @@ import javafx.scene.chart.PieChart;
 import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Singleton;
 
-import java.math.BigInteger;
 import java.util.List;
 
 public class AnalyserPieChartController {
@@ -16,24 +15,15 @@ public class AnalyserPieChartController {
         Singleton.getInstance().addSceneHistory("view/AnalyserPieChart.fxml");
 
         pieChart.setTitle("Result status type distribution");
-        List positiveResults = DatabaseHandler.sqlQuery("select count(status) from result where status = 0");
-        List negativeResults = DatabaseHandler.sqlQuery("select count(status) from result where status = 1");
-        List pendingResults = DatabaseHandler.sqlQuery("select count(status) from result where status = 2");
+        List<Object[]> results = DatabaseHandler.query("select status,count(status) from Result group by status");
 
-        BigInteger positive = (BigInteger) positiveResults.get(0);
-        BigInteger negative = (BigInteger) negativeResults.get(0);
-        BigInteger pending = (BigInteger) pendingResults.get(0);
+        PieChart.Data[] p = new PieChart.Data[results.size()];
+        for (int i = 0; i < results.size(); i++) {
+            p[i] = new PieChart.Data((results.get(i)[0]).toString(), ((Long) results.get(i)[1]).doubleValue());
+        }
 
-        double p, n, pen;
-        p = positive.doubleValue();
-        n = negative.doubleValue();
-        pen = pending.doubleValue();
 
-        ObservableList<PieChart.Data> dataObservableList = FXCollections.observableArrayList(
-                new PieChart.Data("Positive", p),
-                new PieChart.Data("Negative", n),
-                new PieChart.Data("Pending", pen)
-        );
+        ObservableList<PieChart.Data> dataObservableList = FXCollections.observableArrayList(p);
         pieChart.setData(dataObservableList);
 
     }

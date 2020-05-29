@@ -32,7 +32,7 @@ public class AnalyserBarChartController {
 
     @FXML
     public void initialize() {
-        Singleton.getInstance().addSceneHistory("view/AnalyserDashboard.fxml");
+        Singleton.getInstance().addSceneHistory("view/AnalyserBarChart.fxml");
         BarChart.setTitle("Results chart");
 
 
