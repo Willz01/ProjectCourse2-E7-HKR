@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import se.hkr.e7.DatabaseHandler;
+import se.hkr.e7.Mail;
 import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Patient;
@@ -94,6 +95,7 @@ public class AddResultController extends Controller {
             Result result = new Result(patient, currentUser, localDateTime, status);
             result.setNote(resultNote.getText());
             DatabaseHandler.save(result);
+            Mail.send("Result available", "Your results are now available \n Best Regards", patient);
             showConfirmation("Saved", "Thank you");
             ssnTextField.setText("");
             datePicker.setValue(null);
