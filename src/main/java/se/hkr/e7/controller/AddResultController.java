@@ -11,6 +11,8 @@ import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Person;
 import se.hkr.e7.model.Result;
 
+import javax.mail.MessagingException;
+import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -81,9 +83,8 @@ public class AddResultController extends Controller {
             if (patient == null) {
                 if (showChoice("Couldn't find patient", "Do you want to add new patient")) {
                     loadScene("view/AddPatient.fxml");
-                } else {
-                    return;
                 }
+                return;
             }
             LocalDateTime localDateTime;
             if (date.equals(LocalDate.now())) {
@@ -95,10 +96,21 @@ public class AddResultController extends Controller {
             Result result = new Result(patient, currentUser, localDateTime, status);
             result.setNote(resultNote.getText());
             DatabaseHandler.save(result);
-            Mail.send("Result available", "Hello.<br> Your results are now available. <br> Best Regards.", patient);
-            showConfirmation("Saved", "Email has been sent to the patient. \nThank you.");
+            if (result.getStatus() != Result.Status.PENDING) {
+                try {
+                    String body = String.format("Hello %s .<br>Your results are now available. <br>Best Regards.", patient.getName());
+                    Mail.send("Result available", body, patient);
+                    showConfirmation("Saved", "Email has been sent to the patient. \nThank you.");
+
+                } catch (UnsupportedEncodingException | MessagingException e) {
+                    showConfirmation("Result added", "The result are added now but the email was not sent yet");
+                }
+
+            } else {
+                showConfirmation("Saved", "Result has been added");
+            }
             ssnTextField.setText("");
-            datePicker.setValue(null);
+            datePicker.setValue(LocalDate.now());
             resultRadioButton.setSelected(false);
             resultNote.setText("");
         } catch (Exception e) {
