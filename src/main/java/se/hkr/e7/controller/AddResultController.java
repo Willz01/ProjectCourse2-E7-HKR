@@ -103,7 +103,7 @@ public class AddResultController extends Controller {
                     showConfirmation("Saved", "Email has been sent to the patient. \nThank you.");
 
                 } catch (UnsupportedEncodingException | MessagingException e) {
-                    showConfirmation("Result added", "The result are added now but the email was not sent yet");
+                    showConfirmation("Result added", "Result add with no mail notification.");
                 }
 
             } else {

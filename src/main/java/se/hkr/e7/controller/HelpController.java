@@ -82,6 +82,7 @@ public class HelpController extends Controller {
                 helpHeading.setText("Analyser Bar-chart");
                 helpContent.setText("Display Positive,negative and pending results in a bar chart format against dates added, the user can " +
                         "decide adjust date range.\n\n");
+                break;
             case "view/AnalyserPieChart.fxml":
                 helpHeading.setText("Analyser PieChart");
                 helpContent.setText("Shows the ratio of the different results status.\n\n");
@@ -92,7 +93,7 @@ public class HelpController extends Controller {
                 break;
             case "view/EditAccount.fxml":
                 helpHeading.setText("Edit Info");
-                helpContent.setText("You can edit your current basic information here, just changed the fields that require change and save.\n\n");
+                helpContent.setText("You can edit your current basic information here, just change the fields that require change and save.\n\n");
                 break;
             case "view/ViewResultsAnalyser.fxml":
                 helpHeading.setText("View results");
@@ -100,7 +101,7 @@ public class HelpController extends Controller {
                 break;
             case "view/ChangeInfo.fxml":
                 helpHeading.setText("Update Info");
-                helpContent.setText("You can edit your current basic information here, just changed the fields that require change and save.\n\n");
+                helpContent.setText("You can edit your current basic information here, just change the fields that require change and save.\n\n");
                 break;
             case "view/RemoveAccount.fxml":
                 helpHeading.setText("Removing account");
