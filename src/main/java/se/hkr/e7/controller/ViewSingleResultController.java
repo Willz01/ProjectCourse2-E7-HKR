@@ -7,10 +7,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.text.Text;
 import se.hkr.e7.DatabaseHandler;
+import se.hkr.e7.Mail;
 import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Result;
 
+import javax.mail.MessagingException;
+import java.io.UnsupportedEncodingException;
 import java.util.Optional;
 
 public class ViewSingleResultController extends Controller {
@@ -70,7 +73,14 @@ public class ViewSingleResultController extends Controller {
             return;
         }
         DatabaseHandler.save(result);
-        showConfirmation("Saved", "The status was updated");
+        try {
+            Mail.send("Results available", " Your result are available now", result.getPatient());
+            showConfirmation("Saved", "The status was updated");
+
+        } catch (UnsupportedEncodingException | MessagingException e) {
+            showConfirmation("Status updated", "The status now are updated, email is not sent yet");
+        }
+
         updateScene();
     }
 }
