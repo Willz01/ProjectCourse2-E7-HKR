@@ -3,7 +3,6 @@ package se.hkr.e7.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import se.hkr.e7.DatabaseHandler;
 import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Patient;
@@ -62,6 +61,6 @@ public class SearchController extends Controller {
         }
 
         text.setText(stringBuilder.toString());
-        editBtn.setOnAction(actionEvent -> loadScene("view/EditAccountController.fxml"));
+        editBtn.setOnAction(actionEvent -> loadScene("view/EditAccount.fxml"));
     }
 }
