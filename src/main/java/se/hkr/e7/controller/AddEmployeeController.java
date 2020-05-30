@@ -88,7 +88,6 @@ public class AddEmployeeController extends Controller {
 
             String password = Mail.generatePassword(10);
 
-
             if (employee == null) {
                 employee = new Employee(
                         ssnTextField.getText(),
@@ -115,7 +114,6 @@ public class AddEmployeeController extends Controller {
             }
 
             try {
-
                 Mail.send("New account information",
                         String.format("Dear %s,<br>Your account has been created and your password is: <br> %s <br> Best regards.",
                                 employee.getName(), password), employee);
@@ -123,7 +121,6 @@ public class AddEmployeeController extends Controller {
             } catch (UnsupportedEncodingException | MessagingException e) {
                 showError("Employee was added, Email could not be sent and the password is: " + password);
             }
-
 
             ssnTextField.setText("");
             nameTextField.setText("");
