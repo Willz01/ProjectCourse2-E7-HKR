@@ -1,33 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.AnalyserDashboard">
-   <fx:include source="../template/LogoutButton.fxml" />
-   <Button fx:id="lineChart" layoutX="134.0" layoutY="130.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="131.0" text="LineChart" />
-   <Button fx:id="edit" layoutX="449.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="update my info" />
-   <Button fx:id="viewResultsButton" layoutX="335.0" layoutY="266.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="131.0" text="ViewResults" />
+<?import java.net.URL?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/10.0.2-internal" fx:controller="se.hkr.e7.controller.AnalyserDashboard">
+   <fx:include source="../template/LogoutButton.fxml"/>
+   <Button fx:id="lineChart" layoutX="134.0" layoutY="130.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="131.0"
+           text="LineChart"/>
+   <Button fx:id="Bar" layoutX="334.0" layoutY="130.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="131.0"
+           text="BarChart"/>
+   <Button fx:id="pieChart" layoutX="135.0" layoutY="266.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="131.0"
+           text="Pie chart"/>
+   <Button fx:id="viewResultsButton" layoutX="335.0" layoutY="266.0" mnemonicParsing="false" prefHeight="54.0"
+           prefWidth="131.0" text="ViewResults"/>
+   <Button fx:id="edit" layoutX="449.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0"
+           text="update my info"/>
    <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="370.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@images/test-result.png" />
+         <Image url="@images/test-result.png"/>
       </image>
    </ImageView>
    <ImageView fitHeight="62.0" fitWidth="76.0" layoutX="169.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@images/graph-logo.png" />
+         <Image url="@images/graph-logo.png"/>
       </image>
    </ImageView>
-   <Button fx:id="Bar" layoutX="334.0" layoutY="130.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="131.0" text="BarChart" />
    <ImageView fitHeight="62.0" fitWidth="73.0" layoutX="369.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@images/BarChart-logo.png" />
       </image>
    </ImageView>
-   <Button fx:id="pieChart" layoutX="135.0" layoutY="266.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="131.0" text="Pie chart" />
    <ImageView fitHeight="62.0" fitWidth="76.0" layoutX="170.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@images/pie-chart.png" />
