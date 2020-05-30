@@ -7,10 +7,14 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import org.hibernate.HibernateException;
 import se.hkr.e7.DatabaseHandler;
+import se.hkr.e7.Mail;
 import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Employee;
 import se.hkr.e7.model.Location;
 import se.hkr.e7.model.Person;
+
+import javax.mail.MessagingException;
+import java.io.UnsupportedEncodingException;
 
 public class AddEmployeeController extends Controller {
 
@@ -19,7 +23,6 @@ public class AddEmployeeController extends Controller {
     public TextField ssnTextField;
     public TextField nameTextField;
     public TextField addressTextField;
-    public TextField passwordTextField;
     public TextField emailTextField;
     public TextField phoneTextField;
     public TextField salaryTextField;
@@ -55,12 +58,6 @@ public class AddEmployeeController extends Controller {
             return;
         }
 
-        if (!Person.isValidPassword(passwordTextField.getText())) {
-            showError("Enter a valid password. The password should be at least 8 characters in length and have an " +
-                    "uppercase and a lowercase letter as well as a number.");
-            return;
-        }
-
         if (!Person.isValidPhone(phoneTextField.getText())) {
             showError("Enter a valid phone number.");
             return;
@@ -89,10 +86,13 @@ public class AddEmployeeController extends Controller {
                 return;
             }
 
+            String password = Mail.generatePassword(10);
+
+
             if (employee == null) {
-                DatabaseHandler.save(new Employee(
+                employee = new Employee(
                         ssnTextField.getText(),
-                        passwordTextField.getText(),
+                        password,
                         nameTextField.getText(),
                         emailTextField.getText(),
                         phoneTextField.getText(),
@@ -100,10 +100,10 @@ public class AddEmployeeController extends Controller {
                         locationChoiceBox.getValue(),
                         roleChoiceBox.getValue(),
                         Double.parseDouble(salaryTextField.getText())
-                ));
+                );
             } else {
                 employee.setName(nameTextField.getText());
-                employee.updatePassword(passwordTextField.getText());
+                employee.updatePassword(password);
                 employee.setEmail(emailTextField.getText());
                 employee.setPhone(phoneTextField.getText());
                 employee.setAddress(addressTextField.getText());
@@ -114,9 +114,18 @@ public class AddEmployeeController extends Controller {
                 DatabaseHandler.save(employee);
             }
 
-            showConfirmation("Finished successfully!", "The account has been created.");
+            try {
+
+                Mail.send("New account information",
+                        String.format("Dear %s,<br>Your account has been created and your password is: <br> %s <br> Best regards.",
+                                employee.getName(), password), employee);
+                showConfirmation("Success", "The employee was added, password was sent to the employee email.");
+            } catch (UnsupportedEncodingException | MessagingException e) {
+                showError("Employee was added, Email could not be sent and the password is: " + password);
+            }
+
+
             ssnTextField.setText("");
-            passwordTextField.setText("");
             nameTextField.setText("");
             emailTextField.setText("");
             salaryTextField.setText("");

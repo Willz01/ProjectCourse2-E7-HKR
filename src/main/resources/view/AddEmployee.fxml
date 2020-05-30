@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.AddEmployeeController">
-    <TextField fx:id="ssnTextField" layoutX="111.0" layoutY="70.0" prefHeight="25.0" prefWidth="175.0" promptText="SSN" />
-    <TextField fx:id="nameTextField" layoutX="368.0" layoutY="70.0" prefHeight="25.0" prefWidth="175.0" promptText="Name" />
-    <TextField fx:id="addressTextField" layoutX="111.0" layoutY="119.0" prefHeight="25.0" prefWidth="175.0" promptText="Address" />
-    <PasswordField fx:id="passwordTextField" layoutX="368.0" layoutY="119.0" prefHeight="25.0" prefWidth="175.0" promptText="password" />
-    <TextField fx:id="phoneTextField" layoutX="111.0" layoutY="168.0" prefHeight="25.0" prefWidth="175.0" promptText="Phone" />
-    <TextField fx:id="emailTextField" layoutX="368.0" layoutY="168.0" prefHeight="25.0" prefWidth="175.0" promptText="email" />
-    <TextField fx:id="salaryTextField" layoutX="111.0" layoutY="215.0" prefHeight="25.0" prefWidth="175.0" promptText="Salary" />
-    <Label layoutX="368.0" layoutY="221.0" prefHeight="17.0" prefWidth="175.0" text="Location" />
-    <ChoiceBox fx:id="locationChoiceBox" layoutX="368.0" layoutY="238.0" prefHeight="25.0" prefWidth="175.0" />
-    <Label layoutX="111.0" layoutY="266.0" prefHeight="17.0" prefWidth="175.0" text="Role" />
-    <ChoiceBox fx:id="roleChoiceBox" layoutX="111.0" layoutY="283.0" prefHeight="25.0" prefWidth="175.0" />
+<?import java.net.URL?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/10.0.2-internal" fx:controller="se.hkr.e7.controller.AddEmployeeController">
+    <TextField fx:id="ssnTextField" layoutX="111.0" layoutY="70.0" prefHeight="25.0" prefWidth="175.0"
+               promptText="SSN"/>
+    <TextField fx:id="nameTextField" layoutX="368.0" layoutY="70.0" prefHeight="25.0" prefWidth="175.0"
+               promptText="Name"/>
+    <TextField fx:id="addressTextField" layoutX="111.0" layoutY="119.0" prefHeight="25.0" prefWidth="175.0"
+               promptText="Address"/>
+    <TextField fx:id="salaryTextField" layoutX="368.0" layoutY="119.0" prefHeight="25.0" prefWidth="175.0"
+               promptText="Salary"/>
+    <TextField fx:id="phoneTextField" layoutX="111.0" layoutY="168.0" prefHeight="25.0" prefWidth="175.0"
+               promptText="Phone"/>
+    <TextField fx:id="emailTextField" layoutX="368.0" layoutY="168.0" prefHeight="25.0" prefWidth="175.0"
+               promptText="email"/>
+    <Label layoutX="368.0" layoutY="221.0" prefHeight="17.0" prefWidth="175.0" text="Location"/>
+    <ChoiceBox fx:id="roleChoiceBox" layoutX="111.0" layoutY="238.0" prefHeight="25.0" prefWidth="175.0"/>
+    <ChoiceBox fx:id="locationChoiceBox" layoutX="368.0" layoutY="238.0" prefHeight="25.0" prefWidth="175.0"/>
+    <Label layoutX="111.0" layoutY="221.0" prefHeight="17.0" prefWidth="175.0" text="Role"/>
     <Label alignment="CENTER" layoutX="241.0" prefHeight="64.0" prefWidth="119.0" text="Add Account" AnchorPane.bottomAnchor="336.0" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="0.0">
         <font>
             <Font size="18.0" />
@@ -39,9 +39,6 @@
     <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="316.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/location.png" />
     </ImageView>
-    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="316.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/password.png" />
-    </ImageView>
     <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="316.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/email.png" />
     </ImageView>
@@ -51,11 +48,12 @@
     <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="45.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/phone.png" />
     </ImageView>
-    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="45.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/salary.png" />
+    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="316.0" layoutY="113.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@images/salary.png"/>
     </ImageView>
-    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="45.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/role.png" />
+    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="45.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/role.png"/>
     </ImageView>
     <stylesheets>
         <URL value="@../view/Style.css" />
