@@ -14,19 +14,12 @@ import se.hkr.e7.model.Result;
 import java.util.List;
 
 public class AnalyserBarChartController {
-    @FXML
     public NumberAxis y;
-    @FXML
     public CategoryAxis x;
-    @FXML
     public ToggleGroup dateRange;
-    @FXML
     private BarChart<String, Number> BarChart;
-    @FXML
     private List sevenDays;
-    @FXML
     private List month;
-    @FXML
     private List sixMonths;
 
 

@@ -7,7 +7,6 @@ import se.hkr.e7.Singleton;
 public class AnalyserDashboard extends Controller {
     public Button lineChart;
     public Button edit;
-
     public Button viewResultsButton;
     public Button Bar;
     public Button pieChart;

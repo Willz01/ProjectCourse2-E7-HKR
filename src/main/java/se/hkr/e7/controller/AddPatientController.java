@@ -5,16 +5,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import se.hkr.e7.DatabaseHandler;
+import se.hkr.e7.Mail;
 import se.hkr.e7.Singleton;
 import se.hkr.e7.model.Patient;
 import se.hkr.e7.model.Person;
+
+import javax.mail.MessagingException;
+import java.io.UnsupportedEncodingException;
 
 public class AddPatientController extends Controller {
 
     public Button addButton;
     public TextField ssnTextField;
     public TextField nameTextField;
-    public TextField passwordTextField;
     public TextField addressTextField;
     public TextField emailTextField;
     public TextField phoneTextField;
@@ -41,12 +44,6 @@ public class AddPatientController extends Controller {
             return;
         }
 
-        if (!Person.isValidPassword(passwordTextField.getText())) {
-            showError("Enter a valid password. The password should be at least 8 characters in length and have an " +
-                    "uppercase and a lowercase letter as well as a number.");
-            return;
-        }
-
         if (!Person.isValidEmail(emailTextField.getText())) {
             showError("Enter a valid email");
             return;
@@ -65,18 +62,22 @@ public class AddPatientController extends Controller {
                 return;
             }
 
+            String password = Mail.generatePassword(10);
+
+
             if (patient == null) {
-                DatabaseHandler.save(new Patient(
+                patient = new Patient(
                         ssnTextField.getText(),
-                        passwordTextField.getText(),
+                        password,
                         nameTextField.getText(),
                         emailTextField.getText(),
                         phoneTextField.getText(),
                         addressTextField.getText()
-                ));
+                );
+                DatabaseHandler.save(patient);
             } else {
                 patient.setName(nameTextField.getText());
-                patient.updatePassword(passwordTextField.getText());
+                patient.updatePassword(password);
                 patient.setEmail(emailTextField.getText());
                 patient.setPhone(phoneTextField.getText());
                 patient.setAddress(addressTextField.getText());
@@ -84,15 +85,25 @@ public class AddPatientController extends Controller {
                 DatabaseHandler.save(patient);
             }
 
-            showConfirmation("Success", "The patient was added.");
+            try {
+
+                Mail.send("New account information",
+                        String.format("Dear %s,<br>Your account has been created and your password is: <br> %s <br> Best regards.",
+                                patient.getName(), password), patient);
+                showConfirmation("Success", "The patient was added, password was sent to the patient email.");
+            } catch (UnsupportedEncodingException | MessagingException e) {
+                showError("Patient was added, Email could not be sent and the password is: " + password);
+            }
+
             ssnTextField.setText("");
-            passwordTextField.setText("");
             nameTextField.setText("");
             emailTextField.setText("");
             phoneTextField.setText("");
             addressTextField.setText("");
         } catch (Exception exception) {
             showError("Couldn't save ", "There was an error adding the patient.");
+
+
         }
     }
 }
