@@ -51,7 +51,6 @@ public class AnalyserBarChartController {
 
     }
 
-
     private void showData() {
         BarChart.getData().clear();
 
@@ -69,9 +68,7 @@ public class AnalyserBarChartController {
                 break;
 
         }
-
     }
-
 
     private XYChart.Series<String, Number> generateSeries(List<Object[]> rows, String seriesName) {
         XYChart.Series<String, Number> series = new XYChart.Series<>();

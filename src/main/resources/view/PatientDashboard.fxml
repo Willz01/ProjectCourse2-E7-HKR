@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.hkr.e7.controller.PatientDashboardController">
-    <Button fx:id="changeInfoButton" layoutX="455.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="update my info" />
-    <Button fx:id="viewResultsButton" layoutX="235.0" layoutY="212.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="131.0" text="View results" />
-    <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="273.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/test-result.png" />
+<?import java.net.URL?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/10.0.2-internal"
+            fx:controller="se.hkr.e7.controller.PatientDashboardController">
+    <Button fx:id="viewResultsButton" layoutX="235.0" layoutY="212.0" mnemonicParsing="false" prefHeight="38.0"
+            prefWidth="131.0" text="View results"/>
+    <Button fx:id="changeInfoButton" layoutX="455.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0"
+            prefWidth="131.0" text="update my info"/>
+    <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="273.0" layoutY="150.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@images/test-result.png"/>
     </ImageView>
-    <fx:include source="../template/LogoutButton.fxml" />
+    <fx:include source="../template/LogoutButton.fxml"/>
     <stylesheets>
-        <URL value="@Style.css" />
+        <URL value="@Style.css"/>
     </stylesheets>
 </AnchorPane>

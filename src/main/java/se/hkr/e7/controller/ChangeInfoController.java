@@ -46,32 +46,32 @@ public class ChangeInfoController extends Controller {
         boolean error = false;
 
         if (nameTextField.getText().isEmpty()) {
-            nameLabel.setText(" can't be empty");
+            nameLabel.setText("Can't be empty");
             error = true;
         }
 
         if (phoneTextField.getText().isEmpty()) {
-            phoneLabel.setText("can't be empty ");
+            phoneLabel.setText("Can't be empty ");
             error = true;
         }
 
         if (addressTextField.getText().isEmpty()) {
-            addressLabel.setText(" can't be empty");
+            addressLabel.setText("Can't be empty");
             error = true;
         }
 
         if (emailTextField.getText().isEmpty()) {
-            emailLabel.setText("cant be empty");
+            emailLabel.setText("Cant be empty");
             error = true;
         }
 
         if (!Employee.isValidEmail(emailTextField.getText())) {
-            emailLabel.setText("email is not valid");
+            emailLabel.setText("Email is not valid");
             error = true;
         }
 
         if (!Employee.isValidPhone(phoneTextField.getText())) {
-            phoneLabel.setText("phone is not valid");
+            phoneLabel.setText("Phone is not valid");
             error = true;
         }
 
