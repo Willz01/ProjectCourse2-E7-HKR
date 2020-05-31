@@ -137,7 +137,7 @@ public class LoginController extends Controller {
                     person.updatePassword(password);
                     DatabaseHandler.save(person);
                     Mail.send("Password Reset",
-                            String.format("Dear %s,<br>Your new password is %s.<br>Kind regards", person.getName(), password),
+                            String.format("Dear %s,<br>Your new password is %s <br>Kind regards", person.getName(), password),
                             person);
                     showConfirmation("Success", "Email has been sent.");
                 }
