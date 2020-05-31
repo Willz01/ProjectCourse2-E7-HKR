@@ -17,7 +17,7 @@ public class AnalyserBarChartController {
     public NumberAxis y;
     public CategoryAxis x;
     public ToggleGroup dateRange;
-    private BarChart<String, Number> BarChart;
+    public BarChart<String, Number> BarChart;
     private List sevenDays;
     private List month;
     private List sixMonths;

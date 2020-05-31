@@ -75,7 +75,7 @@ public class ViewSingleResultController extends Controller {
         DatabaseHandler.save(result);
         try {
             Mail.send("Results available", " Your result are available now", result.getPatient());
-            showConfirmation("Saved", "The status was updated");
+            showConfirmation("Saved", "Email has been sent to the patient. \nThank you.");
 
         } catch (UnsupportedEncodingException | MessagingException e) {
             showConfirmation("Status updated", "The status now are updated, email is not sent yet");
