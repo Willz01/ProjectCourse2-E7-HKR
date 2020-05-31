@@ -56,6 +56,8 @@ mvn clean javafx:run
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/) - IDE
 * [Maven](https://maven.apache.org/) - Build tool
 * [MySQL](https://www.mysql.com/) - Relational database
+* [MailTrap](https://mailtrap.io) - Mail trap
+* [Hibernate](https://hibernate.org) - Hibernate
 
 ## Authors
 * **Hani Adel Alzir** - [Hani311](https://github.com/Hani311)
